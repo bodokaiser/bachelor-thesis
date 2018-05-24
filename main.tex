@@ -1,6 +1,7 @@
 \documentclass[
   a4paper,
   emulatestandardclasses,
+  abstract
 ]{scrreprt}
 
 \usepackage[T1]{fontenc}
@@ -43,10 +44,11 @@
 
 \maketitle
 
+\include{abstract}
+
 \tableofcontents
 
-\listoffigures
-\listoftables
+\include{introduction}
 
 \printbibliography{}
 
