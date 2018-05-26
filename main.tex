@@ -1,11 +1,11 @@
 \documentclass[
   a4paper,
   emulatestandardclasses,
-  abstract
+  abstract,
+  parskip
 ]{scrreprt}
 
 \usepackage[T1]{fontenc}
-\usepackage[utf8]{inputenc}
 \usepackage[english]{babel}
 
 \usepackage{bm}
@@ -16,7 +16,6 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{parskip}
 \usepackage{csquotes}
 \usepackage{biblatex}
 \usepackage{enumerate}
@@ -49,7 +48,8 @@
 \tableofcontents
 
 \include{introduction}
+\include{experiment}
 
-\printbibliography{}
+\printbibliography
 
 \end{document}

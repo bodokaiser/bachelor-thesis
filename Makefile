@@ -4,7 +4,7 @@ TARGET=$(MAIN).pdf
 
 BUILD_DIR=build
 
-LATEXMK=lualatex -output-directory $(BUILD_DIR) -deps
+LATEXMK=latexmk -lualatex -auxdir=$(BUILD_DIR) -outdir=$(BUILD_DIR) -deps -pdf -bibtex
 
 DEPS=$(wildcard *.tex)
 DEPS+=$(wildcard *.bib)
