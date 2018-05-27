@@ -2,7 +2,8 @@
   a4paper,
   emulatestandardclasses,
   abstract,
-  parskip
+  parskip,
+  titlepage=firstiscover
 ]{scrreprt}
 
 \usepackage[T1]{fontenc}
@@ -22,6 +23,9 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 
+\newcommand{\builddir}[1]{build/#1}
+\newcommand{\imagedir}[1]{images/#1}
+
 \addbibresource{literature.bib}
 
 \numberwithin{equation}{section}
@@ -30,14 +34,18 @@
 \title{High-precision time-averaged optical potentials for ultracold atoms}
 \titlehead{
   \begin{center}
-    \includegraphics[width=.8\textwidth]{images/emblem}
+    \includegraphics[width=.5\pagewidth]{\builddir{emblem.pdf}}
   \end{center}
 }
 \subtitle{Bachelor's Thesis by}
 \author[1]{Bodo Kaiser}
 \affil[1]{Ludwig-Maximilians-Universität München}
 \affil[ ]{\textit{bodo.kaiser@physik.uni-muenchen.de}}
-\publishers{supervised by Prof. Dr. Immanuel Block, Dr. Monika Aidelsburger and Christian Schweitzer.}
+\publishers{
+  \vspace{.2\baselineskip}
+  Supervision by Prof. Dr. Immanuel Block, Dr. Monika Aidelsburger
+  and Christian Schweitzer.
+}
 
 \begin{document}
 
