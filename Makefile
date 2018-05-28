@@ -16,7 +16,7 @@ build: $(TARGET)
 %.pdf: $(TMP_DIR)/%.pdf
 	ln -f $(TMP_DIR)/$@ .
 
-$(TMP_DIR)/%.pdf: %.tex $(IMG)
+$(TMP_DIR)/%.pdf: $(IMG) %.tex
 	@mkdir -p $(TMP_DIR)
 	$(LATEXMK) $(MAIN).tex
 

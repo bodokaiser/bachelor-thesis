@@ -6,7 +6,7 @@
 ]{scrreprt}
 
 \usepackage[T1]{fontenc}
-\usepackage[english]{babel}
+\usepackage[ngerman,english]{babel}
 
 \usepackage{bm}
 \usepackage{a4wide}
@@ -30,21 +30,78 @@
 \numberwithin{equation}{section}
 
 \subject{Many Body Quantum Optics}
-\title{High-precision time-averaged optical potentials for ultracold atoms
-  \vskip 1em
-  \includegraphics[width=9cm]{\builddir{emblem.pdf}}
-}
+\title{High-precision time-averaged optical potentials for ultracold atoms}
 \subtitle{Bachelor thesis by}
 \author[1]{Bodo Kaiser}
 \affil[1]{Ludwig-Maximilians-Universität München}
 \affil[ ]{\textit{bodo.kaiser@physik.uni-muenchen.de}}
-\publishers{Supervision by Prof. Dr. Immanuel Block, Dr. Monika Aidelsburger
-  and Christian Schweitzer.}
+\publishers{under supervision of Prof. Dr. Immanuel Block,\\
+  Dr. Monika Aidelsburger and Christian Schweitzer.}
 
 \begin{document}
 
-\maketitle
-\cleardoublepage
+\makeatletter
+\begin{titlepage}
+  \begin{center}
+    \usekomafont{subject}
+    \@subject
+
+    \vspace{.8em}
+    \usekomafont{title}\huge
+    \@title
+
+    \vspace{.5em}
+    \includegraphics[width=.5\pagewidth]{\builddir{emblem.pdf}}
+
+    \usekomafont{subtitle}
+    \@subtitle
+
+    \vspace{.8em}
+    \usekomafont{author}
+    \@author
+
+    \usekomafont{date}
+    \@date
+
+    \vspace{.8em}
+    \usekomafont{publishers}
+    \@publishers
+  \end{center}
+\end{titlepage}
+\makeatother
+
+\makeatletter
+\begin{titlepage}
+  \begin{otherlanguage}{ngerman}
+    \begin{center}
+      \usekomafont{subject}
+      Mehrteilchen Quanten Optik
+
+      \vspace{.8em}
+      \usekomafont{title}\huge
+      Hochpräzise zeitgemittelte optische Potentiale für ultrakalte Atome
+
+      \vspace{.5em}
+      \includegraphics[width=.5\pagewidth]{\builddir{emblem.pdf}}
+
+      \usekomafont{subtitle}
+      Bachelorarbeit von
+
+      \vspace{.8em}
+      \usekomafont{author}
+      \@author
+
+      \usekomafont{date}
+      \@date
+
+      \vspace{.8em}
+      \usekomafont{publishers}
+      unter der Betreuung von Prof. Dr. Immanuel Block,\\
+      Dr. Monika Aidelsburger and Christian Schweitzer.
+    \end{center}
+  \end{otherlanguage}
+\end{titlepage}
+\makeatother
 
 \include{abstract}
 
@@ -54,5 +111,8 @@
 \include{experiment}
 
 \printbibliography
+
+\cleardoublepage
+\include{authorship}
 
 \end{document}
