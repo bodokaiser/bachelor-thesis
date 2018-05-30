@@ -21,11 +21,19 @@
 \usepackage{enumerate}
 \usepackage{hyperref}
 \usepackage{graphicx}
+\usepackage{glossaries}
 
 \newcommand{\builddir}[1]{build/#1}
 \newcommand{\imagedir}[1]{images/#1}
 
 \addbibresource{literature.bib}
+
+\newacronym{smf}{SMF}{single-mode optical fiber}
+\newacronym{aom}{AOM}{acousto-optic modulator}
+\newacronym{aod}{AOD}{acousto-optic deflector}
+\newacronym{dds}{DDS}{direct-digital synthesizer}
+\makeglossaries
+
 
 \numberwithin{equation}{section}
 
@@ -112,6 +120,7 @@
 \include{measurement}
 \include{conclusion}
 
+\printglossary[
 \printbibliography
 
 \cleardoublepage
