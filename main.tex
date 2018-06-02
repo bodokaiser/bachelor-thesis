@@ -5,7 +5,6 @@
   parskip
 ]{scrreprt}
 
-\usepackage[T1]{fontenc}
 \usepackage[ngerman,english]{babel}
 
 \usepackage{bm}
@@ -22,6 +21,8 @@
 \usepackage{hyperref}
 \usepackage{graphicx}
 \usepackage{glossaries}
+\usepackage{pst-optexp}
+\usepackage{auto-pst-pdf}
 
 \newcommand{\builddir}[1]{build/#1}
 \newcommand{\imagedir}[1]{images/#1}
@@ -116,6 +117,7 @@
 \tableofcontents
 
 \include{introduction}
+\include{theory}
 \include{experiment}
 \include{measurement}
 \include{conclusion}

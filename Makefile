@@ -5,13 +5,13 @@ IMG_DIR=images
 TMP_DIR=build
 PWD_DIR:=$(shell pwd)
 
-LATEXMK=latexmk -lualatex -auxdir=$(TMP_DIR) -outdir=$(TMP_DIR) \
-  -deps -bibtex --shell-escape -use-make
+LATEXMK=latexmk -use-make -deps
 
+TEX=$(wildcard *.tex)
 SVG=$(wildcard images/*.svg)
 IMG=$(SVG)
 
-build: $(TARGET)
+build: $(TARGET) $(TEX)
 
 %.pdf: $(TMP_DIR)/%.pdf
 	ln -f $(TMP_DIR)/$@ .
