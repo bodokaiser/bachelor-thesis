@@ -6,7 +6,7 @@ IMAGE_DIR=images
 FIGURE_DIR=figures
 
 LATEX=lualatex
-LATEX_OPT=-shell-escape -synctex=1
+LATEX_OPT=-f -shell-escape -synctex=1
 
 LATEXMK=latexmk
 LATEXMK_OPT=-use-make -lualatex -interaction=nonstopmode -outdir=$(BUILD_DIR)
@@ -17,8 +17,10 @@ build: $(MAIN).pdf
 $(MAIN).pdf: $(BUILD_DIR)/$(MAIN).pdf
 	ln -s $< $@
 
+$(MAIN).gls: $(BUILD_DIR)/$(MAIN).gls
+
 $(BUILD_DIR)/$(MAIN).pdf:
-	$(LATEXMK) $(LATEXMK_OPT) \
+	$(LATEXMK) -f $(LATEXMK_OPT) \
             -pdflatex="$(LATEX) $(LATEX_OPT) %O %S" $(MAIN)
 
 $(BUILD_DIR)/$(MAIN).gls:
@@ -36,6 +38,6 @@ $(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.tiff
 
 clean:
 	$(LATEXMK) -C
-	rm $(BUILD_DIR)/*
+	rm -rf $(BUILD_DIR)/*
 
 .PHONY: clean

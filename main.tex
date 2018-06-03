@@ -23,7 +23,7 @@
 \usepackage{glossaries}
 
 \newcommand{\builddir}[1]{build/#1}
-\newcommand{\imagedir}[1]{images/#1}
+\newcommand{\sectiondir}[1]{sections/#1}
 
 \addbibresource{literature.bib}
 
@@ -34,9 +34,6 @@
 \newacronym{aom}{AOM}{acousto-optic modulator}
 \newacronym{aod}{AOD}{acousto-optic deflector}
 \newacronym{dds}{DDS}{direct-digital synthesizer}
-
-
-\numberwithin{equation}{section}
 
 \subject{Many Body Quantum Optics}
 \title{High-precision time-averaged optical potentials for ultracold atoms}
@@ -112,21 +109,20 @@
 \end{titlepage}
 \makeatother
 
-\include{abstract}
+\include{\sectiondir{abstract}}
 
 \tableofcontents
 
-\include{introduction}
-\include{theory}
-\include{experiment}
-\include{measurement}
-\include{conclusion}
+\include{\sectiondir{introduction}}
+\include{\sectiondir{theory}}
+\include{\sectiondir{experiment}}
+\include{\sectiondir{measurement}}
+\include{\sectiondir{conclusion}}
 
 \printglossary
 \listoffigures
 \printbibliography
 
-\cleardoublepage
-\include{authorship}
+\include{\sectiondir{authorship}}
 
 \end{document}
