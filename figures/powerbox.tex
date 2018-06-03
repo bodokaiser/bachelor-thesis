@@ -1,0 +1,18 @@
+\documentclass{standalone}
+
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pst-optexp}
+
+\begin{document}
+
+\begin{pspicture}[showgrid](-0.2,0)(12,6)
+ \pnode(1,1){A}
+ \pnode(4,1){B}
+ \optbox[position=start,optboxwidth=2,labeloffset=0](A)(B){Laser}
+ \optretplate[position=0.3](A)(B){$\frac{\lambda}{2}$}
+\end{pspicture}
+
+\end{document}

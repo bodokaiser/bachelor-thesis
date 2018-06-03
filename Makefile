@@ -1,30 +1,41 @@
 MAIN=main
-TARGET=$(MAIN).pdf
 
-IMG_DIR=images
-TMP_DIR=build
-PWD_DIR:=$(shell pwd)
+WORK_DIR=$(shell pwd)
+BUILD_DIR=build
+IMAGE_DIR=images
+FIGURE_DIR=figures
 
-LATEXMK=latexmk -use-make -deps
+LATEX=lualatex
+LATEX_OPT=-shell-escape -synctex=1
 
-TEX=$(wildcard *.tex)
-SVG=$(wildcard images/*.svg)
-IMG=$(SVG)
+LATEXMK=latexmk
+LATEXMK_OPT=-use-make -lualatex -interaction=nonstopmode -outdir=$(BUILD_DIR)
+LATEXMK_OPT_CONT=-pvc
 
-build: $(TARGET) $(TEX)
+build: $(MAIN).pdf
 
-%.pdf: $(TMP_DIR)/%.pdf
-	ln -f $(TMP_DIR)/$@ .
+$(MAIN).pdf: $(BUILD_DIR)/$(MAIN).pdf
+	ln -s $< $@
 
-$(TMP_DIR)/%.pdf: $(IMG) %.tex
-	@mkdir -p $(TMP_DIR)
-	$(LATEXMK) $(MAIN).tex
+$(BUILD_DIR)/$(MAIN).pdf:
+	$(LATEXMK) $(LATEXMK_OPT) \
+            -pdflatex="$(LATEX) $(LATEX_OPT) %O %S" $(MAIN)
 
-$(TMP_DIR)/%.pdf: $(IMG_DIR)/%.svg
+$(BUILD_DIR)/$(MAIN).gls:
+	makeglossaries -d $(BUILD_DIR) $(MAIN)
+
+$(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.svg
 	inkscape --export-area-drawing --export-text-to-path --without-gui \
-	  --export-pdf=$(PWD_DIR)/$@ --file=$(PWD_DIR)/$<
+	  --export-pdf=$(WORK_DIR)/$@ --file=$(WORK_DIR)/$<
+
+$(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.tif
+	convert PixelsPerInch -density 300 $< $@
+
+$(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.tiff
+	convert PixelsPerInch -density 300 $< $@
 
 clean:
-	rm -rf $(TARGET) $(TMP_DIR)
+	$(LATEXMK) -C
+	rm $(BUILD_DIR)/*
 
-.PHONY: build clean
+.PHONY: clean
