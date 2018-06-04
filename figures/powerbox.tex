@@ -6,33 +6,66 @@
 \usepackage{amssymb}
 \usepackage{pst-optexp}
 
+% TODO
+% - beam deflection
+% - signal generator AOM
+% - beam color
+
 \begin{document}
 
-\begin{pspicture}[showgrid](20,4)
-  \optsource[sourcesize=3 2,innerlabel](3,1)(3.5,1){Laser}
+\begin{pspicture}[showgrid,pswarning](17,4)
+  % laser source
+  \pnode(3,1){LS}
 
-  \optretplate(3,1)(4,1){$\lambda/2$}
+  % mirror 1
+  \pnode(7,1){M1}
 
-  \beamsplitter[beam,bssize=1,labelangle=-90](4,1)(5,1)(5,2){Cube}
+  % beam splitter
+  \pnode(5,1){BS}
 
-  \optbox[optboxsize=1 1,labelangle=180,fillstyle=solid,fillcolor=black](4.5,3)(5.5,3){Dump}
+  % beam dump
+  \pnode(5,3){BD}
 
-  \mirror[beam](5,1)(7,1)(7,2){Mirror}
-  \mirror[beam](7,2)(7,3)(8,3){Mirror}
+  % mirror 2
+  \pnode(7,3){M2}
 
-  \lens[beam](8,3)(10,3){Lens}
-  \lens[beam](10,3)(12,3){Lens}
+  % mirror 3 (position)
+  \pnode(16,3){M3}
 
-  \optaom[beam](12,3)(15,3)(15,3){AOM}
+  % mirror 4
+  \pnode(16,1){M4}
 
-  \mirror[beam](15,3)(16,3)(16,2){Mirror}
-  \mirror[beam](16,2)(16,1)(15,1){Mirror}
+  % fiber coupler
+  \pnode(10,1){FC}
 
-  \pinhole[beam,labelangle=180](15,1)(13,1){Iris}
+  % fiber end
+  \pnode(10,-1){FE}
 
-  \optretplate[labelangle=180](13,1)(11,1){$\lambda/2$}
+  \optsource[sourcesize=3 2,innerlabel,position=start](LS)(M1){Laser}
+  \optretplate[abspos=0.5](LS)(M1){$\lambda/2$}
 
-  \fiberbox[labelangle=180](11,1)(9,1){Fiber}
+  \beamsplitter[bssize=1,labelangle=-90](LS)(BS)(BD){Cube}
+  \optbox[optboxsize=1 1,labelangle=90,fillstyle=solid,fillcolor=black,abspos=2](BS)(BD){Dump}
+
+  \mirror(BS)(M1)(M2){Mirror}
+  \mirror(M1)(M2)(M3){Mirror}
+
+  \lens[abspos=2](M2)(M3){Lens}
+  \lens[abspos=5](M2)(M3){Lens}
+
+  \optaom[abspos=7,aomalign=straight](M2)(M3)(M3){AOM}
+
+  \mirror(M2)(M3)(M4){Mirror}
+  \mirror(M3)(M4)(M1){Mirror}
+
+  \pinhole[labelangle=180,abspos=2](M4)(FC){Iris}
+  \optretplate[labelangle=180,abspos=3.5](M4)(FC){Polarizer}
+  \optbox[optboxsize=1 0.7,labelangle=180,abspos=5](M4)(FC){Fiber}
+
+  \drawbeam{1-4}
+  \drawbeam(BS){5-8}
+  \drawbeam(M2){9-14}
+  \drawfiber[linecolor=orange]{14}(FE)
 \end{pspicture}
 
 \end{document}
