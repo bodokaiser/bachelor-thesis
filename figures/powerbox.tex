@@ -1,4 +1,4 @@
-\documentclass[margin=16px,pstricks]{standalone}
+\documentclass[margin=16px]{standalone}
 
 \usepackage[english]{babel}
 \usepackage{amsthm}
@@ -6,14 +6,9 @@
 \usepackage{amssymb}
 \usepackage{pst-optexp}
 
-% TODO
-% - beam deflection
-% - signal generator AOM
-% - beam color
-
 \begin{document}
 
-\begin{pspicture}[showgrid,pswarning](17,4)
+\begin{pspicture}(17,4)
   % laser source
   \pnode(3,1){LS}
 
@@ -29,7 +24,10 @@
   % mirror 2
   \pnode(7,3){M2}
 
-  % mirror 3 (position)
+  % aom
+  \pnode(14,3){AOM}
+
+  % mirror 3
   \pnode(16,3){M3}
 
   % mirror 4
@@ -38,7 +36,7 @@
   % fiber coupler
   \pnode(10,1){FC}
 
-  % fiber end
+  % fiber out
   \pnode(10,-1){FE}
 
   \optsource[sourcesize=3 2,innerlabel,position=start](LS)(M1){Laser}
@@ -62,10 +60,20 @@
   \optretplate[labelangle=180,abspos=3.5](M4)(FC){Polarizer}
   \optbox[optboxsize=1 0.7,labelangle=180,abspos=5](M4)(FC){Fiber}
 
+  % laser source to beam dump
   \drawbeam{1-4}
+
+  % beam splitter to mirror 2
   \drawbeam(BS){5-8}
+
+  % mirror 2 to fiber coupler
   \drawbeam(M2){9-14}
+
+  % fiber coupler to fiber out
   \drawfiber[linecolor=orange]{14}(FE)
+
+  % aom deflection to pinhole
+  \drawbeam[linecolor=green!30,beamangle=2](AOM){10-12}
 \end{pspicture}
 
 \end{document}
