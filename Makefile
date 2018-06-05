@@ -36,6 +36,15 @@ $(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.tif
 $(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.tiff
 	convert PixelsPerInch -density 300 $< $@
 
+$(BUILD_DIR)/%.pdf: $(BUILD_DIR)/%.ps
+	ps2pdf $< $@
+
+$(BUILD_DIR)/%.ps: $(BUILD_DIR)/%.dvi
+	dvips -o $@ $<
+
+$(BUILD_DIR)/%.dvi: $(FIGURE_DIR)/%.tex
+	latex -output-format=dvi -output-directory=$(BUILD_DIR) $<
+
 clean:
 	$(LATEXMK) -C
 	rm -rf $(BUILD_DIR)/*
