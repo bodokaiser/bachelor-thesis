@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\begin{pspicture}(17,4)
+\begin{pspicture}[showgrid](17,4)
   % laser source
   \pnode(3,1){LS}
 
@@ -42,19 +42,19 @@
   \optsource[sourcesize=3 2,innerlabel,position=start](LS)(M1){Laser}
   \optretplate[abspos=0.5](LS)(M1){$\lambda/2$}
 
-  \beamsplitter[bssize=1,labelangle=-90](LS)(BS)(BD){Cube}
+  \beamsplitter[bssize=1,labelangle=-90](LS)(BS)(BD){BS}
   \optbox[optboxsize=1 1,labelangle=90,fillstyle=solid,fillcolor=black,abspos=2](BS)(BD){Dump}
 
-  \mirror(BS)(M1)(M2){Mirror}
-  \mirror(M1)(M2)(M3){Mirror}
+  \mirror(BS)(M1)(M2){M1}
+  \mirror(M1)(M2)(M3){M2}
 
-  \lens[abspos=2](M2)(M3){Lens}
-  \lens[abspos=5](M2)(M3){Lens}
+  \lens[abspos=2](M2)(M3){L}
+  \lens[abspos=5](M2)(M3){L}
 
   \optaom[abspos=7,aomalign=straight](M2)(M3)(M3){AOM}
 
-  \mirror(M2)(M3)(M4){Mirror}
-  \mirror(M3)(M4)(M1){Mirror}
+  \mirror(M2)(M3)(M4){M3}
+  \mirror(M3)(M4)(M1){M4}
 
   \pinhole[labelangle=180,abspos=2](M4)(FC){Iris}
   \optretplate[labelangle=180,abspos=3.5](M4)(FC){$\lambda/2$}

@@ -8,7 +8,7 @@
 
 \begin{document}
 
-\begin{pspicture}[showgrid](16,9)
+\begin{pspicture}(16,9)
   % fiber in
   \pnode(16,9){FE}
 
@@ -51,36 +51,36 @@
   % camera
   \pnode(4,1){CCD}
 
-  \optbox[position=start](FC)(M1)
+  \optbox[position=start,optboxsize=1 0.7](FC)(M1){Fiber}
   \optretplate[abspos=0.5,labelangle=180](FC)(M1){$\lambda/2$}
-  \beamsplitter(FC)(BS1)(BD){Cube}
+  \beamsplitter(FC)(BS1)(BD){BS1}
   \optbox[optboxsize=.7 .7,labelangle=90,fillstyle=solid,fillcolor=black,abspos=1.5](BS1)(BD){Dump}
 
   \optretplate[abspos=1,labelangle=180](BS1)(M1){$\lambda/2$}
-  \beamsplitter(BS1)(BS2)(PD1){Cube}
-  \optdiode[abspos=1.5,labelangle=90](BS2)(PD1){Photodiode}
+  \beamsplitter(BS1)(BS2)(PD1){BS2}
+  \optdetector[dettype=diode,abspos=1.5,labelangle=90](BS2)(PD1){PD1}
 
-  \optaom[abspos=2.5](BS2)(M1)(M1){AOM}
-  \optaom[abspos=4.5](BS2)(M1)(M1){AOM}
+  \optaom[abspos=2.5](BS2)(M1)(M1){AOM H}
+  \optaom[abspos=4.5](BS2)(M1)(M1){AOM V}
 
-  \lens[abspos=7](BS2)(M1){Lens}
-  \mirror(FC)(M1)(M2){Mirror}
+  \lens[abspos=7](BS2)(M1){L1}
+  \mirror(FC)(M1)(M2){M1}
 
-  \mirror(M1)(M2)(M3){Mirror}
-  \lens[abspos=2.5](M2)(M3){Lens}
+  \mirror(M1)(M2)(M3){M2}
+  \lens[abspos=2.5](M2)(M3){L2}
 
   \optbarcomp[abspos=8.5,barcompsize=3 1,barcompangle=90](M2)(M3){Atom Plane}
 
-  \mirror(M2)(M3)(M4){Mirror}
-  \mirror(M3)(M4)(CCD){Mirror}
+  \mirror(M2)(M3)(M4){M3}
+  \mirror(M3)(M4)(CCD){M4}
 
-  \lens[abspos=2](M4)(CCD){Lens}
+  \lens[abspos=2](M4)(CCD){L3}
 
-  \beamsplitter(M4)(BS3)(M5){Cube}
+  \beamsplitter(M4)(BS3)(M5){BS3}
 
-  \mirror(BS3)(M5)(PD2){Mirror}
-  \lens[abspos=2](M5)(PD2){Lens}
-  \optdiode[position=end,labelangle=0](M5)(PD2){Photodiode}
+  \mirror(BS3)(M5)(PD2){M5}
+  \lens[abspos=2](M5)(PD2){L4}
+  \optdetector[dettype=diode,position=end,labelangle=0](M5)(PD2){PD2}
 
   \optbox[position=end,labeloffset=0](M4)(CCD){CCD}
 
@@ -88,7 +88,7 @@
 
   % main beam
   \drawbeam{1-4}
-  \drawbeam(BS1){5-8}
+  \drawbeam(BS1){5-7}
   \drawbeam(BS2){9}
   \drawbeam(7,7){10-21}
   \drawbeam(BS3){22}
