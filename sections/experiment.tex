@@ -1,27 +1,74 @@
 \chapter{Experimental Setup}
 
-The exerimental setup was largely adopted from \cite{Hertlein2017}. Major
-amendments made, affect the \gls{rf} signal source of the \gls{aod},
-an additional beam splitter and photodiode to measure intensity drifts caused
-by different deflection angles.
+The exerimental setup was largely adopted from \cite{Hertlein2017}. Amendments
+made include the \gls{rf} signal source of the \gls{aod} and an additional
+photodiode to measure the deflected beam intensity.
 
 \section{Optics}
 
+The optical setup can be dissect into two sections. The first section reduces
+the power of the $\SI{532}{\nano\meter}$ laser source from $\SI{10}{\watt}$
+to below $\SI{2}{\milli\watt}$ for the purpose of safe operation of an open
+deflection setup, the second section. Both sections are connected through a
+\gls{smf}.
+
 \subsection{Power Reduction}
+
+For safety reasons the power reduction setup, Figure~\ref{fig:powerbox},
+is confined into a visually sealed superstructure.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\builddir{powerbox.pdf}}
   \caption{Optical configuration of the power reduction box.}
+  \label{fig:powerbox}
 \end{figure}
 
+The laser beam leaving the laser source is polarized by a $\lambda/2$ retarder
+plate such that the succeeding high power beamsplitter BS can divert a large
+part of the power into a beam dump.
+
+Afterwards mirrors M1 and M2 direct the beam towards the center of a
+$2:1$ telescope composed of two lenses L1, L2 with focal length
+$f_1=\SI{100}{\milli\meter}$ and $f_2=\SI{50}{\milli\meter}$.
+
+An \gls{aom} diffracts the laser collimated laser beam into multiple orders.
+Mirrors M3, M4 project theses orders onto a pinhole which is adjusted to
+absorb all orders except for the first order. The intensity of the first order
+is subject to the amplitude signal apllied to the \gls{aom}.
+
+Finally a tunable $\lambda/2$ retarder plate can be used to couple the beam
+polarization with the \gls{smf}.
+
 \subsection{Beam Deflection and Detection}
+
+From the \gls{smf} the setup for beam deflection and detection,
+Figure~\ref{fig:deflection}, now receives the downpowered beam through a
+fiber coupler. Hereinafter a tunable retarder plate with beam splitter BS1
+can be used to adjust the beam intensity without having to access the power
+box. A second polarizer with cube BS2 is used to branch off part of the beam
+to a photodiode PD1. We will describe later how said photodiode is used for
+intensity control.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\builddir{deflection.pdf}}
   \caption{Optical configuration of the main setup section.}
+  \label{fig:deflection}
 \end{figure}
+
+Two \gls{aom} are used for vertical and horizontal beam deflection as a
+function of applied frequency pairs. From hereon a $1:1$ telescope comprised
+of two lenses L1, L2 with focal length $f_1=f_2=\SI{250}{\milli\meter}$
+projects the laser bean on a pair of objectives that represent the atom
+plane of our later experiment. The objectives are configured so that the
+laser can exit unaltered.
+
+The laser beam is reflected by a pair of mirrors M3, M4 to the part intended
+for detection. Lens L3 acts as a camera lens and projects the beam to infinite
+focus. Cube BS3 forks a portion of the beam away from the CCD camera on to
+mirror M5 that reflects the beam towards lens L4 that focuses the beam onto
+photodiode PD2.
 
 \section{Electronics}
 
