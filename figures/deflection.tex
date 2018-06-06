@@ -1,0 +1,104 @@
+\documentclass[margin=16px]{standalone}
+
+\usepackage[english]{babel}
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{pst-optexp}
+
+\begin{document}
+
+\begin{pspicture}[showgrid](16,9)
+  % fiber in
+  \pnode(16,9){FE}
+
+  % fiber coupler
+  \pnode(14,7){FC}
+
+  % beam splitter 1
+  \pnode(12.5,7){BS1}
+
+  % beam dump
+  \pnode(12.5,8){BD}
+
+  % beam splitter 2
+  \pnode(10.5,7){BS2}
+
+  % photo diode 1
+  \pnode(10.5,8){PD1}
+
+  % mirror 1
+  \pnode(1,7){M1}
+
+  % mirror 2
+  \pnode(1,5){M2}
+
+  % mirror 3
+  \pnode(15,5){M3}
+
+  % mirror 4
+  \pnode(15,1){M4}
+
+  % beam splitter 3
+  \pnode(6,1){BS3}
+
+  % mirror 5
+  \pnode(6,2.5){M5}
+
+  % photo diode 2
+  \pnode(1.5,2.5){PD2}
+
+  % camera
+  \pnode(4,1){CCD}
+
+  \optbox[position=start](FC)(M1)
+  \optretplate[abspos=0.5,labelangle=180](FC)(M1){$\lambda/2$}
+  \beamsplitter(FC)(BS1)(BD){Cube}
+  \optbox[optboxsize=.7 .7,labelangle=90,fillstyle=solid,fillcolor=black,abspos=1.5](BS1)(BD){Dump}
+
+  \optretplate[abspos=1,labelangle=180](BS1)(M1){$\lambda/2$}
+  \beamsplitter(BS1)(BS2)(PD1){Cube}
+  \optdiode[abspos=1.5,labelangle=90](BS2)(PD1){Photodiode}
+
+  \optaom[abspos=2.5](BS2)(M1)(M1){AOM}
+  \optaom[abspos=4.5](BS2)(M1)(M1){AOM}
+
+  \lens[abspos=7](BS2)(M1){Lens}
+  \mirror(FC)(M1)(M2){Mirror}
+
+  \mirror(M1)(M2)(M3){Mirror}
+  \lens[abspos=2.5](M2)(M3){Lens}
+
+  \optbarcomp[abspos=8.5,barcompsize=3 1,barcompangle=90](M2)(M3){Atom Plane}
+
+  \mirror(M2)(M3)(M4){Mirror}
+  \mirror(M3)(M4)(CCD){Mirror}
+
+  \lens[abspos=2](M4)(CCD){Lens}
+
+  \beamsplitter(M4)(BS3)(M5){Cube}
+
+  \mirror(BS3)(M5)(PD2){Mirror}
+  \lens[abspos=2](M5)(PD2){Lens}
+  \optdiode[position=end,labelangle=0](M5)(PD2){Photodiode}
+
+  \optbox[position=end,labeloffset=0](M4)(CCD){CCD}
+
+  \drawfiber[linecolor=orange]{1}(FE)
+
+  % main beam
+  \drawbeam{1-4}
+  \drawbeam(BS1){5-8}
+  \drawbeam(BS2){9}
+  \drawbeam(7,7){10-21}
+  \drawbeam(BS3){22}
+
+  % deflected beam
+  \drawbeam[linecolor=green!30,beamangle=.1]{9-20}
+  \drawbeam[linecolor=green!30,beampos=.13]{17-20}(4,2)
+  \drawbeam[linecolor=green!30,beampos=.13,beamangle=-1.5,raytrace=false](4,2.5){21}
+  \drawbeam[linecolor=green!30,beampos=.13](BS3){22}
+
+\end{pspicture}
+
+\end{document}
