@@ -25,7 +25,7 @@
   \pnode(10.5,7){BS2}
 
   % photo diode 1
-  \pnode(10.5,8){PD1}
+  \pnode(10.5,9){PD1}
 
   % mirror 1
   \pnode(1,7){M1}
@@ -46,58 +46,67 @@
   \pnode(6,2.5){M5}
 
   % photo diode 2
-  \pnode(1.5,2.5){PD2}
+  \pnode(2,2.5){PD2}
 
   % camera
   \pnode(4,1){CCD}
 
-  \optbox[position=start,optboxsize=1 0.7](FC)(M1){Fiber}
+  \optbox[position=start,optboxsize=1 0.7,labeloffset=.7](FC)(M1){Fiber}
   \optretplate[abspos=0.5,labelangle=180](FC)(M1){$\lambda/2$}
   \beamsplitter(FC)(BS1)(BD){BS1}
-  \optbox[optboxsize=.7 .7,labelangle=90,fillstyle=solid,fillcolor=black,abspos=1.5](BS1)(BD){Dump}
+  \optbox[optboxsize=.7 .7,labelangle=90,labeloffset=.7,fillstyle=solid,fillcolor=black,abspos=1.5](BS1)(BD){Dump}
 
   \optretplate[abspos=1,labelangle=180](BS1)(M1){$\lambda/2$}
   \beamsplitter(BS1)(BS2)(PD1){BS2}
-  \optdetector[dettype=diode,abspos=1.5,labelangle=90](BS2)(PD1){PD1}
+  \lens[abspos=.75,lensheight=.5,labelangle=180](BS2)(PD1){L1}
+  \optdetector[dettype=diode,abspos=1,labelangle=180,labeloffset=.9](10.5,7.5)(10.5,10){PD1}
 
   \optaom[abspos=2.5](BS2)(M1)(M1){AOM H}
   \optaom[abspos=4.5](BS2)(M1)(M1){AOM V}
 
-  \lens[abspos=7](BS2)(M1){L1}
-  \mirror(FC)(M1)(M2){M1}
+  \lens[abspos=7](BS2)(M1){L2}
+  \mirror[labeloffset=.6](FC)(M1)(M2){M1}
 
-  \mirror(M1)(M2)(M3){M2}
-  \lens[abspos=2.5](M2)(M3){L2}
+  \mirror[labeloffset=.6](M1)(M2)(M3){M2}
+  \lens[abspos=2.5](M2)(M3){L3}
 
-  \optbarcomp[abspos=8.5,barcompsize=3 1,barcompangle=90](M2)(M3){Atom Plane}
+  \lens[abspos=7,lensheight=.7](M2)(M3){L4}
+  \lens[abspos=8.2,lensheight=.2](M2)(M3){L5}
+  \lens[abspos=8.8,lensheight=.2](M2)(M3){L6}
+  \lens[abspos=10,lensheight=.7](M2)(M3){L7}
 
-  \mirror(M2)(M3)(M4){M3}
-  \mirror(M3)(M4)(CCD){M4}
+  \mirror[labeloffset=.6](M2)(M3)(M4){M3}
+  \mirror[labeloffset=.6](M3)(M4)(CCD){M4}
 
-  \lens[abspos=2](M4)(CCD){L3}
+  \lens[abspos=2](M4)(CCD){L8}
 
   \beamsplitter(M4)(BS3)(M5){BS3}
 
-  \mirror(BS3)(M5)(PD2){M5}
-  \lens[abspos=2](M5)(PD2){L4}
-  \optdetector[dettype=diode,position=end,labelangle=0](M5)(PD2){PD2}
+  \mirror[labeloffset=.6](BS3)(M5)(PD2){M5}
+  \lens[abspos=2,n=2](M5)(PD2){L9}
+  \optdetector[dettype=diode,labelangle=0](M5)(PD2){PD2}
 
   \optbox[position=end,labeloffset=0](M4)(CCD){CCD}
 
+  % fiber out
   \drawfiber[linecolor=orange]{1}(FE)
+
+  % deflected beam
+  \drawbeam[linecolor=green!30,beamangle=.1](8,7){11-22}
+  \drawbeam[linecolor=green!30,beampos=.21](13,1){22-25}
+  \drawbeam[linecolor=green!30,raytrace=false,beamangle=1](4,2.3)(PD2)
+  \drawbeam[linecolor=green!30,beampos=.21](6.2,1)(CCD)
 
   % main beam
   \drawbeam{1-4}
-  \drawbeam(BS1){5-7}
-  \drawbeam(BS2){9}
-  \drawbeam(7,7){10-21}
-  \drawbeam(BS3){22}
+  \drawbeam(BS1){5-8}
+  \drawbeam(BS2){11-25}
+  \drawbeam(BS3){26}
 
-  % deflected beam
-  \drawbeam[linecolor=green!30,beamangle=.1]{9-20}
-  \drawbeam[linecolor=green!30,beampos=.13]{17-20}(4,2)
-  \drawbeam[linecolor=green!30,beampos=.13,beamangle=-1.5,raytrace=false](4,2.5){21}
-  \drawbeam[linecolor=green!30,beampos=.13](BS3){22}
+  % photodiodes and AOM coax
+  \drawwire(8,7.5)(8,10)
+  \drawwire(6,7.5)(6,10)
+  \drawwire(1.2,2.5)(-1,2.5)
 
 \end{pspicture}
 
