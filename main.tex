@@ -3,6 +3,7 @@
   emulatestandardclasses,
   abstract,
   parskip,
+  appendixprefix,
   listof=totoc,
   bibliography=totoc
 ]{scrreprt}
@@ -24,10 +25,16 @@
 \usepackage{cleveref}
 \usepackage{graphicx}
 \usepackage{hyperref}
-\usepackage[acronym,nonumberlist,toc,nohypertypes={acronym}]{glossaries}
+\usepackage[
+  acronym,
+  nonumberlist,
+  toc,
+  nohypertypes={acronym}
+]{glossaries}
 
 \newcommand{\builddir}[1]{build/#1}
 \newcommand{\sectiondir}[1]{sections/#1}
+\newcommand{\appendixdir}[1]{appendices/#1}
 
 \addbibresource{literature.bib}
 
@@ -128,9 +135,11 @@
 \include{\sectiondir{conclusion}}
 
 \printglossaries
-% appendix
 \listoffigures
 \listoftables
 \printbibliography
+
+\appendix
+\include{\appendixdir{calibration}}
 
 \end{document}
