@@ -19,11 +19,16 @@ $(MAIN).pdf: $(BUILD_DIR)/$(MAIN).pdf
 
 $(MAIN).gls: $(BUILD_DIR)/$(MAIN).gls
 
+$(MAIN).acr: $(BUILD_DIR)/$(MAIN).acr
+
 $(BUILD_DIR)/$(MAIN).pdf:
 	$(LATEXMK) -f $(LATEXMK_OPT) \
             -pdflatex="$(LATEX) $(LATEX_OPT) %O %S" $(MAIN)
 
 $(BUILD_DIR)/$(MAIN).gls:
+	makeglossaries -d $(BUILD_DIR) $(MAIN)
+
+$(BUILD_DIR)/$(MAIN).acr:
 	makeglossaries -d $(BUILD_DIR) $(MAIN)
 
 $(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.svg

@@ -3,7 +3,8 @@
   emulatestandardclasses,
   abstract,
   parskip,
-  hidelinks
+  listof=totoc,
+  bibliography=totoc
 ]{scrreprt}
 
 \usepackage[ngerman,english]{babel}
@@ -20,10 +21,10 @@
 \usepackage{csquotes}
 \usepackage{biblatex}
 \usepackage{enumerate}
-\usepackage{hyperref}
 \usepackage{cleveref}
 \usepackage{graphicx}
-\usepackage{glossaries}
+\usepackage{hyperref}
+\usepackage[acronym,nonumberlist,toc,nohypertypes={acronym}]{glossaries}
 
 \newcommand{\builddir}[1]{build/#1}
 \newcommand{\sectiondir}[1]{sections/#1}
@@ -31,13 +32,13 @@
 \addbibresource{literature.bib}
 
 \makeglossaries
-
 \newacronym{rf}{RF}{radio frequency}
 \newacronym{smf}{SMF}{single-mode optical fiber}
 \newacronym{aom}{AOM}{acousto-optic modulator}
 \newacronym{aod}{AOD}{acousto-optic deflector}
 \newacronym{dds}{DDS}{direct-digital synthesizer}
 \newacronym{ccd}{CCD}{charge-coupled device}
+\glsaddall
 
 \subject{Many Body Quantum Optics}
 \title{High-precision time-averaged optical potentials for ultracold atoms}
@@ -113,6 +114,8 @@
 \end{titlepage}
 \makeatother
 
+\include{\sectiondir{acknowledgement}}
+\include{\sectiondir{authorship}}
 \include{\sectiondir{abstract}}
 
 \tableofcontents
@@ -124,10 +127,10 @@
 \include{\sectiondir{measurement}}
 \include{\sectiondir{conclusion}}
 
-\printglossary
+\printglossaries
+% appendix
 \listoffigures
+\listoftables
 \printbibliography
-
-\include{\sectiondir{authorship}}
 
 \end{document}
