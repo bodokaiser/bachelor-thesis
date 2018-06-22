@@ -1,110 +1,102 @@
 \chapter{Experimental Setup}
 
-The exerimental setup was largely adopted from \cite{Hertlein2017}. Amendments
+The exerimental setup was largely adopted from \cite{Hertlein2017}, amendments
 made include the \gls{rf} signal source of the \gls{aod} and an additional
 photodiode to measure the deflected beam intensity.
 
 \section{Optics}
 
-The optical setup can be dissect into two sections. The first section reduces
+The optical setup can be dissect into a closed first section that reduces
 the power of the $\SI{532}{\nano\meter}$ laser source from $\SI{10}{\watt}$
-to below $\SI{2}{\milli\watt}$ for the purpose of safe operation of an open
-deflection setup, the second section. Both sections are connected through a
-\gls{smf}.
+to below $\SI{2}{\milli\watt}$ and an open second section for beam deflection.
+Both sections are connected through a \gls{smf}.
 
 \subsection{Power Reduction}
 \label{sec:powerbox}
 
-For safety reasons the power reduction setup is confined into a visually
-sealed superstructure. \Cref{fig:powerbox} reveals the inside of the
+Because of safety concerns the power reduction section is confined into a
+visually sealed superstructure. \Cref{fig:powerbox} reveals the inside of the
 power reduction box.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\builddir{powerbox.pdf}}
-  \caption{Optical configuration of the power reduction box.}
+  \caption{Optical configuration of the power reduction section.}
   \label{fig:powerbox}
 \end{figure}
 
 The laser beam leaving the laser source is polarized by a $\lambda/2$ retarder
-plate such that the succeeding high power beamsplitter BS can divert a large
-part of the power into a beam dump.
-
-Afterwards mirrors M1 and M2 direct the beam towards the center of a
-$2:1$ telescope composed of two lenses L1, L2 with focal length
+plate such that the succeeding high power beamsplitter BS can divert the
+majority of the beams power into a high power beam dump.
+Afterwards mirrors M1 and M2 direct the beam towards the center of a $2:1$
+telescope composed of two lenses L1, L2 with focal lengths
 $f_1=\SI{100}{\milli\meter}$ and $f_2=\SI{50}{\milli\meter}$.
-
-An \gls{aom} diffracts the laser collimated laser beam into multiple orders.
-Mirrors M3, M4 project theses orders onto a pinhole which is adjusted to
-absorb all orders except for the first order. The intensity of the first order
-is subject to the amplitude signal apllied to the \gls{aom}.
-
+An \gls{aom} diffracts the laser beam into multiple orders. Mirrors M3, M4
+project theses orders onto a pinhole which is configured to intromit only the
+the first order deflection. The intensity of the first order is subject to
+amplitude modulation apllied to the \gls{aom}.
 Finally a tunable $\lambda/2$ retarder plate can be used to couple the beam
 polarization with the \gls{smf}.
 
 \subsection{Beam Deflection and Detection}
 \label{sec:deflection}
 
-The setup for beam deflection and detection receives the down-powered laser
-beam of the previously described section by a \gls{smf}.
-\Cref{fig:deflection} discloses the arrangement used in said setup.
-Hereinafter the beam leaving the \gls{smf} passes a tunable retarder plate
-and beam splitter BS1. The tunable retarder plate can be used to adjust the
-beam intensity without having to access the power box.
+The section for beam deflection and detection as disclosed in
+\cref{fig:deflection} receives the down-powered laser beam from previously
+described section by a \gls{smf}. Hereinafter the beam passes a tunable
+retarder plate and beam splitter BS1. The tunable retarder plate can be used
+to adjust the beam intensity without having to access the power box.
 A second polarizer with cube BS2 is used to branch off a part of the beam
 to a photodiode PD1 that is positioned to be at the focal point of lens L1.
+Photodiode PD1 is connected via a control system with the amplitude
+modulation of the \gls{aom} depicted in \cref{fig:powerbox} to stabilize
+the laser intensity against i.e. thermal drifts.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\builddir{deflection.pdf}}
-  \caption{Optical configuration of the main setup section.}
+  \caption{Optical configuration of the beam deflection section.}
   \label{fig:deflection}
 \end{figure}
 
-Two \gls{aom} are used for vertical and horizontal beam deflection as a
-function of applied frequencies. From hereon a $1:1$ telescope comprised
-of two lenses L2, L3 with focal length $f_2=f_3=\SI{250}{\milli\meter}$
-projects the laser beam on a pair of objectives that are built of lenses
-L4 to L7. The objectives will be used later to focus the beam on to the atom
-lattice.
-
-Further on the laser is reflected by a pair of mirrors M3 and M4 to the part
-intended for detection. Lens L8 acts as a camera lens and projects the beam
-to infinite focus. Cube BS3 forks a portion of the beam away from the CCD
-camera on to mirror M5. Mirror M5 reflects the beam towards lens L9 that
-focuses the beam onto a second photodiode PD2.
+For horizontal and vertical beam deflection two \gls{aom}s, namely \gls{aom} V
+and \gls{aom} H, are used. A $1:1$ telescope comprised of two lenses L2, L3
+each with focal length $f_2=f_3=\SI{250}{\milli\meter}$ projects the beam
+on a pair of objectives that are built of lenses L4 to L7. The purpose of the
+objective pair is to focus the laser on to the atom plane.
+Consecutively the laser is reflected by a pair of mirrors M3 and M4 to the
+part intended for detection. Lens L8 acts as a camera lens and projects the
+beam to infinite focus on to the CCD camera sensor. Cube BS3 forks a portion
+of the beam away from the CCD camera on to mirror M5 that guides the beam
+towards lens L9 in order to focus the beam onto a second photodiode PD2.
 
 \section{Electronics}
 
 Beforehand we described the optical setups used. Now we want to emphasize
-on the conjunction of hybrid components, i.e. photodiods and \gls{aom}s, with
-the present electronic setup.
-
-In the following we will refer to \gls{aom} as the \gls{aom} in the power
-reduction optical setup with the purpose of intensity control against laser
-source and temperature fluctuations. With \gls{aom} H and \gls{aom}
-V we will refer to the \gls{aom}s used for beam deflection in the
-second optical setup.
-
-Listed \gls{aom} are driven by a \gls{rf} signal. In the case of \gls{aom} I
-the amplitude modulation corresponds to intensity modulation of the deflected
-orders at constant frequency $f_I=\SI{80}{\mega\hertz}$. \gls{aom} H
-and \gls{aom} V deflect the first order diffraction proportional to
-a frequency signal deviation around $f_H=f_V=\SI{100}{\mega\hertz}$. Further
-we can compensate for intensity losses by deflection through additional
-amplitude modulation as described for \gls{aom} I.
+the conjunction of hybrid components, i.e. photodiods and \gls{aom}s, and
+how they are integrated into the electronic setup.
 
 \subsection{Signal Source}
 
 The requirements placed by the \gls{aom} demand a flexible but precise
 \gls{rf} source. Thankfully we can resort to a custom made signal source
-based on the \cite{AD9910} direct-digital synthesizer that can operate up to
-\SI{420}{\mega\hertz} and allow modulation of amplitude, frequency and phase
-offset by either a constant value or through a single digital ramp or playback
-from memory.
+based on a direct-digital synthesizer \cite{AD9910} \gls{ic} that can operate
+up to \SI{420}{\mega\hertz} and allows modulation of amplitude, frequency and
+phase offset by either a constant value or through a single digital ramp or
+playback from a memory sequence.
+
+% how does a dds work (lookup table)
 
 \subsection{Intensity Control}
 
+% short explaination of control loop
+
 \subsection{Deflection Control}
 
-\subsection{Trigger Control}
+% theory of amplitude and ramp modulation
+
+\subsection{Trigger Source}
+
+To syncronize the signal source, the \gls{ccd} camera and the oscilloscope
+it was necessary to design a global trigger source that outputs a rising edge
+signal to multiple devices and exposes a network programable interface.
