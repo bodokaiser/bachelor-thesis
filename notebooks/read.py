@@ -52,9 +52,12 @@ def voltages(path):
 
     base = filename.split('.')[0].split('-')
 
-    ch = int(base[0][-1])
+    if (len(base) == 3):
+      ch = int(base[0][-1])
+    else:
+      ch = 1
 
-    if base[1] == 'vsweep':
+    if base[-2] == 'vsweep':
       mode = 'vertical'
     else:
       mode = 'horizontal'
