@@ -6,6 +6,13 @@ import pandas as pd
 from PIL import Image
 
 
+def csv(filename):
+  df = pd.read_csv(filename, skiprows=3, header=None, names=[
+                   'frequency', 'amplification', 'empty'])
+  df = df.drop(columns='empty')
+  return df
+
+
 def image(filename):
   return np.array(Image.open(filename))[:, :, 0]
 
