@@ -19,10 +19,51 @@ def timeseries(path):
   for filename in filenames:
     basename = filename.split('.')[0]
 
-    with h5.File(os.path.join(path, filename), 'r') as file:
-      data.append({
-          'datetime': basename,
-          'voltage': file['Waveforms']['Channel 1']['Channel 1 Data'][:].mean()
-      })
+    _, U = h5dataset(os.path.join(path, filename), 1)
+
+    data.append({'datetime': basename, 'voltage': U.mean()})
+
+  return pd.DataFrame(data)
+
+
+def h5dataset(filename, channel):
+  with h5.File(filename, 'r') as f:
+    dataset = f['Waveforms'][f'Channel {channel}']
+
+    x0 = dataset.attrs['XOrg']
+    dx = dataset.attrs['XInc']
+
+    # produces unreasonable voltages i.e. 10e-5 V
+    y0 = 0  # dataset.attrs['YOrg']
+    dy = 1  # dataset.attrs['YInc']
+
+    y = y0 + dy * dataset[f'Channel {channel} Data'][:]
+    x = np.arange(x0, x0 + dx * len(y), dx)
+
+    return x, y
+
+
+def voltages(path):
+  data = []
+
+  for filename in os.listdir(path):
+    if not filename.endswith('.h5'):
+      continue
+
+    base = filename.split('.')[0].split('-')
+
+    ch = int(base[0][-1])
+
+    if base[1] == 'vsweep':
+      mode = 'vertical'
+    else:
+      mode = 'horizontal'
+
+    freq = base[-1]
+
+    t, U = h5dataset(os.path.join(path, filename), ch)
+
+    data.append({'frequency': int(freq), 'mode': mode, 'channel': ch,
+                 'voltage': U, 'time': t})
 
   return pd.DataFrame(data)
