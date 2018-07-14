@@ -2,49 +2,72 @@ import numpy as np
 import requests
 
 
-def update(id, name, frequency, nodwells=[True, True], duration=2):
-  if isinstance(frequency, np.ndarray):
-    mode = 'const'
-    value = 100e6
-    limits = [0, 0]
-    data = frequency.tolist()
-  elif isinstance(frequency, list):
-    mode = 'sweep'
-    limits = frequency
-    value = 100e6
-    data = []
+def update(id, name, frequency, amplitude=1.0, nodwells=[True, True],
+           duration=2, interval=250e-6):
+  fconfig = {}
+
+  if isinstance(frequency, list):
+    fconfig['mode'] = 'sweep'
+    fconfig['value'] = 0
+    fconfig['limits'] = frequency
   else:
-    mode = 'playback'
-    value = frequency
-    limits = [0, 0]
-    data = []
+    fconfig['mode'] = 'const'
+    fconfig['value'] = frequency
+    fconfig['limits'] = [0, 0]
+
+  aconfig = {}
+  if isinstance(amplitude, np.ndarray):
+    aconfig['mode'] = 'playback'
+    aconfig['data'] = amplitude.tolist()
+    aconfig['value'] = 1.0
+  else:
+    aconfig['mode'] = 'const'
+    aconfig['value'] = amplitude
+    aconfig['data'] = []
 
   headers = {'Content-Type': 'application/json'}
   payload = {
       'id': id,
       'name': name,
-      'amplitude': {'mode': 'const', 'value': 1},
-      'phase': {'mode': 'const', 'value': 0},
+      'amplitude': {
+          'mode': aconfig['mode'],
+          'const': {
+            'value': aconfig['value'],  
+          },
+          'playback': {
+              'trigger': True,
+              'duplex': False,
+              'interval': interval,
+              'data': aconfig['data']
+          }
+      },
+      'phase': {
+          'mode': 'const',
+          'value': 0
+      },
       'frequency': {
-          'mode': mode,
-          'const': {'value': value},
-          'sweep': {'nodwells': nodwells, 'limits': limits,
-                    'duration': duration},
-          'playback': {'trigger': False, 'duplex': False,
-                       'interval': 1e-5, 'data': data}
+          'mode': fconfig['mode'],
+          'const': {
+              'value': fconfig['value']
+          },
+          'sweep': {
+              'nodwells': nodwells,
+              'limits': fconfig['limits'],
+              'duration': duration
+          }
       }
   }
 
-  response = requests.put(f'http://beaglebone.local:6200/devices/dds/{id}',
+  response = requests.put(f'http://172.22.22.24:6200/devices/dds/{id}',
                           headers=headers, json=payload)
   response.raise_for_status()
 
   return response
 
 
-def vertical(frequency, **kargs):
-  return update(9, 'Bodo Vertical', frequency, **kargs)
+def vertical(**kargs):
+  return update(9, 'Bodo Vertical', **kargs)
 
 
-def horizontal(frequency, **kargs):
-  return update(8, 'Bodo horizontal', frequency, **kargs)
+def horizontal(**kargs):
+  return update(8, 'Bodo horizontal', **kargs)
