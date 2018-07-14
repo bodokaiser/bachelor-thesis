@@ -33,9 +33,6 @@
   nohypertypes={acronym}
 ]{glossaries}
 
-\newcommand{\builddir}[1]{build/#1}
-\newcommand{\sectiondir}[1]{sections/#1}
-
 \addbibresource{literature.bib}
 
 \makeglossaries
@@ -70,7 +67,7 @@
     \@title
 
     \vspace{.5em}
-    \includegraphics[width=.5\pagewidth]{\builddir{emblem.pdf}}
+    \includegraphics[width=.5\pagewidth]{build/emblem.pdf}
 
     \usekomafont{subtitle}
     \@subtitle
@@ -101,7 +98,7 @@
       Hochpräzise zeitgemittelte optische Potentiale für ultrakalte Atome
 
       \vspace{.5em}
-      \includegraphics[width=.5\pagewidth]{\builddir{emblem.pdf}}
+      \includegraphics[width=.5\pagewidth]{build/emblem.pdf}
 
       \usekomafont{subtitle}
       Bachelorarbeit von
@@ -122,17 +119,17 @@
 \end{titlepage}
 \makeatother
 
-\include{\sectiondir{acknowledgement}}
-\include{\sectiondir{authorship}}
-\include{\sectiondir{abstract}}
+\include{sections/acknowledgement}
+\include{sections/authorship}
+\include{sections/abstract}
 
 \tableofcontents
 
-\include{\sectiondir{introduction}}
-\include{\sectiondir{experiment}}
-\include{\sectiondir{calibration}}
-\include{\sectiondir{measurement}}
-\include{\sectiondir{conclusion}}
+\include{sections/introduction}
+\include{sections/experiment}
+\include{sections/calibration}
+\include{sections/measurement}
+\include{sections/conclusion}
 
 \printglossaries
 \listoffigures
@@ -140,6 +137,6 @@
 \printbibliography
 
 \appendix
-\include{\sectiondir{appendix}}
+\include{sections/appendix}
 
 \end{document}
