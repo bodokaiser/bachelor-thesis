@@ -73,21 +73,37 @@ towards lens L9 in order to focus the beam onto a second photodiode PD2.
 \section{Electronics}
 
 Beforehand we described the optical setups used. Now we want to emphasize
-the conjunction of hybrid components, i.e. photodiods and \gls{aom}s, and
-how they are integrated into the electronic setup.
+on the electronics how they are integrated into the optical setup.
 
 \subsection{Signal Source}
 
-The requirements placed by the \gls{aod} demand a flexible but precise
-\gls{rf} source. Thankfully we can resort to a custom made signal source
-based on a direct-digital synthesizer \cite{AD9910} \gls{ic} that can operate
-up to \SI{420}{\mega\hertz} and allows modulation of amplitude, frequency and
+The requirements placed by the two \gls{aod} demand two distinct flexible but
+precise \gls{rf} source. Thankfully we can resort to a custom made signal
+sources based on the \gls{dds} \cite{AD9910} \gls{ic} that can operate up to
+\SI{420}{\mega\hertz} and allows modulation of amplitude, frequency and
 phase offset by either a constant value or through a single digital ramp or
-playback from a memory sequence.
+playback from a memory sequence. A detailed operation of a \gls{dds} can be
+found in the \cref{app:elec:dds}.
 
-% how does a dds work (lookup table)
-% theoretical limits
-% programmer interface
+We apply a reference signal of $f_\text{ref}=\SI{10}{\mega\hertz}$ to the
+\gls{dds} which is configured to use a \gls{pll} multiplier of $N=100$
+yielding a system clock of $f_\text{sys}=Nf_\text{ref}=\SI{1}{\giga\hertz}$
+and a timer clock of $f_\text{timer}=f_\text{sys}/4=\SI{250}{\mega\hertz}$
+that is used for the linear ramp and for playback of a memory sequence.
+
+Further the AD9910 \gls{dds} uses \SI{14}{\bit}, \SI{16}{\bit} and
+\SI{32}{\bit} internally to parameterize amplitude $A$, phase $\phi$ and
+signal output frequency $f_\text{out}$. The playback memory consists of
+1024 discrete values for either $A,\phi,f_\text{out}$.
+
+We apply the linear ramp to the frequency in order to deflect the laser beam
+in the vertical and horizontal axis. We choose
+$f_\text{lower}=\SI{90}{\mega\hertz}$ as lower and
+$f_\text{upper}=\SI{110}{\mega\hertz}$ as upper limits for the linear ramp.
+The duration of a single sweep is now determined by the ramp rate
+$\frac{\Delta f}{\Delta x}$ and the step size $\Delta x$ wherein $\Delta x$
+is the counter used internally.
+
 
 \subsection{Signal Amplifier}
 
@@ -95,13 +111,26 @@ playback from a memory sequence.
 \subsection{Intensity Control}
 
 % short explaination of control loop
-
-\subsection{Deflection Control}
-
-% theory of amplitude and ramp modulation
+% too slow to compensate for intensity deviations in sweep
 
 \subsection{Trigger Source}
 
-To syncronize the signal source, the \gls{ccd} camera and the oscilloscope
+To syncronize the signal sources, the \gls{ccd} camera and the oscilloscope
 it was necessary to design a global trigger source that outputs a rising edge
 signal to multiple devices and exposes a network programable interface.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[height=6cm]{example-image-a}
+  \caption{The trigger source exposes a network programable interface and
+  provides enough power to drive four output signals.}
+  \label{fig:elec:trig}
+\end{figure}
+
+The schematics and board layout can be found in the \cref{app:elec:trig}.
+
+\section{Acousto-Optics}
+
+\subsection{Modulator}
+
+\subsection{Deflector}
