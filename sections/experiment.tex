@@ -59,8 +59,8 @@ the laser intensity against i.e. thermal drifts.
   \label{fig:deflection}
 \end{figure}
 
-For horizontal and vertical beam deflection two \gls{aom}s, namely \gls{aom} V
-and \gls{aom} H, are used. A $1:1$ telescope comprised of two lenses L2, L3
+For horizontal and vertical beam deflection two \gls{aod}s are used. A $1:1$
+telescope comprised of two lenses L2, L3
 each with focal length $f_2=f_3=\SI{250}{\milli\meter}$ projects the beam
 on a pair of objectives that are built of lenses L4 to L7. The purpose of the
 objective pair is to focus the laser on to the atom plane.
@@ -78,7 +78,7 @@ how they are integrated into the electronic setup.
 
 \subsection{Signal Source}
 
-The requirements placed by the \gls{aom} demand a flexible but precise
+The requirements placed by the \gls{aod} demand a flexible but precise
 \gls{rf} source. Thankfully we can resort to a custom made signal source
 based on a direct-digital synthesizer \cite{AD9910} \gls{ic} that can operate
 up to \SI{420}{\mega\hertz} and allows modulation of amplitude, frequency and
@@ -86,6 +86,11 @@ phase offset by either a constant value or through a single digital ramp or
 playback from a memory sequence.
 
 % how does a dds work (lookup table)
+% theoretical limits
+% programmer interface
+
+\subsection{Signal Amplifier}
+
 
 \subsection{Intensity Control}
 
