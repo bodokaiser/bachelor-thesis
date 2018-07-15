@@ -34,6 +34,7 @@
   toc,
   nohypertypes={acronym}
 ]{glossaries}
+\usepackage{unicode-math}
 
 \addbibresource{literature.bib}
 
@@ -46,6 +47,9 @@
 \newacronym{ccd}{CCD}{charge-coupled device}
 \newacronym{ic}{IC}{integrated circuit}
 \newacronym{pll}{PLL}{phase-locked-loop}
+\newacronym{ad9910}{AD9910}{direct-digital synthesizer from Analog Devices}
+\newacronym{asf}{ASF}{amplitude scale factor}
+\newacronym{ftw}{FTW}{frequency tuning word}
 \glsaddall
 
 \subject{Many Body Quantum Optics}
@@ -140,6 +144,7 @@
 \printbibliography
 
 \appendix
-\include{sections/appendix}
+\include{sections/appendix/electronics}
+\include{sections/appendix/acousto-optics}
 
 \end{document}

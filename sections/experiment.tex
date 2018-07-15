@@ -76,42 +76,77 @@ Beforehand we described the optical setups used. Now we want to emphasize
 on the electronics how they are integrated into the optical setup.
 
 \subsection{Signal Source}
+\label{sec:elec:dds}
 
-The requirements placed by the two \gls{aod} demand two distinct flexible but
-precise \gls{rf} source. Thankfully we can resort to a custom made signal
-sources based on the \gls{dds} \cite{AD9910} \gls{ic} that can operate up to
-\SI{420}{\mega\hertz} and allows modulation of amplitude, frequency and
-phase offset by either a constant value or through a single digital ramp or
-playback from a memory sequence. A detailed operation of a \gls{dds} can be
-found in the \cref{app:elec:dds}.
+The requirements placed by the two \gls{aod} demand flexible but precise
+\gls{rf} sources. Fortunately we can resort to a custom made signal
+sources based on the \gls{ad9910} \gls{dds} \cite{AD9910} \gls{ic} that can
+operate up to \SI{420}{\mega\hertz} and allows modulation of amplitude,
+frequency and phase offset by either a constant value or through a single
+digital ramp or playback from a memory sequence. Details on the working
+principle of a simple \gls{dds} can be found in the \cref{app:elec:dds}.
 
-We apply a reference signal of $f_\text{ref}=\SI{10}{\mega\hertz}$ to the
-\gls{dds} which is configured to use a \gls{pll} multiplier of $N=100$
-yielding a system clock of $f_\text{sys}=Nf_\text{ref}=\SI{1}{\giga\hertz}$
-and a timer clock of $f_\text{timer}=f_\text{sys}/4=\SI{250}{\mega\hertz}$
-that is used for the linear ramp and for playback of a memory sequence.
+The signal output of the \gls{dds} is of the form
+\begin{equation}
+  U(t)=A(t)\sin(2\pi f(t)+\phi(t)).
+  \label{eq:dds:signal}
+\end{equation}
+In the following we will ignore the unsynced phase offset, thus setting
+$\phi=0$. In case of the single \gls{dds} which drives the \gls{aom} we
+have a constant signal, in that sense we can set $A=1$ and
+$f_\text{aom}=\SI{80}{\mega\hertz}$ on \cref{eq:dds:signal}.
+In the case of the two \gls{dds} which drive the horizontal and vertical
+\gls{aod} we configure the frequency to be controlled by the digital ramp in
+order to do a linear frequency sweep from
+$f_\text{lower}=\SI{90}{\mega\hertz}$ to
+$f_\text{upper}=\SI{110}{\mega\hertz}$, yielding
+\begin{align}
+  f_\text{aod}(t)
+  =
+  f_\text{lower} + \frac{f_\text{upper}-f_\text{lower}}{T_\text{duration}}t
+\end{align}
+wherein $T_\text{duration}>0$ denotes the sweep duration. The amplitude is
+controlled by memory playback. Given a discrete set of amplitude values
+$A_i\in[0,1]$ with $i=1,\dots,N=1024$ the amplitude of the \gls{aod} can be
+formulated as
+\begin{align}
+  A_\text{aod}(t)
+  =\sum^N_{i=1}A_i\mathbb{1}_{B_i}(t)
+  &&
+  B_i:=\left[iT_\text{interval}, (i+1)T_\text{interval}\right[
+\end{align}
+wherein $T_\text{interval}>0$ denotes the playback interval and
+$\mathbb{1}_{B_i}$ is the characteristic function on the set $B_i$.
 
-Further the AD9910 \gls{dds} uses \SI{14}{\bit}, \SI{16}{\bit} and
-\SI{32}{\bit} internally to parameterize amplitude $A$, phase $\phi$ and
-signal output frequency $f_\text{out}$. The playback memory consists of
-1024 discrete values for either $A,\phi,f_\text{out}$.
-
-We apply the linear ramp to the frequency in order to deflect the laser beam
-in the vertical and horizontal axis. We choose
-$f_\text{lower}=\SI{90}{\mega\hertz}$ as lower and
-$f_\text{upper}=\SI{110}{\mega\hertz}$ as upper limits for the linear ramp.
-The duration of a single sweep is now determined by the ramp rate
-$\frac{\Delta f}{\Delta x}$ and the step size $\Delta x$ wherein $\Delta x$
-is the counter used internally.
-
+So far we have assumed $f_\text{aod}(t)$ to be continous and
+$T_\text{interval},T_\text{duration}>0$ to be arbitrary, however the internals
+of the \gls{ad9910} impose theoretical restrictions on the possible operating
+ranges. For details we again want to refer to \cref{app:elec:dds}, here we will
+only summarize the found limits.
 
 \subsection{Signal Amplifier}
 
+We use three signal amplifiers with respective input from the signal sources
+to have an output power of about $P=\SI{2}{\watt}$ required by the \gls{aod}s
+and \gls{aom} for ideal operation. The used amplifiers offer a second input
+for external amplitude modulation. In case of the \gls{aom} we connect this
+input with the intensity controller.
 
-\subsection{Intensity Control}
+\subsection{Intensity Controller}
 
-% short explaination of control loop
-% too slow to compensate for intensity deviations in sweep
+The intensity controller is connected to photodiode PD1 that converts the
+laser intensity to an input voltage signal of the controller. Given the
+input signal we can configure the controller for a reference input voltage.
+The controller will then compare the input voltage with set reference voltage
+and output an error signal that is proportional to the deviation of the
+input from the reference voltage. The inverted error signal is feed to the
+signal amplifier connected with the \gls{aom}.
+
+In one attempt we tried to use the intensity controller to compensate for
+frequency dependent intensity changes during frequency sweep of the \gls{aod},
+however we found that even slow sweep times of $\SI{2}{\second}$ could not
+be balanced, therefore the intensity controller only compensates for slow
+intensity shifts caused by thermal stress of the laser source.
 
 \subsection{Trigger Source}
 
