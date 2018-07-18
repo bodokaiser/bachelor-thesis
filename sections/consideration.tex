@@ -1,4 +1,4 @@
-\chapter{Theory of Optical Latices}
+\chapter{Theory of Optical Lattices}
 
 In this chapter we will recapitulate the theoretical foundations of optical
 lattices used in ultracold quantum experiments, thereof we can derive
@@ -86,40 +86,60 @@ completeness relation
   \label{eq:continous_completeness_relation}
 \end{equation}
 we are able to transform the potential in momentum space
-\begin{align*}
-  V(p)
-  =\mel**{p_m}{\hat{V}}{p_n}
-  =\int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}.
-\end{align*}
-after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
 \begin{equation}
   V(p)
+  =\mel**{p_m}{\hat{V}}{p_n}
+  =\int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}
   =\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}e^{ikx(m-n)}V(x)
   \label{eq:potential_fourier_transform}.
 \end{equation}
+after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
 
 \section{Optical Potentials}
 
-In the case of optical lattices with potential
+By perpendicular reflection of a single Gaussian laser beam, one can construct
+a standing wave yielding a one dimensional optical lattice with potential
 \begin{equation}
-  \expval{\hat{x}}{\hat{V}}
-  =V(x)
-  =V_0\cos^2(kx)
-  \label{eq:physics:pospotential}
+  V(r,x)
+  =V_0e^{-2r^2/w(x)^2}\cos^2(kx)
+  \approx V_0\cos^2(kx)
+  \label{eq:optical_potential}
 \end{equation}
-with $k=2\pi/\lambda$ the lattice constant is $a=\lambda/2$.
+with $r$ being the beam radius, $w(x)$ being spot size parameter and
+$k=2\pi/\lambda$ with the laser wavelength $\lambda$. The approximation
+is valid for $w(x)\gg r^2$ which can be assumed true in most cases
+\cite[p.127]{Rom2009}. The lattice constant of such a potential is given
+by $a=\lambda/2$.
 
+Given the momentum representation of \cref{eq:optical_potential} can be found
+with \cref{eq:potential_fourier_transform} to be
 \begin{align*}
-  \mel**{p_m}{\hat{V}}{p_n}
+  V(p)
+  &=\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}e^{ikx(m-n)}V(x)\\
   &=
-  \int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}\\
-  &=
-  \int\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}\frac{\dd{y}}{\sqrt{2\pi\hbar}}
-  e^{+ipxm/\hbar}V(y)\delta(y-x)e^{-ipxn/\hbar}\\
-  &=
+  \frac{1}{4}V_0
   \int\frac{\dd{x}}{\sqrt{2\pi\hbar}}
-  e^{+ipx(m-n)/\hbar}\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)\\
+  e^{+ipx(m-n)/\hbar}\left(e^{+2ikx}+e^{-2ikx}+2\right)\\
   &=
-  \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta{m,n-2}\right)
+  \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta_{m,n-2}\right)
 \end{align*}
-this yields us finally
+and the Hamiltonian \cref{eq:periodic_hamiltonian_momentum_elements} can be
+specified as
+\begin{equation}
+  \hat{H}_\text{optical}
+  =\begin{cases}
+    (n+q/k)^2\frac{\hbar^2k^2}{2m}+\frac{1}{2}V_0, & \text{if } n=m\\
+    \frac{1}{4}V_0, & \text{if } \abs{n-m}=2\\
+    0, & \text{otherwise}
+  \end{cases}
+  \label{eq:optical_hamiltonian}
+\end{equation}
+where we can identify the recoil energy $E_r=(\hbar k)^2/(2m)$. The recoil
+energy is used to gather an energy scale independent from the specific atomic
+properties. Plotting the eigenvalues of \cref{eq:optical_hamiltonian} against
+$q$ we find the characteristic energy band structure giving us the allowed
+energy ranges.
+
+\subsection{Tight-Binding Approximation}
+
+In the tight-binding approximation the potential $V_0$.
