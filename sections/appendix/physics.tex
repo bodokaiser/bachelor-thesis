@@ -1,0 +1,118 @@
+\chapter{Physics}
+
+\section{Optical Lattice}
+
+The Schrödinger equation of a particle state $\ket{\Psi}$ subject to a time
+independent one-dimensional potential reads
+\begin{align}
+  E\ket{\Psi}
+  =\hat{H}\ket{\Psi}
+  =\left(\frac{\hat{p}^2}{2m}+\hat{V}\right)\ket{\Psi}
+  \label{eq:physics:schroedinger}.
+\end{align}
+
+For a periodic potential $V(x+a)=V(x)$ the Bloch-Theorem \cite{Ashcroft1976}
+states that the wavefunction of a particle in a periodic potential can be
+written as
+\begin{equation}
+  \braket{\hat{x}}{\Psi}
+  =\Psi(x)
+  =\exp(iqx)\ket{\psi}
+  \label{eq:physics:blochtheorem}
+\end{equation}
+wherein $-\frac{\pi}{a}<q<+\frac{\pi}{a}$ is the quasimomentum, a quantum
+number characteristic of the translational symmetry of the periodic potential
+\cite[p. 42]{Lewenstein2012} with $a$ being the lattice constant. In the case
+of optical lattices with potential
+\begin{equation}
+  \expval{\hat{x}}{\hat{V}}
+  =V(x)
+  =V_0\cos(\frac{k x}{\lambda})
+  \label{eq:physics:pospotential}
+\end{equation}
+with $k=2\pi/\lambda$ the lattic constant is $a=\lambda/2$.
+
+We apply the momentum operator to $\exp(iqx)$ in position space
+\begin{equation*}
+  \hat{p}\exp(iqx)
+  =\expval{\hat{p}}{\hat{x}}\exp(iqx)
+  =-i\hbar\dv{x}\exp(iqx)
+  =\hbar q\exp(iqx)
+\end{equation*}
+and use this auxilliary result in order to expand
+\begin{equation*}
+  \hat{p}^2\ket{\Psi}
+  =
+  \hat{p}\left(\exp(iqx)(\hat{p}+hq)\right)\ket{\psi}
+  =
+  \exp(iqx)\left(\hat{p}+\hbar q\right)^2\ket{\psi}
+\end{equation*}
+inserting the former result and \cref{eq:physics:blochtheorem} into
+\cref{eq:physics:schroedinger} we obtain
+\begin{equation}
+  E_k\ket{\psi}
+  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{\psi}
+  =\hat{H}^\prime\ket{\psi}
+  \label{eq:physics1}.
+\end{equation}
+
+Translational symmetry of the potential operator $\hat{V}$ enforces discrete
+momenta $p_n=pn=nk\hbar$. We will use this to represent our state in momentum
+space through
+\begin{equation}
+  \ket{\psi}
+  =\mathbb{1}\ket{\psi}
+  =\left(\sum_n\ket{p_n}\bra{p_n}\right)\ket{\psi}
+  =\sum_n\braket{p_n}{\psi}\ket{p_n}
+  =\sum_nc_n\ket{p_n}
+  \label{eq:physics:psimom}.
+\end{equation}
+Inserting this into the right hand side of \cref{eq:physics1} yields us
+\begin{equation}
+  \hat{H}^\prime\ket{p_n}
+  =\sum_nc_n\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{p_n}
+  \label{eq:physics2}.
+\end{equation}
+which is satisfied when each term of the sum vanishes. The momentum operator
+in momentum space is just the particles momentum, furthermore the
+momentum basis is orthogonal. Yielding
+\begin{equation}
+  \bra{p_n}\frac{(\hat{p}+\hbar q)^2}{2m}\ket{p_m}
+  =
+  \frac{(pn+\hbar q)^2}{2m}
+  =
+  \frac{(n\hbar k+\hbar q)^2}{2m}
+  =
+  (n+q/k)^2\frac{\hbar^2k^2}{2m}
+  .
+\end{equation}
+We still need to find the potential in momentum space
+\begin{align*}
+  \mel**{p_m}{\hat{V}}{p_n}
+  &=
+  \int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}\\
+  &=
+  \int\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}\frac{\dd{y}}{\sqrt{2\pi\hbar}}
+  e^{+ipxm/\hbar}V(y)\delta(y-x)e^{-ipxn/\hbar}\\
+  &=
+  \int\frac{\dd{x}}{\sqrt{2\pi\hbar}}
+  e^{+ipx(m-n)/\hbar}\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)\\
+  &=
+  \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta{m,n-2}\right)
+\end{align*}
+this yields us finally
+\begin{align*}
+  \hat{H}_{mn}
+  =
+  \mel**{p_m}{\hat{H}}{p_n}
+  &=
+  \left((n+q/k)^2\frac{\hbar^2k^2}{2m}+\frac{1}{2}V_0\right)\delta_{n,m}
+  +\frac{1}{4}V_0\left(\delta_{m,n+2}+\delta_{m,n-2}\right)\\
+  &=
+  \begin{cases}
+    (n+q/k)^2\frac{\hbar^2k^2}{2m}+\frac{1}{2}V_0, & \text{if } n=m\\
+    \frac{1}{4}V_0, & \text{if } \abs{n-m}=2\\
+    0, & \text{otherwise}.
+  \end{cases}
+  .
+\end{align*}
