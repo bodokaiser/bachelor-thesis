@@ -1,25 +1,125 @@
-\chapter{Theoretical Considerations}
+\chapter{Theory of Optical Latices}
 
-\section{Concept}
-% image of how laser beam sweepsa through single sites
+In this chapter we will recapitulate the theoretical foundations of optical
+lattices used in ultracold quantum experiments, thereof we can derive
+theoretical requirements for the planned potential generation. Most notably
+we are interested in the domain of the sweep duration and resolution that
+our setup has to operate in.
 
-\section{Requirements}
+\section{Periodic Potentials}
 
-\subsection{Sweep Speed}
-% order of sweep speed from physical model
+The Schrödinger equation of a particle state $\ket{\Psi}$ subject to a time
+independent one-dimensional potential reads
+\begin{align}
+  E\ket{\Psi}
+  =\hat{H}\ket{\Psi}
+  =\left(\frac{\hat{p}^2}{2m}+\hat{V}\right)\ket{\Psi}
+  \label{eq:time_independent_schroedinger}.
+\end{align}
+For a periodic potential $V(x+a)=V(x)$ the Bloch-Theorem \cite{Ashcroft1976}
+states that the wavefunction of a particle in a periodic potential can be
+written as
+\begin{equation}
+  \braket{\hat{x}}{\Psi}
+  =\Psi(x)
+  =e^{iqx}\psi(x)
+  \label{eq:bloch_theorem}
+\end{equation}
+wherein $-\frac{\pi}{a}<q<+\frac{\pi}{a}$ is the quasimomentum, a quantum
+number characteristic of the translational symmetry of the periodic potential
+\cite[p. 42]{Lewenstein2012} with $a$ being the lattice constant.
 
-\subsection{Intensity}
-% homogeneous intensity
+The momentum operator is a differential operator in position space
+\begin{equation}
+  \hat{p}
+  =\expval{\hat{p}}{\hat{x}}
+  =-i\hbar\dv{x}
+  \label{eq:momentum_operator_in_position_space},
+\end{equation}
+thus we obtain $\hat{p}e^{iqx}=\hbar qe^{iqx}$ and
+$\hat{p}^2\ket{\Psi}=e^{iqx}\left(\hat{p}+\hbar q\right)^2\ket{\psi}$ such
+that we can rewrite \cref{eq:time_independent_schroedinger} for
+the periodic case
+\begin{equation}
+  E\ket{\psi}
+  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{\psi}
+  =:\hat{H}_{periodic}\ket{\psi}
+  \label{eq:periodic_schroedinger}.
+\end{equation}
 
-\section{Dynamics}
+Translational symmetry of the potential enforces discrete particle momenta
+$p_n=pn=nk\hbar$ such that we can represent our particle state in a
+countable momentum basis
+\begin{equation}
+  \ket{\psi}
+  =\mathbb{1}\ket{\psi}
+  =\left(\sum_n\ket{p_n}\bra{p_n}\right)\ket{\psi}
+  =\sum_n\braket{p_n}{\psi}\ket{p_n}
+  =\sum_nc_n\ket{p_n}
+  \label{eq:countable_momentum_state}.
+\end{equation}
+Inserting this into the right hand side of \cref{eq:periodic_schroedinger}
+yields us
+\begin{equation}
+  \hat{H}_\text{periodic}\ket{\psi}
+  =\sum_nc_n\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{p_n}
+  =\sum_nc_n\left(\frac{(pn+\hbar q)^2}{2m}+\hat{V}\right)\ket{p_n}
+  \label{eq:periodic_hamiltonian_in_momentum_base}
+\end{equation}
+where we used the eigenvalue equation $\hat{p}\ket{p_n}=pn\ket{p_n}$ to
+satisfy the second equal sign. By applying an orthogonal $\bra{p_m}$ to the
+left hand side of \cref{eq:periodic_hamiltonian_in_momentum_base} we find
+the matrix elements of the periodic Hamiltonian
+\begin{equation}
+  \hat{H}_{\text{periodic},mn}
+  =\mel**{p_m}{\hat{H}_\text{periodic}}{p_n}
+  =(m+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{p_m}{\hat{V}}{p_n}
+  \label{eq:periodic_hamiltonian_momentum_elements}
+\end{equation}
+where we used $p=\hbar k$ in the last step.
 
-\section{Parameters}
+Usually the potential will be known in position space. Through use of the
+completeness relation
+\begin{equation}
+  \mathbb{1}
+  =\int\dd{x}\op{x}{x}
+  \label{eq:continous_completeness_relation}
+\end{equation}
+we are able to transform the potential in momentum space
+\begin{align*}
+  V(p)
+  =\mel**{p_m}{\hat{V}}{p_n}
+  =\int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}.
+\end{align*}
+after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
+\begin{equation}
+  V(p)
+  =\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}e^{ikx(m-n)}V(x)
+  \label{eq:potential_fourier_transform}.
+\end{equation}
 
-\subsection{Signal}
+\section{Optical Potentials}
 
-\subsection{Acousto-Optic Deflector}
+In the case of optical lattices with potential
+\begin{equation}
+  \expval{\hat{x}}{\hat{V}}
+  =V(x)
+  =V_0\cos^2(kx)
+  \label{eq:physics:pospotential}
+\end{equation}
+with $k=2\pi/\lambda$ the lattice constant is $a=\lambda/2$.
 
-\subsubsection{Impedance Matching}
-\subsubsection{Transducer Design}
-\subsubsection{Piezoelectric Element}
-\subsubsection{Acousto-optic Element}
+\begin{align*}
+  \mel**{p_m}{\hat{V}}{p_n}
+  &=
+  \int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}\\
+  &=
+  \int\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}\frac{\dd{y}}{\sqrt{2\pi\hbar}}
+  e^{+ipxm/\hbar}V(y)\delta(y-x)e^{-ipxn/\hbar}\\
+  &=
+  \int\frac{\dd{x}}{\sqrt{2\pi\hbar}}
+  e^{+ipx(m-n)/\hbar}\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)\\
+  &=
+  \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta{m,n-2}\right)
+\end{align*}
+this yields us finally

@@ -17,7 +17,7 @@ written as
 \begin{equation}
   \braket{\hat{x}}{\Psi}
   =\Psi(x)
-  =\exp(iqx)\ket{\psi}
+  =\exp(iqx)\psi(x)
   \label{eq:physics:blochtheorem}
 \end{equation}
 wherein $-\frac{\pi}{a}<q<+\frac{\pi}{a}$ is the quasimomentum, a quantum
@@ -27,10 +27,10 @@ of optical lattices with potential
 \begin{equation}
   \expval{\hat{x}}{\hat{V}}
   =V(x)
-  =V_0\cos(\frac{k x}{\lambda})
+  =V_0\cos^2(kx)
   \label{eq:physics:pospotential}
 \end{equation}
-with $k=2\pi/\lambda$ the lattic constant is $a=\lambda/2$.
+with $k=2\pi/\lambda$ the lattice constant is $a=\lambda/2$.
 
 We apply the momentum operator to $\exp(iqx)$ in position space
 \begin{equation*}
@@ -50,7 +50,7 @@ and use this auxilliary result in order to expand
 inserting the former result and \cref{eq:physics:blochtheorem} into
 \cref{eq:physics:schroedinger} we obtain
 \begin{equation}
-  E_k\ket{\psi}
+  E\ket{\psi}
   =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{\psi}
   =\hat{H}^\prime\ket{\psi}
   \label{eq:physics1}.
@@ -112,7 +112,9 @@ this yields us finally
   \begin{cases}
     (n+q/k)^2\frac{\hbar^2k^2}{2m}+\frac{1}{2}V_0, & \text{if } n=m\\
     \frac{1}{4}V_0, & \text{if } \abs{n-m}=2\\
-    0, & \text{otherwise}.
+    0, & \text{otherwise}
   \end{cases}
-  .
 \end{align*}
+where we can identify the recoil energy $E_r=(\hbar k)^2/(2m)$. The recoil
+energy can be used to obtain an energy scale independent of the particular
+atom sort used.
