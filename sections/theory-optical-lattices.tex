@@ -6,9 +6,7 @@ theoretical requirements for the planned potential generation. Most notably
 we are interested in the domain of the sweep duration and resolution that
 our setup has to operate in.
 
-\section{General Case}
-
-\subsection{Periodic Potentials}
+\section{Generic Periodic Potential}
 
 The Schrödinger equation of a particle state $\ket{\Psi}$ subject to a time
 independent one-dimensional potential reads
@@ -97,7 +95,7 @@ we are able to transform the potential in momentum space
 \end{equation}
 after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
 
-\subsection{Harmonic Potentials}
+\section{Sinusoidal Optical Potential}
 
 In the former section we discussed the quantum mechancis of a generic
 periodic potential. We will now consider the special case of a harmonic
@@ -151,23 +149,24 @@ In the case of optical potentials. We would further introduce the recoil
 energy $E_r=(\hbar k)^2/(2m)$ which gives us a natural atom independent scale
 to work with.
 
-\section{Free-Particle Approximation}
+\subsection{Harmonic Potential Approximation}
 
-In the free-particle approximation we consider flat potentials or particles
-with higher kinetic than potential energy. In this regime energy gaps
-vanish and particles can move freely. For the present work this is not
-relevant circumstance as particles as local potentials we are interested
-to generate onto the existing lattice structure would just move around
-particles.
+Cooled atoms have a low kinetic energy and will be located at the ground
+state which allows us to approximate
+\begin{equation}
+  V(x)
+  =V_0\cos^2(kx)
+  \approx V_0\left(1-(kx)^2\right)
+  \label{eq:harmonic_approximation}
+\end{equation}
+inserting \cref{eq:harmonic_approximation} into
+\cref{eq:time_independent_schroedinger} and rearraning yield us
+\begin{equation}
+  \hbar\omega(n+\frac{1}{2})\ket{\phi}
+  =(E_n-V_0)\ket{\phi}
+  =\left(\frac{\hat{p}^2}{2m}-V_0k^2x^2\right)\ket{\phi}
+  =\hat{H}_\text{harmonic}\ket{\phi}
+\end{equation}
+with $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$.
 
-\section{Tight-Binding Approximation}
-
-In the tight-binding approximation the potentials are considered deep or
-particles to have lower kinetic than potential energy, such that interaction
-between neighbooring particles is limited. In the optical case potentials can
-be easily made deep by increasing the intensity. In this regime energy bands
-converge to discrete energy levels with inbetween energies being forbidden.
-
-\subsection{Periodic Potentials}
-
-\subsection{Harmonic Potentials}
+\subsection{Quantum Tunnel Amplitude}
