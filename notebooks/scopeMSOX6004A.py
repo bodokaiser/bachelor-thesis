@@ -1,5 +1,6 @@
 import visa
 import numpy as np
+import time
 
 from matplotlib import pyplot as plt
 
@@ -10,8 +11,21 @@ scope.timeout = 5000
 scope.clear()
 
 print(scope.query("*IDN?"))
+#Leeren des Triggereventspeichers
+print(scope.query('TER?'))
 
 def capture(channel):
+    #Versetzen in RUN
+    scope.write(':RUN')
+    
+    triggered = 0
+    #Wenn ein Triggerevent auftrat lieftert TER? 1 sonst 0
+    while(not(triggered == 1)):
+        scope.write('TER?')
+        triggered = (int)(scope.read())
+        #Nur zu debug Zwecken
+        print(triggered)
+    
     scope.write(f':DIGitize CHANnel{channel}')
     scope.write(':WAVeform:FORMat WORD')
 
@@ -42,7 +56,9 @@ def capture(channel):
 
 # configure the oscilloscope over the front panel to use external,
 # rising edge trigger signal in normal mode
-input("configure scope and press enter when ready")
+#input("configure scope and press enter when ready")
+
+time.sleep(2)
 
 # get values
 t, U = capture(1)
