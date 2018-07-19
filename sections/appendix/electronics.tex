@@ -37,22 +37,3 @@ low for one \SI{1}{\milli\second}.}
 Using the \gls{bbb} makes it easy to write scripts that communicate with
 other devices over the \gls{lan}. We used the bonescript library to access
 the \gls{gpio} interface as it is pre-installed on the \gls{bbb}.
-
-\begin{figure}[h]
-  \centering
-  \begin{minipage}{.40\textwidth}
-    \centering
-    \includegraphics[width=\linewidth]{images/circuits/line-driver/layout.pdf}
-    \captionsetup{width=\linewidth}
-    \caption{Board layout of the trigger hub. The source amplifier is designed
-to fit on top of the \gls{bbb} expansion headers.}
-  \end{minipage}
-  \begin{minipage}{.50\textwidth}
-    \centering
-    \includegraphics[width=.6\linewidth]{images/circuits/line-driver/board.jpg}
-    \captionsetup{width=.8\linewidth}
-    \caption{Picture of the trigger hub on the \gls{bbb}. The \gls{bbb} is
-connected with the \gls{lan} via cable. The trigger hub forwards the signal
-to the oscilloscope, the camera and the two \gls{dds}.}
-  \end{minipage}
-\end{figure}
