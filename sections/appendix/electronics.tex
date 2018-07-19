@@ -12,7 +12,7 @@ provides the trigger network interface.
 \begin{figure}[h]
   \centering
   \captionsetup{width=.8\textwidth}
-  \includegraphics[width=\textwidth]{images/circuit/line-driver/scheme.pdf}
+  \includegraphics[width=\textwidth]{images/circuits/line-driver/schematic.pdf}
   \caption{Elecronic circuit schematics of the trigger hub. The
     \SI{3.3}{\volt} input signal is amplified by the \gls{sn74128} line
     driver and outputed to four \gls{sma} connectors.}
@@ -28,9 +28,10 @@ to signal a rising edge trigger signal.
 \begin{listing}[h]
   \inputminted[xleftmargin=.2\linewidth]{javascript}{scripts/trigger.js}
   \captionsetup{width=.6\linewidth}
-  \caption{The script pulls the \gls{gpio} to high and starts a \gls{http}
-    server assigned with a callback function that pulls the \gls{gpio} to low
-  for one \SI{1}{\milli\second}.}
+  \caption{\gls{bbb} script that starts a \gls{http} server to listen for
+requests on which to trigger a rising edge signal. On execution it pulls the
+signal \gls{gpio} to high. The request callback then pulls the \gls{gpio} to
+low for one \SI{1}{\milli\second}.}
 \end{listing}
 
 Using the \gls{bbb} makes it easy to write scripts that communicate with
@@ -39,8 +40,19 @@ the \gls{gpio} interface as it is pre-installed on the \gls{bbb}.
 
 \begin{figure}[h]
   \centering
-  \captionsetup{width=.5\linewidth}
-  \includegraphics[width=.3\textwidth]{images/circuit/line-driver/board.pdf}
-  \caption{Board layout of trigger source amplifier fitted to be mounted on
-  top of the \gls{bbb} expansion headers.}
+  \begin{minipage}{.40\textwidth}
+    \centering
+    \includegraphics[width=\linewidth]{images/circuits/line-driver/layout.pdf}
+    \captionsetup{width=\linewidth}
+    \caption{Board layout of the trigger hub. The source amplifier is designed
+to fit on top of the \gls{bbb} expansion headers.}
+  \end{minipage}
+  \begin{minipage}{.50\textwidth}
+    \centering
+    \includegraphics[width=.6\linewidth]{images/circuits/line-driver/board.jpg}
+    \captionsetup{width=.8\linewidth}
+    \caption{Picture of the trigger hub on the \gls{bbb}. The \gls{bbb} is
+connected with the \gls{lan} via cable. The trigger hub forwards the signal
+to the oscilloscope, the camera and the two \gls{dds}.}
+  \end{minipage}
 \end{figure}
