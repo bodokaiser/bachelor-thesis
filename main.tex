@@ -18,13 +18,22 @@
 \usepackage{amsthm}
 \usepackage{amsmath}
 \usepackage{amssymb}
-\usepackage{csquotes}
 \usepackage{caption}
 \usepackage{biblatex}
 \usepackage{enumerate}
 \usepackage{graphicx}
-\usepackage{hyperref}
+\usepackage{unicode-math}
+\usepackage[
+  hidelinks
+]{hyperref}
 \usepackage{cleveref}
+\usepackage[
+  linenos,
+  chapter,
+  newfloat,
+  outputdir=build,
+  cachedir=build
+]{minted}
 \usepackage[
   binary-units
 ]{siunitx}
@@ -34,11 +43,22 @@
   toc,
   nohypertypes={acronym}
 ]{glossaries}
-\usepackage{unicode-math}
+
+\usemintedstyle{tango}
 
 \addbibresource{literature.bib}
 
 \makeglossaries
+\newglossaryentry{ad9910}
+{
+  name=AD9910,
+  description={a direct digital synthesizer from Analog Devices}
+}
+\newglossaryentry{sn74128}
+{
+  name=SN74128,
+  description={a line driver from Analog Devices}
+}
 \newacronym{rf}{RF}{radio frequency}
 \newacronym{sma}{SMA}{SubMiniature version A}
 \newacronym{smf}{SMF}{single-mode optical fiber}
@@ -48,10 +68,14 @@
 \newacronym{ccd}{CCD}{charge-coupled device}
 \newacronym{ic}{IC}{integrated circuit}
 \newacronym{pll}{PLL}{phase-locked-loop}
-\newacronym{ad9910}{AD9910}{direct-digital synthesizer from Analog Devices}
 \newacronym{asf}{ASF}{amplitude scale factor}
 \newacronym{ftw}{FTW}{frequency tuning word}
-\glsaddall
+\newacronym{ttl}{TTL}{transistor-transistor logic}
+\newacronym{bbb}{BBB}{BeagleBone Black}
+\newacronym{gnd}{GND}{ground}
+\newacronym{lan}{LAN}{local area network}
+\newacronym{gpio}{GPIO}{general purpose input output}
+\newacronym{http}{HTTP}{hypertext transport protocol}
 
 \subject{Many Body Quantum Optics}
 \title{High-precision time-averaged optical potentials for ultracold atoms}
@@ -144,7 +168,8 @@
 
 \printglossaries
 \listoffigures
-\listoftables
+%\listoftables
+\listoflistings
 \printbibliography
 
 \appendix

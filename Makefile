@@ -6,29 +6,25 @@ IMAGE_DIR=images
 FIGURE_DIR=figures
 
 LATEX=lualatex
-LATEX_OPT=-f -shell-escape -synctex=1
+LATEX_OPT=-shell-escape -synctex=1
 
 LATEXMK=latexmk
-LATEXMK_OPT=-use-make -lualatex -interaction=nonstopmode -outdir=$(BUILD_DIR)
+LATEXMK_OPT=-use-make -lualatex -shell-escape -interaction=nonstopmode -outdir=$(BUILD_DIR)
 LATEXMK_OPT_CONT=-pvc
 
-build: $(MAIN).pdf
-
-$(MAIN).pdf: $(BUILD_DIR)/$(MAIN).pdf
-	ln -s $< $@
+build: $(BUILD_DIR)/$(MAIN).pdf
 
 $(MAIN).gls: $(BUILD_DIR)/$(MAIN).gls
-
 $(MAIN).acr: $(BUILD_DIR)/$(MAIN).acr
+
+$(BUILD_DIR)/$(MAIN).acr:
+	makeglossaries -d $(BUILD_DIR) $(MAIN)
 
 $(BUILD_DIR)/$(MAIN).pdf:
 	$(LATEXMK) -f $(LATEXMK_OPT) \
             -pdflatex="$(LATEX) $(LATEX_OPT) %O %S" $(MAIN)
 
 $(BUILD_DIR)/$(MAIN).gls:
-	makeglossaries -d $(BUILD_DIR) $(MAIN)
-
-$(BUILD_DIR)/$(MAIN).acr:
 	makeglossaries -d $(BUILD_DIR) $(MAIN)
 
 $(BUILD_DIR)/%.pdf: $(IMAGE_DIR)/%.svg

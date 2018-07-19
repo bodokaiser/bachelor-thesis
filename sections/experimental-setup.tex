@@ -76,15 +76,13 @@ Beforehand we described the optical setups used. Now we want to emphasize
 on the electronics how they are integrated into the optical setup.
 
 \subsection{Signal Source}
-\label{sec:elec:dds}
 
 The requirements placed by the two \gls{aod} demand flexible but precise
 \gls{rf} sources. Fortunately we can resort to a custom made signal
 sources based on the \gls{ad9910} \gls{dds} \cite{AD9910} \gls{ic} that can
 operate up to \SI{420}{\mega\hertz} and allows modulation of amplitude,
 frequency and phase offset by either a constant value or through a single
-digital ramp or playback from a memory sequence. Details on the working
-principle of a simple \gls{dds} can be found in the \cref{app:elec:dds}.
+digital ramp or playback from a memory sequence.
 
 The signal output of the \gls{dds} is of the form
 \begin{equation}
@@ -121,8 +119,7 @@ $\mathbb{1}_{B_i}$ is the characteristic function on the set $B_i$.
 So far we have assumed $f_\text{aod}(t)$ to be continous and
 $T_\text{interval},T_\text{duration}>0$ to be arbitrary, however the internals
 of the \gls{ad9910} impose theoretical restrictions on the possible operating
-ranges. For details we again want to refer to \cref{app:elec:dds}, here we will
-only summarize the found limits.
+ranges.
 
 \subsection{Signal Amplifier}
 
@@ -152,7 +149,7 @@ The intensity controller has to be connected correctly with photodiode PD1
 of the setup as well as signal amplifier of the signal that drives the
 \gls{aom}.
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
   \includegraphics[height=6cm]{example-image-a}
   \caption{The intensity controller next to the \gls{aom} amplifier.}
@@ -174,14 +171,10 @@ signal to multiple devices and exposes a network programable interface.
   provides enough power to drive four output signals.}
   \label{fig:elec:trig}
 \end{figure}
-
-The schematics and board layout can be found in the \cref{app:elec:trigger}.
+The schematics and board layout can be found in the
+\cref{app:electronics:trigger_hub}.
 
 \section{Acousto-Optics}
-
-\subsection{Modulator}
-
-\subsection{Deflector}
 
 \section{Calibration}
 
