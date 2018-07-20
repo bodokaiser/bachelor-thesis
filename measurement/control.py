@@ -65,9 +65,13 @@ def update(id, name, frequency, amplitude=1.0, nodwells=[True, True],
   return response
 
 
-def vertical(**kargs):
+def aom():
+  return update(2, 'Bodo Intensity', frequency=80e6)
+
+
+def aod_v(**kargs):
   return update(9, 'Bodo Vertical', **kargs)
 
 
-def horizontal(**kargs):
+def aod_h(**kargs):
   return update(8, 'Bodo horizontal', **kargs)
