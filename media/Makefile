@@ -1,0 +1,2 @@
+convert:
+	$(MAKE) -C image
