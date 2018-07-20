@@ -1,16 +1,19 @@
 import numpy as np
+import pandas as pd
 import requests
 import visa
+import time
 
 rm = visa.ResourceManager()
 
 
 class MSOX6004A:
 
-  def __init__(self, hostname, timeout=5000):
+  def __init__(self, hostname, timeout=5000, delay=.5):
     self.resource = rm.open_resource(f'TCPIP0::{hostname}::inst0::INSTR')
     self.resource.timeout = timeout
     self.resource.clear()
+    self.delay = delay
 
   def holla(self):
     return self.resource.query('*IDN?')
@@ -21,7 +24,7 @@ class MSOX6004A:
   def save(self, filename):
     return self.resource.write(f':SAVE:WMEMory:STARt "\\usb\\{filename}.h5"')
 
-  def capture(self, channel):
+  def data(self, channel):
     self.resource.write(':WAVeform:FORMat WORD')
     self.resource.write(':WAVeform:BYTeorder LSBFirst')
     self.resource.write(':WAVeform:UNSigned 0')
@@ -39,7 +42,18 @@ class MSOX6004A:
     U = yorg + yinc * (values - yref)
     t = np.arange(xorg, xorg + xinc * len(U), xinc)
 
-    return t, U
+    return pd.DataFrame({'time': t, 'voltage': U})
+
+  def capture(self, channel=1):
+    self.single()
+    time.sleep(self.delay)
+    trigger()
+    time.sleep(self.delay)
+
+    return self.data(channel)
+
+  def close(self):
+    return self.resource.close()
 
 
 def trigger():
@@ -49,7 +63,7 @@ def trigger():
   return response
 
 
-def update(id, name, frequency, amplitude=1.0, nodwells=[True, True],
+def update(id, name, frequency, amplitude=1.0, nodwells=[False, True],
            duration=2, interval=250e-6):
   fconfig = {}
 
@@ -113,7 +127,7 @@ def update(id, name, frequency, amplitude=1.0, nodwells=[True, True],
 
 
 def aom():
-  return update(2, 'Bodo Intensity', frequency=80e6)
+  return update(1, 'Bodo Intensity', frequency=80e6)
 
 
 def aod_v(**kargs):
