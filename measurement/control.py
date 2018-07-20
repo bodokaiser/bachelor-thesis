@@ -64,7 +64,7 @@ def trigger():
 
 
 def update(id, name, frequency, amplitude=1.0, nodwells=[False, True],
-           duration=2, interval=250e-6):
+           duration=26.84e-3, interval=26.14e-6):
   fconfig = {}
 
   if isinstance(frequency, list):
