@@ -2,18 +2,18 @@ import numpy as np
 import requests
 import visa
 
-resource_manager = visa.ResourceManager()
+rm = visa.ResourceManager()
 
 
 class MSOX6004A:
 
   def __init__(self, hostname, timeout=5000):
-    self.resource = resource_manager.open(f'TCPIP0::{hostname}::inst0::INSTR')
+    self.resource = rm.open_resource(f'TCPIP0::{hostname}::inst0::INSTR')
     self.resource.timeout = timeout
     self.resource.clear()
 
   def holla(self):
-    return self.resource.query(':*IDN?')
+    return self.resource.query('*IDN?')
 
   def single(self):
     return self.resource.write(':SINGle')
