@@ -1,24 +1,55 @@
 \chapter{Tunnelling in optical lattices}
 
-The maximum permissible time in between site visits of our potential
-generating laser beam is bound by the quantum tunneling amplitude. It has to
-be smaller then the expected time for an atom to tunnel to another lattice
-site. In this chapter we want to recapitulate the theoretical foundations
-for optical lattices and find an expression to estimate the order of
-magnitude of a theoretically required sweep duration.
+In the introduction we presented the concepts behind our enivisaged
+generation of local time-averaged high-precision optical potentials. In this
+chapter we want to recapitulate the theoretical foundations of optical
+lattices and estimate theoretical boundaries for the time-average.
 
 \section{Atom-field interactions}
 
-% Introduction to Quantum Optics
-% https://jila.colorado.edu/arey/sites/default/files/Llecture25_sp_16.pdf
+The Hamiltonian of an electron in an external electromagnetic field reads
+\begin{equation}
+  \hat{H}_\text{em}
+  =\frac{1}{2m}\left(\hat{\vb{p}}+e\vb{A}\right)^2-e\Phi+\hat{V}
+  \label{eq:hamiltonian_em}
+\end{equation}
+with vector $\vb{A}$ and scalar potential $\Phi$. The Coulomb potential of
+the nucleus is represented by the operator $\hat{V}$. For an atom interaction
+with an external light field we can use the dipole approximation
+$\vb{A}(\vb{x},t)=\vb{A}(t)$ \cite{Gerry2004}[p.76].
+
+Gauge freedom permits transformations of type
+\begin{align}
+  \vb{A}\to\vb{A}+\grad{\chi}
+  &&
+  \Phi\to\Phi-\pdv{\chi}{t}
+\end{align}
+with gauge function $\chi$. In the following we choose the gauge function
+$\chi=-\vb{A}\cdot\vb{x}$. In the dipole approximation $\chi$ satisfies the
+Coulomb gauge condition $\divergence{\vb{A}}=0$ allowing us to set $\Phi=0$
+as no external sources are present \cite{Jackson2005}[p.242]. Finally we can
+write \cref{eq:hamiltonian_em} as
+\begin{equation}
+  \hat{H}_\text{dip}
+  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}-\hat{\vb{d}}\cdot\vb{E}
+  \label{eq:hamiltonian_dip}
+\end{equation}
+with the dipole operator $\hat{\vb{d}}=-e\vb{x}$ and spatially homogeneous
+light field $\vb{E}(t)$.
 
 \subsection{Classical field}
+
+
 % conservative
 \subsubsection{Rabi model}
 \subsubsection{Effective potential}
 
 \subsection{Quantized field}
-% dissipative
+
+For our use case the classical treatment of light is sufficient. For a
+a quantized light field $\vb{E}(t)$ we will find nonzero probabilities
+for transitions between energy levels, known as spontaneous emissions,
+for which an elaborate treatment can be found in \cite{Gerry2004}.
 
 \section{Lattice band structure}
 
