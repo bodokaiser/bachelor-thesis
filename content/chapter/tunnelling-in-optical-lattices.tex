@@ -1,12 +1,28 @@
-\chapter{Theory of Optical Lattices}
+\chapter{Tunnelling in optical lattices}
 
-In this chapter we will recapitulate the theoretical foundations of optical
-lattices used in ultracold quantum experiments, thereof we can derive
-theoretical requirements for the planned potential generation. Most notably
-we are interested in the domain of the sweep duration and resolution that
-our setup has to operate in.
+The maximum permissible time in between site visits of our potential
+generating laser beam is bound by the quantum tunneling amplitude. It has to
+be smaller then the expected time for an atom to tunnel to another lattice
+site. In this chapter we want to recapitulate the theoretical foundations
+for optical lattices and find an expression to estimate the order of
+magnitude of a theoretically required sweep duration.
 
-\section{Generic Periodic Potential}
+\section{Atom-field interactions}
+
+% Introduction to Quantum Optics
+% https://jila.colorado.edu/arey/sites/default/files/Llecture25_sp_16.pdf
+
+\subsection{Classical field}
+% conservative
+\subsubsection{Rabi model}
+\subsubsection{Effective potential}
+
+\subsection{Quantized field}
+% dissipative
+
+\section{Lattice band structure}
+
+\subsection{Schrödinger equation}
 
 The Schrödinger equation of a particle state $\ket{\Psi}$ subject to a time
 independent one-dimensional potential reads
@@ -95,7 +111,9 @@ we are able to transform the potential in momentum space
 \end{equation}
 after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
 
-\section{Sinusoidal Optical Potential}
+\subsection{Bloch theorem}
+
+\subsection{Band structure}
 
 In the former section we discussed the quantum mechancis of a generic
 periodic potential. We will now consider the special case of a harmonic
@@ -149,7 +167,7 @@ In the case of optical potentials. We would further introduce the recoil
 energy $E_r=(\hbar k)^2/(2m)$ which gives us a natural atom independent scale
 to work with.
 
-\subsection{Harmonic Potential Approximation}
+\subsection{Harmonic approximation}
 
 Cooled atoms have a low kinetic energy and will be located at the ground
 state which allows us to approximate
@@ -168,5 +186,3 @@ inserting \cref{eq:harmonic_approximation} into
   =\hat{H}_\text{harmonic}\ket{\phi}
 \end{equation}
 with $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$.
-
-\subsection{Quantum Tunnel Amplitude}
