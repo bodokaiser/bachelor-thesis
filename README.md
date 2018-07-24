@@ -2,9 +2,8 @@
 
 This repository comprises
 
-* the thesis source files in `content`,
-* measurement scripts in `measurement`,
-* evaluation scripts in `evaluation`,
+* thesis latex source in `content`,
+* experiment notebook `notebook`,
 * measurement data in `dataset`,
 * images, schematics, etc. in `media`.
 
