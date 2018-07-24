@@ -7,16 +7,32 @@ import time
 rm = visa.ResourceManager()
 
 
-class MSOX6004A:
+class Device:
 
-  def __init__(self, hostname, timeout=5000, delay=.5):
+  def __init__(self, hostname, timeout=5000):
     self.resource = rm.open_resource(f'TCPIP0::{hostname}::inst0::INSTR')
     self.resource.timeout = timeout
     self.resource.clear()
-    self.delay = delay
 
   def holla(self):
     return self.resource.query('*IDN?')
+
+  def close(self):
+    return self.resource.close()
+
+
+class FG33250A2(Device):
+
+  def width(self, value, channel=1):
+    return self.resource.write(f':PULS{channel}:WIDTH {value:1.11f}')
+
+
+class MSOX6004A(Device):
+
+  def __init__(self, hostname, timeout=5000, delay=.5):
+    super().__init__(hostname, timeout)
+
+    self.delay = delay
 
   def single(self):
     return self.resource.write(':SINGle')
@@ -51,9 +67,6 @@ class MSOX6004A:
     time.sleep(self.delay)
 
     return self.data(channel)
-
-  def close(self):
-    return self.resource.close()
 
 
 def trigger():
