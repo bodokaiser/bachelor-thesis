@@ -113,7 +113,7 @@ For the upcoming sections we will take the effective potential in the reference
 frame of atoms in an one dimensional optical lattice to be
 \begin{equation}
   V_\text{lat}(z)=V_0\cos^2(kz)
-  \label{eq:optical_lattice_potential}
+  \label{eq:potential_lattice}
 \end{equation}
 with $V_0<0$ for red detuned light.
 
@@ -130,21 +130,21 @@ an upper bound for the duration time of our potential generation.
 Bloch's theorem states that for a periodic potential
 \begin{equation}
   V_\text{per}(\vb{x}+\vb{a})=V_\text{per}(\vb{x})
-  \label{eq:periodic_potential}
+  \label{eq:potential_periodic}
 \end{equation}
 there exists a complete set of wavefunctions that are energy eigenstates
 of the Hamiltonian
 \begin{equation}
   \hat{H}_\text{per}
   =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{per}
-  \label{eq:periodic_hamiltonian},
+  \label{eq:hamiltonian_periodic},
 \end{equation}
 and each of these Bloch waves can be written in the form
 \begin{equation}
   \bra{\vb{x}}\ket{\Psi_{n\vb{q}}}
   =\Psi_{n\vb{q}}(\vb{x})
   =e^{i\vb{q}\cdot\vb{x}}\psi_{n\vb{q}}(\vb{x})
-  \label{eq:bloch_wave}
+  \label{eq:wave_bloch}
 \end{equation}
 with the wave vector $\vb{q}$ confined to the first Brillouin zone,
 $\psi_{n\vb{q}}(\vb{x}+\vb{a})=\psi_{n\vb{q}}(\vb{x})$ and band index number
@@ -153,63 +153,53 @@ $n$. For additional information see \cite{Roessler2004}[p.126] or
 
 \subsection{Band structure}
 
-We are now going to apply Bloch's theorem to find the energy band structure
-of the Hamiltonian of a simple one dimensional optical lattice
+We are now going to find the energy eigenvalues of the Hamiltonian
 \begin{equation}
   \hat{H}_\text{lat}
   =\frac{\hat{\vb{p}}}{2m}+\hat{V}_\text{lat}
   \label{eq:hamiltonian_lattice}
 \end{equation}
-with $V(z)=V_0\cos^2(kz)$ from \cref{eq:periodic_potential}.
-
-The momentum operator is a differential operator in position space
+with $V_\text{lat}(z)=V_0\cos^2(kz)$ from \cref{eq:potential_periodic}. As
+ansatz we use the Bloch waves \cref{eq:wave_bloch} and note that by the
+product rule
+$\hat{p}^2\ket{\Psi_{nq}}=e^{iqx}(\hat{p}+\hbar q)\ket{\psi_{nq}}$,
+thus yielding
 \begin{equation}
-  \hat{p}
-  =\expval{\hat{p}}{\hat{x}}
-  =-i\hbar\dv{x}
-  \label{eq:momentum_operator_in_position_space},
-\end{equation}
-thus we obtain $\hat{p}e^{iqx}=\hbar qe^{iqx}$ and
-$\hat{p}^2\ket{\Psi}=e^{iqx}\left(\hat{p}+\hbar q\right)^2\ket{\psi}$ such
-that we can rewrite \cref{eq:time_independent_schroedinger} for
-the periodic case
-\begin{equation}
-  E\ket{\psi}
-  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{\psi}
-  =:\hat{H}_{periodic}\ket{\psi}
-  \label{eq:periodic_schroedinger}.
+  E_{nq}\ket{\Psi_{nq}}
+  =\hat{H}_{lat}\ket{\Psi_{nq}}
+  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi}
+  \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
 
-Translational symmetry of the potential enforces discrete particle momenta
-$p_n=pn=nk\hbar$ such that we can represent our particle state in a
-countable momentum basis
+Through the completeness relation we can expand our state $\ket{\psi_{nq}}$
+in the discrete crystal base $\ket{q_n}$
 \begin{equation}
-  \ket{\psi}
-  =\mathbb{1}\ket{\psi}
-  =\left(\sum_n\ket{p_n}\bra{p_n}\right)\ket{\psi}
-  =\sum_n\braket{p_n}{\psi}\ket{p_n}
-  =\sum_nc_n\ket{p_n}
-  \label{eq:countable_momentum_state}.
+  \ket{\psi_{nq}}
+  =\left(\sum_m\ket{k_m}\bra{k_m}\right)\ket{\psi_{nq}}
+  =\sum_m\braket{k_m}{\psi_{nq}}\ket{k_m}
+  =\sum_mc_m\ket{p_m}
+  \label{eq:state_expansion_crystal_base}.
 \end{equation}
-Inserting this into the right hand side of \cref{eq:periodic_schroedinger}
-yields us
+Inserting this into the right hand side of
+\cref{eq:eigenvalue_energy_lattice} yields us
 \begin{equation}
-  \hat{H}_\text{periodic}\ket{\psi}
-  =\sum_nc_n\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}\right)\ket{p_n}
-  =\sum_nc_n\left(\frac{(pn+\hbar q)^2}{2m}+\hat{V}\right)\ket{p_n}
-  \label{eq:periodic_hamiltonian_in_momentum_base}
+  E_\text{lat}\ket{\psi_{nq}}
+  \hat{H}_\text{lat}\ket{\psi_{nq}}
+  =\sum_mc_n\left(\frac{(km+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{k_m}
+  \label{eq:hamiltonian_lattice_crystal_base}
 \end{equation}
-where we used the eigenvalue equation $\hat{p}\ket{p_n}=pn\ket{p_n}$ to
-satisfy the second equal sign. By applying an orthogonal $\bra{p_m}$ to the
-left hand side of \cref{eq:periodic_hamiltonian_in_momentum_base} we find
-the matrix elements of the periodic Hamiltonian
+where we used the eigenvalue equation $\hat{p}\ket{k_m}=km\ket{k_m}$ to
+satisfy the second equal sign. By applying an orthogonal $\bra{k_l}$ to the
+left hand side of \cref{eq:hamiltonian_lattice_crystal_base} we find
+the matrix elements of the lattice Hamiltonian
 \begin{equation}
-  \hat{H}_{\text{periodic},mn}
-  =\mel**{p_m}{\hat{H}_\text{periodic}}{p_n}
-  =(m+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{p_m}{\hat{V}}{p_n}
-  \label{eq:periodic_hamiltonian_elements}
+  \hat{H}_{\text{lat},ml}
+  =\mel**{p_l}{\hat{H}_\text{lat}}{p_m}
+  =(m+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{p_m}{\hat{V}}{p_l}
+  \label{eq:hamiltonian_lattice_element}
 \end{equation}
 where we used $p=\hbar k$ in the last step.
+
 
 Usually the potential will be known in position space. Through use of the
 completeness relation
@@ -227,30 +217,14 @@ we are able to transform the potential in momentum space
   \label{eq:potential_fourier_transform}.
 \end{equation}
 after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
-
-In the former section we discussed the quantum mechancis of a generic
-periodic potential. We will now consider the special case of a harmonic
-potential of the shape
 \begin{equation}
   V(x)
   =V_0\cos^2(kx)
   =\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)
-  \label{eq:harmonic_potential}.
+  \label{eq:potential_dipole_crystal_base}.
 \end{equation}
-Potentials of such form can be found for example in the standing wave of a
-reflected gaussian beam
-\begin{equation}
-  V(r,x)
-  =V_0e^{-2r^2/w(x)^2}\cos^2(kx)
-  \approx V_0\cos^2(kx)
-  \label{eq:optical_potential}
-\end{equation}
-wherein $r$ denotes the beam radius, $w(x)$ being spot size parameter and
-$k=2\pi/\lambda$ with the laser wavelength $\lambda$. The approximation is
-valid for $w(x)\gg r$ which holds in most cases according to
-\cite[p.127]{Rom2009}.
 
-Transformation of \cref{eq:harmonic_potential} to momentum space
+Transformation of \cref{eq:potential_lattice} to momentum space
 using \cref{eq:potential_fourier_transform} yields
 \begin{equation*}
   V(p)
@@ -261,7 +235,7 @@ using \cref{eq:potential_fourier_transform} yields
   =
   \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta_{m,n-2}\right).
 \end{equation*}
-The Hamiltonian \cref{eq:periodic_hamiltonian_elements} of a
+The Hamiltonian \cref{eq:hamiltonian_periodic_element} of a
 harmonic potential then reads
 \begin{equation}
   \hat{H}_\text{harmonic}
@@ -272,7 +246,7 @@ harmonic potential then reads
   \end{cases}
   \label{eq:harmonic_hamiltonian}.
 \end{equation}
-Plotting the eigenvalues of \cref{eq:harmonic_hamiltonian} against
+Plotting the eigenvalues of \cref{eq:hamiltonian_harmonic} against
 $q$ we find the characteristic energy band structure giving us the allowed
 energy ranges.
 
@@ -288,10 +262,10 @@ state which allows us to approximate
   V(x)
   =V_0\cos^2(kx)
   \approx V_0\left(1-(kx)^2\right)
-  \label{eq:harmonic_approximation}
+  \label{eq:potential_lattice_approximation}
 \end{equation}
-inserting \cref{eq:harmonic_approximation} into
-\cref{eq:time_independent_schroedinger} and rearraning yield us
+inserting \cref{eq:potential_lattice_approximation} into
+\cref{eq:} and rearraning yield us
 \begin{equation}
   \hbar\omega(n+\frac{1}{2})\ket{\phi}
   =(E_n-V_0)\ket{\phi}
