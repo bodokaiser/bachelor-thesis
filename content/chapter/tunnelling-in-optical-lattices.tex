@@ -56,7 +56,7 @@ wave interference pattern by reflection of a single Gaussian laser beam. The
 electrical field component in such a case is given by
 \begin{equation}
   \vb{E}(t)
-  =\vb{E}_0e^{-2r^2/w(z)^2}\cos(kz)\cos(\omega t)
+  =\vb{E}_0\cos(kz)\cos(\omega t)e^{-2r^2/w(z)^2}
   \label{eq:1d_lattice_efield_exact},
 \end{equation}
 wherein $r$ denotes the beam radius, $w(z)$ being spot size parameter and
@@ -126,6 +126,28 @@ derive an expression for the quantum tunneling probability which gives us
 an upper bound for the duration time of our potential generation.
 
 \subsection{Bloch theorem}
+
+Bloch's theorem states that for a periodic potential
+\begin{equation}
+  V_\text{per}(\vb{x}+\vb{a})=V_\text{per}(\vb{x})
+  \label{eq:periodic_potential}
+\end{equation}
+there exists a complete set of wavefunctions that are energy eigenstates
+of the Hamiltonian
+\begin{equation}
+  \hat{H}_\text{per}
+  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{per}
+  \label{eq:periodic_hamiltonian},
+\end{equation}
+and each of these Bloch waves can be written in the form
+\begin{equation}
+  \bra{\vb{x}}\ket{\Psi_{n\vb{k}}}
+  =\Psi_{n\vb{k}}(\vb{x})
+  =e^{i\vb{k}\cdot\vb{x}}\psi_{n\vb{k}}(\vb{x})
+  \label{eq:bloch_wave}
+\end{equation}
+with wave vector $\vb{k}$ and $\psi_{n\vb{k}}(\vb{x}+\vb{a})=\psi(\vb{x})$.
+For additional information see \cite{Roessler2004}[p.126].
 
 \subsection{Schrödinger equation}
 
