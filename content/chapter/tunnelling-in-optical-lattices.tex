@@ -141,36 +141,26 @@ of the Hamiltonian
 \end{equation}
 and each of these Bloch waves can be written in the form
 \begin{equation}
-  \bra{\vb{x}}\ket{\Psi_{n\vb{k}}}
-  =\Psi_{n\vb{k}}(\vb{x})
-  =e^{i\vb{k}\cdot\vb{x}}\psi_{n\vb{k}}(\vb{x})
+  \bra{\vb{x}}\ket{\Psi_{n\vb{q}}}
+  =\Psi_{n\vb{q}}(\vb{x})
+  =e^{i\vb{q}\cdot\vb{x}}\psi_{n\vb{q}}(\vb{x})
   \label{eq:bloch_wave}
 \end{equation}
-with wave vector $\vb{k}$ and $\psi_{n\vb{k}}(\vb{x}+\vb{a})=\psi(\vb{x})$.
-For additional information see \cite{Roessler2004}[p.126].
+with the wave vector $\vb{q}$ confined to the first Brillouin zone,
+$\psi_{n\vb{q}}(\vb{x}+\vb{a})=\psi_{n\vb{q}}(\vb{x})$ and band index number
+$n$. For additional information see \cite{Roessler2004}[p.126] or
+\cite{Bartelmann2018}[p.897].
 
-\subsection{Schrödinger equation}
+\subsection{Band structure}
 
-The Schrödinger equation of a particle state $\ket{\Psi}$ subject to a time
-independent one-dimensional potential reads
-\begin{align}
-  E\ket{\Psi}
-  =\hat{H}\ket{\Psi}
-  =\left(\frac{\hat{p}^2}{2m}+\hat{V}\right)\ket{\Psi}
-  \label{eq:time_independent_schroedinger}.
-\end{align}
-For a periodic potential $V(x+a)=V(x)$ the Bloch-Theorem \cite{Ashcroft1976}
-states that the wavefunction of a particle in a periodic potential can be
-written as
+We are now going to apply Bloch's theorem to find the energy band structure
+of the Hamiltonian of a simple one dimensional optical lattice
 \begin{equation}
-  \braket{\hat{x}}{\Psi}
-  =\Psi(x)
-  =e^{iqx}\psi(x)
-  \label{eq:bloch_theorem}
+  \hat{H}_\text{lat}
+  =\frac{\hat{\vb{p}}}{2m}+\hat{V}_\text{lat}
+  \label{eq:hamiltonian_lattice}
 \end{equation}
-wherein $-\frac{\pi}{a}<q<+\frac{\pi}{a}$ is the quasimomentum, a quantum
-number characteristic of the translational symmetry of the periodic potential
-\cite[p. 42]{Lewenstein2012} with $a$ being the lattice constant.
+with $V(z)=V_0\cos^2(kz)$ from \cref{eq:periodic_potential}.
 
 The momentum operator is a differential operator in position space
 \begin{equation}
@@ -237,8 +227,6 @@ we are able to transform the potential in momentum space
   \label{eq:potential_fourier_transform}.
 \end{equation}
 after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
-
-\subsection{Band structure}
 
 In the former section we discussed the quantum mechancis of a generic
 periodic potential. We will now consider the special case of a harmonic
