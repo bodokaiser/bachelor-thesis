@@ -9,3 +9,10 @@ def fft(t, x):
   f = np.linspace(0, 1 / T, N)
 
   return f[:N // 2], P[:N // 2]
+
+
+def normalize(x):
+  x -= x.min()
+  x /= x.max()
+
+  return x
