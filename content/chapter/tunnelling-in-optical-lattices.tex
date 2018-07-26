@@ -127,6 +127,45 @@ optical potential, \cref{eq:optical_lattice_potential}, we are able to
 derive an expression for the quantum tunneling probability which gives us
 an upper bound for the duration time of our potential generation.
 
+\subsection{Bravais lattice}
+
+A Bravais lattice of dimension $N$ consists of the discrete points
+\begin{equation}
+  \vb{r}
+  =\bra{\vb{x}}\ket{\vb{r}}
+  =\sum_{i=1}^Nn_i\vb{a}_i
+  \qc n_1,\dots,n_N\in\mathbb{Z}
+\end{equation}
+where the $\vb{a}_i$ are the primitive vectors that span the primitive cell.
+The reciprocal lattice is defined as the point set
+\begin{equation}
+  \vb{g}
+  =\bra{\vb{x}}\ket{\vb{g}}
+  =\sum_{i=1}^Nm_i\vb{b}_i
+  \qc m_1,\dots,m_N\in\mathbb{Z}
+\end{equation}
+that satisfy the condition $\exp(\vb{r}\cdot\vb{g})=1$. For a simple cubic
+lattice structure $\vb{b}_i=2\pi\vb{a}/{{\vb{a}_i}^2}$ satisfies said
+condition.
+
+In the reciprocal lattice space it is especially simple to express periodic
+functions. This suggests the transformation of a periodic potential
+\cref{eq:potential_lattice} into the reciprocal lattice space.
+\begin{equation}
+  \bra{g_n}\hat{V}\ket{g_m}
+  &=\int\dd{x}\bra{g_n}\ket{x}V(x)\overline{\bra{g_m}\ket{x}}
+  \label{eq:transform_reciprocal_lattice}
+\end{equation}
+With $\bra{x}\ket{g_m}=e^{2ikxm}/\sqrt{2\pi}$ we can identify
+\cref{eq:transform_reciprocal_lattice} as Fourier transform into the
+reciprocal lattice base. Taking \cref{eq:potential_lattice} as periodic
+potential and using orthogonality between Fourier modes we find
+\begin{equation}
+  \bra{g_n}\hat{V}_\text{lat}\ket{g_m}
+  =\frac{1}{4}V_0\left(\delta_{n,m-1}+\delta_{n,m+1}+2\delta_{n,m}\right)
+  \label{eq:potential_reciprocal_lattice_base}.
+\end{equation}
+
 \subsection{Bloch functions}
 
 Bloch's theorem states that for a periodic potential
@@ -153,7 +192,7 @@ $\vb{q}$ and bandindex $n$. For a proof of Bloch's theorem see
 \cite{Roessler2004} or \cite{Bartelmann2018}. We confine the wave number to
 the first Brillouin zone $-k<q<+k$ to obtain an unique set of Bloch waves.
 
-\subsection{Band structure}
+\subsection{Energy bands}
 
 Using the Bloch waves \cref{eq:wave_bloch} as ansatz for the Hamiltonian
 \begin{equation}
@@ -173,117 +212,74 @@ thus finding
   \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
 
-For a one dimensional Bravais lattice with lattice constant $a$ and
-$l\in\mathbb{Z}$, the discrete set of lattice points is
-$\bra{x}\ket{\phi_l}=la$. The reciprocal lattice thereof is defined as
-$\bra{g}\ket{\phi_l}=\frac{2\pi}{a}l$. In our case the laser wave number
-relates to the lattice constant by $k=\pi/a$, thus $\bra{g}\ket{\phi_l}=2kl$
-form a base of discrete points in the reciprocal lattice space. Periodicity
-of $\ket{\psi_{nq}}$ suggests the expansion in the reciprocal lattice base
+We expand the state $\ket{\psi_{nq}}$ in the reciprocal lattice base
 \begin{equation}
   \ket{\psi_{nq}}
-  =\left(\sum_l\ket{g_l}\bra{g_l}\right)\ket{\psi_{nq}}
-  =\sum_l\braket{g_l}{\psi_{nq}}\ket{g_l}
-  =\sum_lc_l\ket{g_l}
+  =\left(\sum_j\ket{g_j}\bra{g_j}\right)\ket{\psi_{nq}}
+  =\sum_j\braket{g_j}{\psi_{nq}}\ket{g_j}
+  =\sum_jc_j\ket{g_j}
   \label{eq:state_expansion_reciprocal_lattice_base}.
 \end{equation}
-The lattice potential can be expressed naturally in the reciprocal lattice
-base
+We need to find the momentum eigenvalues of the state $\ket{g_j}$
 \begin{equation}
-  V_\text{lat}(x)
-  =V_0\cos^2(kx)
-  =\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)
+  \hat{p}\ket{g_j}
+  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_j}
+  \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
+\end{equation}
+With $\bra{y}\hat{p}\ket{x}=-i\hbar\delta(y-x)\dv{x}$ we can take the
+derivative of $\bra{x}\ket{g_j}=e^{2ikxj}$ and simplify
+\cref{eq:eigenvalue_momentum_reciprocal_lattice1} to
+\begin{equation}
+  \hat{p}\ket{g_j}
+  =2\hbar kj\int\dd{x}\ket{x}\bra{x}\ket{g_j}
+  =2\hbar kj\ket{g_j}
+  \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
 \end{equation}
 
-We insert \cref{eq:state_expansion_reciprocal_lattice_base} into
-\cref{eq:eigenvalue_energy_lattice}
+Finally we insert \cref{eq:state_expansion_reciprocal_lattice_base} into
+\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_i}$ to the right hand
+side while using \cref{eq:potential_reciprocal_lattice_base} and
+\cref{eq:eigenvalue_momentum_reciprocal_lattice1}, yielding
 \begin{equation}
-  E_n(q)\ket{\psi_{nq}}
-  =\hat{H}_\text{lat}\ket{\psi_{nq}}
-  =\sum_lc_l\left(\frac{(gl+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{g_l}
-  \label{eq:hamiltonian_lattice_crystal_base}
-\end{equation}
-and use the eigenvalue equation $\hat{p}\ket{g_l}=gl\ket{k_n}$ to satisfy
-the second equal sign. Application of $\bra{g_s}$ to the left hand side of
-\cref{eq:hamiltonian_lattice_crystal_base} we find the matrix elements of the
-lattice Hamiltonian
-\begin{equation}
-  \hat{H}_{\text{lat},sl}
-  =\mel**{g_s}{\hat{H}_\text{lat}}{g_l}
-  =(l+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{g_s}{\hat{V}}{g_l}
-  \label{eq:hamiltonian_lattice_element}
-\end{equation}
-where we used $p=\hbar k$ in the last step.
-
-Usually the potential will be known in position space. Through use of the
-completeness relation
-\begin{equation}
-  \mathbb{1}
-  =\int\dd{x}\op{x}{x}
-  \label{eq:continous_completeness_relation}
-\end{equation}
-we are able to transform the potential in momentum space
-\begin{equation}
-  V(p)
-  =\mel**{p_m}{\hat{V}}{p_n}
-  =\int\int\dd{x}\dd{y}\braket{p_m}{x}\mel**{x}{\hat{V}}{y}\braket{y}{p_n}
-  =\int\frac{\dd{x}}{\sqrt{2\pi\hbar}}e^{ikx(m-n)}V(x)
-  \label{eq:potential_fourier_transform}.
-\end{equation}
-after the identification of $\braket{p}{x}=e^{ipx/\hbar}/\sqrt{2\pi\hbar}$.
-\begin{equation}
-  V(x)
-  =V_0\cos^2(kx)
-  =\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)
-  \label{eq:potential_dipole_crystal_base}.
-\end{equation}
-
-Transformation of \cref{eq:potential_lattice} to momentum space
-using \cref{eq:potential_fourier_transform} yields
-\begin{equation*}
-  V(p)
+  E_n(q)
+  =\bra{g_i}\hat{H}_\text{lat}\ket{g_j}
   =
-  \frac{1}{4}V_0
-  \int\frac{\dd{x}}{\sqrt{2\pi\hbar}}
-  e^{+ipx(m-n)/\hbar}\left(e^{+2ikx}+e^{-2ikx}+2\right)
-  =
-  \frac{1}{4}V_0\left(2\delta_{m,n}+\delta_{m,n+2}+\delta_{m,n-2}\right).
-\end{equation*}
-The Hamiltonian \cref{eq:hamiltonian_periodic_element} of a
-harmonic potential then reads
-\begin{equation}
-  \hat{H}_\text{harmonic}
-  =\begin{cases}
-    (n+q/k)^2\frac{\hbar^2k^2}{2m}+\frac{1}{2}V_0, & \text{if } n=m\\
-    \frac{1}{4}V_0, & \text{if } \abs{n-m}=2\\
+  \begin{cases}
+    (j+q/k)^2E_r+\frac{1}{2}V_0, & \text{if } i=j\\
+    \frac{1}{4}V_0, & \text{if } \abs{i-j}=1\\
     0, & \text{otherwise}
   \end{cases}
-  \label{eq:harmonic_hamiltonian}.
+  \label{eq:eigenvalue_energy_energy_lattice_final}
 \end{equation}
-Plotting the eigenvalues of \cref{eq:hamiltonian_harmonic} against
-$q$ we find the characteristic energy band structure giving us the allowed
-energy ranges.
-
-In the case of optical potentials. We would further introduce the recoil
-energy $E_r=(\hbar k)^2/(2m)$ which gives us a natural atom independent scale
-to work with.
+wherein we introduced the recoil energy $E_r=\hbar^2k^2/(2m)$ which gives us
+a natural, atom independent energy scale.
 
 \subsection{Harmonic approximation}
 
-Cooled atoms have a low kinetic energy and will be located at the ground
-state which allows us to approximate
+Another approach to solve \cref{eq:hamiltonian_lattice} in closed form is to
+use the fact that cooled atoms have a low kinetic energy and will be located
+at the bottom of the potential wells $\hat{V}_\text{lat}$ such that we can
+do an harmonic approximation
 \begin{equation}
-  V(x)
+  V_\text{lat}(x)
   =V_0\cos^2(kx)
   \approx V_0\left(1-(kx)^2\right)
   \label{eq:potential_lattice_approximation}
 \end{equation}
 inserting \cref{eq:potential_lattice_approximation} into
-\cref{eq:} and rearraning yield us
+\cref{eq:hamiltonian_lattice} and rearranging yield us the Hamiltonian of
+the harmonic oscillator
 \begin{equation}
-  \hbar\omega(n+\frac{1}{2})\ket{\phi}
-  =(E_n-V_0)\ket{\phi}
+  \frac{\hbar\omega}{2}\left(2n+1\right)\ket{\phi}
+  =\left(E_n-V_0\right)\ket{\phi}
   =\left(\frac{\hat{p}^2}{2m}-V_0k^2x^2\right)\ket{\phi}
-  =\hat{H}_\text{harmonic}\ket{\phi}
+  =\hat{H}_\text{har}\ket{\phi}
 \end{equation}
-with $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$.
+with well-known energy levels and frequency
+$\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$. In the harmonic approximation
+the energy bands found in \cref{eq:eigenvalue_energy_energy_lattice_final}
+decrease to single energy levels. By contrast flat potentials would increase
+the width of the energy bands which in the limit leads to free atoms. These
+cases are known in solid state physics as tight-binding approximation and
+nearly-free electron model.
+
