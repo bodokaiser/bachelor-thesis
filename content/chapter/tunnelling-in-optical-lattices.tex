@@ -56,7 +56,7 @@ wave interference pattern by reflection of a single Gaussian laser beam. The
 electrical field component in such a case is given by
 \begin{equation}
   \vb{E}(t)
-  =\vb{E}_0\cos(kz)\cos(\omega t)e^{-2r^2/w(z)^2}
+  =\vb{E}_0\cos(kz)\cos(\omega t)\exp(-\frac{2r^2}{w(z)^2})
   \label{eq:1d_lattice_efield_exact},
 \end{equation}
 wherein $r$ denotes the beam radius, $w(z)$ being spot size parameter and
@@ -115,7 +115,9 @@ frame of atoms in an one dimensional optical lattice to be
   V_\text{lat}(z)=V_0\cos^2(kz)
   \label{eq:potential_lattice}
 \end{equation}
-with $V_0<0$ for red detuned light.
+with $V_0<0$ for red detuned light. The wave number $k$ of the laser source
+is connected to the lattice constant of the optical lattice by
+$a=\frac{\pi}{k}$.
 
 \section{Lattice band structure}
 
@@ -125,7 +127,7 @@ optical potential, \cref{eq:optical_lattice_potential}, we are able to
 derive an expression for the quantum tunneling probability which gives us
 an upper bound for the duration time of our potential generation.
 
-\subsection{Bloch theorem}
+\subsection{Bloch functions}
 
 Bloch's theorem states that for a periodic potential
 \begin{equation}
@@ -146,60 +148,72 @@ and each of these Bloch waves can be written in the form
   =e^{i\vb{q}\cdot\vb{x}}\psi_{n\vb{q}}(\vb{x})
   \label{eq:wave_bloch}
 \end{equation}
-with the wave vector $\vb{q}$ confined to the first Brillouin zone,
-$\psi_{n\vb{q}}(\vb{x}+\vb{a})=\psi_{n\vb{q}}(\vb{x})$ and band index number
-$n$. For additional information see \cite{Roessler2004}[p.126] or
-\cite{Bartelmann2018}[p.897].
+with $\psi_{n\vb{q}}(\vb{x}+\vb{a})=\psi_{n\vb{q}}(\vb{x})$, wave vector
+$\vb{q}$ and bandindex $n$. For a proof of Bloch's theorem see
+\cite{Roessler2004} or \cite{Bartelmann2018}. We confine the wave number to
+the first Brillouin zone $-k<q<+k$ to obtain an unique set of Bloch waves.
 
 \subsection{Band structure}
 
-We are now going to find the energy eigenvalues of the Hamiltonian
+Using the Bloch waves \cref{eq:wave_bloch} as ansatz for the Hamiltonian
 \begin{equation}
   \hat{H}_\text{lat}
   =\frac{\hat{\vb{p}}}{2m}+\hat{V}_\text{lat}
-  \label{eq:hamiltonian_lattice}
+  \label{eq:hamiltonian_lattice},
 \end{equation}
-with $V_\text{lat}(z)=V_0\cos^2(kz)$ from \cref{eq:potential_periodic}. As
-ansatz we use the Bloch waves \cref{eq:wave_bloch} and note that by the
-product rule
+$V_\text{lat}(z)=V_0\cos^2(kz)$ found in \cref{eq:potential_periodic}, we are
+now able to find an expression for the energy eigenvalues. We notice that by
+the product rule
 $\hat{p}^2\ket{\Psi_{nq}}=e^{iqx}(\hat{p}+\hbar q)\ket{\psi_{nq}}$,
-thus yielding
+thus finding
 \begin{equation}
-  E_{nq}\ket{\Psi_{nq}}
+  E_n(q)\ket{\Psi_{nq}}
   =\hat{H}_{lat}\ket{\Psi_{nq}}
-  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi}
+  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi_{nq}}
   \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
 
-Through the completeness relation we can expand our state $\ket{\psi_{nq}}$
-in the discrete crystal base $\ket{q_n}$
+For a one dimensional Bravais lattice with lattice constant $a$ and
+$l\in\mathbb{Z}$, the discrete set of lattice points is
+$\bra{x}\ket{\phi_l}=la$. The reciprocal lattice thereof is defined as
+$\bra{g}\ket{\phi_l}=\frac{2\pi}{a}l$. In our case the laser wave number
+relates to the lattice constant by $k=\pi/a$, thus $\bra{g}\ket{\phi_l}=2kl$
+form a base of discrete points in the reciprocal lattice space. Periodicity
+of $\ket{\psi_{nq}}$ suggests the expansion in the reciprocal lattice base
 \begin{equation}
   \ket{\psi_{nq}}
-  =\left(\sum_m\ket{k_m}\bra{k_m}\right)\ket{\psi_{nq}}
-  =\sum_m\braket{k_m}{\psi_{nq}}\ket{k_m}
-  =\sum_mc_m\ket{p_m}
-  \label{eq:state_expansion_crystal_base}.
+  =\left(\sum_l\ket{g_l}\bra{g_l}\right)\ket{\psi_{nq}}
+  =\sum_l\braket{g_l}{\psi_{nq}}\ket{g_l}
+  =\sum_lc_l\ket{g_l}
+  \label{eq:state_expansion_reciprocal_lattice_base}.
 \end{equation}
-Inserting this into the right hand side of
-\cref{eq:eigenvalue_energy_lattice} yields us
+The lattice potential can be expressed naturally in the reciprocal lattice
+base
 \begin{equation}
-  E_\text{lat}\ket{\psi_{nq}}
-  \hat{H}_\text{lat}\ket{\psi_{nq}}
-  =\sum_mc_n\left(\frac{(km+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{k_m}
+  V_\text{lat}(x)
+  =V_0\cos^2(kx)
+  =\frac{1}{4}V_0\left(e^{+2ikx}+e^{-2ikx}+2\right)
+\end{equation}
+
+We insert \cref{eq:state_expansion_reciprocal_lattice_base} into
+\cref{eq:eigenvalue_energy_lattice}
+\begin{equation}
+  E_n(q)\ket{\psi_{nq}}
+  =\hat{H}_\text{lat}\ket{\psi_{nq}}
+  =\sum_lc_l\left(\frac{(gl+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{g_l}
   \label{eq:hamiltonian_lattice_crystal_base}
 \end{equation}
-where we used the eigenvalue equation $\hat{p}\ket{k_m}=km\ket{k_m}$ to
-satisfy the second equal sign. By applying an orthogonal $\bra{k_l}$ to the
-left hand side of \cref{eq:hamiltonian_lattice_crystal_base} we find
-the matrix elements of the lattice Hamiltonian
+and use the eigenvalue equation $\hat{p}\ket{g_l}=gl\ket{k_n}$ to satisfy
+the second equal sign. Application of $\bra{g_s}$ to the left hand side of
+\cref{eq:hamiltonian_lattice_crystal_base} we find the matrix elements of the
+lattice Hamiltonian
 \begin{equation}
-  \hat{H}_{\text{lat},ml}
-  =\mel**{p_l}{\hat{H}_\text{lat}}{p_m}
-  =(m+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{p_m}{\hat{V}}{p_l}
+  \hat{H}_{\text{lat},sl}
+  =\mel**{g_s}{\hat{H}_\text{lat}}{g_l}
+  =(l+q/k)^2\frac{\hbar^2k^2}{2m}+\mel**{g_s}{\hat{V}}{g_l}
   \label{eq:hamiltonian_lattice_element}
 \end{equation}
 where we used $p=\hbar k$ in the last step.
-
 
 Usually the potential will be known in position space. Through use of the
 completeness relation
