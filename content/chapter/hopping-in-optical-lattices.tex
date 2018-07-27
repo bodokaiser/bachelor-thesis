@@ -278,9 +278,8 @@ with well-known energy levels $E_n=\hbar\omega(2n+1)/2$ and frequency
 $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$. In the harmonic approximation
 the energy bands found in \cref{eq:eigenvalue_energy_energy_lattice_final}
 decrease to single energy levels. By contrast flat potentials would increase
-the width of the energy bands which in the limit leads to free atoms. These
-cases are known in solid state physics as tight-binding approximation and
-nearly-free electron model.
+the width of the energy bands which in the limit leads to free atoms. We are
+going to use the harmonic approximation to cross check later results.
 
 \section{Hopping between lattice sites}
 
@@ -302,13 +301,14 @@ The orthodox definition of the Wannier function with bandindex $n$ at lattice
 site $l$ reads
 \begin{equation}
   \bra{x}\ket{\phi^n_{l}}
-  =\phi_{nl}(x)
-  =\frac{a}{2\pi}\int_{-k}^{+k}\dd{q}e^{-iqla}\Psi^n_{q}(x)
+  =\phi^n_{l}(x)
+  =\frac{1}{\sqrt{N}}\sum_qe^{-iqla}\Psi^n_{q}(x)
   \label{eq:wave_wannier_orthodox}
 \end{equation}
-wherein $\Psi^n_{q}$ is the Bloch wave in \cref{eq:wave_bloch}. For small
-lattices and numerical computations we need to replace the integral by a sum
-over all $q$ that obey the periodic boundary conditions.
+wherein $\Psi^n_{q}$ is the Bloch wave from \cref{eq:wave_bloch}, $N$ the
+total number of lattice sites and the sum over $q$ is confined to the first
+Brillouin zone with $q$ that satisfy the periodic boundary condition $q=2ks/N$
+with integer $s\in\mathbb{Z}$.
 
 \subsection{Band projected position operator}
 
@@ -340,52 +340,33 @@ First we need the Bloch waves expanded in the reciprocal lattice base
 \cref{eq:state_expansion_reciprocal_lattice_base}
 \begin{equation}
   \bra{x}\ket{\Phi^n_q}
-  =e^{iqx}\sum_lc_l\bra{x}\ket{g_l}
-  =e^{iqx}\sum_lc_le^{2ikxl}
+  =e^{iqx}\sum_lc^n_{ql}\bra{x}\ket{g_l}
+  =e^{iqx}\sum_lc^n_{ql}e^{2ikxl}
   \label{eq:state_expansion_bloch_reciprocal_lattice_base}.
 \end{equation}
 Now we can diagonalize \cref{eq:eigenvalue_position_projected_band} with
-\cref{eq:state_expansion_bloch_reciprocal_lattice_base}
-\begin{equation}
+\cref{eq:state_expansion_bloch_reciprocal_lattice_base} by
+\begin{align}
   \bra{\psi^n_{q}}\hat{x}_m\ket{\psi^{n^\prime}_{q^\prime}}
-  =\int_0^L\dd{x}\psi^n_{q}(x)x\overline{\psi^{n^\prime}_{q^\prime}(x)}
-  =\sum_{l,l^\prime}c_l\overline{c_{l^\prime}}\int_0^L\dd{x}xe^{ix(q-q^\prime)}e^{2ikx(l-l^\prime)}
+  &=\int_0^L\dd{x}\psi^n_{q}(x)x\overline{\psi^{n^\prime}_{q^\prime}(x)}\\
+  &=ae^{\pi i(s-s^\prime)/N}\sum_{l,l^\prime}(-1)^{l-l^\prime}\left[
+    \delta^l_{l^\prime}\delta^s_{s^\prime}\frac{N-1}{2}-
+    \frac{1-\delta^l_{l^\prime}\delta^s_{s^\prime}}{2\pi i\left((l-l^\prime)+(s-s^\prime)/N\right)}
+  \right]
   \label{eq:eigenvalue_position_project_band_reciprocal_lattice_base}
-\end{equation}
-where $L$ is the total lattice length. To simplify the integral given in
-\cref{eq:eigenvalue_position_project_band_reciprocal_lattice_base} we use
-that the wave number $q=2\pi s/L$ is quantized $s\in\mathbb{Z}$ because of
-the periodic boundary condition and $L=Na=\pi N/k$ with number of lattice
-sites $N\in\mathbb{N}$. Finally we find the matrix elements of
-\cref{eq:eigenvalue_position_project_band_reciprocal_lattice_base} to be
-\begin{equation}
-  d^{nm}_{ql}
-  :=
-  \bra{\psi^n_{q}}\hat{x}_m\ket{\psi^{n^\prime}_{q^\prime}}
-  =
-  \frac{Na^2}{2\pi i}
-  \begin{cases}
-    N\pi i,
-    & \text{if } l=l^\prime,s=s^\prime\\
-    1/\left(l-l^\prime\right)
-    & \text{if } l\neq l^\prime,s=s^\prime\\
-    N/\left(s-s^\prime\right),
-    & \text{if } l=l^\prime,s\neq s^\prime\\
-    N/\left((l-l^\prime)+\frac{s-s^\prime}{N}\right)
-    & \text{if } l\neq l^\prime,s\neq s^\prime\\
-    0 & \text{otherwise}
-  \end{cases}
-  \label{eq:elements_position_project_band_reciprocal_lattice}
-\end{equation}
-wherein
+\end{align}
+where $L$ is the total lattice length and we had to use fact that the wave
+number $q=2\pi s/L$ is quantized $s\in\mathbb{Z}$ because of the periodic
+boundary condition, further
 \begin{align}
   s,s^\prime\in\left[-\frac{N}{2}+1,+\frac{N}{2}\right]\cap\mathbb{Z}
   &&
   l,l^\prime\in\left[\frac{1-n_\text{max}}{2},\frac{n_\text{max}-1}{2}\right]
   \cap\mathbb{Z}
 \end{align}
-with $n_\text{max}$ being the maximum bandindex to consider. As such the
-Wannier states expanded in the Bloch base are
+with $n_\text{max}$ being the maximum bandindex to consider. A complete
+deviation can be found in \cite{Bissbort2013}. Finally Wannier states
+expanded in the Bloch base are
 \begin{equation}
   \ket{\phi^m_l}
   =\sum_{q,n}d^{nm}_{ql}\ket{\Psi^n_q}
