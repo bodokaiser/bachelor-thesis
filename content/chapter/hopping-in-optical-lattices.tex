@@ -274,7 +274,7 @@ the harmonic oscillator
   =\left(\frac{\hat{p}^2}{2m}-V_0k^2x^2\right)\ket{\phi}
   \label{eq:hamiltonian_harmonic}
 \end{equation}
-with well-known energy levels $E_n=\hbar\omega(2n+1)/n$ and frequency
+with well-known energy levels $E_n=\hbar\omega(2n+1)/2$ and frequency
 $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$. In the harmonic approximation
 the energy bands found in \cref{eq:eigenvalue_energy_energy_lattice_final}
 decrease to single energy levels. By contrast flat potentials would increase
@@ -387,7 +387,7 @@ wherein
 with $n_\text{max}$ being the maximum bandindex to consider. As such the
 Wannier states expanded in the Bloch base are
 \begin{equation}
-  \ket{\phi^n_l}
+  \ket{\phi^m_l}
   =\sum_{q,n}d^{nm}_{ql}\ket{\Psi^n_q}
   \label{eq:state_expansion_wannier_in_bloch_base}
 \end{equation}
@@ -396,3 +396,9 @@ with the matrix elements from
 
 \subsection{Transition element}
 
+The transition of an atom from the a lattice site $l$ to the next lattice site
+$l+1$ is given by the transition element
+\begin{equation}
+  J
+  =\bra{\phi^m_l}\hat{H}\ket{\phi^m_{l+1}}
+\end{equation}
