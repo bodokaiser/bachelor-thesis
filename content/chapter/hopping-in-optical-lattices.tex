@@ -117,13 +117,13 @@ frame of atoms in an one dimensional optical lattice to be
 \end{equation}
 with $V_0<0$ for red detuned light. The wave number $k$ of the laser source
 is connected to the lattice constant of the optical lattice by
-$a=\frac{\pi}{k}$.
+$a=\pi/k$.
 
 \section{Lattice band structure}
 
 With the previous foundations in place we can proceed with the solid state
 analogues for optical lattices. From the  the simple analytic form of the
-optical potential, \cref{eq:optical_lattice_potential}, we are able to
+optical potential, \cref{eq:potential_lattice}, we are able to
 derive an expression for the quantum tunneling probability which gives us
 an upper bound for the duration time of our potential generation.
 
@@ -152,17 +152,17 @@ In the reciprocal lattice space it is especially simple to express periodic
 functions. This suggests the transformation of a periodic potential
 \cref{eq:potential_lattice} into the reciprocal lattice space.
 \begin{equation}
-  \bra{g_n}\hat{V}\ket{g_m}
-  &=\int\dd{x}\bra{g_n}\ket{x}V(x)\overline{\bra{g_m}\ket{x}}
+  \bra{g_l}\hat{V}\ket{g_{l^\prime}}
+  &=\int\dd{x}\bra{g_l}\ket{x}V(x)\overline{\bra{g_{l^\prime}}\ket{x}}
   \label{eq:transform_reciprocal_lattice}
 \end{equation}
-With $\bra{x}\ket{g_m}=e^{2ikxm}/\sqrt{2\pi}$ we can identify
+With $\bra{x}\ket{g_l}=e^{2ikxl}/\sqrt{2\pi}$ we can identify
 \cref{eq:transform_reciprocal_lattice} as Fourier transform into the
 reciprocal lattice base. Taking \cref{eq:potential_lattice} as periodic
 potential and using orthogonality between Fourier modes we find
 \begin{equation}
-  \bra{g_n}\hat{V}_\text{lat}\ket{g_m}
-  =\frac{1}{4}V_0\left(\delta_{n,m-1}+\delta_{n,m+1}+2\delta_{n,m}\right)
+  \bra{g_l}\hat{V}_\text{lat}\ket{g_{l^\prime}}
+  =\frac{1}{4}V_0\left(\delta^l_{l^\prime-1}+\delta^l_{l^\prime+1}+2\delta^l_{l^\prime}\right)
   \label{eq:potential_reciprocal_lattice_base}.
 \end{equation}
 
@@ -182,15 +182,15 @@ of the Hamiltonian
 \end{equation}
 and each of these Bloch waves can be written in the form
 \begin{equation}
-  \bra{\vb{x}}\ket{\Psi_{n\vb{q}}}
-  =\Psi_{n\vb{q}}(\vb{x})
-  =e^{i\vb{q}\cdot\vb{x}}\psi_{n\vb{q}}(\vb{x})
+  \bra{\vb{x}}\ket{\Psi^n_{\vb{q}}}
+  =\Psi^n_{\vb{q}}(\vb{x})
+  =e^{i\vb{q}\cdot\vb{x}}\psi^n_{\vb{q}}(\vb{x})
   \label{eq:wave_bloch}
 \end{equation}
-with $\psi_{n\vb{q}}(\vb{x}+\vb{a})=\psi_{n\vb{q}}(\vb{x})$, wave vector
-$\vb{q}$ and bandindex $n$. For a proof of Bloch's theorem see
-\cite{Roessler2004} or \cite{Bartelmann2018}. We confine the wave number to
-the first Brillouin zone $-k<q<+k$ to obtain an unique set of Bloch waves.
+with $\psi^n_{\vb{q}}(\vb{x}+\vb{a})=\psi^n_{\vb{q}}(\vb{x})$, wave vector
+$\vb{q}$ and bandindex $n$. We confine the wave number to the first Brillouin
+zone $-k<q<+k$ to obtain an unique set of Bloch waves. For a proof of Bloch's
+theorem see \cite{Roessler2004} or \cite{Bartelmann2018}.
 
 \subsection{Energy bands}
 
@@ -203,50 +203,50 @@ Using the Bloch waves \cref{eq:wave_bloch} as ansatz for the Hamiltonian
 $V_\text{lat}(z)=V_0\cos^2(kz)$ found in \cref{eq:potential_periodic}, we are
 now able to find an expression for the energy eigenvalues. We notice that by
 the product rule
-$\hat{p}^2\ket{\Psi_{nq}}=e^{iqx}(\hat{p}+\hbar q)\ket{\psi_{nq}}$,
+$\hat{p}^2\ket{\Psi^n_{q}}=e^{iqx}(\hat{p}+\hbar q)\ket{\psi^n_{q}}$,
 thus finding
 \begin{equation}
-  E_n(q)\ket{\Psi_{nq}}
-  =\hat{H}_{lat}\ket{\Psi_{nq}}
-  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi_{nq}}
+  E^n_q\ket{\Psi^n_{q}}
+  =\hat{H}_{lat}\ket{\Psi^n_{q}}
+  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi^n_{q}}
   \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
 
-We expand the state $\ket{\psi_{nq}}$ in the reciprocal lattice base
+We expand the state $\ket{\psi^n_{q}}$ in the reciprocal lattice base
 \begin{equation}
-  \ket{\psi_{nq}}
-  =\left(\sum_j\ket{g_j}\bra{g_j}\right)\ket{\psi_{nq}}
-  =\sum_j\braket{g_j}{\psi_{nq}}\ket{g_j}
-  =\sum_jc_j\ket{g_j}
+  \ket{\psi^n_{q}}
+  =\left(\sum_l\ket{g_l}\bra{g_l}\right)\ket{\psi^n_{q}}
+  =\sum_l\braket{g_l}{\psi^n_{q}}\ket{g_l}
+  =\sum_lc_l\ket{g_l}
   \label{eq:state_expansion_reciprocal_lattice_base}.
 \end{equation}
-We need to find the momentum eigenvalues of the state $\ket{g_j}$
+We need to find the momentum eigenvalues of the state $\ket{g_l}$
 \begin{equation}
-  \hat{p}\ket{g_j}
-  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_j}
+  \hat{p}\ket{g_l}
+  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_l}
   \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
 \end{equation}
 With $\bra{y}\hat{p}\ket{x}=-i\hbar\delta(y-x)\dv{x}$ we can take the
-derivative of $\bra{x}\ket{g_j}=e^{2ikxj}$ and simplify
+derivative of $\bra{x}\ket{g_l}=e^{2ikxl}$ and simplify
 \cref{eq:eigenvalue_momentum_reciprocal_lattice1} to
 \begin{equation}
-  \hat{p}\ket{g_j}
-  =2\hbar kj\int\dd{x}\ket{x}\bra{x}\ket{g_j}
-  =2\hbar kj\ket{g_j}
+  \hat{p}\ket{g_l}
+  =2\hbar kl\int\dd{x}\ket{x}\bra{x}\ket{g_l}
+  =2\hbar kl\ket{g_l}
   \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
 \end{equation}
 
 Finally we insert \cref{eq:state_expansion_reciprocal_lattice_base} into
-\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_i}$ to the right hand
-side while using \cref{eq:potential_reciprocal_lattice_base} and
+\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_{l^\prime}}$ to the
+right hand side while using \cref{eq:potential_reciprocal_lattice_base} and
 \cref{eq:eigenvalue_momentum_reciprocal_lattice1}, yielding
 \begin{equation}
-  E_n(q)
-  =\bra{g_i}\hat{H}_\text{lat}\ket{g_j}
+  E^n_q
+  =\bra{g_{l}}\hat{H}_\text{lat}\ket{g_{l^\prime}}
   =
   \begin{cases}
-    (j+q/k)^2E_r+\frac{1}{2}V_0, & \text{if } i=j\\
-    \frac{1}{4}V_0, & \text{if } \abs{i-j}=1\\
+    (l+q/k)^2E_r+\frac{1}{2}V_0, & \text{if } l=l^\prime\\
+    \frac{1}{4}V_0, & \text{if } \abs{l-l^\prime}=1\\
     0, & \text{otherwise}
   \end{cases}
   \label{eq:eigenvalue_energy_energy_lattice_final}
@@ -270,12 +270,11 @@ inserting \cref{eq:potential_lattice_approximation} into
 \cref{eq:hamiltonian_lattice} and rearranging yield us the Hamiltonian of
 the harmonic oscillator
 \begin{equation}
-  \frac{\hbar\omega}{2}\left(2n+1\right)\ket{\phi}
-  =\left(E_n-V_0\right)\ket{\phi}
+  \hat{H}_\text{har}-V_0
   =\left(\frac{\hat{p}^2}{2m}-V_0k^2x^2\right)\ket{\phi}
-  =\hat{H}_\text{har}\ket{\phi}
+  \label{eq:hamiltonian_harmonic}
 \end{equation}
-with well-known energy levels and frequency
+with well-known energy levels $E_n=\hbar\omega(2n+1)/n$ and frequency
 $\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$. In the harmonic approximation
 the energy bands found in \cref{eq:eigenvalue_energy_energy_lattice_final}
 decrease to single energy levels. By contrast flat potentials would increase
@@ -285,6 +284,115 @@ nearly-free electron model.
 
 \section{Hopping between lattice sites}
 
+Quantum mechanics predicts a nonzero probability for particles to tunnel
+through an energy barrier. Lattice hopping describes this phenomena of atoms
+tunneling through the optical lattice potentials to other lattice sites. In
+this section we want to find an expression for the probability amplitude of
+such hopping effects.
+
 \subsection{Wannier functions}
 
-\subsection{Probability amplitude}
+So far we studied the effects of a periodic potential on the energy levels of
+a wave function that propagates over the complete lattice. Lattice hopping
+however is a local effect, therefore we need a spatially localized set of
+wave functions to describe the effect of lattice hopping. Fortunately the
+so called Wannier functions provide such an localized function base.
+
+The orthodox definition of the Wannier function with bandindex $n$ at lattice
+site $l$ reads
+\begin{equation}
+  \bra{x}\ket{\phi^n_{l}}
+  =\phi_{nl}(x)
+  =\frac{a}{2\pi}\int_{-k}^{+k}\dd{q}e^{-iqla}\Psi^n_{q}(x)
+  \label{eq:wave_wannier_orthodox}
+\end{equation}
+wherein $\Psi^n_{q}$ is the Bloch wave in \cref{eq:wave_bloch}. For small
+lattices and numerical computations we need to replace the integral by a sum
+over all $q$ that obey the periodic boundary conditions.
+
+\subsection{Band projected position operator}
+
+The usual definition of the Wannier functions \cref{eq:wave_wannier_orthodox}
+possesses the weakness that Gauge freedom of the Bloch functions can lead to
+other physical realisations in the Wannier base, thus we will follow the
+approach performed in \cite{Goerg2014} and define the Wannier functions
+as the eigenstates of the band projected position operator.
+
+We define the projection operator to energy band with bandindex $n$ as
+\begin{equation}
+  \hat{P}_n
+  =\sum_q\ket{\phi^n_{q}}\bra{\phi^n_{q}}
+  \label{eq:projection_band}.
+\end{equation}
+The position operator projected onto band $n$ then reads
+\begin{equation}
+  \hat{x}_n
+  =\hat{P}_n\hat{x}\hat{P}_n
+  \label{eq:position_projected_band}
+\end{equation}
+and the Wannier states are the eigenstates thereof
+\begin{equation}
+  \hat{x}_n\ket{\phi^n_{l}}=x^n_{l}\ket{\phi^n_{l}}
+  \label{eq:eigenvalue_position_projected_band}.
+\end{equation}
+
+First we need the Bloch waves expanded in the reciprocal lattice base
+\cref{eq:state_expansion_reciprocal_lattice_base}
+\begin{equation}
+  \bra{x}\ket{\Phi^n_q}
+  =e^{iqx}\sum_lc_l\bra{x}\ket{g_l}
+  =e^{iqx}\sum_lc_le^{2ikxl}
+  \label{eq:state_expansion_bloch_reciprocal_lattice_base}.
+\end{equation}
+Now we can diagonalize \cref{eq:eigenvalue_position_projected_band} with
+\cref{eq:state_expansion_bloch_reciprocal_lattice_base}
+\begin{equation}
+  \bra{\psi^n_{q}}\hat{x}_m\ket{\psi^{n^\prime}_{q^\prime}}
+  =\int_0^L\dd{x}\psi^n_{q}(x)x\overline{\psi^{n^\prime}_{q^\prime}(x)}
+  =\sum_{l,l^\prime}c_l\overline{c_{l^\prime}}\int_0^L\dd{x}xe^{ix(q-q^\prime)}e^{2ikx(l-l^\prime)}
+  \label{eq:eigenvalue_position_project_band_reciprocal_lattice_base}
+\end{equation}
+where $L$ is the total lattice length. To simplify the integral given in
+\cref{eq:eigenvalue_position_project_band_reciprocal_lattice_base} we use
+that the wave number $q=2\pi s/L$ is quantized $s\in\mathbb{Z}$ because of
+the periodic boundary condition and $L=Na=\pi N/k$ with number of lattice
+sites $N\in\mathbb{N}$. Finally we find the matrix elements of
+\cref{eq:eigenvalue_position_project_band_reciprocal_lattice_base} to be
+\begin{equation}
+  d^{nm}_{ql}
+  :=
+  \bra{\psi^n_{q}}\hat{x}_m\ket{\psi^{n^\prime}_{q^\prime}}
+  =
+  \frac{Na^2}{2\pi i}
+  \begin{cases}
+    N\pi i,
+    & \text{if } l=l^\prime,s=s^\prime\\
+    1/\left(l-l^\prime\right)
+    & \text{if } l\neq l^\prime,s=s^\prime\\
+    N/\left(s-s^\prime\right),
+    & \text{if } l=l^\prime,s\neq s^\prime\\
+    N/\left((l-l^\prime)+\frac{s-s^\prime}{N}\right)
+    & \text{if } l\neq l^\prime,s\neq s^\prime\\
+    0 & \text{otherwise}
+  \end{cases}
+  \label{eq:elements_position_project_band_reciprocal_lattice}
+\end{equation}
+wherein
+\begin{align}
+  s,s^\prime\in\left[-\frac{N}{2}+1,+\frac{N}{2}\right]\cap\mathbb{Z}
+  &&
+  l,l^\prime\in\left[\frac{1-n_\text{max}}{2},\frac{n_\text{max}-1}{2}\right]
+  \cap\mathbb{Z}
+\end{align}
+with $n_\text{max}$ being the maximum bandindex to consider. As such the
+Wannier states expanded in the Bloch base are
+\begin{equation}
+  \ket{\phi^n_l}
+  =\sum_{q,n}d^{nm}_{ql}\ket{\Psi^n_q}
+  \label{eq:state_expansion_wannier_in_bloch_base}
+\end{equation}
+with the matrix elements from
+\cref{eq:elements_position_project_band_reciprocal_lattice}.
+
+\subsection{Transition element}
+
