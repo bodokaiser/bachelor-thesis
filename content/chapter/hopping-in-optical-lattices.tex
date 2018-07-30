@@ -172,6 +172,7 @@ effective periodic dipole potential
   V_0
   =\frac{\hbar\Omega}{4\Delta\omega}\cos^2(kz)
   =\frac{\hbar I_0\cos^2(kz)}{2c_0\epsilon_0\Delta\omega}
+  \label{eq:potential_effective}
 \end{equation}
 with vacuum speed of light $c_0$, dielectric constant $\epsilon_0$ and
 maximum intensity $I_0$. Same results can also be obtained by the use of
@@ -180,32 +181,39 @@ clear on assumptions and time dependence \cite{Grimm2008}.
 
 \section{Harmonic approximation}
 
-Another approach to solve \cref{eq:hamiltonian_lattice} in closed form is to
-use the fact that cooled atoms have a low kinetic energy and will be located
-at the bottom of the potential wells $\hat{V}_\text{lat}$ such that we can
-do an harmonic approximation
+Given the effective lattice potential \cref{eq:potential_effective} the
+effective lattice Hamiltonian reads
 \begin{equation}
-  V_\text{lat}(x)
+  \hat{H}_\text{eff}
+  =\frac{\hat{p}^2}{2m}+\hat{V}_\text{eff}
+  \label{eq:hamiltonian_effective}.
+\end{equation}
+One first naive approach to solve the time-independent Schrödinger equation
+subject to the effective lattice Hamiltonian would be to Taylor expand
+the effective potential in second order
+\begin{equation}
+  \hat{V}_\text{eff}
   =V_0\cos^2(kx)
   \approx V_0\left(1-(kx)^2\right)
-  \label{eq:potential_lattice_approximation}
+  \label{eq:potential_harmonic_approximation}
 \end{equation}
-inserting \cref{eq:potential_lattice_approximation} into
-\cref{eq:hamiltonian_lattice} and rearranging yield us the Hamiltonian of
-the harmonic oscillator
+and give us the Hamiltonian of a linear harmonic quantum oscillator
+\begin{equation}
 \begin{equation}
   \hat{H}_\text{har}-V_0
-  =\left(\frac{\hat{p}^2}{2m}-V_0k^2x^2\right)\ket{\phi}
-  \label{eq:hamiltonian_harmonic}
+  =\frac{\hat{p}^2}{2m}-V_0k^2x^2
+  \label{eq:hamiltonian_harmonic_approximation}
 \end{equation}
 with well-known energy levels $E_n=\hbar\omega(2n+1)/2$ and frequency
-$\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$. In the harmonic approximation
-the energy bands found in \cref{eq:eigenvalue_energy_energy_lattice_final}
-decrease to single energy levels. By contrast flat potentials would increase
-the width of the energy bands which in the limit leads to free atoms. We are
-going to use the harmonic approximation to cross check later results.
+$\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$, where we defined the recoil
+energy $E_r=(\hbar k)^2/(2m)$ as an atom-independent energy scale.
 
-\section{States in optical lattice}
+The harmonic approximation is valid for very deep potentials $V_0\gg E$.
+Unfortunately the Gaussian wave functions of the harmonic oscillator decay
+fast at the potential boundary such that we have vanishing probability to
+find a particle tunneling through the potential.
+
+\section{Lattice theory}
 
 With the previous foundations in place we can proceed with the solid state
 analogues for optical lattices. From the  the simple analytic form of the
