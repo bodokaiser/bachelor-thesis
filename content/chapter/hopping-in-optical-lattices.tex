@@ -213,15 +213,14 @@ Unfortunately the Gaussian wave functions of the harmonic oscillator decay
 fast at the potential boundary such that we have vanishing probability to
 find a particle tunneling through the potential.
 
-\section{Lattice theory}
+\section{Periodic lattice potentials}
 
-With the previous foundations in place we can proceed with the solid state
-analogues for optical lattices. From the  the simple analytic form of the
-optical potential, \cref{eq:potential_lattice}, we are able to
-derive an expression for the quantum tunneling probability which gives us
-an upper bound for the duration time of our potential generation.
+The following section is dedicated to the quantum mechanics of periodic
+lattice potentials. After we revise the formulation of lattice structures,
+we will examine Bloch and Wannier states as well as the energy bands arising
+in periodic lattice potentials.
 
-\subsection{Bravais lattice}
+\subsection{Lattice structures}
 
 A Bravais lattice of dimension $N$ consists of the discrete points
 \begin{equation}
@@ -230,144 +229,139 @@ A Bravais lattice of dimension $N$ consists of the discrete points
   =\sum_{i=1}^Nn_i\vb{a}_i
   \qc n_1,\dots,n_N\in\mathbb{Z}
 \end{equation}
-where the $\vb{a}_i$ are the primitive vectors that span the primitive cell.
-The reciprocal lattice is defined as the point set
+where $\vb{a}_i$ are the primitive vectors that span the primitive lattice
+cell.
+
+We define the reciprocal lattice as the discrete points
 \begin{equation}
   \vb{g}
-  =\bra{\vb{x}}\ket{\vb{g}}
+  =\bra{\vb{p}}\ket{\vb{g}}
   =\sum_{i=1}^Nm_i\vb{b}_i
   \qc m_1,\dots,m_N\in\mathbb{Z}
 \end{equation}
 that satisfy the condition $\exp(\vb{r}\cdot\vb{g})=1$. For a simple cubic
 lattice structure $\vb{b}_i=2\pi\vb{a}/{{\vb{a}_i}^2}$ satisfies said
-condition.
+condition. For the subsequent sections we will only consider the one
+dimensional simple cubic lattice. Cubic lattices of higher dimension however
+can be easily obtained by superposition of the potentials.
 
-In the reciprocal lattice space it is especially simple to express periodic
-functions. This suggests the transformation of a periodic potential
-\cref{eq:potential_lattice} into the reciprocal lattice space.
+As the reciprocal lattice space can be seen as the Fourier transform of the
+Bravais lattice, it is especially simple to express periodic functions and it
+suggests the representation of periodic potentials in reciprocal lattice
+space. Let $\ket{g_n}$ denote the $n$th reciprocal lattice point then the
+transformation rule is
 \begin{equation}
-  \bra{g_l}\hat{V}\ket{g_{l^\prime}}
-  &=\int\dd{x}\bra{g_l}\ket{x}V(x)\overline{\bra{g_{l^\prime}}\ket{x}}
-  \label{eq:transform_reciprocal_lattice}
+  \bra{g_n}\hat{V}\ket{g_m}
+  =\int\dd{x}\bra{g_n}\ket{x}^*V(x)\bra{g_m}\ket{x}
+  =\int\dd{x}V(x)e^{2ikx(n-m)}
+  \label{eq:potential_in_reciprocal_lattice}.
 \end{equation}
-With $\bra{x}\ket{g_l}=e^{2ikxl}/\sqrt{2\pi}$ we can identify
-\cref{eq:transform_reciprocal_lattice} as Fourier transform into the
-reciprocal lattice base. Taking \cref{eq:potential_lattice} as periodic
-potential and using orthogonality between Fourier modes we find
-\begin{equation}
-  \bra{g_l}\hat{V}_\text{lat}\ket{g_{l^\prime}}
-  =\frac{1}{4}V_0\left(\delta^l_{l^\prime-1}+\delta^l_{l^\prime+1}+2\delta^l_{l^\prime}\right)
-  \label{eq:potential_reciprocal_lattice_base}.
-\end{equation}
+Evaluation of \cref{eq:potential_in_reciprocal_lattice} for a specific
+potential will usually yield a finite number of terms in dependence of
+$n-m$ as we actually determine the Fourier coefficients of a discrete Fourier
+transform.
 
 \subsection{Bloch states}
 
-Bloch's theorem states that for a periodic potential
+Bloch's theorem states that for a periodic lattice potential
 \begin{equation}
-  V_\text{per}(\vb{x}+\vb{a})=V_\text{per}(\vb{x})
+  V_\text{lat}(\vb{x}+\vb{a})=V_\text{lat}(\vb{x})
   \label{eq:potential_periodic}
 \end{equation}
 there exists a complete set of wavefunctions that are energy eigenstates
 of the Hamiltonian
 \begin{equation}
-  \hat{H}_\text{per}
-  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{per}
+  \hat{H}_\text{lat}
+  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{lat}
   \label{eq:hamiltonian_periodic},
 \end{equation}
-and each of these Bloch waves can be written in the form
+and each of these Bloch waves can be written into the form
 \begin{equation}
   \bra{\vb{x}}\ket{\Psi^n_{\vb{q}}}
   =\Psi^n_{\vb{q}}(\vb{x})
   =e^{i\vb{q}\cdot\vb{x}}\psi^n_{\vb{q}}(\vb{x})
-  \label{eq:wave_bloch}
+  \label{eq:state_bloch}
 \end{equation}
 with $\psi^n_{\vb{q}}(\vb{x}+\vb{a})=\psi^n_{\vb{q}}(\vb{x})$, wave vector
 $\vb{q}$ and bandindex $n$. We confine the wave number to the first Brillouin
-zone $-k<q<+k$ to obtain an unique set of Bloch waves. For a proof of Bloch's
-theorem see \cite{Roessler2004} or \cite{Bartelmann2018}.
+zone $-k<q<+k$. For a proof of Bloch's theorem see \cite{Roessler2004} or
+\cite{Bartelmann2018}.
 
 \subsection{Energy band structure}
 
-Using the Bloch waves \cref{eq:wave_bloch} as ansatz for the Hamiltonian
+The Bloch states \cref{eq:state_bloch} can be used as ansatz to solve the
+periodic lattice Hamiltonian
 \begin{equation}
   \hat{H}_\text{lat}
-  =\frac{\hat{\vb{p}}}{2m}+\hat{V}_\text{lat}
-  \label{eq:hamiltonian_lattice},
+  =\frac{\hat{p}^2}{2m}+\hat{V}_\text{lat}
+  \label{eq:hamiltonian_lattice}.
 \end{equation}
-$V_\text{lat}(z)=V_0\cos^2(kz)$ found in \cref{eq:potential_periodic}, we are
-now able to find an expression for the energy eigenvalues. We notice that by
-the product rule
-$\hat{p}^2\ket{\Psi^n_{q}}=e^{iqx}(\hat{p}+\hbar q)\ket{\psi^n_{q}}$,
-thus finding
+We notice that by the product rule
+$\hat{p}^2\Psi^n_q(x)=e^{iqx}(\hat{p}+\hbar q)\psi^n_q(x)$,
+thus we find
 \begin{equation}
   E^n_q\ket{\Psi^n_{q}}
   =\hat{H}_{lat}\ket{\Psi^n_{q}}
-  =\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi^n_{q}}
+  =e^{iqx}\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi^n_{q}}
   \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
-
-We expand the state $\ket{\psi^n_{q}}$ in the reciprocal lattice base
+Expansion of the state $\ket{n,q}$ in states of the reciprocal lattice returns
 \begin{equation}
-  \ket{\psi^n_{q}}
-  =\left(\sum_l\ket{g_l}\bra{g_l}\right)\ket{\psi^n_{q}}
-  =\sum_l\braket{g_l}{\psi^n_{q}}\ket{g_l}
-  =\sum_lc_l\ket{g_l}
-  \label{eq:state_expansion_reciprocal_lattice_base}.
+  \ket{\Psi^n_q}
+  =\left(\sum_s\ket{g_s}\bra{g_s}\right)\ket{\Psi^n_q}
+  =\sum_s\braket{g_s}{\Psi^n_q}\ket{g_s}
+  =\sum_sc^n_{sq}\ket{g_s}
+  \label{eq:state_bloch_in_reciprocal_lattice}.
 \end{equation}
-We need to find the momentum eigenvalues of the state $\ket{g_l}$
+The momentum eigenvalues of the state $\ket{g_s}$ can be found by expansion
+into position space
 \begin{equation}
-  \hat{p}\ket{g_l}
-  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_l}
+  \hat{p}\ket{g_s}
+  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_s}
   \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
 \end{equation}
 With $\bra{y}\hat{p}\ket{x}=-i\hbar\delta(y-x)\dv{x}$ we can take the
-derivative of $\bra{x}\ket{g_l}=e^{2ikxl}$ and simplify
-\cref{eq:eigenvalue_momentum_reciprocal_lattice1} to
+derivative of $\bra{x}\ket{g_s}=e^{2ikxs}$ and simplify
+\cref{eq:eigenvalue_momentum_reciprocal_lattice1} down to
 \begin{equation}
-  \hat{p}\ket{g_l}
-  =2\hbar kl\int\dd{x}\ket{x}\bra{x}\ket{g_l}
-  =2\hbar kl\ket{g_l}
-  \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
+  \hat{p}\ket{g_s}
+  =2\hbar ks\int\dd{x}\ket{x}\bra{x}\ket{g_s}
+  =2\hbar ks\ket{g_s}
+  \label{eq:eigenvalue_momentum_reciprocal_lattice2}.
 \end{equation}
-
-Finally we insert \cref{eq:state_expansion_reciprocal_lattice_base} into
-\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_{l^\prime}}$ to the
-right hand side while using \cref{eq:potential_reciprocal_lattice_base} and
-\cref{eq:eigenvalue_momentum_reciprocal_lattice1}, yielding
+Finally we insert \cref{eq:state_bloch_in_reciprocal_lattice} into
+\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_t}$ to the
+right hand side while using \cref{eq:potential_in_reciprocal_lattice} and
+\cref{eq:eigenvalue_momentum_reciprocal_lattice2}, yielding
 \begin{equation}
-  E^n_q
-  =\bra{g_{l}}\hat{H}_\text{lat}\ket{g_{l^\prime}}
-  =
-  \begin{cases}
-    (l+q/k)^2E_r+\frac{1}{2}V_0, & \text{if } l=l^\prime\\
-    \frac{1}{4}V_0, & \text{if } \abs{l-l^\prime}=1\\
-    0, & \text{otherwise}
-  \end{cases}
-  \label{eq:eigenvalue_energy_energy_lattice_final}
+  E^n_qc^n_{tq}
+  =c^n_{tq}\frac{(2s+q/k)^2}{2m}E_r+\sum_sc^n_{sq}\bra{g_t}\hat{V}_\text{lat}\ket{g_s}
+  \label{eq:eigenvalue_energy_lattice_explicit}
 \end{equation}
-wherein we introduced the recoil energy $E_r=\hbar^2k^2/(2m)$ which gives us
-a natural, atom independent energy scale.
+with recoil energy $E_r=\hbar^2k^2/(2m)$.
+\Cref{eq:eigenvalue_energy_lattice_explicit} has to be solved for known
+$\hat{V}_\text{lat}$ numerically. We will do this later for the effective
+optical lattice potential from \cref{eq:potential_effective}.
 
 \subsection{Wannier states}
 
-So far we studied the effects of a periodic potential on the energy levels of
-a wave function that propagates over the complete lattice. Lattice hopping
-however is a local effect, therefore we need a spatially localized set of
-wave functions to describe the effect of lattice hopping. Fortunately the
-so called Wannier functions provide such an localized function base.
+So far we studied the effects of a periodic lattice potential on the energy
+levels and the Bloch wave functions that propagate over the complete lattice.
+Lattice hopping however is a local effect, therefore we need a spatially
+localized set of wave functions to describe the effect of lattice hopping.
+Fortunately the so called Wannier fullfill these requirements.
 
 The orthodox definition of the Wannier function with bandindex $n$ at lattice
 site $l$ reads
 \begin{equation}
-  \bra{x}\ket{\phi^n_{l}}
-  =\phi^n_{l}(x)
-  =\frac{1}{\sqrt{N}}\sum_qe^{-iqla}\Psi^n_{q}(x)
-  \label{eq:wave_wannier_orthodox}
+  \ket{\phi^n_{l}}
+  =\frac{1}{\sqrt{N}}\sum_qe^{-iqla}\ket{\Psi^n_{q}}
+  \label{eq:state_wannier_orthodox}
 \end{equation}
-wherein $\Psi^n_{q}$ is the Bloch wave from \cref{eq:wave_bloch}, $N$ the
-total number of lattice sites and the sum over $q$ is confined to the first
-Brillouin zone with $q$ that satisfy the periodic boundary condition $q=2ks/N$
-with integer $s\in\mathbb{Z}$.
+wherein $\ket{\Psi^n_q}$ is the Bloch wave functions from
+\cref{eq:state_bloch}, $N$ the total number of lattice sites and the sum
+over $q$ is confined to the first Brillouin zone with $q$ that satisfy the
+periodic boundary condition $q=2ks/N$ with integer $s\in\mathbb{Z}$.
 
 \section{Hopping frequency}
 
