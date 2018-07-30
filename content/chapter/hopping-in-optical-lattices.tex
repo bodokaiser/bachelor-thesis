@@ -125,6 +125,8 @@ be found in \cite{Bethe1957}. Als the transition elements vanishes for states
 with same parity, in particular do we have $\Omega_{nn}=0$
 \cite{Bartelmann2018}.
 
+\subsubsection{Two state system}
+
 From now on we assume a two state system that initially is only populated in
 the ground state $c_g(0)=1,c_e(0)=0$ and the dynamics in
 \cref{eq:differential_equation_population_dynamics} are simply described by
@@ -222,6 +224,8 @@ in periodic lattice potentials.
 
 \subsection{Lattice structures}
 
+\subsubsection{Bravais lattice}
+
 A Bravais lattice of dimension $N$ consists of the discrete points
 \begin{equation}
   \vb{r}
@@ -231,6 +235,8 @@ A Bravais lattice of dimension $N$ consists of the discrete points
 \end{equation}
 where $\vb{a}_i$ are the primitive vectors that span the primitive lattice
 cell.
+
+\subsubsection{Reciprocal lattice}
 
 We define the reciprocal lattice as the discrete points
 \begin{equation}
@@ -244,6 +250,8 @@ lattice structure $\vb{b}_i=2\pi\vb{a}/{{\vb{a}_i}^2}$ satisfies said
 condition. For the subsequent sections we will only consider the one
 dimensional simple cubic lattice. Cubic lattices of higher dimension however
 can be easily obtained by superposition of the potentials.
+
+\subsubsection{Transformation to reciprocal lattice}
 
 As the reciprocal lattice space can be seen as the Fourier transform of the
 Bravais lattice, it is especially simple to express periodic functions and it
@@ -351,6 +359,8 @@ Lattice hopping however is a local effect, therefore we need a spatially
 localized set of wave functions to describe the effect of lattice hopping.
 Fortunately the so called Wannier fullfill these requirements.
 
+\subsubsection{Definition via Bloch superpositions}
+
 The orthodox definition of the Wannier function with bandindex $n$ at lattice
 site $l$ reads
 \begin{equation}
@@ -362,6 +372,8 @@ wherein $\ket{\Psi^n_q}$ is the Bloch wave functions from
 \cref{eq:state_bloch}, $N$ the total number of lattice sites and the sum
 over $q$ is confined to the first Brillouin zone with $q$ that satisfy the
 periodic boundary condition $-k<q=2ki/N<+k$ with integer $i\in\mathbb{Z}$.
+
+\subsubsection{Definition via the band projected position operator}
 
 The defintion \cref{eq:state_wannier_orthodox} is valid for simple lattice
 structures, however for more sophisticated lattices Gauge freedom of the
@@ -409,7 +421,7 @@ determined by
   \label{eq:state_wannier}.
 \end{equation}
 
-\section{Hopping amplitude}
+\subsection{Hopping amplitude}
 
 With the previous tools in place we are now set to give an expression for the
 quantum hopping amplitude between lattices.
@@ -449,7 +461,7 @@ the energies in terms of the hopping probabilites
 which in practice is easier to calculate then \cref{eq:element_hopping} as
 can be seen in the consecutive section.
 
-\subsection{Tight-binding approximation}
+\subsubsection{Tight-binding approximation}
 
 For deep potentials $V_0\gtrapprox3E_r$ hopping only contributes from direct
 neighbour sites \cite{Rom2009}. Thus we can \cref{eq:element_energy_hopping}
@@ -471,3 +483,53 @@ the results from another yields us
 \end{equation}
 which says that the hopping probability is approximate one quarter of the
 energy bandwidth.
+
+\section{Evaluation and comparison}
+
+Finally we want to apply the previous results on the previously found
+effective potential $V(z)=V_0\cos^2(kz)$ \cref{eq:potential_effective}. Using
+\cref{eq:potential_in_reciprocal_lattice} we find that the matrix elements of
+the effective potential indeed have the simple form
+\begin{equation}
+  \bra{g_s}\hat{V}_\text{eff}\ket{g_t}
+  =\frac{1}{4}V_0\left(2\delta^s_t+\delta^s_{t-1}+\delta^s_{t+1}\right)
+  \label{eq:elements_effective_potential_in_reciprocal_state}
+\end{equation}
+in reciprocal space. Using
+\cref{eq:elements_effective_potential_in_reciprocal_state} for the matrix
+elements of the effective Hamiltonian using
+\cref{eq:eigenvalue_energy_lattice_explicit} gives us
+\begin{equation}
+  \bra{g_s}\hat{H}_\text{eff}\ket{g_t}
+  =\begin{cases}
+    (s+q/k)^2E_r+\frac{1}{2}V_0, & \text{if }s=t\\
+    \frac{1}{4}V_0, & \text{if } \abs{s-t}=1\\
+    0, & \text{otherwise}
+  \end{cases}.
+\end{equation}
+Back at \cref{eq:eigenvalue_energy_lattice_explicit} we are set to determine
+the coefficients of the Bloch states
+\cref{eq:state_bloch_in_reciprocal_lattice} numerically and thereof the
+hopping terms using either the exact expression
+\cref{eq:element_energy_hopping} over all quasi-momenta $\hbar q$ or through
+the tight binding approximation \cref{eq:hopping_amplitude_energies}.
+
+\subsection{Analytical proximity}
+
+The literature \cite{Bloch2008} also reports the analytical proxmity
+\begin{equation}
+  J^n_1\approx
+  \frac{4}{\sqrt{\pi}}\left(\frac{V_0}{E_r}\right)^{3/4}\exp(-2\sqrt{V_0/E_r})
+  \label{eq:hopping_proximity}
+\end{equation}
+to be valid for sinusoidal potentials like \cref{eq:potential_effective} and
+to be derived from the Mathieu equation. The Mathieu equation can be obtained
+from the time-independent Schrödinger equation with
+$V_0\cos^2(kx)=\frac{1}{2}V_0\left(1-\cos(2kx)\right)$. \cite{Connor1984}
+gives a more elaborate deviation of \cref{eq:hopping_proximity}.
+
+\subsection{Results}
+
+Comparison of different methods to obtain the hopping amplitude and how
+they behave for different potential deeps. Conversion of the hopping term to
+a frequency and significance for our experiment.
