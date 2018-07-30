@@ -49,7 +49,7 @@ external sources are present \cite{Jackson2005}. Finally we can rewrite
 with the dipole operator $\hat{\vb{d}}=-e\vb{x}$ and spatially homogeneous
 light field $\vb{E}(t)$.
 
-\subsection{Electrical field of an 1D optical lattice}
+\subsection{Field of an optical lattice}
 
 An one dimensional optical lattices can be generated through the interference
 of two counter-propagating Gaussian beams, creating a standing wave
@@ -287,7 +287,7 @@ $\vb{q}$ and bandindex $n$. We confine the wave number to the first Brillouin
 zone $-k<q<+k$. For a proof of Bloch's theorem see \cite{Roessler2004} or
 \cite{Bartelmann2018}.
 
-\subsection{Energy band structure}
+\subsection{Energy bands}
 
 The Bloch states \cref{eq:state_bloch} can be used as ansatz to solve the
 periodic lattice Hamiltonian
@@ -361,14 +361,113 @@ site $l$ reads
 wherein $\ket{\Psi^n_q}$ is the Bloch wave functions from
 \cref{eq:state_bloch}, $N$ the total number of lattice sites and the sum
 over $q$ is confined to the first Brillouin zone with $q$ that satisfy the
-periodic boundary condition $q=2ks/N$ with integer $s\in\mathbb{Z}$.
+periodic boundary condition $-k<q=2ki/N<+k$ with integer $i\in\mathbb{Z}$.
 
-\section{Hopping frequency}
+The defintion \cref{eq:state_wannier_orthodox} is valid for simple lattice
+structures, however for more sophisticated lattices Gauge freedom of the
+phase of the Bloch states leads to different Wannier states, whereof only
+one is the maximally localized one \cite{Goerg2014}. One can find the
+phase of the Bloch state that is maximally localized by minimizing the spread
+of the Wannier states, however there also exists a more general definition
+that incorporates the phase ubiquity. In the general definition the Wannier
+states are best to construct as the eigenstates of the band projected
+position operator. The band projector to bandindex $n$ is defined as
+\begin{equation}
+  \hat{P}_n
+  =\sum_q\ket{\Psi^n_q}\bra{\Psi^n_q}
+  \label{eq:operator_band_projector}
+\end{equation}
+and the band projected position operator just follows as
+\begin{equation}
+  \hat{x}_n
+  =\hat{P}_n\hat{x}_n\hat{P}_n
+  \label{eq:operator_band_projected_position}.
+\end{equation}
+The wannier states are now defined as the eigenstates of the eigenvalue
+equation
+\begin{equation}
+  \hat{x}_n\ket{\phi^n_l}=x^n_l\ket{\phi^n_l}
+  \label{eq:eigenvalue_band_projected_position}
+\end{equation}
+where $x^n_l$ is the $l$th lattice site in the $n$th energy band. Choosing
+the Bloch base to find the elements of the band projected position operator
+\cref{eq:operator_band_projected_position} through
+\begin{equation}
+  X^{nn^\prime}_{qq^\prime}
+  =\bra{\Psi^n_q}\hat{x}_n\ket{\Psi^{n^\prime}_{q^\prime}}
+  =\int_0^{Na}\dd{x}\Psi^n_q(x)^*x\Psi^{n^\prime}_{q^\prime}(x)
+  \label{eq:element_band_projected_position}
+\end{equation}
+which give an analytical expression to solve to determine the matrix elements
+\cref{Bissbort2013}. Let $d^{mn}_{lq}$ be the diagonalized
+matrix $X^{nn^\prime}_{qq^\prime}$ in
+\cref{eq:element_band_projected_position} then the Wannier states are fully
+determined by
+\begin{equation}
+  \ket{\phi^n_l}
+  =\sum_{n,q}d^{mn}_{lq}\ket{\Phi^n_q}
+  \label{eq:state_wannier}.
+\end{equation}
 
-Quantum mechanics predicts a nonzero probability for particles to tunnel
-through an energy barrier. Lattice hopping describes this phenomena of atoms
-tunneling through the optical lattice potentials to other lattice sites. In
-this section we want to find an expression for the probability amplitude of
-such hopping effects.
+\section{Hopping amplitude}
 
+With the previous tools in place we are now set to give an expression for the
+quantum hopping amplitude between lattices.
 
+We define the hopping probability from lattice site $l$ to lattice site
+$l^\prime$ at bandindex $n$ as
+\begin{equation}
+  J^n_{ll^\prime}
+  =-\bra{\phi^n_l}\hat{H}_\text{lat}\ket{\phi^n_{l^\prime}}
+  \label{eq:element_hopping}
+\end{equation}
+this definition makes intuitive sense if we remind us at the dipole transition
+element and the Wannier states. Using the orthodox definition of the Wannier
+states \cref{eq:state_wannier_orthodox} for \cref{eq:element_hopping} we find
+\begin{equation}
+  J^n_{ll^\prime}
+  =\frac{1}{N}\sum_{q,q^\prime}e^{iqa(l-l^\prime)}
+  \bra{\Psi^n_q}\hat{H}_\text{lat}\ket{\Psi^n_{q^\prime}}
+  \label{eq:element_hopping2}.
+\end{equation}
+The Bloch states are energy eigenstates
+\cref{eq:eigenvalue_energy_lattice_explicit} and orthonormal, henceforth
+\begin{equation}
+  J^n_{ll^\prime}
+  =\frac{1}{N}\sum_{q}E^n_qe^{iqa(l-l^\prime)}
+  \label{eq:element_hopping3}.
+\end{equation}
+Expression \cref{eq:element_hopping3} is exact for a given number of lattices
+$N$ and can be evaluated numerically. The form of \cref{eq:element_hopping3}
+resembles a discrete Fourier transform. The inverse Fourier transform gives us
+the energies in terms of the hopping probabilites
+\begin{equation}
+  E^n_q
+  =\sum_{l-l^\prime}J^n_{l,l^\prime}e^{-iqa(l-l^\prime)}
+  \label{eq:element_energy_hopping}
+\end{equation}
+which in practice is easier to calculate then \cref{eq:element_hopping} as
+can be seen in the consecutive section.
+
+\subsection{Tight-binding approximation}
+
+For deep potentials $V_0\gtrapprox3E_r$ hopping only contributes from direct
+neighbour sites \cite{Rom2009}. Thus we can \cref{eq:element_energy_hopping}
+reduces to
+\begin{equation}
+  E^n_q
+  \approxJ^n_{l,l+1}e^{-iqa}+J^n_{l,l-1}e^{+iqa}+J^n_{ll}
+  =J^n_0+2J^n_1\cos(qa)
+  \label{eq:element_energy_hopping_tb_approx}
+\end{equation}
+where we have $J^n_{l,l-1}=J^n_{l,l+1}=J_1$ because of translation invariance.
+Using evaluation of $J^n_0=J^n_{ll}$ with \cref{eq:element_hopping} tells us
+that $J^n_0$ just is the average energy of an energy band. Evaluation of
+\cref{eq:element_energy_hopping_tb_approx} at $q=0$ and $q=k$ and subtracting
+the results from another yields us
+\begin{equation}
+  J^n_1\approx\frac{1}{4}\left(E^n_k-E^n_0\right)
+  \label{eq:hopping_amplitude_energies}
+\end{equation}
+which says that the hopping probability is approximate one quarter of the
+energy bandwidth.
