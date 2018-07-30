@@ -1,7 +1,7 @@
 SOURCES := $(shell find . -type f -name '*.tex')
 TARGETS := $(SOURCES:.tex=.pdf)
 
-build: clean $(TARGETS)
+build: $(TARGETS) clean
 
 %.pdf: %.ps
 	ps2pdf $< $@
