@@ -152,29 +152,77 @@ then deviations from the intensity control loop.}
   \label{fig:intensity_control_comparison}
 \end{figure}
 
-\section{Synthesizer}
+\section{Radio frequency signal}
+
+The present section considers the \gls{rf} signal we apply to the
+acousto-optic deflectors at different stages of the electronic processing.
+
+\subsection{Signal synthesis}
+
+As already described in the experimental setup section we use \gls{dds} for
+signal synthesis. We configure the \gls{dds} to do a linear frequency sweep
+from $f_0=\SI{80}{\mega\hertz}$ to $f_1\SI{120}{\mega\hertz}$ as this will be
+the later operation range to deflect the laser beam through the \gls{aod}.
 
 \begin{figure}[ht]
   \centering
-  \captionsetup{width=.8\textwidth}
-  \includegraphics[width=\textwidth]{\figuredir{synthesizer/specgram.pdf}}
-  \caption{Short measurement of the intensity without any electro-optics every
-  \SI{10}{\second} for over \SI{1}{\hour} to determine the accuracy of the
-  intensity controller.}
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
+  \captionsetup{width=.7\textwidth}
+  \caption{Delayed spectrogram windows of the \gls{dds} output signal in linear
+    ramp operation. We see how the frequency starts at $f_0$ and increases
+  in discrete steps to the final frequency $f_1$.}
+  \label{fig:signal_synthesis_spectrogram}
 \end{figure}
+
+At a configured timescale of \SI{10}{\micro\second} the used oscilloscopes
+voltage resolution is sufficient for Fourier analysis of the data.
+Unfortunately the oscilloscope is not able to capture the complete sweep
+period of $T=\SI{26.85}{\milli\second}$. To overcome this obstacle we
+inserted a frequency generator between the external trigger source and the
+oscilloscope. The frequency generator is configured to emit a square wave
+pattern on the rising edge of the external trigger of width $d$. The
+oscilloscope was configured to be triggered on the falling edge of the
+external trigger signal supplied by the frequency generator. By adjusting
+the square wave width $d$ we effectively added a delay to the trigger signal.
+In order to capture now the complete signal over duration $T$ we incremented
+the delay $d$ in steps of $T/300$. \Cref{fig:signal_synthesis_spectrogram}
+shows the spectrogram at four such delays. We observe that because of the
+discrete nature of the operation of the \gls{dds} each window only compromises
+one distinct frequency that is incremented over the sweep period $T$ in
+discrete steps.
 
 \begin{figure}[ht]
   \centering
-  \captionsetup{width=.8\textwidth}
-  \includegraphics[width=\textwidth]{\figuredir{synthesizer/frequency.pdf}}
-  \caption{Short measurement of the intensity without any electro-optics every
-  \SI{10}{\second} for over \SI{1}{\hour} to determine the accuracy of the
-  intensity controller.}
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
+  \captionsetup{width=.7\textwidth}
+  \caption{}
+  \label{fig:signal_synthesis_frequency_max_amplitude}
 \end{figure}
 
-\section{Amplifier}
+To find the frequency dependence of the amplitude we carried out \gls{fft} to
+find the dominant frequency of the signal. Then we collected the maximum
+amplitude of each signal window together with the dominant frequency and
+visualized the result in \Cref{fig:signal_synthesis_frequency_max_amplitude}.
+\Cref{fig:signal_synthesis_frequency_max_amplitude} shows us the maximum
+amplitude frequency dependency for different \gls{dds} configurations. We have
+used two different \gls{dds} chips as each will later supply a single
+\gls{aod}. From \Cref{fig:signal_synthesis_frequency_max_amplitude} we
+conclude that there is no difference between distinct \gls{dds}, however we
+observe a strong frequency dependence of the amplitude. This behaviour seems
+inherent for digital signal synthesis as the \gls{ad9910} comprises an
+inverse sinc filter that is supposed to reduce these dependency. From
+\Cref{fig:signal_synthesis_frequency_max_amplitude} we see that the effect
+of the inverse sinc filter unfortunately only lowers the output amplitude but
+does not smooth the frequency dependency.
 
-\section{Acousto-optic deflector}
+We summarize that already at the signal source stage a significant frequency
+dependency of the output power is introduced that will later have impact on
+the effective beam deflection power in the \gls{aod}.
+
+\subsection{Signal amplification}
+
+\section{Acousto-optics}
+
 \subsection{Power matching}
 
 \subsection{Intensity}
