@@ -195,7 +195,10 @@ discrete steps.
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
   \captionsetup{width=.7\textwidth}
-  \caption{}
+  \caption{Maximum amplitude of the two \gls{dds} at different frequencies
+  during linear sweep operation. In the two lower curves the \gls{dds} were
+configured with enabled inverse sinc filter that is supposed to compensate
+frequency dependence in the amplitude.}
   \label{fig:signal_synthesis_frequency_max_amplitude}
 \end{figure}
 
@@ -217,9 +220,43 @@ does not smooth the frequency dependency.
 
 We summarize that already at the signal source stage a significant frequency
 dependency of the output power is introduced that will later have impact on
-the effective beam deflection power in the \gls{aod}.
+the effective beam deflection power in the \gls{aod}. Further in our
+configuration the inverse sinc filter only lowered the output power, thus
+we will keep it disabled for subsequent measurements.
 
 \subsection{Signal amplification}
+
+We now supply the \gls{dds} signal to the amplifier and feed its output
+through attentuators to the oscilloscope. For the measurement procedure
+we retain the delay window method described in the former section to capture
+the complete trace.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/frequency-max-amplitude.pdf}}
+  \captionsetup{width=.7\textwidth}
+  \caption{}
+  \label{fig:signal_amplification_frequency_max_amplitude}
+\end{figure}
+
+\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
+damped output signal after amplification. Here we can clearly see the finite
+frequencies issued by the \gls{dds} as horizontal lines. Further we see that
+both amplifiers differ by a constant offset.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
+  \captionsetup{width=.7\textwidth}
+  \caption{}
+  \label{fig:signal_amplification_comparison}
+\end{figure}
+
+For \Cref{fig:signal_amplification_comparison} we compared the normalized
+amplified signals with the normalized signal source. We observe similar
+signal shape for both amplifiers. Compared to the signal source frequency
+response has changed in that there is an additional frequency response in
+between of the two responses of the signal source.
 
 \section{Acousto-optics}
 
