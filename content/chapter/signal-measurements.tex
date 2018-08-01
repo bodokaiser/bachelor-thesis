@@ -1,44 +1,89 @@
-\chapter{Radio frequency signal}
+\chapter{Signal measurements}
 
+By the time the \gls{rf} signal has reached the piezoelectric of the
+\gls{aod} it has been synthesized from a reference signal, amplified to match
+the power requirements of the \gls{aod} and matched to the impedance of the
+\gls{aod}. Each of these stages ammends the shape of the \gls{rf} signal and
+as we will see introduces new frequency dependent resonances.
 
-The present section considers the \gls{rf} signal we apply to the
-acousto-optic deflectors at different stages of the electronic processing.
+\section{Digital signal synthesis}
 
-\section{Signal synthesis}
+As has been described in the experimental setup section, \gls{dds} are used
+for signal synthesis. In the present section we want to examine the
+frequency behaviour of the \gls{dds}. In particular we are interested how the
+amplitude responds to different frequencies and how the digital design of the
+\gls{dds} affects the \gls{rf} signal shape.
 
-As already described in the experimental setup section we use \gls{dds} for
-signal synthesis. We configure the \gls{dds} to do a linear frequency sweep
-from $f_0=\SI{80}{\mega\hertz}$ to $f_1\SI{120}{\mega\hertz}$ as this will be
-the later operation range to deflect the laser beam through the \gls{aod}.
+\subsection{Setup}
 
-\begin{figure}[ht]
+For the following experiments we configured the \gls{dds} to do a linear
+frequency sweep from \SI{80}{\mega\hertz} to \SI{120}{\mega\hertz} at a sweep
+duration of \SI{26.84}{\micro\second}. The frequency range has been choosen
+because it overlaps with the operation range required to drive the \gls{aod}.
+The sweep duration is a good compromise between being able to resolve the
+complete sweep with limited oscilloscope resolution on the one hand and
+limited frequency resolution of the synthesizer.
+
+The time resolution of most oscilloscopes depends on the selected time scale,
+however choosing a finer time scale entails shortening the time length, thus
+we have a trade-off between being able to perform signal analysis that demands
+fine resolution of the sinusoidal voltage and the number of measurements we
+need to perform to capture a complete passthrough of the synthesized signal
+cycle. We found that a selected time division of \SI{10}{\micro\second} is
+sufficient for signal analysis, i.e. \gls{fft}, but at the same time limits
+the number of measurements to the magnitude of hundreds.
+
+To overcome the obstacle that we can only capture one time window of a
+\gls{rf} signal passthrough we inserted a frequency generator between the
+external trigger source and the oscilloscope. The frequency generator is
+configured to emit a square wave pattern on the rising edge of the external
+trigger of width $d$. The oscilloscope was configured to be triggered on the
+falling edge of the external trigger signal supplied by the frequency
+generator. By adjusting the square wave width $d$ we effectively added a
+delay to the trigger signal. In order to capture now the complete signal over
+duration $T$ we incremented the delay $d$ in steps of $T/300$.
+
+\subsection{Results}
+
+The former setup produced a single dataset we evaluated from two different
+angles. First we explored how the digital design of the \gls{dds} propagates
+into the signal. Second we explored the frequency dependence of the amplitude.
+
+\subsubsection{Spectrogram}
+
+A spectrogram visualizes how the frequency spectrum varies in time. One way
+to obtain a spectrogram is to partition the data into overlapping time chunks
+while performing \gls{fft} which allows us to combine time and frequency
+domain specific characteristics. In our case we choose the relative spectral
+power to be encoded through color.
+
+\begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
   \captionsetup{width=.8\textwidth}
-  \caption{Delayed spectrogram windows of the \gls{dds} output signal in linear
-    ramp operation. We see how the frequency starts at $f_0$ and increases
-  in discrete steps to the final frequency $f_1$.}
+  \caption{Spectrogram of delayed time windows of the \gls{dds} output signal
+    configured to perform a frequency sweep from \SI{80}{\mega\hertz} to
+    \SI{120}{\mega\hertz}. For an ideal linear sweep we would expect a linear
+    timeline of the frequency, instead we observe a discrete set of
+    frequencies which reflects the digital nature of the \gls{dds}.}
   \label{fig:signal_synthesis_spectrogram}
 \end{figure}
 
-At a configured timescale of \SI{10}{\micro\second} the used oscilloscopes
-voltage resolution is sufficient for Fourier analysis of the data.
-Unfortunately the oscilloscope is not able to capture the complete sweep
-period of $T=\SI{26.85}{\milli\second}$. To overcome this obstacle we
-inserted a frequency generator between the external trigger source and the
-oscilloscope. The frequency generator is configured to emit a square wave
-pattern on the rising edge of the external trigger of width $d$. The
-oscilloscope was configured to be triggered on the falling edge of the
-external trigger signal supplied by the frequency generator. By adjusting
-the square wave width $d$ we effectively added a delay to the trigger signal.
-In order to capture now the complete signal over duration $T$ we incremented
-the delay $d$ in steps of $T/300$. \Cref{fig:signal_synthesis_spectrogram}
-shows the spectrogram at four such delays. We observe that because of the
-discrete nature of the operation of the \gls{dds} each window only compromises
-one distinct frequency that is incremented over the sweep period $T$ in
-discrete steps.
+\Cref{fig:signal_synthesis_spectrogram} depicts four spectrogram, each taken
+at a different time window of the frequency sweep passthrough. The first
+spectrogram captures the start of the frequency sweep. We can see how for the
+first \SI{200}{\micro\second} the \gls{dds} outputs only the start frequency
+of \SI{80}{\mega\hertz} which then is increased by increments to reach the
+final frequency of \SI{120}{\mega\hertz} as can be seen in the lower right
+spectrogram at the end of the frequency sweep.
 
-\begin{figure}[ht]
+For an ideal frequency sweep we would expect a linear timeline of the
+frequency, instead we see that \gls{dds} outputs a discrete set of
+frequencies.
+
+\subsubsection{Frequency response}
+
+\begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -130,7 +175,7 @@ differ in their respective spectrum.}
   \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupler.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Input power reflection when supplying the direct-coupler with
-    \SI{-10}{\deci\bell\meter} input signal and reflection at the output of
+    \SI{-10}{\decibel\meter} input signal and reflection at the output of
     the direct-coupler while other ports are closed with \SI{50}{\ohm}}.
   \label{fig:signal_reflection_coupler}
 \end{figure}
