@@ -18,6 +18,7 @@ amplitude responds to different frequencies and how the digital design of the
 \gls{dds} affects the \gls{rf} signal shape.
 
 \subsection{Setup}
+\label{subsec:signal_synthesis_setup}
 
 For the following experiments we configured the \gls{dds} to do a linear
 frequency sweep from \SI{80}{\mega\hertz} to \SI{120}{\mega\hertz} at a sweep
@@ -47,6 +48,7 @@ delay to the trigger signal. In order to capture now the complete signal over
 duration $T$ we incremented the delay $d$ in steps of $T/300$.
 
 \subsection{Results}
+\label{subsec:signal_synthesis_results}
 
 The former setup produced a single dataset we evaluated from two different
 angles. First we explored how the digital design of the \gls{dds} propagates
@@ -116,7 +118,6 @@ response characteristics.
 
 \subsection{Summary}
 
-
 At the signal source stage the \gls{dds} already induce significant frequency
 dependency of the output amplitude. The built-in inverse sinc of the \gls{dds}
 does not reduce this dependency, therefore we disable the inverse sinc
@@ -125,10 +126,11 @@ discreteness of the frequency domain produced by the \gls{dds}.
 
 \section{Signal amplification}
 
-We now supply the \gls{dds} signal to the amplifier and feed its output
-through attentuators to the oscilloscope. For the measurement procedure
-we retain the delay window method described in the former section to capture
-the complete trace.
+The \gls{rf} signal supplied by the synthesizer is too weak to power the
+\gls{aod}, therefore we supply the synthesized signal to an amplifier and
+feed the amplified signal to the \gls{aod}. The amplification acts as the
+second stage in our \gls{rf} signal processing and we expect it to amend
+the frequency behaviour of the amplitude.
 
 \begin{figure}[ht]
   \centering
@@ -141,10 +143,21 @@ amplifier differ by a constant offset.}
   \label{fig:signal_amplification_frequency_max_amplitude}
 \end{figure}
 
-\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
-damped output signal after amplification. Here we can clearly see the finite
-frequencies issued by the \gls{dds} as horizontal lines. Further we see that
-both amplifiers differ by a constant offset.
+\subsection{Setup}
+
+The general setup described in \cref{subsec:signal_synthesis_setup} is still
+valid for the now amplified signal, however the amplified signal should now
+be of power $\SI{33}{\decibel\meter}\approx\SI{10}{\volt}$ at \SI{50}{\ohm}
+which is at the limit of our oscilloscope, therefore it is vital to insert
+attentuators in between the amplified \gls{rf} signal and the oscilloscope.
+
+\subsection{Results}
+
+The analysis is analogue but confined to the frequency response part in
+\cref{subsec:signal_synthesis_results} as the spectrogram of the amplified
+signal would not yield any new insights.
+
+\subsubsection{Frequency response}
 
 \begin{figure}[ht]
   \centering
@@ -156,6 +169,18 @@ the signal source the amplifiers introduce a further resonance at the
 center frequency.}
   \label{fig:signal_amplification_comparison}
 \end{figure}
+
+\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
+damped output signal after amplification for the case of our two different
+amplifiers. We require two different amplifiers because there are two
+independent \gls{aod} to be powered. At first we observe that the amplifiers
+differ by a constant offset. We assume this offset to be caused by different
+component quality as the frequency response shape itself is similar.
+
+On a second glance we again find evidence for discrete frequencies from
+\Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
+subtile horizontal pattern of the markers.
+
 
 For \Cref{fig:signal_amplification_comparison} we compared the normalized
 amplified signals with the normalized signal source. We observe similar
