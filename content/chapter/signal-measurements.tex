@@ -4,7 +4,10 @@ By the time the \gls{rf} signal has reached the piezoelectric of the
 \gls{aod} it has been synthesized from a reference signal, amplified to match
 the power requirements of the \gls{aod} and matched to the impedance of the
 \gls{aod}. Each of these stages ammends the shape of the \gls{rf} signal and
-as we will see introduces new frequency dependent resonances.
+as we will see introduce new frequency responses of the amplitude. The so
+inevitable amplitude modulation affects the deflected intensity of the laser
+beam and will lead to the intensity characteristics discussed in the next
+chapter.
 
 \section{Digital signal synthesis}
 
@@ -83,6 +86,11 @@ frequencies.
 
 \subsubsection{Frequency response}
 
+Although the previous section satisfied our curiousity it did not disclose
+anything we did not expect. Anyhow, in this part we examine the amplitude
+frequency response which by all means has great significance on the observed
+intensity patterns we discuss later.
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
@@ -94,27 +102,26 @@ frequency dependence in the amplitude.}
   \label{fig:signal_synthesis_frequency_max_amplitude}
 \end{figure}
 
-To find the frequency dependence of the amplitude we carried out \gls{fft} to
-find the dominant frequency of the signal. Then we collected the maximum
-amplitude of each signal window together with the dominant frequency and
-visualized the result in \Cref{fig:signal_synthesis_frequency_max_amplitude}.
-\Cref{fig:signal_synthesis_frequency_max_amplitude} shows us the maximum
-amplitude frequency dependency for different \gls{dds} configurations. We have
-used two different \gls{dds} chips as each will later supply a single
-\gls{aod}. From \Cref{fig:signal_synthesis_frequency_max_amplitude} we
-conclude that there is no difference between distinct \gls{dds}, however we
-observe a strong frequency dependence of the amplitude. This behaviour seems
-inherent for digital signal synthesis as the \gls{ad9910} comprises an
-inverse sinc filter that is supposed to reduce these dependency. From
-\Cref{fig:signal_synthesis_frequency_max_amplitude} we see that the effect
-of the inverse sinc filter unfortunately only lowers the output amplitude but
-does not smooth the frequency dependency.
+To find the frequency dependency of the amplitude we carried out \gls{fft} on
+the voltage of the respective time window and extracted the dominant
+frequency located at the maximum of the power spectrum and thereby reduced
+each measurement to a frequency and corresponding maximum amplitude.
 
-We summarize that already at the signal source stage a significant frequency
-dependency of the output power is introduced that will later have impact on
-the effective beam deflection power in the \gls{aod}. Further in our
-configuration the inverse sinc filter only lowered the output power, thus
-we will keep it disabled for subsequent measurements.
+The result is visualized for the two different signal sources with different
+filter mode in \Cref{fig:signal_synthesis_frequency_max_amplitude}. We observe
+that there is no significant difference between distinct \gls{dds}. The
+inverse sinc filter proclaimed to reduce frequency dependence of the amplitude
+only reduced the output amplitude without changing the overall frequency
+response characteristics.
+
+\subsection{Summary}
+
+
+At the signal source stage the \gls{dds} already induce significant frequency
+dependency of the output amplitude. The built-in inverse sinc of the \gls{dds}
+does not reduce this dependency, therefore we disable the inverse sinc
+filter for all other measurements. Eventually we could confirm the
+discreteness of the frequency domain produced by the \gls{dds}.
 
 \section{Signal amplification}
 
