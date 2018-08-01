@@ -19,8 +19,8 @@ associated descriptive statistics in \Cref{tab:intensity_control_long}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/control-long.pdf}}
-  \captionsetup{width=.7\textwidth}
+  \includegraphics[width=\textwidth]{\figuredir{intensity/control-long.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Long term measurement of the intensity with controlled intensity.
     The intensity was measured every \SI{2}{\minute} for over \SI{16}{\hour}
     to determine the accuracy of the intensity controller. The outlier at
@@ -44,7 +44,7 @@ late laboratory visit, however we can not assure for a specific reason.
     \SI{0.09}{\volt} \\
     \hline
   \end{tabular}
-  \captionsetup{width=.7\textwidth}
+  \captionsetup{width=.8\textwidth}
   \caption{Descriptive statistics of the short term measurement of the
   intensity with controlled intensity. Note the small standard deviation.}
   \label{tab:intensity_control_long}
@@ -59,8 +59,8 @@ to measure short term effects too.
 
 \begin{figure}[ht]
   \centering
-  \captionsetup{width=.7\textwidth}
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/control-short.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{intensity/control-short.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Short term measurement of the intensity with controlled intensity.
     The intensity was measured every \SI{10}{\second} for over \SI{1}{\hour}
     to determine the accuracy of the intensity controller.}
@@ -143,8 +143,8 @@ subtracted the mean intensity for comparison.}
 
 \begin{figure}[ht]
   \centering
-  \captionsetup{width=.7\textwidth}
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/control-deviation.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{intensity/control-deviation.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Boxplot of the long and short term intensity measurements and a typical
   intensity measurement with the \gls{aod} where we subtracted the mean intensity
   for comparison. The typical measurements covers a much wider intensity range
@@ -166,8 +166,8 @@ the later operation range to deflect the laser beam through the \gls{aod}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
-  \captionsetup{width=.7\textwidth}
+  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Delayed spectrogram windows of the \gls{dds} output signal in linear
     ramp operation. We see how the frequency starts at $f_0$ and increases
   in discrete steps to the final frequency $f_1$.}
@@ -193,8 +193,8 @@ discrete steps.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
-  \captionsetup{width=.7\textwidth}
+  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/frequency-max-amplitude.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Maximum amplitude of the two \gls{dds} at different frequencies
   during linear sweep operation. In the two lower curves the \gls{dds} were
 configured with enabled inverse sinc filter that is supposed to compensate
@@ -233,9 +233,12 @@ the complete trace.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/frequency-max-amplitude.pdf}}
-  \captionsetup{width=.7\textwidth}
-  \caption{}
+  \includegraphics[width=\textwidth]{\figuredir{signal/amplification/frequency-max-amplitude.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Maximum amplitude at dominant frequency per delayed window for two
+  different amplifiers. We can see the discreteness of the frequency domain
+from the digital signal synthesis as well as three resonances. Further the
+amplifier differ by a constant offset.}
   \label{fig:signal_amplification_frequency_max_amplitude}
 \end{figure}
 
@@ -246,9 +249,12 @@ both amplifiers differ by a constant offset.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
-  \captionsetup{width=.7\textwidth}
-  \caption{}
+  \includegraphics[width=\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Relative amplitude at dominant frequency per delayed window for
+  two different amplifiers and their digital signal source. In comparison to
+the signal source the amplifiers introduce a further resonance at the
+center frequency.}
   \label{fig:signal_amplification_comparison}
 \end{figure}
 
@@ -258,19 +264,46 @@ signal shape for both amplifiers. Compared to the signal source frequency
 response has changed in that there is an additional frequency response in
 between of the two responses of the signal source.
 
-\section{Acousto-optics}
+\subsection{Signal reflection}
 
-\subsection{Power matching}
+In the previous section we found.
 
-\subsection{Intensity}
-% H removed, V sweep (H in V position, vice versa)
-% V removed, H sweep (V in H position, vice versa)
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/direct.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{We see the signal reflection of the two different \gls{aod} when
+  connected directly to the network analyzer. We can see that both crystal
+differ in their respective spectrum.}
+  \label{fig:signal_reflection_direct}
+\end{figure}
 
-% H constant with V sweep
-% V constant with H sweep
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupler.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Input power reflection when supplying the direct-coupler with
+    \SI{-10}{\deci\bell\meter} input signal and reflection at the output of
+    the direct-coupler while other ports are closed with \SI{50}{\ohm}}.
+  \label{fig:signal_reflection_coupler}
+\end{figure}
 
-\chapter{Intensity Optimization}
-\
-% at different amplitude values
-% without amplitude modulation
-% with amplitude modulation
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupled.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Reflection at the direct-coupler output after amplification of the
+  network analyzer input signal for different effective powers. We see that
+the applied power does not effect the spectrum.}
+  \label{fig:signal_reflection_coupled}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/comparison.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Comparison of reflection from amplified input signal and direct
+  signal provided from the network analyzer. The different reflection spectrum
+can be associated to the amplifier.}
+  \label{fig:signal_reflection_comparison}
+\end{figure}
