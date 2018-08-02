@@ -86,7 +86,7 @@ For an ideal frequency sweep we would expect a linear timeline of the
 frequency, instead we see that \gls{dds} outputs a discrete set of
 frequencies.
 
-\subsubsection{Frequency response}
+\subsubsection{Amplitude frequency response}
 
 Although the previous section satisfied our curiousity it did not disclose
 anything we did not expect. Anyhow, in this part we examine the amplitude
@@ -132,6 +132,48 @@ feed the amplified signal to the \gls{aod}. The amplification acts as the
 second stage in our \gls{rf} signal processing and we expect it to amend
 the frequency behaviour of the amplitude.
 
+\subsection{Setup}
+
+The measurement algorithm described in \cref{subsec:signal_synthesis_setup} is
+still valid for the now amplified signal. Even though we found in the former
+section that the synthesized signal does not differ in between different
+\gls{dds} we supplied the horizontal \gls{dds} to the respective amplifer.
+
+The amplified signal should be of approximate power \SI{33}{\decibel\meter}.
+At the usual \SI{50}{\ohm} in between coaxial cables this corresponds to an
+approximate voltage of \SI{10}{\volt}. Even though the employed oscilloscope
+is rated for more then \SI{10}{\volt} when being used in \SI{1}{\mega\ohm}
+mode we inserted a chain of attentuators (from coaxial cable to
+oscilloscope: \SI{1}{\decibel}, \SI{3}{\decibel}, \SI{6}{\decibel},
+\SI{10}{\decibel} and \SI{10}{\decibel} to distribute heat dissipation) in
+between the coaxial cable and the oscilloscope input to attain a total
+damping of \SI{30}{\decibel}.
+
+\subsection{Results}
+
+The analysis is analogue to the frequency response part in
+\cref{subsec:signal_synthesis_results} in that we perform \gls{fft} on each
+measurement window to extract the dominant frequency with the maximum
+amplitude in the time domain. The maximum amplitude is very close to the
+effective amplitude of a sinusoidal signal, yet it is much easier to extract
+from the time series data.
+
+In a second step we normalized the so obtained amplitude frequency response
+of the amplified signal with the previously evaluated source signal amplitude
+frequency response. The specific normalization used was a min-max type where
+we subtracted the minimum amplitude from each signal and divided the
+difference by the new value range.
+
+The spectrogram of the amplified signal should be equal to
+\Cref{fig:signal_synthesis_spectrogram}, hence not give us any new insights.
+
+\subsubsection{Amplitude frequency response}
+
+\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
+damped output signal subject to the signal frequency after amplification for
+the two distinct amplifiers. We require two distinct amplifiers because our
+setup comprises two independently controlled \gls{aod}.
+
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/amplification/frequency-max-amplitude.pdf}}
@@ -143,21 +185,20 @@ amplifier differ by a constant offset.}
   \label{fig:signal_amplification_frequency_max_amplitude}
 \end{figure}
 
-\subsection{Setup}
+At first we note that the amplified signal differs by a constant offset. We
+assume this offset to be caused by different component quality as the
+frequency response shape itself is similar. On a
+second glance we again find evidence for discrete frequencies from
+\Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
+subtile horizontal pattern of the markers.
 
-The general setup described in \cref{subsec:signal_synthesis_setup} is still
-valid for the now amplified signal, however the amplified signal should now
-be of power $\SI{33}{\decibel\meter}\approx\SI{10}{\volt}$ at \SI{50}{\ohm}
-which is at the limit of our oscilloscope, therefore it is vital to insert
-attentuators in between the amplified \gls{rf} signal and the oscilloscope.
+\subsubsection{Comparison with source signal}
 
-\subsection{Results}
-
-The analysis is analogue but confined to the frequency response part in
-\cref{subsec:signal_synthesis_results} as the spectrogram of the amplified
-signal would not yield any new insights.
-
-\subsubsection{Frequency response}
+\Cref{fig:signal_amplification_comparison} shows the min-max-normalized
+amplified signals with the min-max-normalized input signal from the horizontal
+\gls{dds}. After normalization the fixed offset difference, we observed
+previously in between the distinct amplifiers, vanishes and the same
+frequency response shape is obvious.
 
 \begin{figure}[ht]
   \centering
@@ -170,23 +211,18 @@ center frequency.}
   \label{fig:signal_amplification_comparison}
 \end{figure}
 
-\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
-damped output signal after amplification for the case of our two different
-amplifiers. We require two different amplifiers because there are two
-independent \gls{aod} to be powered. At first we observe that the amplifiers
-differ by a constant offset. We assume this offset to be caused by different
-component quality as the frequency response shape itself is similar.
+Comparison of the signal after (black, green) and before amplification (red)
+yields that the input signal from \gls{dds} seems more dense than after the
+amplification. Also we observe that the amplifier remedies the amplitude drop
+at around \SI{102}{\mega\hertz} of the source signal. However the amplifier
+possess resonacnes around \SI{98}{\mega\hertz} and \SI{110}{\mega\hertz}
+where the amplitudes drop.
 
-On a second glance we again find evidence for discrete frequencies from
-\Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
-subtile horizontal pattern of the markers.
+\subsection{Summary}
 
-
-For \Cref{fig:signal_amplification_comparison} we compared the normalized
-amplified signals with the normalized signal source. We observe similar
-signal shape for both amplifiers. Compared to the signal source frequency
-response has changed in that there is an additional frequency response in
-between of the two responses of the signal source.
+To sum up we found that distinct amplifier differ by a fixed voltage offset.
+Furthermore the amplifiers introduce new resonances into the amplitude
+frequency response.
 
 \section{Signal reflection}
 
