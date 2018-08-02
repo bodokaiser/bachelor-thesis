@@ -1,18 +1,35 @@
 \chapter{Intensity measurements}
 
+In the previous chapter we seeked for different aspects of the \gls{rf}
+signal powering the \gls{aod} elements. Down the road we had to realize that
+there are many forces at work which at large are difficult to account for.
+
+That in mind we proceed with the analysis of the deflected laser beam
+intensity subject to the configured frequency and relative amplitude of the
+synthesized output \gls{rf} output signal.
+
 \section{Intensity control}
 
-The laser intensity is regulated by a control loop and \gls{aom} in order to
-intercept power drifts from the laser source. In this section we want to
-discuss the grade of this control loop and estimate an error in subsequent
-intensity measures.
+The laser intensity is regulated by a control loop with \gls{aom} in order to
+intercept power drifts from the laser source. This control loop is tightly
+integrated into our experimental setup and thus will be present for all
+subsequent intensity measurements. In this section we want to discuss the
+grade of this control loop and estimate the error contribution.
+
+\subsection{Setup}
+
+The experimental setup is the same as described in XX but with disassembled
+\gls{aod}. The photodiode gain was set to \SI{50}{\decibel} so that we can
+easily compare measurements.
 
 \subsection{Long term measurement}
 
-As a start we measured the intensity with a second photodiode over the period
-of over \SI{16}{\hour} in an interval of about \SI{2}{\minute}. The measured
-intensity timeline is shown in \Cref{fig:intensity_control_long} and the
-associated descriptive statistics in \Cref{tab:intensity_control_long}.
+In the long term measurement we were interested in the long term behaviour
+of the intensity control loop. In particular if there are oscillations or
+intensity collapses.
+
+Therefore we obtained voltage measurements in an interval of about
+\SI{2}{\minute} over a total time of approximately \SI{16}{\hour}.
 
 \begin{figure}[ht]
   \centering
@@ -26,8 +43,17 @@ associated descriptive statistics in \Cref{tab:intensity_control_long}.
   \label{fig:intensity_control_long}
 \end{figure}
 
-We can observe some outliers at about 22:45 which are probably caused by a
-late laboratory visit, however we can not assure for a specific reason.
+The voltage time series is shown in \Cref{fig:intensity_control_long}. We 
+note outliers at about 22:45 which were probably caused by a late laboratory
+visit. Further we see a constant albeit noisy intensity signal. In comparison
+we could watch real time oscillations and drifts when disabling the control
+loop.
+
+\Cref{tab:intensity_control_long} depicts the descriptive statistics belonging
+to the voltage time series visualized in \Cref{fig:intensity_control_long}.
+The mean intensity is measured to be around \SI{6.79}{\volt} with peaks up
+to \SI{6.86}{\volt}. The standard deviation yields us a relative error of
+around \SI{1.4}{\percent}.
 
 \begin{table}[h]
   \centering
@@ -52,27 +78,7 @@ late laboratory visit, however we can not assure for a specific reason.
 The previous section gave us already some good insights about the long term
 stability of the intensity control loop. Yet in practice typical intensity
 measurements are of much smaller magnitude, henceforth it seems close at hand
-to measure short term effects too.
-
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/control/short.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Short term measurement of the intensity with controlled intensity.
-    The intensity was measured every \SI{10}{\second} for over \SI{1}{\hour}
-    to determine the accuracy of the intensity controller.}
-  \label{fig:intensity_control_short}
-\end{figure}
-
-For short term measurements we used the same setup as for the long term
-measurements. The time parameters now changed to a sample interval of
-\SI{10}{\second}. The intensity timeline of the short term measurement is
-depicted in \Cref{fig:intensity_control_short} and the associated descriptive
-statistics are presented in \Cref{tab:intensity_control_short}.
-
-On a smaller timescale we see that the intensity control loop performs
-oscillations. The descriptive statistics show much smaller deviation from
-the mean than observed in the long term measurements.
+to also conduct a short term measurement.
 
 \begin{table}[h]
   \centering
@@ -92,33 +98,38 @@ the mean than observed in the long term measurements.
   \label{tab:intensity_control_short}
 \end{table}
 
-\subsection{Error estimate}
+For the short term measurement time parameters were adjusted to a sample
+interval of \SI{10}{\second} and measurment were performed over \SI{1}{\hour}.
 
-Even though the previous analysis gave us a good picture of the magnitude
-of intensity drifts on different time scale and confirms that the intensity
-is in general regulated. Nevertheless we cannot make any statements with
-regard to an error estimate without being able to compare the deviation
-quantities to actual measurement data.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/control/short.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Short term measurement of the intensity with controlled intensity.
+    The intensity was measured every \SI{10}{\second} for over \SI{1}{\hour}
+    to determine the accuracy of the intensity controller.}
+  \label{fig:intensity_control_short}
+\end{figure}
 
-Because a typical measurement involves \gls{aod} that naturally cause an
-intensity difference to the free path configuration we subtracted the
-respective mean intensity so the following quantities only account for a
-deviation from the respective mean. \Cref{tab:intensity_control} shows the
-descriptive statistics of the long and short term measurements of the
-intensity control with a typical intensity measurement. Comparing the
-standard deviation of short term measurement with the standard deviation of a
-typical intensity measurement yields us an approximate error of about
-\SI{3}{\percent}. In \Cref{fig:intensity_control} we have the boxplots of
-the absolute deviation from the respective mean intensity for the former
-three measurement cases to visualize the spread and quantiles of the
-intensity.
+The intensity time series of the short term measurement is depicted in
+\Cref{fig:intensity_control_short} and the associated descriptive
+statistics are presented in \Cref{tab:intensity_control_short}.
 
-We conclude that the harmonic noise of the intensity control is in general
-small enough to be neglected in further intensity discussion. Nevertheless
-the usual intensity drifts may make it difficult to create high-precision
-optical potentials.
+On a smaller timescale we see that the intensity control loop performs
+periodic oscillations, however the descriptive statistics show much smaller
+deviation from the mean, than observed in the long term measurements. As we
+do not see outliers in \Cref{fig:intensity_control_short} we can pay more
+attention to the value range of \SI{0.05}{\volt} which was obfuscated in
+the long term measurement because of outliers.
 
-\begin{table}[h]
+\subsection{Summary}
+
+The previous discussion confirmed that the intensity is regulated in that
+we only observe oscillations around the targeted intensity value. Yet we are
+still missing statements with regard to the magnitude of these oscillations
+as we are missing a comparison to real intensity data.
+
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|}
     \hline
@@ -131,12 +142,19 @@ optical potentials.
     typical & \SI{1.43}{\volt} & \SI{0.40}{\volt} \\
     \hline
   \end{tabular}
-  \captionsetup{width=.7\textwidth}
+  \captionsetup{width=.8\textwidth}
   \caption{Descriptive statistics of the short and long term measurement
   of the intensity control and a typical intensity measurements where we
 subtracted the mean intensity for comparison.}
   \label{tab:intensity_control}
 \end{table}
+
+For a typical measurement, to compare the intensity oscillations with, we
+elected the intensity progression of a linear frequency sweep of the
+\gls{aod} in the vertical socket while the \gls{aod} in the horizontal socket
+is fixed. We will discuss this specific meausurement in detail in a later
+section. In \Cref{tab:intensity_control} we see some statistics of the
+long and short term measurements next to the typical measurement.
 
 \begin{figure}[ht]
   \centering
@@ -148,6 +166,29 @@ subtracted the mean intensity for comparison.}
 then deviations from the intensity control loop.}
   \label{fig:intensity_control_comparison}
 \end{figure}
+
+One dismally error estimate would be the quotient of the value range of the
+short term measurement and the typical measurement, yielding an error of
+\SI{4.2}{\percent}. A second approach would be the quotient of the standard
+deviation of the short term and typical measurement, yielding
+\SI{2.5}{\percent} error. When comparing the typical measurement to the
+statictis of a long term measurement we find rather large errors which
+suggests that there re other statistical key figures which may be more
+suitable.
+
+A boxplot is very useful in visualizing the spread. We have an orange stripe
+marking the median, the contour of the box marking the data between first and
+third quantil. The usual value range is marked by the whiskers and outliers
+are marked as the circles outside the whiskers.
+In \Cref{fig:intensity_control_comparison} we see such a boxplot for the
+absolute deviation from the mean of the three measurements. The absolute
+deviation from the mean accounts for the different transmission just because
+of the presence of the \gls{aod} in the typical measurement but keeps the
+linear scale unlike the squared deviation from mean. We can see that in a
+typical measurement (upper boxplot) the usual deviation from mean is much
+larger than for the short and long term measurement of the intensity
+regulation.
+
 
 \section{Gaussian beam profile}
 
