@@ -29,10 +29,8 @@ class FG33250A2(Device):
 
 class MSOX6004A(Device):
 
-  def __init__(self, hostname, timeout=5000, delay=.5):
+  def __init__(self, hostname, timeout=5000):
     super().__init__(hostname, timeout)
-
-    self.delay = delay
 
   def single(self):
     return self.resource.write(':SINGle')
@@ -56,15 +54,15 @@ class MSOX6004A(Device):
     yref = self.resource.query_ascii_values(':WAVeform:YREference?')[0]
 
     U = yorg + yinc * (values - yref)
-    t = np.arange(xorg, xorg + xinc * len(U), xinc)
+    t = xorg + xinc * np.linspace(0, 1, len(U))
 
     return pd.DataFrame({'time': t, 'voltage': U})
 
-  def capture(self, channel=1):
+  def capture(self, channel=1, delay=500):
     self.single()
-    time.sleep(self.delay)
+    time.sleep(delay / 1e3)
     trigger()
-    time.sleep(self.delay)
+    time.sleep(delay / 1e3)
 
     return self.data(channel)
 
