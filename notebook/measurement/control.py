@@ -53,8 +53,9 @@ class MSOX6004A(Device):
     yinc = self.resource.query_ascii_values(':WAVeform:YINcrement?')[0]
     yref = self.resource.query_ascii_values(':WAVeform:YREference?')[0]
 
+
     U = yorg + yinc * (values - yref)
-    t = xorg + xinc * np.linspace(0, 1, len(U))
+    t = xorg + xinc * np.arange(0, len(U))
 
     return pd.DataFrame({'time': t, 'voltage': U})
 
