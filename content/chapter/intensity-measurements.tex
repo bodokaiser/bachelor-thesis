@@ -282,3 +282,85 @@ slight assymmetries in the diffraction ring suggesting inperfect alignment.
 Though assymetries in the spatial beam profile are present, we do not see any
 further complications as the intensity measurements with the photodiode will
 cover the complete beam profile.
+
+\section{Individual acousto-optic deflectors}
+
+Our optical setup uses a single two dimensional \gls{aod} that comprises two
+\gls{aod} elements perpendicular to eachother. At first we want to examine the
+behaviour of the single \gls{aod} elements as we want to find out if and how
+they differ.
+
+\subsection{Setup}
+
+The used 2D \gls{aod} is depicted in \Cref{fig:aod_socket}. We see the
+two \gls{aod} elements in the respective horizontal and vertical slot. The
+internals of the vertical \gls{aod} (left-hand side) are illustrated. The
+element itself spans through the casing (dashed line) while the acousto-optic
+crystal (dotted line) is glued onto the element. The laser beam passes through
+the acousto-optic crystal. In the following we will refer to the horizontal
+\gls{aod} element as the \gls{aod} element anticipated for the horizontal
+slot and accordingly to the vertical \gls{aod} element as the \gls{aod}
+element intended for the vertical \gls{aod} socket.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/aod-socket.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{The 2D \gls{aod} comprises two perpendicular orientated \gls{aod}
+  elements.}
+  \label{fig:aod_socket}
+\end{figure}
+
+For the following experiments we will only leave one \gls{aod} element mounted
+in the casing depicted in \Cref{fig:aod_socket}. The other slot will be empty,
+then we will exchange socket positions for each respective \gls{aod} element
+and measure the beam intensity subject to the linear frequency sweep from
+\SI{80}{\mega\hertz} to \SI{120}{\mega\hertz} over a duration of
+\SI{260}{\milli\second} and the configured \gls{dds} amplitude. As \gls{rf}
+signal source the amplifier and \gls{dds} combination intended for the
+horizontal \gls{aod} element was used to avoid influences of the amplification
+offset between the two amplifiers.
+
+\subsection{Result}
+
+The result for the four configurations (horizontal element in horizontal slot,
+horizontal element in vertical slot, vertical element in horizontal slot
+and vertical element in vertical slot) are visualized as heatmaps in
+\Cref{fig:intensity_unpaired}. The color values are normalized in between the
+different heatmaps and can be related to the measured voltage from the
+photodiode by the colorbar on the right-hand side.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.8\textwidth]{\figuredir{intensity/distribution/unpaired-amplitude.pdf}}
+  \captionsetup{width=.6\textwidth}
+  \caption{Intensity distribution over linear frequency sweep at different
+  configured \gls{dds} amplitudes for different individual \gls{aod}
+configurations.}
+  \label{fig:intensity_unpaired}
+\end{figure}
+
+Oddly enough we observe that both \gls{aod} differ strong in their respective
+intensity transmission behaviour in dependence of their slot position.
+Furthermore we observe that the intensity transmission is much higher in the
+case of the horizontal \gls{aod} element mounted to the intended horizontal
+slot compared to all other configurations. In addition we can see that for
+the horizontal \gls{aod} has an asymmetric, probably non-analytic, intensity
+transmission. The highest intensity transmission is obtained for relative
+amplitudes configured between \SI{60}{\percent} and \SI{90}{\percent} with
+high dependence on the frequency. Another interesting observation is that
+the intensity transmission seems very similar for the horizontal element in
+the vertical slot and the vertical element in the vertical slot which
+map also seems more symmetric with respect to the frequency axis. In fact
+for these configurations the configured relative amplitude seems not to
+interfere much with the measured voltage at the photodiode.
+
+\subsection{Conclusion}
+
+The \gls{aod} elements differ significantly in their intensity transmission
+in between and with respect to their position. We find the horizontal element
+in the anticipated horizontal position to have a significantly higher
+transmission then any other configuration. Therefore we presume that the
+\gls{aod} elements have a very high polarization dependency and are concerted
+to eachother. We may find more evidence for this hypothesis in the next
+section.
