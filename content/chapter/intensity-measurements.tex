@@ -283,12 +283,12 @@ Though assymetries in the spatial beam profile are present, we do not see any
 further complications as the intensity measurements with the photodiode will
 cover the complete beam profile.
 
-\section{Individual acousto-optic deflectors}
+\section{Difference between individual acousto-optic deflectors}
 
 Our optical setup uses a single two dimensional \gls{aod} that comprises two
 \gls{aod} elements perpendicular to eachother. At first we want to examine the
-behaviour of the single \gls{aod} elements as we want to find out if and how
-they differ.
+behaviour of the single \gls{aod} elements to eachother. In particular we
+are interested if and how the \gls{aod} elements differ.
 
 \subsection{Setup}
 
@@ -311,9 +311,11 @@ element intended for the vertical \gls{aod} socket.
   \label{fig:aod_socket}
 \end{figure}
 
-For the following experiments we will only leave one \gls{aod} element mounted
-in the casing depicted in \Cref{fig:aod_socket}. The other slot will be empty,
-then we will exchange socket positions for each respective \gls{aod} element
+\subsection{Individual acousto-optic deflectors}
+
+For the following experiment we will only leave one \gls{aod} element mounted
+in the casing depicted in \Cref{fig:aod_socket}. The other slot will be empty.
+Then we will exchange socket positions for each respective \gls{aod} element
 and measure the beam intensity subject to the linear frequency sweep from
 \SI{80}{\mega\hertz} to \SI{120}{\mega\hertz} over a duration of
 \SI{260}{\milli\second} and the configured \gls{dds} amplitude. As \gls{rf}
@@ -321,23 +323,21 @@ signal source the amplifier and \gls{dds} combination intended for the
 horizontal \gls{aod} element was used to avoid influences of the amplification
 offset between the two amplifiers.
 
-\subsection{Result}
-
 The result for the four configurations (horizontal element in horizontal slot,
 horizontal element in vertical slot, vertical element in horizontal slot
 and vertical element in vertical slot) are visualized as heatmaps in
-\Cref{fig:intensity_unpaired}. The color values are normalized in between the
+\Cref{fig:intensity_distribution_unpaired}. The color values are normalized in between the
 different heatmaps and can be related to the measured voltage from the
 photodiode by the colorbar on the right-hand side.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.8\textwidth]{\figuredir{intensity/distribution/unpaired-amplitude.pdf}}
-  \captionsetup{width=.6\textwidth}
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-amplitude.pdf}}
+  \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution over linear frequency sweep at different
   configured \gls{dds} amplitudes for different individual \gls{aod}
 configurations.}
-  \label{fig:intensity_unpaired}
+  \label{fig:intensity_distribution_unpaired}
 \end{figure}
 
 Oddly enough we observe that both \gls{aod} differ strong in their respective
@@ -355,12 +355,84 @@ map also seems more symmetric with respect to the frequency axis. In fact
 for these configurations the configured relative amplitude seems not to
 interfere much with the measured voltage at the photodiode.
 
-\subsection{Conclusion}
+\subsection{Paired acousto-optic deflectors}
 
 The \gls{aod} elements differ significantly in their intensity transmission
 in between and with respect to their position. We find the horizontal element
 in the anticipated horizontal position to have a significantly higher
 transmission then any other configuration. Therefore we presume that the
 \gls{aod} elements have a very high polarization dependency and are concerted
-to eachother. We may find more evidence for this hypothesis in the next
-section.
+to eachother. We may find more evidence for this hypothesis by mounting both
+\gls{aod} elements in their intended and exchanged slots.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-amplitude.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution over linear frequency sweep at different
+  configured \gls{dds} amplitudes for different individual \gls{aod}
+configurations.}
+  \label{fig:intensity_distribution_paired}
+\end{figure}
+
+In \Cref{fig:intensity_distribution_paired} the measured voltage of the
+second photodiode are visualized in a two-dimensional heatmap. The horizontal
+axis represents the frequency of the \gls{rf} signal applied to the \gls{aod}
+elements whereas the vertical axis the configured \gls{dds} relative
+amplitude. In the first row the elements where in their intended slots whereas
+we exchanged them for the second row. In the first column the frequency
+sweep was applied such that the beam moves along the horizontal axis while
+in the second column the frequency sweep was applied to the element that
+causes beam movement in the vertical direction.
+
+We see that for the exchanged positions the transmission is reduced and
+asymmetric with respect to the sweep direction whereas the elements in their
+intended position perform better in every aspect. We therefore conclude that
+the \gls{aod} are cut in a intended way to account among others for
+polarization effects and it is advised to operate them in their anticipated
+slot as we will do for all following experiments.
+
+\subsection{Conclusion}
+
+The transmission of \gls{aod} crystals depends among others on the
+polarization mode of the incident laser beam. A two dimensional \gls{aod}
+has to be designed around this property and therefore requires the crystals
+to be matched to each other.
+
+\section{2D intensity distribution}
+
+In the previous section we sorted out the influence of the \gls{aod} element
+position and acknowledged that \gls{aod} in general may differ significant
+in their properties. In the present section we now want to explore the
+intensity transmission for a two dimensional sweep as intended to be used
+for the optical potentials.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-frequency.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution over linear frequency sweep at different
+  configured \gls{dds} amplitudes for different individual \gls{aod}
+configurations.}
+  \label{fig:intensity_distribution_frequency}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/sample-frequency.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution over linear frequency sweep at different
+  configured \gls{dds} amplitudes for different individual \gls{aod}
+configurations.}
+  \label{fig:intensity_distribution_frequency_sampled}
+\end{figure}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution over linear frequency sweep at different
+  configured \gls{dds} amplitudes for different individual \gls{aod}
+configurations.}
+  \label{fig:intensity_distribution_frequency_residue}
+\end{figure}
