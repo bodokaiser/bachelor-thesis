@@ -3,7 +3,6 @@
 In the previous chapter we seeked for different aspects of the \gls{rf}
 signal powering the \gls{aod} elements. Down the road we had to realize that
 there are many forces at work which at large are difficult to account for.
-
 That in mind we proceed with the analysis of the deflected laser beam
 intensity subject to the configured frequency and relative amplitude of the
 synthesized output \gls{rf} output signal.
@@ -14,13 +13,24 @@ The laser intensity is regulated by a control loop with \gls{aom} in order to
 intercept power drifts from the laser source. This control loop is tightly
 integrated into our experimental setup and thus will be present for all
 subsequent intensity measurements. In this section we want to discuss the
-grade of this control loop and estimate the error contribution.
+grade of this control loop and estimate its error contribution.
 
 \subsection{Setup}
 
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-control.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Optical and electronic setup of the intensity control experiment.
+  The \gls{aod}s have been removed. The beam hits photodiode 2 that is
+connected to the oscilloscope.}
+  \label{fig:intensity_control_setup}
+\end{figure}
+
 The experimental setup is the same as described in XX but with disassembled
-\gls{aod}. The photodiode gain was set to \SI{50}{\decibel} so that we can
-easily compare measurements.
+\gls{aod} and photodiode 2 as the terminus of the laser beam. The setup is
+depicted in \Cref{fig:intensity_control_setup}. The photodiode gain was set
+to \SI{50}{\decibel}.
 
 \subsection{Long term measurement}
 
@@ -189,36 +199,86 @@ typical measurement (upper boxplot) the usual deviation from mean is much
 larger than for the short and long term measurement of the intensity
 regulation.
 
+\section{Spatial beam profile}
 
-\section{Gaussian beam profile}
+We figured out that the intensity control loop operates as expected. Next we
+want to assess the quality of our optical alignment to sort out later
+systematic measurement errors from poor calibration. One way to assess the
+alignment grade of our alignment is to evaluate the spatial profile of the
+laser beam with respect to deviations from an ideal gaussian profile.
 
-With the previously described calibration steps in place we can assess the
-final quality of the beam with an image capture of the \gls{ccd} camera in the
-aligned setup \cref{sec:deflection}.
+\subsection{Setup}
+
+In the previous setup we used a second photodiode to measure the temporal
+deviations of the intensity. In order to measure spatial deviations of the
+intensity we replaced the photodiode with a \gls{ccd} camera.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-profile.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{The beam is focused onto the \gls{ccd} sensor of the camera. The
+    \gls{aod} are configured at \SI{100}{\mega\hertz} center frequency.
+  }
+  \label{fig:intensity_profile_setup}
+\end{figure}
+
+In \Cref{fig:intensity_profile_setup} we see the setup used to measure the
+beam profile. The \gls{aod} are configured at \SI{100}{\mega\hertz} center
+frequency. The distance between Lens 4 and the \gls{ccd} sensor is chosen
+such that the the beam head is focused.
+
+\subsection{Result}
+
+In \Cref{fig:intensity_profile_2d} we can see an enlarged image patch of the
+complete image caputre taken with the \gls{ccd} camera. We can see a strong
+illuminated circular spot in the center of the iamge with an area of about
+\SI{2.5}{\milli\meter}. The intensity inside the spot seems homogeneous,
+however this is caused because the pixels are saturated in this area.
+We could reduce the intensity or apply an optical filter to the camera to
+resolve the intensity gradient inside the spot, but only at the cost of
+the intensity distribution around the spot. Around the circular spot we can
+see a diffraction ring. The diffraction ring is well described in
+\cite{Hertlein2017} and originates from the finite aperture of the objectives.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.5\textwidth]{\figuredir{intensity/profile/profile2d.pdf}}
   \caption{Image detail from the captured beam with the \gls{ccd} camera.}
-  \label{fig:beamprofile:2d}
+  \label{fig:intensity_profile_2d}
 \end{figure}
 
-The two dimensional beam profile shows the characteristical two dimensional
-gaussian distribution with diffraction rings caused by beam clipping at
-finite apertures as described in \cite{Hertlein2017}.
+Altough \Cref{fig:intensity_profile_2d} gives us a good overview of the
+spatial beam profile it is difficult to see deviations from an ideal
+gaussian curve in this representation. Henceforth we performed two
+perpendicular cuts and visualized the one dimensional spatial beam
+distribution in \Cref{fig:intensity_profile_1d}.
 
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{intensity/profile/profile1d.pdf}}
-  \caption{1D horizontal and vertical profile extracted from the center of
-    the image detail in \cref{fig:beamprofile:2d} with fitted gaussian curve
-  and residue.}
-  \label{fig:beamprofile:1d}
+  \captionsetup{width=.8\textwidth}
+  \caption{One dimensional perpendicular cut of the two dimensional beam
+    distribution from the two dimensional beam profile in
+    \cref{fig:intensity_profile_2d} with fitted gaussian curve.}
+  \label{fig:intensity_profile_1d}
 \end{figure}
 
-By inspecting the one dimensional profiles with fitted gaussian and residue
-we again confirm conclusions drawn in \cite{Hertlein2017}. The clipped top
-of the measured intensity originates from the saturated pixels of the
-\gls{ccd} camera and can be ignored. We further observe a slight assymmetry
-at the diffraction rings. Overall the shown profiles can be considered to
-confirm a good alignment.
+In \Cref{fig:intensity_profile_1d} we can clearly observe the effects of
+saturation around the center and how we would expect the intensity to be
+if we could experimentally resolve it in the Gaussian fit. In contrast to the
+ideal Gaussian profile we again observe contributions to the Airy disc around
+the otherwise Gaussian profile causes by the finite aperture. Further we can
+now clearly observe assymmetry from the intensity contributions around the
+Gaussian which means that our alignment is not perfect.
+
+\subsection{Summary}
+
+We can confirm the results reported in \cite{Hertlein2017} that the spatial
+beam profile equals a two dimensional Gaussian combined with a diffraction
+ring caused from the finite aperture of the objectives. Further we observe
+slight assymmetries in the diffraction ring suggesting inperfect alignment.
+
+Though assymetries in the spatial beam profile are present, we do not see any
+further complications as the intensity measurements with the photodiode will
+cover the complete beam profile.

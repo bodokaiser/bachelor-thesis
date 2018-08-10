@@ -91,7 +91,7 @@ def update(id, name, frequency, amplitude=1.0, nodwells=[False, True],
   aconfig = {}
   if isinstance(amplitude, np.ndarray):
     aconfig['mode'] = 'playback'
-    aconfig['data'] = amplitude.tolist()
+    aconfig['data'] = np.clip(amplitude[::-1], 0, 1).tolist()
     aconfig['value'] = 1.0
   else:
     aconfig['mode'] = 'const'
