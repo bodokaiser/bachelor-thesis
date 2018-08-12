@@ -11,9 +11,54 @@ distribution observed with the photodiode.
 \section{Digital signal synthesizer}
 
 We already covered the fundamental functionality of the \gls{dds} in XX and
-its integration in our experimental setup in YY. In this section we want to
-check up on the suspected characteristics disclosed in these sections through
-real world measurements.
+its integration in our experimental setup in YY, yet we are missing physical
+measurements.
+
+Physical analysis of the \gls{dds} output \gls{rf} signal is in fact no
+simple endeavour as usual operation time scales are of many magnitudes
+greater than the signal periodicity. The strategy we used to resolve this
+circumstance is depcited in \Cref{fig:dds_sweep_window} and consists of
+capturing multiple, small time windows of the signal which delayed would
+cover the complete signal trace.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{diagram/sweep-window.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Idealized \gls{dds} signal output with constant frequency and
+    linear ramp over the sweep duration. The measured window only captures
+    a subset of the complete sweep but can be delayed to cover the complete
+    sweep duration.}
+  \label{fig:dds_sweep_window}
+\end{figure}
+
+In \Cref{tab:dds_signal_parameters} we can find an overview of the
+experimental parameters. The specified frequency range is motivated to cover
+the greatest possible spatial dimensions permitted by the dimensions of the
+optics. Sweep and window duration as well as the delay time where selected as
+a compromise between the oscilloscope being able to resolve the signal fine
+enough to perform \gls{fft} and the sweep duration being comparable to later
+experiments.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    Start frequency & Final frequency & Sweep duration & Window duration &
+    Delay time \\
+    \hline
+    \SI{80}{\mega\hertz} &
+    \SI{4.88}{\mega\hertz} &
+    \SI{200.00}{\micro\second} &
+    \SI{26.84}{\milli\second} &
+    \SI{89.48}{\micro\second} \\
+    \hline
+  \end{tabular}
+  \captionsetup{width=.8\textwidth}
+  \caption{Experimental parameters used to inspect the output \gls{rf} signal
+  of the \gls{dds}.}
+  \label{tab:dds_signal_parameters}
+\end{table}
 
 \subsection{Discrete frequency spectrum}
 
