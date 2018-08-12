@@ -38,7 +38,7 @@ class MSOX6004A(Device):
   def save(self, filename):
     return self.resource.write(f':SAVE:WMEMory:STARt "\\usb\\{filename}.h5"')
 
-  def data(self, channel):
+  def data(self, channel=1):
     self.resource.write(':WAVeform:FORMat WORD')
     self.resource.write(':WAVeform:BYTeorder LSBFirst')
     self.resource.write(':WAVeform:UNSigned 0')
@@ -139,7 +139,7 @@ def update(id, name, frequency, amplitude=1.0, nodwells=[False, True],
 
 
 def aom():
-  return update(1, 'Bodo Intensity', frequency=80e6)
+  return update(25, 'Bodo Intensity', frequency=80e6)
 
 
 def aod_v(**kargs):
