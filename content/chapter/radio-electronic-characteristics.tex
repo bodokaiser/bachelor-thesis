@@ -278,4 +278,147 @@ frequencies.
 
 \section{Acoustic transducer}
 
+In the previous sections we explored the signal transfer at the synthesis
+and amplification stage. The last stage that is accessable to us without
+destruction of the \gls{aod} concerns the power reflection at the \gls{aod}
+itself. From the reflection we can deduce the power transmission, hence for
+a large reflection we would expect a small transmission and in that sense
+less beam intensity in the first deflection order.
+
 \subsection{Reflection spectrum}
+
+The power reflection measurements were conducted with the network analyzer
+we already introduced on the power amplifiers. In a first embodiment of the
+experiment we directly supplied the \gls{aod} through a coaxial cable of the
+network analyzer with power and measured the reflection. In a second
+embodiment we used a direct-coupler to supply the respective amplifier with a
+signal and measure the reflection through a direct-coupler.
+
+\subsubsection{Direct connection}
+
+\Cref{fig:signal_reflection_direct} visualizes the power reflection spectrum
+of both \gls{aod} elements when directly connected to the network analyzer at
+a maximum output power of \SI{10}{\decibel\meter}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/reflection/direct.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Signal reflection of the two different \gls{aod} when directly
+    connected to the network analyzer.}
+  \label{fig:signal_reflection_direct}
+\end{figure}
+
+The most interesting finding in \Cref{fig:signal_reflection_direct} is that
+the power reflection shows very different behaviour in between the distinct
+\gls{aod} elements. The \gls{aod} anticipated for the vertical deflection
+is most transmissive at \SI{97}{\mega\hertz} with transmission falling of
+on both sides while the \gls{aod} anticipated for the horizontal deflection
+has two local transmission maxima and a rather bad transmision near the center
+frequency.
+
+\subsubsection{Amplified coupled connection}
+
+In the second procedure we amplify the signal and couple the network analyzer
+through a direct-coupler to measure the refleciton. This is done in order to
+avoid harm to the network analyzer and because the network analyzer is not
+able to provide \SI{2}{\watt} of output power as required by the \gls{aod}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.8\textwidth]{\mediadir{setup/transducer.pdf}}
+  \captionsetup{width=\textwidth}
+  \caption{Experimental setup to measure the reflection at the acouso-optic
+  transducer component. The network analyzer supplies an input signal to
+  the amplifier. The output signal of the amplifier is connected through
+  a direct-coupler with the acousto-optic element. The direct-coupler allows
+  to safely measure input and output reflection.}
+  \label{fig:signal_amplification_transducer_setup}
+\end{figure}
+
+This setup is depicted in \Cref{fig:signal_amplification_transducer_setup}.
+The network analyzer on the left-hand side supplies an input signal to the
+amplifier. The input signal changes in linear in frequency. The output signal
+of the amplifier is connected through a direct-coupler with the acousto-optic
+element. The direct-coupler allows to safely measure input and output
+reflection. 
+
+The direct-coupler is an apparatus comprising a coaxial input and output
+port as well as a coaxial input reflection and output reflection port. It is
+disignated to measure the reflection of a (possible) high power signal
+without jeopardizing measurement equipement.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupler.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Input power reflection when supplying the direct-coupler with
+    \SI{-10}{\decibel\meter} input signal and reflection at the output of
+    the direct-coupler while other ports are closed with \SI{50}{\ohm}}.
+  \label{fig:signal_reflection_coupler}
+\end{figure}
+
+In \Cref{fig:signal_reflection_coupler} we see the reflection spectrum for
+the case that we provide the network analyzer output signal to the input of
+the direct-coupler and connect the reflection output of the direct-coupler
+with the second network analyzer port while the remaining ports are under
+\SI{50}{\ohm} closure.
+
+We note that the reflection measured at through the direct-coupler is lowered
+by many orders of magnitude compared to the input signal but essentially of
+the same shape. The noise in the reflection is very high because of the low
+power supplied into the direct-coupler.
+
+We now use the direct-coupler to measure the output reflection at the
+\gls{aod} elements after the signal was amplified.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupled.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Reflection at the direct-coupler output after amplification of the
+  network analyzer input signal for different effective powers. We see that
+the applied power does not effect the spectrum.}
+  \label{fig:signal_reflection_coupled}
+\end{figure}
+
+In \Cref{fig:signal_reflection_coupled} we see the effective reflection
+spectrum for the distinct \gls{aod} elements. The effective reflection
+spectrum is obtained when subtracting the input reflection from the output
+reflection.
+
+\subsubsection{Comparison}
+
+In the previous part we saw that the reflection spectrum does not show any
+power dependence, thus we should be able to compare the spectrum we obtained
+directly with the amplified result.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/comparison.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Comparison of reflection from amplified input signal and direct
+  signal provided from the network analyzer. The different reflection spectrum
+can be associated to the amplifier.}
+  \label{fig:signal_reflection_comparison}
+\end{figure}
+
+In \Cref{fig:signal_reflection_comparison} we can see how there is additional
+reflection from the amplifier, nevertheless the global spectrum
+characteristics stay in place.
+
+\subsubsection{Summary}
+
+Distinct \gls{aod} elements show different power transmission characteristics
+independent of the applied power. Examination of the \gls{aod} elements in
+details discloses different impedance matching circuits.
+
+Impedance matching is used to reduce power reflection by providing a constant
+input resistance of \SI{50}{\ohm} accross an ideally wide frequency range.
+Still the impedance differs between the \gls{aod}s. We assume that the
+crystal properties i.e. cut, purity are responsible for that.
+
+By the previous reflections measurements we keep in mind that these were
+conducted with an input signal with fairly homogenous amplitude. From the
+previous sections we know that this in fact is not the case for the \gls{rf}
+signal later used.
