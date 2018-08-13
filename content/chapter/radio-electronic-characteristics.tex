@@ -246,6 +246,36 @@ where the amplitudes drop.
 
 \subsection{Network analyzer transmission}
 
+We previously discovered that the amplifier amends the frequency amplitude
+response, nevertheless it is difficult to isolate the actual influence of
+the amplifier and to preclude interaction effects caused by the already
+unideal \gls{dds} signal. Therefore we conducted more detailed measurements
+of the amplifiers power transmission with the network analyzer. The network
+analyzer is a device that can measure reflection and transmission parameters
+of electric components and does provide a cleaner input signal then used in
+the previous measurement.
+
+As in the measurement with the oscilloscope we also have to protect the
+network analyzer against the output power of the amplifier. This time we
+used a single \SI{30}{\decibel} attentuator in between the network analyzer
+input and the power amplifier output.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/transmission.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Frequency transmission spectrum obtained via the network analyzer
+  of the horziontal and vertical amplifiers.}
+  \label{fig:signal_amplification_spectrum}
+\end{figure}
+
+In \Cref{fig:signal_amplification_spectrum} we see the frequency transmission
+spectrum obtained through the network analyzer connected to the horizontal
+and vertical amplifiers. We again can confirm a fixed offset of the
+amplification gain between both amplifiers. Further we note that the
+amplification factor falls of linearly in first order towards higher
+frequencies.
+
 \section{Acoustic transducer}
 
 \subsection{Reflection spectrum}
