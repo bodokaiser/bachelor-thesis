@@ -17,13 +17,13 @@ measurements.
 Physical analysis of the \gls{dds} output \gls{rf} signal is in fact no
 simple endeavour as usual operation time scales are of many magnitudes
 greater than the signal periodicity. The strategy we used to resolve this
-circumstance is depcited in \Cref{fig:dds_sweep_window} and consists of
-capturing multiple, small time windows of the signal which delayed would
-cover the complete signal trace.
+circumstance is depcited in \Cref{fig:dds_sweep_window}. The strategy
+consists of capturing multiple, small time windows of the signal which
+delayed would cover the complete signal trace.
 
-\begin{figure}[ht]
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{diagram/sweep-window.png}}
+  \includegraphics[width=\textwidth]{\mediadir{diagram/sweep-window.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Idealized \gls{dds} signal output with constant frequency and
     linear ramp over the sweep duration. The measured window only captures
@@ -32,26 +32,38 @@ cover the complete signal trace.
   \label{fig:dds_sweep_window}
 \end{figure}
 
+The experimental setup is schematically drawn in
+\Cref{fig:dds_sweep_window_setup}. In between the oscilloscope and the
+trigger source we inserted a pulse generator. The pulse generator width
+corresponds to the delay time of the oscilloscope as the oscilloscope is
+configured to capture on the falling edge signal of the pulse generator.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/sweep-window.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{By inserting a pulse generator in between the trigger source and
+  the oscilloscope we can delay the capture window of the oscilloscope by
+the pulse width.}
+  \label{fig:dds_sweep_window_setup}
+\end{figure}
+
 In \Cref{tab:dds_signal_parameters} we can find an overview of the
-experimental parameters. The specified frequency range is motivated to cover
-the greatest possible spatial dimensions permitted by the dimensions of the
-optics. Sweep and window duration as well as the delay time where selected as
-a compromise between the oscilloscope being able to resolve the signal fine
-enough to perform \gls{fft} and the sweep duration being comparable to later
-experiments.
+experimental parameters.
 
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|c|c|c|}
     \hline
-    Start frequency & Final frequency & Sweep duration & Window duration &
-    Delay time \\
+    Start frequency $f_0$ &
+    Final frequency $f_1$ &
+    Sweep duration $T_s$ &
+    Window duration $T_w$ \\
     \hline
     \SI{80}{\mega\hertz} &
     \SI{4.88}{\mega\hertz} &
     \SI{200.00}{\micro\second} &
-    \SI{26.84}{\milli\second} &
-    \SI{89.48}{\micro\second} \\
+    \SI{26.84}{\milli\second} \\
     \hline
   \end{tabular}
   \captionsetup{width=.8\textwidth}
@@ -59,6 +71,14 @@ experiments.
   of the \gls{dds}.}
   \label{tab:dds_signal_parameters}
 \end{table}
+
+The specified frequency range is motivated to cover
+the greatest possible spatial dimensions permitted by the dimensions of the
+optics. Sweep and window duration where selected as a compromise between the
+oscilloscope being able to resolve the signal fine enough to perform
+\gls{fft} and the sweep duration being comparable to later experiments. Time
+delay between windows was choosen to be $T_s/300$, thus we will capture 300
+overlapping time windows.
 
 \subsection{Discrete frequency spectrum}
 
