@@ -142,12 +142,15 @@ ourselves to the analysis of one such output. In
 \Cref{fig:signal_synthesis_inverse_sinc} we can see a strong frequency
 response of the amplitude. In particular we observe that at around
 \SI{80}{\mega\hertz} and \SI{103}{\mega\hertz} the amplitude shows
-significant local minima. The datasheet of the \gls{ad9910} reports a
-characteristic sinc dependency of the output power \cite{AD9910} and thus
-promotes a built-in inverse-sinc filter to compensate in respect thereof.
-Having said that the reported output power in dependency of the frequency
-in \cite{AD9910} should only be of linear order for the investigated
-frequency range and in fact as we can see in the lower trace in
+significant local minima. The outliers on the left are caused by the no-dwell
+mode enabled in the \gls{dds} configuration which causes the digital ramp to
+return back to the start frequency and is necessary to support the external
+trigger input. The datasheet of the \gls{ad9910} reports a characteristic
+sinc dependency of the output power \cite{AD9910} and thus promotes a
+built-in inverse-sinc filter to compensate in respect thereof. Having said
+that the reported output power in dependency of the frequency in
+\cite{AD9910} should only be of linear order for the investigated frequency
+range and in fact as we can see in the lower trace in
 \Cref{fig:signal_synthesis_inverse_sinc} the enabled inverse-sinc filter
 does not account for our observed amplitude response.
 
@@ -170,11 +173,78 @@ indeed the digital ramp introduces a small frequency shift, nonetheless it
 still shows the same global behaviour of the output power. Therefore we are
 left unanswered with the origin of the observed output power spectrum.
 
-\section{Amplifier}
+\section{Power amplifier}
 
-\subsection{Transmission spectrum}
+The piezoelectric attached to the acousto-optic crystal inside the \gls{aod}
+elements has to emit acoustic waves strong enough to propagate through the
+crystal structure of the acousto-optic crystal. Obviously such mechanical
+method demands power not usually met by \gls{rf} signal sources such as the
+\gls{dds}. Therefore it is essential to amplify the \gls{rf} signal through
+a power amplifier.
 
 \subsection{Amplitude frequency response}
+
+The measurement procedure described in the previous section is still valid
+for the now amplified signal of projected \SI{33}{\decibel\meter}. At the
+usual \SI{50}{\ohm} in between coaxial cables this corresponds to an
+approximate voltage of \SI{10}{\volt}. In order to protect the oscilloscope
+for potential damage caused by too much power, we inserted a chain of
+attentuators, from coaxial cable to oscilloscope \SI{1}{\decibel},
+\SI{3}{\decibel}, \SI{6}{\decibel}, \SI{10}{\decibel} and \SI{10}{\decibel}
+(to distribute heat dissipation) in between the coaxial cable and the
+oscilloscope input to attain a total damping of \SI{30}{\decibel}. Otherwise
+data analysis was performed analogue to the unamplified case.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/amplitude-response.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Maximum amplitude at dominant frequency per delayed window for two
+  different amplifiers. We can see the discreteness of the frequency domain
+from the digital signal synthesis as well as three resonances. Further the
+amplifier differ by a constant offset.}
+  \label{fig:signal_amplification_frequency_max_amplitude}
+\end{figure}
+
+\Cref{fig:signal_amplification_frequency_max_amplitude} presents us the
+damped output signal subject to the signal frequency after amplification for
+the two distinct amplifiers. We require two distinct amplifiers because our
+setup comprises two independently controlled \gls{aod}.
+
+At first we note that the amplified signal differs by a constant offset. We
+assume this offset to be caused by different component quality as the
+frequency response shape itself is similar. On a second glance we again find
+evidence for discrete frequencies from
+\Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
+subtile horizontal pattern of the markers.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Relative amplitude at dominant frequency per delayed window for
+  two different amplifiers and their digital signal source. In comparison to
+the signal source the amplifiers introduce a further resonance at the
+center frequency.}
+  \label{fig:signal_amplification_comparison}
+\end{figure}
+
+\Cref{fig:signal_amplification_comparison} shows the min-max-normalized
+amplified signals with the min-max-normalized input signal from the horizontal
+\gls{dds}. After normalization the fixed offset difference, we observed
+previously in between the distinct amplifiers, vanishes and the same
+frequency response shape is obvious.
+
+Comparison of the signal after (black, green) and before amplification (red)
+yields that the input signal from \gls{dds} seems more dense than after the
+amplification, yet we miss a solid explaination for this behaviour. It could
+be that the selected voltage resolution of the oscilloscope was not optimal.
+Furthermore we observe that the amplifier remedies the amplitude drop
+at around \SI{102}{\mega\hertz} of the source signal. However the amplifier
+possess resonances around \SI{98}{\mega\hertz} and \SI{110}{\mega\hertz}
+where the amplitudes drop.
+
+\subsection{Network analyzer transmission}
 
 \section{Acoustic transducer}
 
