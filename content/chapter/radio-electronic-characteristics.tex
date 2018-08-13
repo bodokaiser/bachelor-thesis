@@ -82,19 +82,93 @@ overlapping time windows.
 
 \subsection{Discrete frequency spectrum}
 
+For an ideal linear frequency sweep we would expect a continous increase of
+the frequency with respect to time, yet we know that \gls{dds} makes use of
+digital signal processing methods which suggests a discrete frequency
+spectrum. To help us expose the characteristics of the digital frequency
+sweep we will utilize a spectrogram. A spectrogram visualizes how the
+frequency spectrum varies in time. One way to obtain a spectrogram is to
+partition the data into overlapping time chunks while performing \gls{fft}
+which allows us to combine time and frequency domain specific
+characteristics. In our case we choose the relative spectral power to be
+encoded through color.
+
 \begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Spectrogram of delayed time windows of the \gls{dds} output signal
-    configured to perform a frequency sweep from \SI{80}{\mega\hertz} to
-    \SI{120}{\mega\hertz}. For an ideal linear sweep we would expect a linear
-    timeline of the frequency, instead we observe a discrete set of
-    frequencies which reflects the digital nature of the \gls{dds}.}
+    configured to perform a linear frequency sweep. For an ideal linear sweep
+    we would expect a linear timeline of the frequency, instead we observe a
+    discrete set of frequencies.}
   \label{fig:signal_synthesis_spectrogram}
 \end{figure}
 
+\Cref{fig:signal_synthesis_spectrogram} depicts four spectrograms, each taken
+at a different time window of the frequency sweep passthrough. The first
+spectrogram captures the start of the frequency sweep. We can see how for the
+first \SI{200}{\micro\second} the \gls{dds} outputs only the start frequency
+of \SI{80}{\mega\hertz} which then is increased by increments to reach the
+final frequency of \SI{120}{\mega\hertz} as can be seen in the lower right
+spectrogram at the end of the frequency sweep.
+
 \subsection{Amplitude frequency response}
+
+Although the previous section satisfied our curiousity, it did only confirm
+made presumptions. We will now move on with the examination of the amplitude
+frequency response which by all means shows unexpected behaviour.
+
+In the Fourier space we can locate the dominant frequency at the maximum of
+the power spectrum. That in mind we can reduce the previous obtained time
+window measurements to pairs of dominant frequency and maximum amplitude.
+Under the assumption that the maximum amplitude lies closely in range of the
+mean amplitude we find the amplitude frequency response spectrum.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/inverse-sinc.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Maximum amplitude of the \gls{dds} signal output at different
+    frequencies during linear sweep operation. In the bottom trace the
+    \gls{dds} was configured with enabled inverse-sinc filter.}
+  \label{fig:signal_synthesis_inverse_sinc}
+\end{figure}
+
+\Cref{fig:signal_synthesis_inverse_sinc} visualized the previously described
+routine for the \gls{dds} assigned to the vertical \gls{aod}. The data
+trace for the horizontal \gls{dds} is of equal shape, thus there are no
+differences between the output signals of distinct \gls{dds} and we can limit
+ourselves to the analysis of one such output. In
+\Cref{fig:signal_synthesis_inverse_sinc} we can see a strong frequency
+response of the amplitude. In particular we observe that at around
+\SI{80}{\mega\hertz} and \SI{103}{\mega\hertz} the amplitude shows
+significant local minima. The datasheet of the \gls{ad9910} reports a
+characteristic sinc dependency of the output power \cite{AD9910} and thus
+promotes a built-in inverse-sinc filter to compensate in respect thereof.
+Having said that the reported output power in dependency of the frequency
+in \cite{AD9910} should only be of linear order for the investigated
+frequency range and in fact as we can see in the lower trace in
+\Cref{fig:signal_synthesis_inverse_sinc} the enabled inverse-sinc filter
+does not account for our observed amplitude response.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/csample-dramp.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Maximum amplitude of the \gls{dds} signal output at different
+    frequencies once obtained by linear sweep operation and once through
+    manual frequency sampling.}
+  \label{fig:signal_synthesis_scample_dramp}
+\end{figure}
+
+One hypothesis suggested that the observed amplitude response is caused by
+fact that the frequencies are sampled internally from the digital ramp logic.
+Therefore we collected second data where we configured the vertical \gls{dds}
+to output constant frequencies. The amplitude response for this setup is
+disclosed in \Cref{fig:signal_synthesis_scample_dramp}. We can see that
+indeed the digital ramp introduces a small frequency shift, nonetheless it
+still shows the same global behaviour of the output power. Therefore we are
+left unanswered with the origin of the observed output power spectrum.
 
 \section{Amplifier}
 
