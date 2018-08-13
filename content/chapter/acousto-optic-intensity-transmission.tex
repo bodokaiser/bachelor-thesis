@@ -1,4 +1,4 @@
-\chapter{Intensity measurements}
+\chapter{Acousto-optic intensity transmission}
 
 In the previous chapter we seeked for different aspects of the \gls{rf}
 signal powering the \gls{aod} elements. Down the road we had to realize that
@@ -15,11 +15,11 @@ integrated into our experimental setup and thus will be present for all
 subsequent intensity measurements. In this section we want to discuss the
 grade of this control loop and estimate its error contribution.
 
-\subsection{Setup}
+\subsubsection{Experimental setup}
 
 \begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-control.png}}
+  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-control.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Optical and electronic setup of the intensity control experiment.
   The \gls{aod}s have been removed. The beam hits photodiode 2 that is
@@ -132,7 +132,7 @@ do not see outliers in \Cref{fig:intensity_control_short} we can pay more
 attention to the value range of \SI{0.05}{\volt} which was obfuscated in
 the long term measurement because of outliers.
 
-\subsection{Summary}
+\subsubsection{Summary}
 
 The previous discussion confirmed that the intensity is regulated in that
 we only observe oscillations around the targeted intensity value. Yet we are
@@ -207,7 +207,7 @@ systematic measurement errors from poor calibration. One way to assess the
 alignment grade of our alignment is to evaluate the spatial profile of the
 laser beam with respect to deviations from an ideal gaussian profile.
 
-\subsection{Setup}
+\subsubsection{Experimental setup}
 
 In the previous setup we used a second photodiode to measure the temporal
 deviations of the intensity. In order to measure spatial deviations of the
@@ -215,7 +215,7 @@ intensity we replaced the photodiode with a \gls{ccd} camera.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-profile.png}}
+  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-profile.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{The beam is focused onto the \gls{ccd} sensor of the camera. The
     \gls{aod} are configured at \SI{100}{\mega\hertz} center frequency.
@@ -227,8 +227,6 @@ In \Cref{fig:intensity_profile_setup} we see the setup used to measure the
 beam profile. The \gls{aod} are configured at \SI{100}{\mega\hertz} center
 frequency. The distance between Lens 4 and the \gls{ccd} sensor is chosen
 such that the the beam head is focused.
-
-\subsection{Result}
 
 In \Cref{fig:intensity_profile_2d} we can see an enlarged image patch of the
 complete image caputre taken with the \gls{ccd} camera. We can see a strong
@@ -272,7 +270,7 @@ the otherwise Gaussian profile causes by the finite aperture. Further we can
 now clearly observe assymmetry from the intensity contributions around the
 Gaussian which means that our alignment is not perfect.
 
-\subsection{Summary}
+\subsubsection{Summary}
 
 We can confirm the results reported in \cite{Hertlein2017} that the spatial
 beam profile equals a two dimensional Gaussian combined with a diffraction
@@ -290,7 +288,7 @@ Our optical setup uses a single two dimensional \gls{aod} that comprises two
 behaviour of the single \gls{aod} elements to eachother. In particular we
 are interested if and how the \gls{aod} elements differ.
 
-\subsection{Setup}
+\subsubsection{Experimental setup}
 
 The used 2D \gls{aod} is depicted in \Cref{fig:aod_socket}. We see the
 two \gls{aod} elements in the respective horizontal and vertical slot. The
@@ -392,7 +390,7 @@ the \gls{aod} are cut in a intended way to account among others for
 polarization effects and it is advised to operate them in their anticipated
 slot as we will do for all following experiments.
 
-\subsection{Conclusion}
+\subsubsection{Summary}
 
 The transmission of \gls{aod} crystals depends among others on the
 polarization mode of the incident laser beam. A two dimensional \gls{aod}
@@ -402,37 +400,144 @@ to be matched to each other.
 \section{2D intensity distribution}
 
 In the previous section we sorted out the influence of the \gls{aod} element
-position and acknowledged that \gls{aod} in general may differ significant
-in their properties. In the present section we now want to explore the
+position and acknowledged that \gls{aod}s differ significant in their
+optical properties. In the present section we now want to explore the
 intensity transmission for a two dimensional sweep as intended to be used
 for the optical potentials.
 
-\begin{figure}[ht]
+\subsubsection{Experimental setup}
+
+The experimental setup is similar to the previous setups and is shown in
+\Cref{fig:intensity_distribution_setup}. We have both \gls{aod} mounted in
+their anticipated position. The \gls{aod} elements are aligned to maximize
+intensity at the center frequency. The laser beam is directed into a second
+photodiode where we measure the intensity with respect to the configured
+\gls{dds} signal.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-distribution.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Experimental setup used to measure the intensity transmission of
+  the 2D \gls{aod} in dependence of the configured \gls{dds} signal.}
+  \label{fig:intensity_distribution_setup}
+\end{figure}
+
+\subsubsection{Digital ramp frequency sweep}
+
+In a first attempt we configure a first \gls{dds} to output a constant
+frequency whereas a second \gls{dds} is configured to do a frequency sweep
+using the internal digital ramp. After one such sweep the constant frequency
+output of the first \gls{dds} is increased and the measurement repeats. The
+procedure is repeated until the first \gls{dds} covered the same frequency
+range as the second \gls{dds} per measurement.
+
+\begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-frequency.pdf}}
   \captionsetup{width=.8\textwidth}
-  \caption{Intensity distribution over linear frequency sweep at different
-  configured \gls{dds} amplitudes for different individual \gls{aod}
-configurations.}
+  \caption{Intensity measured as voltage at the photodiode in dependence of
+    the horizontal and vertical applied frequency signal to the \gls{aod}. The
+    left map is obtained by enabling the digital ramp on the horizontal
+    \gls{dds} whereas the vertical \gls{dds} is configured to output a
+    constant frequency which is manually increased after each measurement.
+    On the right-hand side map the roles are exchanged.}
   \label{fig:intensity_distribution_frequency}
 \end{figure}
 
-\begin{figure}[ht]
+In \Cref{fig:intensity_distribution_frequency} we are presented the intensity
+measured at the second photodiode in the setup shown in
+\Cref{fig:intensity_distribution_setup}. On the left-hand map the first
+\gls{dds} is the \gls{dds} responsible for translations in vertical direction
+whereas the second \gls{dds} is responsible for translations in horizontal
+direction. This fact is also represented in the dimensionality of the
+measurement data and can be observed at a close glance where we can see the
+stripes in the direction of the more densely performed sweep.
+
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/sample-frequency.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Intensity distribution over linear frequency sweep at different
-  configured \gls{dds} amplitudes for different individual \gls{aod}
-configurations.}
+  \includegraphics[width=.7\textwidth]{\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Absolute difference between the 2D intensity distribution
+  performed with the digital ramp configured set to different axes.}
+  \label{fig:intensity_distribution_frequency_residue}
+\end{figure}
+
+As the differences in \Cref{fig:intensity_distribution_frequency} are of only
+subtile nature we additionally reveal the absolute difference between both
+maps in \Cref{fig:intensity_distribution_frequency_residue}. We observe
+nearly a binary map of dark purple and yellow area whereas the dark area can
+be intepreted as small and the yellow area as large difference. The binary
+nature of the absolute difference reminds us at the fixed offset we observed
+between the amplifiers whereas the areas with small difference occur when the
+crystal is saturated. However we must admit that this suggestions needs
+further evidence.
+
+\subsubsection{Constant sampled frequencies}
+
+In \cref{subsec:signal_synthesizer_amplitude_frequency_response} we found
+that the \gls{dds} show a slightly different amplitude frequency response
+in the case of frequencies being controlled by the digital ramp. It remains
+open if this is also true for the amplifier and in fact even more prominent.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=.7\textwidth]{\figuredir{intensity/distribution/sample-frequency.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Intensity measured as voltage at the photodiode in dependence of
+    the horizontal and vertical applied frequency signal to the \gls{aod}.
+    Frequency pairs are sampled over a uniform distribution and then passed
+  as constant output frequency paramter to the \gls{dds}.}
   \label{fig:intensity_distribution_frequency_sampled}
 \end{figure}
 
-\begin{figure}[ht]
+To partly answer this question we sampled random frequency pairs over a
+two dimensional uniform distribution and passed them as constant frequency
+parameter to the respective \gls{dds}. The yielded intensity distribution
+is visualized in \Cref{fig:intensity_distribution_frequency_sampled}. We note
+that in comparison to \Cref{fig:intensity_distribution_frequency} the
+intensity differences are more concentrated around the vertical axis. This
+suggests that there are electronic effects in play during fast sweeps that
+do affect the intensity transmission.
+
+\subsubsection{Different radio frequency signal source}
+
+The previous finding suggest that the intensity transmission of the \gls{aod}
+is mainly caused by unideal characteristics of the electronic equipment.
+Regardless it is still unclear whether the \gls{dds} or the power amplifier
+should be held responsible for messing up our signal.
+
+For the following measurement we replaced the vertical \gls{dds} source with
+a high-quality signal generator and configured a frequency sweep. We presume
+the high-quality signal generator to supply a constant output power level.
+
+\begin{figure}[h]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Intensity distribution over linear frequency sweep at different
-  configured \gls{dds} amplitudes for different individual \gls{aod}
-configurations.}
-  \label{fig:intensity_distribution_frequency_residue}
+  \includegraphics[width=.9\textwidth]{\figuredir{intensity/distribution/signal-sources.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Intensity measured as voltage at the photodiode with one \gls{aod}
+    at constant center frequency supplied by a \gls{dds} and the other
+    \gls{aod} performing a linear frequency sweep with the \gls{dds} and a
+  high-quality signal generator.}
+  \label{fig:intensity_distribution_signal_sources}
 \end{figure}
+
+\Cref{fig:intensity_distribution_signal_sources} discloses the intensity
+measured as voltage at the photodiode when the frequency sweep is performed
+by two different signal sources and the other \gls{aod} is held at constant
+center frequency. We observe that even though the signal generator has a much
+more coarse frequency resolution it shares the global characteristics of
+the more dense trace from the \gls{dds}. This confirms that the amplifier
+seems to be the dominant contributor to the intensity transmission during
+frequency sweeps.
+
+\subsubsection{Summary}
+
+In this chapter we found out that the \gls{rf} signal is of major importance
+to the observed intensity transmission. In particular the power amplifier
+possess a strong frequency power response. The acousto-optics itself seem to
+be saturated at some power level. Transmission also seems to differ depending
+on the method used to sweep frequencies. All in all there are to many factors
+at play to describe with a simple analytical model and we will further try to
+not expect much regularities for the optimization procedure in the next
+chapter.
