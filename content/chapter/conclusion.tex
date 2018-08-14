@@ -1,27 +1,39 @@
 \chapter{Conclusion}
 
-
 \subsubsection{Summary}
 
 \subsubsection{Outlook}
 
-It remains open if the \gls{aod} is designed to have a homogeneous intensity
-transmission when supplied with sufficient power or intensity irregularities
-arise in a complex interaction between acousto-optic and electronic defects.
+It remains unclear if the \gls{aod} is designed to have a homogeneous
+intensity transmission when supplied with sufficient power or intensity
+irregularities arise in a complex interaction between acousto-optic and
+electronic defects. Our experimental results support the first case but
+evidence can be questioned and one shall not fall for hastly judgement.
 One possibility to answer this question once and for all would be to use a
 precision watt meter together with the direct-coupler we already used in XX
 and to manually control a power level over a set of frequencies. The
-resulting intensities should indicate whether a homogeneous intensity field
-is feasible (if necessary with calibration procedure) or not. Our
-experimental results strongly support the first case, however you shall never
-fall for hastly judgements.
+resulting intensities should then indicate whether a homogeneous intensity
+field is feasible (if necessary with calibration procedure) or not.
 
-Anyhow we have found that it is a challenging undertaking to maintain a
-constant high-power \gls{rf} signal over a frequency range that the given
-\gls{dds} and power amplifier are not suited to face.
+Regardless we have found that it is a challenging undertaking to maintain a
+constant high-power \gls{rf} signal over a frequency range. The available
+\gls{dds} and power amplifier do clearly not meet these demands. The
+\gls{dds} also fail to provide sufficient frequency resolution on time scales
+necessary for the practical use in ultracold atom experiments. However it is
+likely that a custom \gls{fpga} with power amplification may be suited to
+face such challenge.
 
+Before that though we need to dig deeper into the theory of acousto-optics
+and check if the acousto-optics can handle the targeted time scales or if
+the laser beam will be subject to acoustic lensing effects. Literature that
+covers these and more can be found with \cite{Goutzoulis1994} and
+\cite{Royer1999}.
 
-the resulting intensity. As long as the so measured intensity is
-deterministic with respect to the applied radio frequency, one can try to
-recalibrate the power level to yield a homogeneous intensity measurement as
-we have done in the previous chapter.
+Finally there are also interesting industrial application to consider if the
+outstanding issues can be resolved. For example the field of ophthalmologics
+covers a wide range of opportunities for precision laser control like
+corrective eye surgeries which according to \cite{US20180110655},
+\cite{US20180064579} and \cite{US7131968} make use of mechanical deflectors.
+Certainly there are also industrial applications in solid-state industries,
+yet we did not check up closer.
+
