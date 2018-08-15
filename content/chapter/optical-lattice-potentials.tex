@@ -198,31 +198,83 @@ with dipole element $d_0$. Same results can also be obtained by the use of
 second order perturbation theory, however the presented approach is more
 clear on assumptions and time dependence \cite{Grimm2008}.
 
-\section{Electrical field of laser}
+\section{Laser light fields}
+
+In this section our focus will be on the laser light field that creates the
+optical lattice potential and the laser light field that creates the
+time-averaged dynamic potentials.
+
+\subsection{Gaussian beams}
+
+The predominant output mode of most lasers is the fundamental transverse
+gaussian mode described by
+\begin{equation}
+  \vb{E}(r,z)
+  =
+  \vb{E}_0\frac{w(0)}{w(z)}
+  \exp{-\frac{r^2}{w(z)^2}}
+  \exp{-ik\left(z+\frac{r^2}{2R(z)}-\arctan(\frac{z}{z_R})\right)}
+  \label{eq:gaussian_beam}
+\end{equation}
+where $w(z)$ is the waist radius, $z_R=\pi w(0)^2/\lambda$ the Rayleigh
+range and $R(z)$ the radius of curvature of the beam's wavefronts at $z$.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{\mediadir{image/gaussian-beam.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Illustration of gaussian beam parameters from $\aleph$ (Aleph),
+    http://commons.wikimedia.org. The waist radius $w(z)$ relates to the beam
+    width, $R(z)$ relates to the wavefront curvature and $z_R$ is the
+    distance from origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$.}
+  \label{fig:gaussian_beam}
+\end{figure}
+
+\Cref{fig:gaussian_beam} unveils how the parameters relate to the beam
+profile propagation. The waist radius $w(z)$ corresponds to the beam width,
+$R(z)$ relates to the wavefront curvature and $z_R$ is the distance from
+origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$.
+
+Fortunately \cref{eq:potential_effective} only depends on the absolute
+square of the electric field, thus we can drop the complex exponential from
+\cref{eq:gaussian_beam} to find an expression for the Gaussian intensity
+distribution
+\begin{equation}
+  I(r,z)
+  =
+  \frac{2I_0}{c_0\epsilon_0}
+  \left(\frac{w(0)}{w(z)}\right)^2
+  \exp{-\frac{2r^2}{w(z)^2}}
+  \label{eq:gaussian_intensity}
+\end{equation}
+where $I_0$ is the maximum intensity, $c_0$ the vacuum speed of light and
+$\epsilon_0$ the dielectric constant.
+
+\subsubsection{Optical lattice}
 
 An one dimensional optical lattices can be generated through the interference
 of two counter-propagating Gaussian beams, creating a standing wave
-interference pattern. The electrical field component in such a case is given
-by
+interference pattern. The intensity distribution adds a $\cos^2(kz)$ factor
+to \cref{eq:gaussian_intensity} yielding
 \begin{equation}
-  \vb{E}(t)
-  =\vb{E}_0\cos(kz)\cos(\omega t)\exp(-\frac{2r^2}{w(z)^2})
+  I(r,z)
+  =
+  \frac{2I_0}{c_0\epsilon_0}
+  \left(\frac{w(0)}{w(z)}\right)^2
+  \cos^2(kz)
+  \exp{-\frac{2r^2}{w(z)^2}}
   \label{eq:1d_lattice_efield_exact},
 \end{equation}
-wherein $r$ denotes the beam radius, $w(z)$ the spot size parameter and $k$
-the angular wavenumber of the laser. The wavenumber relates to the laser
-wavelength via $k=2\pi/\lambda$. The magnetic field component is chosen
-in such a way that it satisfies the Maxwell equations but will not be
-considered relevant any further as the electron only has a small magnetic
-dipole. Analogue to \cite{Rom2009} we will now assume $w(z)\gg r$ and drop
-the exponential term in \cref{eq:1d_lattice_efield_exact}, thus simplifying
+with wavenumber $k$ relating to the wavelength via $k=2\pi/\lambda$. Analogue
+to \cite{Rom2009} we will now assume $w(z)\gg r$ and drop the exponential
+term in \cref{eq:1d_lattice_efield_exact}, thus simplifying
 \cref{eq:1d_lattice_efield_exact} to
 \begin{equation}
-  \vb{E}(t)
-  \approx\vb{E}_0\cos(kz)\cos(\omega t)
+  I(r,z)
+  \approx
+  \frac{2I_0}{c_0\epsilon_0}\cos^2(kz)
   \label{eq:1d_lattice_efield_approx}.
 \end{equation}
 Note that even the electric field in \cref{eq:1d_lattice_efield_approx} has
 a spatial dependency, the dipole approximation still holds in the atomic
 reference frame.
-
