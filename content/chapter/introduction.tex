@@ -100,14 +100,36 @@ topology of optical lattice structures.
 \subsubsection{Related work}
 
 Local manipulations of atoms inside optical lattices have been known for some
-time in the embodiment of optical tweezers that allow trapping, stacking and
-sorting of particles \cite{Tadmor2004}. Yet, only recently attempts to
+time in the manifestatiion of optical tweezers that allow trapping, stacking
+and sorting of particles \cite{Tadmor2004}. Yet, only recently attempts to
 interact with local particle clusters through high-precision time-averaged
 optical potentials have been reported \cite{Roy2016}.
 
-In the following we continue on the laid out work \cite{Hertlein2017} which
-provided us with an optical setup for single-site manipulation using
-\gls{aod} as well as considerations with regard to aperture limited
-gaussian beam propagation.
+The key concept to create local optical potentials is similar to the
+principle with what cathode ray tube screens operate. The idea is to
+consecutively illuminate a finite point set that covers the desired space.
+A complete passthrough of the finite point set has to occur on a time scale
+short compared to the time scale of the observed processes such that over
+average the passthrough yields an effective potential in the observed
+process.
+
+In comparison to the state of art which uses mechanical mirror arrays for
+beam deflection \cite{Roy2016} our approach exercises acousto-optical
+deflection by \gls{aod}. In the following we continue on the ground work
+laid out in \cite{Hertlein2017} which provided us with an optical setup for
+single-site manipulation using \gls{aod} as well as the discussion of
+aperture limited gaussian beam propagation.
 
 \subsubsection{Outline}
+
+We will start of with the theoretical foundation of optical lattice
+potentials and give more details on how the lattice potential alters under
+an additional potential well. From there on we will estimate the required
+time scale set by hopping frequency of atoms between lattice sites. After
+a short introduction to direct digital signal synthesis we will calculate
+if and how the used \gls{dds} met the previously found demands. That in place
+we can continue with an overview of our experimental setup and results. The
+experiments separate in a part concerning the radio electronics, a part
+dedicated to the intensity transmission subject to the \gls{rf} signal and
+a final part where we attempt to minimize the intensity transmission
+variance.
