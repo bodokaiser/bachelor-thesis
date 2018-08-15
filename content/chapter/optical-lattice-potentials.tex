@@ -1,4 +1,4 @@
-\chapter{Optical lattice potentials}
+\chapter{Optical potentials}
 
 In the introduction we presented the concept of our envisaged potential
 creation. In the following chapter we want to recapitulate the theoretical
@@ -28,11 +28,11 @@ electron. For alkali atoms we know that inner electron shells are closed and
 the single outer electron is approximately described by
 \cref{eq:hamiltonian_em}. The electromagnetic field relates to the
 vector and scalar potential through
-\begin{equation}
+\begin{align}
   \vb{E}=-\grad{\Phi}-\pdv{\vb{A}}{t} &&
   \vb{B}=\curl{\vb{A}}
   \label{eq:field_em_potentials}
-\end{equation}
+\end{align}
 where $\vb{E}$ is the electric and $\vb{B}$ the magnetic field component.
 
 \subsubsection{Gauge freedom}
@@ -233,7 +233,14 @@ range and $R(z)$ the radius of curvature of the beam's wavefronts at $z$.
 \Cref{fig:gaussian_beam} unveils how the parameters relate to the beam
 profile propagation. The waist radius $w(z)$ corresponds to the beam width,
 $R(z)$ relates to the wavefront curvature and $z_R$ is the distance from
-origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$.
+origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$. Beam width
+and curvature radius evolve according to
+\begin{align}
+  w(z)=w(0)\left[1+\left(\frac{z}{z_R}\right)^2\right]^{1/2}
+  &&
+  R(z)=z\left[1+\left(\frac{z_R}{z}\right)^2\right]
+  \label{eq:gaussian_beam_evolvement}.
+\end{align}
 
 Fortunately \cref{eq:potential_effective} only depends on the absolute
 square of the electric field, thus we can drop the complex exponential from
@@ -242,39 +249,136 @@ distribution
 \begin{equation}
   I(r,z)
   =
-  \frac{2I_0}{c_0\epsilon_0}
+  I_0
   \left(\frac{w(0)}{w(z)}\right)^2
   \exp{-\frac{2r^2}{w(z)^2}}
+  =
+  I_0
+  \frac{\exp{-\frac{2r^2}{w(z)^2}}}{1+\left(\frac{z}{z_R}\right)^2}
   \label{eq:gaussian_intensity}
 \end{equation}
-where $I_0$ is the maximum intensity, $c_0$ the vacuum speed of light and
-$\epsilon_0$ the dielectric constant.
+where $I_0$ is the maximum intensity at $r=z=0$.
 
-\subsubsection{Optical lattice}
+\subsubsection{Lattice intensity}
 
 An one dimensional optical lattices can be generated through the interference
-of two counter-propagating Gaussian beams, creating a standing wave
-interference pattern. The intensity distribution adds a $\cos^2(kz)$ factor
-to \cref{eq:gaussian_intensity} yielding
+of two counter-propagating Gaussian beams
+\begin{align*}
+  \vb{E}_\rightarrow(\vb{x},t)+\vb{E}_\leftarrow(\vb{x},t)
+  &=
+  \vb{E}_0(r,z)\cos(kz-\omega t)+\vb{E}_0(r,z)\cos(kz-\omega t)\\
+  &=
+  2\vb{E}_0(r,z)\cos(kz)\cos(\omega t)
+\end{align*}
+Therewith the intensity distribution equals
+\cref{eq:gaussian_intensity} with an additional $4\cos^2(kz)$ factor
 \begin{equation}
-  I(r,z)
+  I(z)
   =
-  \frac{2I_0}{c_0\epsilon_0}
-  \left(\frac{w(0)}{w(z)}\right)^2
-  \cos^2(kz)
-  \exp{-\frac{2r^2}{w(z)^2}}
-  \label{eq:1d_lattice_efield_exact},
+  4I_0\cos^2(kz)
+  \frac{\exp{-\frac{2r^2}{w(z)^2}}}{1+\left(\frac{z}{z_R}\right)^2}
+  \label{eq:lattice_intensity}
 \end{equation}
-with wavenumber $k$ relating to the wavelength via $k=2\pi/\lambda$. Analogue
-to \cite{Rom2009} we will now assume $w(z)\gg r$ and drop the exponential
-term in \cref{eq:1d_lattice_efield_exact}, thus simplifying
-\cref{eq:1d_lattice_efield_exact} to
+contributed through the constructive interference.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Laser wavelength $\lambda$ &
+    Lattice constant $a=\lambda/2$ &
+    Beam waist $w(0)$ &
+    Rayleigh length $z_R$ \\
+    \hline
+    \SI{1064}{\nano\meter} &
+    \SI{532}{\nano\meter} &
+    \SI{150}{\micro\meter} &
+    \SI{66}{\milli\meter} \\
+    \hline
+  \end{tabular}
+  \captionsetup{width=.8\textwidth}
+  \caption{Typical values for a Gaussian beam used to construct an optical
+    lattice potential.}
+  \label{tab:gaussian_beam_lattice}
+\end{table}
+
+\Cref{tab:gaussian_beam_lattice} lists typical values for a Gaussian beam
+used to construct an optical lattice potential. Optical lattices have up to
+50 lattice sites spanning over a range of $l=50a\approx\SI{27}{\micro\meter}$
+\cite{Rom2009}. For $-l/2<z<+l/2$ we find that $w(z)\approx w(0)$ and because
+$r\ll1$ we can approximate \cref{eq:lattice_intensity} to follow
 \begin{equation}
-  I(r,z)
+  I(z)
   \approx
-  \frac{2I_0}{c_0\epsilon_0}\cos^2(kz)
-  \label{eq:1d_lattice_efield_approx}.
+  4I_0\cos^2(kz)
+  \label{eq:gaussian_intensity_approx}
 \end{equation}
-Note that even the electric field in \cref{eq:1d_lattice_efield_approx} has
-a spatial dependency, the dipole approximation still holds in the atomic
-reference frame.
+which we will use from now on as the intenisty distribution for one
+dimensional optical lattices.
+
+\subsubsection{Perturbation intensity}
+
+The laser beam used to perturbate the optical lattice potential has slightly
+different parameters \cite{Hertlein2017} as we can see in
+\Cref{tab:gaussian_beam_perturbation}.
+
+\begin{table}[h]
+  \centering
+  \begin{tabular}{|c|c|c|c|}
+    \hline
+    Laser wavelength $\lambda$ &
+    Beam waist $w(0)$ &
+    Rayleigh length $z_R$ \\
+    \hline
+    \SI{532}{\nano\meter} &
+    \SI{1}{\micro\meter} &
+    \SI{6}{\micro\meter} \\
+    \hline
+  \end{tabular}
+  \captionsetup{width=.8\textwidth}
+  \caption{Typical values for a Gaussian beam used to perturbate the optical
+    lattice potential reported by \cite{Hertlein2017}.}
+  \label{tab:gaussian_beam_perturbation}
+\end{table}
+
+For these parameters approximations made for optical lattice are not valid
+and we need to the exact \cref{eq:gaussian_intensity} formula.
+
+\section{Potential interaction}
+
+We have now found two different expressions for the intensity of the optical
+lattice and of the perturbation. We will now further assume
+$V_{\text{lat}}(0)=-10E_r$ and $V_{\text{per}}(0)=+2E_r$. In addition we
+expect the perturbation to be directed at six different points. Under these
+circumstances we expect the effective potential, the superposition from the
+lattice potential and the perturbation to evolve as depicted in
+\Cref{fig:perturbated_potential_evolution}.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{potential/evolution.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Time evolution of local perturbated potentials. We can see how
+    the perturbated potential changes within the spatial coordinates (black
+    vertical line) in comparison to the periodic lattice potential.}
+  \label{fig:perturbated_potential_evolution}
+\end{figure}
+
+We can clearly see how the different beam parameters affect the intensity
+distribution and thereby the potential shape. Further we see how the
+perturbation wanders (black vertical line) accross the spatial dimension.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{potential/effective.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Time average of local perturbated potentials. Over a time average
+  we see that the perturbation causes a local potential shift on top of the
+lattice potential.}
+  \label{fig:perturbated_potential_effective}
+\end{figure}
+
+In \Cref{fig:perturbated_potential_effective} we created the time-average
+from the perturbation states. We can see how the time-average yields an
+approximate localized potential energy shift.
+
