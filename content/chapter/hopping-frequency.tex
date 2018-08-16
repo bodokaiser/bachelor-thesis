@@ -77,13 +77,16 @@ elaborate treatment of \cref{eq:hamiltonian_effective} in the next section.
 \section{Periodic lattice potentials}
 
 The following section is dedicated to the quantum mechanics of periodic
-lattice potentials. After we revise the formulation of lattice structures,
-we will examine Bloch and Wannier states as well as the energy bands arising
-in periodic lattice potentials.
+lattice potentials. We will develope a toolset which allows us to find an
+exact solution to \cref{eq:hamiltonian_effective} and other periodic
+potentials. We are going to start of with a recap of lattice structures and
+examine how Bloch states can be used as ansatz for periodic potentials. From
+there on we will derive a general expression for the energy band structure
+that arises with Bloch states and then finally discuss Wannier states as
+a change of reference frame from the expanded lattice structure to the local
+lattice sites.
 
 \subsection{Lattice structures}
-
-\subsubsection{Bravais lattice}
 
 A Bravais lattice of dimension $N$ consists of the discrete points
 \begin{equation}
@@ -93,11 +96,7 @@ A Bravais lattice of dimension $N$ consists of the discrete points
   \qc n_1,\dots,n_N\in\mathbb{Z}
 \end{equation}
 where $\vb{a}_i$ are the primitive vectors that span the primitive lattice
-cell.
-
-\subsubsection{Reciprocal lattice}
-
-We define the reciprocal lattice as the discrete points
+cell. We define the reciprocal lattice as the discrete points
 \begin{equation}
   \vb{g}
   =\bra{\vb{p}}\ket{\vb{g}}
@@ -109,8 +108,6 @@ lattice structure $\vb{b}_i=2\pi\vb{a}/{{\vb{a}_i}^2}$ satisfies said
 condition. For the subsequent sections we will only consider the one
 dimensional simple cubic lattice. Cubic lattices of higher dimension however
 can be easily obtained by superposition of the potentials.
-
-\subsubsection{Transformation to reciprocal lattice}
 
 As the reciprocal lattice space can be seen as the Fourier transform of the
 Bravais lattice, it is especially simple to express periodic functions and it
@@ -343,7 +340,7 @@ the results from another yields us
 which says that the hopping probability is approximate one quarter of the
 energy bandwidth.
 
-\section{Computation of hopping frequency}
+\section{Numerical determination of hopping frequency}
 
 Finally we want to apply the previous results on the previously found
 effective potential $V(z)=V_0\cos^2(kz)$ \cref{eq:potential_effective}. Using
@@ -359,14 +356,33 @@ in reciprocal space. Using
 elements of the effective Hamiltonian using
 \cref{eq:eigenvalue_energy_lattice_explicit} gives us
 \begin{equation}
-  \bra{g_s}\hat{H}_\text{eff}\ket{g_t}
+  H_{st}
+  =\bra{g_s}\hat{H}_\text{eff}\ket{g_t}
   =\begin{cases}
-    (s+q/k)^2E_r+\frac{1}{2}V_0, & \text{if }s=t\\
+    (2s+q/k)^2E_r+\frac{1}{2}V_0, & \text{if }s=t\\
     \frac{1}{4}V_0, & \text{if } \abs{s-t}=1\\
     0, & \text{otherwise}
-  \end{cases}.
+  \end{cases}
+  \label{eq:hamiltonian_effective_elements}.
 \end{equation}
-Back at \cref{eq:eigenvalue_energy_lattice_explicit} we are set to determine
+Now that we have found a definite expression for the Hamiltonian matrix
+elements \cref{eq:hamiltonian_effective_elements} we can use the energy
+eigenvalue equation \cref{eq:eigenvalue_energy_lattice_explicit} to calculate
+the energy bands in dependence of the quasi-momentum $\hbar q$.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{hopping/band-structure.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{
+    First three energy bands for an optical lattice depth of $V_0=-10E_r$.
+  }
+  \label{fig:band_structure}
+\end{figure}
+
+In \Cref{fig:band_structure} we visualized the first energy bands for a
+lattice depth of $V_0=-10E_r$ from a matrix with dimensions 60.
+
 the coefficients of the Bloch states
 \cref{eq:state_bloch_in_reciprocal_lattice} numerically and thereof the
 hopping terms using either the exact expression
