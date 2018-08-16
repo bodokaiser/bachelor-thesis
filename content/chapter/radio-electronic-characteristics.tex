@@ -21,7 +21,7 @@ circumstance is depcited in \Cref{fig:dds_sweep_window}. The strategy
 consists of capturing multiple, small time windows of the signal which
 delayed would cover the complete signal trace.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\mediadir{diagram/sweep-window.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -38,7 +38,7 @@ trigger source we inserted a pulse generator. The pulse generator width
 corresponds to the delay time of the oscilloscope as the oscilloscope is
 configured to capture on the falling edge signal of the pulse generator.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\mediadir{setup/sweep-window.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -93,7 +93,7 @@ which allows us to combine time and frequency domain specific
 characteristics. In our case we choose the relative spectral power to be
 encoded through color.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -125,7 +125,7 @@ window measurements to pairs of dominant frequency and maximum amplitude.
 Under the assumption that the maximum amplitude lies closely in range of the
 mean amplitude we find the amplitude frequency response spectrum.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/inverse-sinc.pdf}}
   \captionsetup{width=.9\textwidth}
@@ -155,7 +155,7 @@ range and in fact as we can see in the lower trace in
 \Cref{fig:signal_synthesis_inverse_sinc} the enabled inverse-sinc filter
 does not account for our observed amplitude response.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/csample-dramp.pdf}}
   \captionsetup{width=.9\textwidth}
@@ -196,7 +196,7 @@ attentuators, from coaxial cable to oscilloscope \SI{1}{\decibel},
 oscilloscope input to attain a total damping of \SI{30}{\decibel}. Otherwise
 data analysis was performed analogue to the unamplified case.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/amplitude-response.pdf}}
   \captionsetup{width=.9\textwidth}
@@ -219,7 +219,7 @@ evidence for discrete frequencies from
 \Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
 subtile horizontal pattern of the markers.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
   \captionsetup{width=.9\textwidth}
@@ -261,7 +261,7 @@ network analyzer against the output power of the amplifier. This time we
 used a single \SI{30}{\decibel} attentuator in between the network analyzer
 input and the power amplifier output.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/transmission.pdf}}
   \captionsetup{width=.9\textwidth}
@@ -301,7 +301,7 @@ signal and measure the reflection through a direct-coupler.
 of both \gls{aod} elements when directly connected to the network analyzer at
 a maximum output power of \SI{10}{\decibel\meter}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/reflection/direct.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -325,7 +325,7 @@ through a direct-coupler to measure the refleciton. This is done in order to
 avoid harm to the network analyzer and because the network analyzer is not
 able to provide \SI{2}{\watt} of output power as required by the \gls{aod}.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=.8\textwidth]{\mediadir{setup/transducer.pdf}}
   \captionsetup{width=\textwidth}
@@ -349,7 +349,7 @@ port as well as a coaxial input reflection and output reflection port. It is
 disignated to measure the reflection of a (possible) high power signal
 without jeopardizing measurement equipement.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupler.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -373,7 +373,7 @@ power supplied into the direct-coupler.
 We now use the direct-coupler to measure the output reflection at the
 \gls{aod} elements after the signal was amplified.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupled.pdf}}
   \captionsetup{width=.8\textwidth}
@@ -394,7 +394,7 @@ In the previous part we saw that the reflection spectrum does not show any
 power dependence, thus we should be able to compare the spectrum we obtained
 directly with the amplified result.
 
-\begin{figure}[h]
+\begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/reflection/comparison.pdf}}
   \captionsetup{width=.8\textwidth}
