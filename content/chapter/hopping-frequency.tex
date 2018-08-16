@@ -1,5 +1,10 @@
 \chapter{Hopping frequency}
 
+In the previous chapter we focused on the effective potential obtained by the
+superposition of the averaged superposition of the perturbation potential and
+the lattice potential. In this chapter we want to emphasize on the physics
+that determine the time scale of the perturbation potential.
+
 \section{Harmonic approximation}
 
 Given the effective lattice potential \cref{eq:potential_effective} the
@@ -15,23 +20,59 @@ the effective potential in second order
 \begin{equation}
   \hat{V}_\text{eff}
   =V_0\cos^2(kx)
-  \approx V_0\left(1-(kx)^2\right)
-  \label{eq:potential_harmonic_approximation}
+  \approx V_0\left(1-\frac{1}{2}(kx)^2\right)
+  \label{eq:potential_harmonic_approximation}.
 \end{equation}
-and give us the Hamiltonian of a linear harmonic quantum oscillator
+With \cref{eq:potential_harmonic_approximation} we get the Hamiltonian of a
+linear harmonic quantum oscillator
 \begin{equation}
   \hat{H}_\text{har}-V_0
-  =\frac{\hat{p}^2}{2m}-V_0k^2x^2
+  =\frac{\hat{p}^2}{2m}-\frac{1}{2}V_0k^2x^2
   \label{eq:hamiltonian_harmonic_approximation}
 \end{equation}
-with well-known energy levels $E_n=\hbar\omega(2n+1)/2$ and frequency
-$\omega=\sqrt{V_0/m}k=\sqrt{2V_0E_r}/\hbar$, where we defined the recoil
-energy $E_r=(\hbar k)^2/(2m)$ as an atom-independent energy scale.
+with well-known energy levels
+\begin{equation}
+  E_n=\hbar\omega(2n+1)/2
+  \qc
+  \omega=\sqrt{\abs{V_0}/m}k=\sqrt{2\abs{V_0}E_r}/\hbar
+  \label{eq:energy_harmonic_approximation}
+\end{equation}
+where we introduced the recoil energy $E_r=(\hbar k)^2/(2m)$ as an
+atom-independent energy scale. In natural scales of the quantum oscillator
+we find the time independent wave functions for energy level $n$ to be
+\begin{equation}
+  \psi_n(x)
+  =
+  \bra{x}\ket{\psi}
+  =
+  \frac{\exp(-\frac{1}{2}x^2)}{\sqrt{2^nn!}\pi^{1/4}}H_n(x)
+  \label{eq:wavefunction_harmonic}
+\end{equation}
+where $H_n(x)$ is the $n$th Hermite polynom and the spatial dimension is
+expessed in units of $(2E_r/\abs{V_0})^{1/4}/k$.
 
-The harmonic approximation is valid for very deep potentials $V_0\gg E$.
-Unfortunately the Gaussian wave functions of the harmonic oscillator decay
-fast at the potential boundary such that we have vanishing probability to
-find a particle tunneling through the potential.
+In \Cref{fig:wavefunction_harmonic} we have visualized the harmonic
+approximation for lattice depths $V_0=-50E_r$ including the probability
+densities of the wave functions up to the fourth energy level.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{hopping/harmonic.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Harmonic approximation of the optical lattice potential with
+    probability density of harmonic wave functions. We can see that the
+    probability density decays exponentially at the potential boundaries
+    such that the probability for an atom to tunnel to the neighbouring
+    lattice site vanish.
+  }
+  \label{fig:wavefunction_harmonic}
+\end{figure}
+
+We can see that the probablity density decays exponentially at the potential
+boundary and thereby the probability for a particle to tunnel through the
+lattice potential vanishes. We conclude that the harmonic approximation is
+not suited to describe the hopping probability and we proceed with a more
+elaborate treatment of \cref{eq:hamiltonian_effective} in the next section.
 
 \section{Periodic lattice potentials}
 
