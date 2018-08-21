@@ -1,5 +1,136 @@
 \chapter{Digital signal synthesis}
 
+The previous chapters have covered the physical theory behind our targeted
+application. From that we were able to recover some technical requirements
+imposed on our implementation. In this chapter we will review the fundamentals
+of digital signal synthesis as \gls{rf} signal source to control the \gls{aod}.
+
+\gls{dds} offer some distinct advantages over traditional analog synthesiser.
+For one they can cover up a wide frequency range with high tuning resolution.
+In contrast thereto analog devices have to be fitted to a narrow operation
+range and are subject to variations caused by aging, thermal drift and
+manufacturing. In addition \gls{dds} permit extremly fast, phase-continous
+changes of the output signal parameters, without the loop-settling behaviour
+known to analog devices. Most recently \gls{dds} can easily be integrated into
+existing digital circuits giving rise to a cost-competitive remote
+controllable device. Overall these advantages make the \gls{dds} an attractive
+solution for our projected application \gls{rf} signal source \cite{ADTutDDS}.
+
+\section{Operating principle}
+
+\Cref{fig:dds_simple_architecture} depicts a flow diagram of the components
+that make up a simple \gls{dds}. Given a system clock frequency $f_\text{sys}$
+and the desired output frequency $f_\text{out}$ one can derive the phase
+accumulator increment
+\begin{equation}
+  \Delta\varphi
+  =
+  \lceil\frac{f_\text{out}}{f_\text{sys}}2^N+\frac{1}{2}\rceil
+  \label{eq:dds_phase_increment}
+\end{equation}
+where $N$ denotes the number of bits the phase accumulator can store.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-architecture.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Signal flow through a simple \gls{dds}. The output frequency
+    determines a phase step by which the accumulator is incremented at each
+    clock cycle. The value of the phase accumulator is used for amplitude
+    lookup of the desired output signal shape. A \gls{dac} outputs the signal
+    which then is filtered to smooth the discrete \gls{dac} output.
+  }\label{fig:dds_simple_architecture}
+\end{figure}
+For every clock cycle the phase accumulator is incremented by $\Delta\varphi$.
+On overflow of the accumulator a new signal period starts. The phase
+accumulator value is used to lookup the corresponding amplitude value of the
+desired output signal shape. For example one can use a lookup table with the
+values of a sinusoidal output signal. Alternatively one can omit the lookup
+table and output a sawtooth output signal by suppling the phase accumulator
+output directly to the \gls{dac} or a square wave signal output by suppling
+the most significant bit directly. Finally a \gls{dac} converts the digital
+amplitude value to an analog signal. An optional analog filter can be used to
+smooth the discrete output. In \Cref{fig:dds_simple_output} the signal at the
+different processing stages inside a simple \gls{dds} are presented for a
+\SI{8}{\bit} precision, system clock frequency
+$f_\text{sys}=\SI{1}{\giga\hertz}$ and output frequency
+$f_\text{out}=\SI{100}{\mega\hertz}$.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-output.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Signal outputs at different stages in a simple \gls{dds}. The
+    phase accumulator is incremented at each clock cycle by $\Delta\phi$. The
+    phase accumulator value is used to lookup a sinusoidal amplitude value
+    that is supplied to a \gls{dac}. The final result is smoothed using a
+    filter.}\label{fig:dds_simple_output}
+\end{figure}
+In the first column of \Cref{fig:dds_simple_output} we can see how the phase
+accumulator is incremented on every clock iteration and resets on overflow.
+In the second column the lookup table has been used to return the
+corresponding cosine amplitude. We can see a difference in output shape
+between even and odd samples. This is caused by the fact that the phase
+increment is not a divisor of the phase accumulator size and we will later
+discuss workarounds.
+
+\subsection{Clock generation}
+
+The Nyquist-Shannon sampling theorem states that for a given sample rate a
+perfect reconstruction is guaranteed possible for
+$f_\text{out}<f_\text{samp}/2$. Until now we have considered the system clock
+frequency $f_\text{sys}=f_\text{samp}$ as given. In practice reliable
+reference signals are clocked below the desired output range and thereby
+cannot directly be used as system clock according to the Nyquist-Shannon
+sampling theorem.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/clock-generation.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Clock generation signal generation with \gls{pll} and multiplier.
+    The phase detector compares the output system phase with the reference
+    phase and yields a non-linear error response. The low-pass filter removes
+    fast oscillations. The \gls{vco} changes the output phase in dependence
+    of the error response. Finally system and reference phase will go in lock.
+    }\label{fig:dds_clock_generation}
+\end{figure}
+\Cref{fig:dds_clock_generation} the system clock generation from a reference
+signal is illustrated. The phase detector yields a non-linear error response
+comparing the output signal phase with the reference signal phase. After a
+low-pass filter removes fast oscillations a \gls{vco} changes its phase
+proportional to the error signal. Finally a frequency multiplier creates
+harmonics of the reference frequency and extracts a programmed frequency
+multiple of $M$ such that the system frequency relates to the reference
+clock by $f_\text{sys}=Mf_\text{ref}$ with $1<M\in\mathbb{N}$.
+
+\subsection{Parameter modulation}
+
+So far we only discussed the case of frequency modulation. We will see that
+the previous architecture can be easily extended to support amplitude
+and phase modulation too.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/modulation-architecture.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{
+    \gls{dds} architecture supporting modulation of frequency, amplitude and
+    phase offset parameters. Phase accumulator increment is now time dependent.
+    The phase offset is also time dependent is added as last step to the
+    phase accumulator before supplied to the \gls{dac}. The time dependent
+    amplitude parameter is multiplied with the amplitude obtained from the
+    lookup table.
+    }\label{fig:dds_modulation_architecture}
+\end{figure}
+In \Cref{fig:dds_modulation_architecture} we can see one realization of an
+architecture that supports amplitude, frequency and phase modulation. The main
+components are the same as in \Cref{fig:dds_simple_architecture}. In addition
+we have an adder for a time dependent phase offset and a multiplier for the
+digital amplitude value obtained from the lookup table. The time dependence
+of the parameters can be either determined by reading from memory or through
+generation of another circuit. In a later section we will discuss the case of
+a linear frequency sweep provided by a digital ramp.
+
+\section{Quantization errors}
+\section{Frequency response}
+
 \section{Operating range}
 
 We apply a reference signal of
