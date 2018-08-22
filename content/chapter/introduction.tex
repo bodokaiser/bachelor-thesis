@@ -45,88 +45,83 @@ Finally the atom cloud is transported to a glass cell at the top. The glass
 cell is placed between two high numerical aperture objectives for in-situ,
 single site imaging and addressing.
 
-One major parameter to interact with the ultracold atom ensembled in the
+One major parameter to interact with the ultracold atom ensemble in the
 experimental chamber is the optical lattice itself. In
 \Cref{fig:optical_lattice} a cubic 2D optical lattice is presented.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{introduction/lattice-simple.pdf}}
   \captionsetup{width=.9\textwidth}
-  \caption{Cubic 2D optical lattice optical lattice. The atoms (blue) sit on
+  \caption{Simple cubic 2D optical lattice optical lattice. The atoms (blue) sit on
     their respective lattice site created by the superposition of two
     periodic potentials.}\label{fig:optical_lattice}
 \end{figure}
-The atoms (blue) sit on their respective lattice sites which are created by the
-superposition of two optical potentials (outer diagrams). In such periodic
-structures the atomic wave functions already show amazing similarity to the
-electron wave functions known from solid states physics. Nevertheless one can
-think of many different variations to the simple lattice structure depicted
-in \Cref{fig:optical_lattice} inclduing hexagonal lattice structures or
-lattices with lattice substructure known as superlattices.
-
-Beside of the changes of the global lattice
-structure we can also think of local changes. With reference of our simple
-lattice in \Cref{fig:optical_lattice} we can think of two simple alterations
-which we illustrated in \Cref{fig:local_optical_lattice}.
-
+The atoms (blue) sit on their respective lattice sites (nodes in the gray
+grid) which are created by the superposition of two optical potentials
+(outer diagrams). In such periodic structures the atomic wave functions
+already show amazing similarity to the electron wave functions known from
+solid states physics but with much higher energies and longer time scales
+because of the greater mass.
+Though the simple cubic 2D optical lattice already offers many possiblities,
+one can think of many more variations in terms of  lattice structure
+inclduing hexagonal lattice structures or even lattices with lattice
+substructure in the literature known as superlattices. Beside changes to the
+global lattice structure we can also think of local changes to the lattice
+structure. In \Cref{fig:optical_lattice_local_barrier} we have an embodiment
+of a local optical lattice used to confine particles.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{diagram/local-optical-lattice.pdf}}
+  \includegraphics[width=.9\textwidth]{\figuredir{introduction/lattice-bar.pdf}}
   \captionsetup{width=.9\textwidth}
-  \caption{Two dimensional optical lattices for an ultracold atom experiment
-    with local alterations. One the left we have a local potential step that
-    pushes atoms with lower energy away wheras on the right we created a
-    local potential barrier that entraps an atom.}
-  \label{fig:local_optical_lattice}
+  \caption{Simple cubic 2D optical lattice with local barrier potential. The
+    local barrier potential confines atoms inside the green box and limits
+    interaction with the outer particles.}\label{fig:optical_lattice_local_barrier}
 \end{figure}
-
-In the left embodiment we applied a two dimensional potential well to the
-center of the lattice. If the potential well is sufficient large compared to
-the energies of the surrounding atoms it will push the atoms away which can
-also be thought of as a impurity inside a solids lattice structure.
-
-In the right embodiment we apply two small potential wells to each potential
-dimension yielding a potential barrier that can entrap atoms. Physical
-applications of such barrier could be used to further study thermodynamic
-exchange processes or if applied dynamically could be use to sweep atom
-states.
-
-Anyway there are of course many more possibilites to change the local
-topology of optical lattice structures.
-
-\subsubsection{Related work}
+By changing the barrier height one can control interaction with the the outer
+particle ensemble which allows interesting constellations for thermodynamic
+equilibrium processes.
+In a second embodiment one can create a potential pot as illustrated in
+\Cref{fig:optical_lattice_local_pot}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=.9\textwidth]{\figuredir{introduction/lattice-pot.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Simple cubic 2D optical lattice with local pot potential. The local
+    potental pot draws particles from the unperturbated lattice potential to
+    an confined area.}\label{fig:optical_lattice_local_pot}
+\end{figure}
+Such a local potential pot would draw surrounding particles from the
+unperturbated lattice potential and confine them. In an extreme case one could
+also narrow the pot to only a single or a pair of atoms in order to simulate
+lattice imperfections in solids.
+Anyway there are of course many more possibilites to change the optical
+lattice structure locally.
 
 Local manipulations of atoms inside optical lattices have been known for some
 time in the manifestatiion of optical tweezers that allow trapping, stacking
-and sorting of particles \cite{Tadmor2004}. Yet, only recently attempts to
+and sorting of particles\cite{Roxworthy2012}. Yet, only recently attempts to
 interact with local particle clusters through high-precision time-averaged
-optical potentials have been reported \cite{Roy2016}.
+optical potentials have been reported\cite{Roy2016}. The key concept to create
+time-averaged local optical potentials is similar to the principle with what
+cathode ray tube screens operate. The idea is to consecutively illuminate a
+finite point set that covers the desired space. A complete passthrough of the
+finite point set has to occur on a time scale short compared to the time scale
+of the observed processes such that over average the passthrough yields an
+effective potential in the observed process. In comparison to the state of the
+art which uses mechanical mirror arrays for creation of local potentials
+\cite{Roy2016} our approach exercises acousto-optical deflection by \gls{aod}.
+In the following we continue on the ground work laid out in
+\cite{Hertlein2017} which provided us with an optical setup for single-site
+manipulation using \gls{aod} as well as the discussion of aperture limited
+gaussian beam propagation.
 
-The key concept to create local optical potentials is similar to the
-principle with what cathode ray tube screens operate. The idea is to
-consecutively illuminate a finite point set that covers the desired space.
-A complete passthrough of the finite point set has to occur on a time scale
-short compared to the time scale of the observed processes such that over
-average the passthrough yields an effective potential in the observed
-process.
-
-In comparison to the state of art which uses mechanical mirror arrays for
-beam deflection \cite{Roy2016} our approach exercises acousto-optical
-deflection by \gls{aod}. In the following we continue on the ground work
-laid out in \cite{Hertlein2017} which provided us with an optical setup for
-single-site manipulation using \gls{aod} as well as the discussion of
-aperture limited gaussian beam propagation.
-
-\subsubsection{Outline}
-
-We will start of with the theoretical foundation of optical lattice
-potentials and give more details on how the lattice potential alters under
-an additional potential well. From there on we will estimate the required
-time scale set by hopping frequency of atoms between lattice sites. After
-a short introduction to direct digital signal synthesis we will calculate
-if and how the used \gls{dds} met the previously found demands. That in place
-we can continue with an overview of our experimental setup and results. The
-experiments separate in a part concerning the radio electronics, a part
-dedicated to the intensity transmission subject to the \gls{rf} signal and
-a final part where we attempt to minimize the intensity transmission
-variance.
+We will start with the theoretical foundation of optical lattice potentials
+and give more details on how the lattice potential alters under an additional
+potential well. From there on we will estimate the required time scale set by
+hopping frequency of atoms between lattice sites. After a short introduction
+to direct digital signal synthesis we will calculate if and how the used
+\gls{dds} met the previously found demands. That in place we can continue with
+an overview of our experimental setup and results. The experiments separate in
+a part concerning the radio electronics, a part dedicated to the intensity
+transmission subject to the \gls{rf} signal and a final part where we attempt
+to minimize the intensity transmission variance.
