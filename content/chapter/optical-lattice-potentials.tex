@@ -356,36 +356,56 @@ For these parameters approximations made for optical lattice are not valid
 because of the small beam waist and Rayleigh length and we need to the exact
 \cref{eq:gaussian_intensity} formula.
 
-\section{Potential interaction}
+\section{Effective local potentials}
 
-We have now found two different expressions for the intensity of the optical
-lattice and of the perturbation. We will now further assume
-$V_{\text{lat}}(0)=-10E_r$ and $V_{\text{per}}(0)=+2E_r$. In addition we
-expect the perturbation to be directed at six different points. Under these
-circumstances we expect the effective potential, the superposition from the
-lattice potential and the perturbation to evolve as depicted in
-\Cref{fig:perturbated_potential_evolution}.
+With \cref{eq:potential_effective} we found an expression of the potential
+energy in terms of atomic properties like the dipole transition element and
+resonance and the laser intensity distribution. For the laser intensity
+distribution of the optical lattice we derived
+\cref{eq:gaussian_intensity_approx} and we concluded that the intensity of the
+laser used for the creation of local potentials obeys
+\cref{eq:gaussian_intensity}. If we add these pieces together we can calculate
+the effective potential with local perturbation as seen by the atoms. We will
+find that its shape deviates from the idealized local potentials we presented
+in the introduction in \Cref{fig:optical_lattice_local_pot} and 
+\Cref{fig:optical_lattice_local_barrier}.
+
+\subsubsection{Barrier}
+
+One embodiment of local potentials we described in the introduction was the
+barrier potential. A barrier potential confines atoms to a subspace of the
+global lattice and could be used to model thermodynamical equilibrium
+processes.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{potential/evolution.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{potential/barrier.pdf}}
   \captionsetup{width=.9\textwidth}
-  \caption{Time evolution of local perturbated potentials. We can see how
-    the perturbated potential changes within the spatial coordinates (black
-    vertical line) in comparison to the periodic lattice potential.}
-  \label{fig:perturbated_potential_evolution}
+  \caption{Local barrier potential and lattice potential in recoil energies.
+    The barrier potential is created by targetting two different focus points
+    with the perturbation beam (first two rows). If both focus points are
+    targetted in a sufficiently short period an average potential (last row)
+    can be created.}\label{fig:effective_potential_barrier}
 \end{figure}
-We can clearly see how the different beam parameters affect the intensity
-distribution and thereby the potential shape. Further we see how the
-perturbation wanders (black vertical line) accross the spatial dimension.
+In \Cref{fig:effective_potential_barrier} the potential energies in terms
+of recoil energy are drawn for the barrier potential. To create a two sided
+barrier the perturbation beam needs to change between two focus points (first
+and second row). If we average over these two focus points we yield the
+effective potential (third row).
+
+\subsubsection{Pot}
+
+As a second example of local potentials we named a pot potential that could
+draw surrounding atoms.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{potential/effective.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{potential/pot.pdf}}
   \captionsetup{width=.9\textwidth}
-  \caption{Time average of local perturbated potentials. Over a time average
-  we see that the perturbation causes a local potential shift on top of the
-lattice potential.}
-  \label{fig:perturbated_potential_effective}
+  \caption{Local pot potential and lattice potential in recoil energies. The
+    pot potential is created by targetting multiple focus points close to
+  each other. Over average this yields a kind of potential
+valley.}\label{fig:effective_potential_pot}
 \end{figure}
-In \Cref{fig:perturbated_potential_effective} we created the time-average
-from the perturbation states. We can see how the time-average yields an
-approximate localized potential energy shift.
+\Cref{fig:effective_potential_pot} visualized such a potential. In comparison
+to the barrier potential more focus points with closer distance are required.
+If the focus points change in a sufficient short period an average potential
+is felt by the atoms (last row) that resembles a valley.
