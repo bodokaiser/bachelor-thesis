@@ -4,53 +4,45 @@ By the time the \gls{rf} signal has reached the acoustic transducer, it has
 been synthesized from a reference signal, amplified, and matched to the
 impedance of the \gls{aod} transducer. We are going to inspect the \gls{rf}
 signal characteristics at each transmission and find that each stage
-unintentionally carries out frequency dependent amplitude modulation which,
-as we will see in the next chapter, is responsible for the complex intensity
-distribution observed with the photodiode.
+unintentionally carries out frequency dependent amplitude characteristics
+which, as we will see in the next chapter, are responsible for the complex
+intensity distribution observed with the photodiode.
 
 \section{Digital signal synthesizer}
 
 We already covered the fundamental functionality of the \gls{dds} in XX and
 its integration in our experimental setup in YY, yet we are missing physical
-measurements.
-
-Physical analysis of the \gls{dds} output \gls{rf} signal is in fact no
-simple endeavour as usual operation time scales are of many magnitudes
+measurements of the frequency resolution and the amplitude resposne. Physical
+analysis of the \gls{dds} output \gls{rf} signal is in fact no simple
+endeavour as usual operation time scales are of many magnitudes
 greater than the signal periodicity. The strategy we used to resolve this
 circumstance is depcited in \Cref{fig:dds_sweep_window}. The strategy
 consists of capturing multiple, small time windows of the signal which
 delayed would cover the complete signal trace.
-
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{diagram/sweep-window.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Idealized \gls{dds} signal output with constant frequency and
-    linear ramp over the sweep duration. The measured window only captures
-    a subset of the complete sweep but can be delayed to cover the complete
-    sweep duration.}
-  \label{fig:dds_sweep_window}
+  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/sweep-window.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Idealized \gls{dds} signal output with constant frequency
+    increments. The measured window only captures a subset (gray) of the complete
+    modulation (shades of blue).}\label{fig:dds_sweep_window}
 \end{figure}
-
 The experimental setup is schematically drawn in
 \Cref{fig:dds_sweep_window_setup}. In between the oscilloscope and the
 trigger source we inserted a pulse generator. The pulse generator width
 corresponds to the delay time of the oscilloscope as the oscilloscope is
 configured to capture on the falling edge signal of the pulse generator.
-
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/sweep-window.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{signal/setup-dds.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{By inserting a pulse generator in between the trigger source and
   the oscilloscope we can delay the capture window of the oscilloscope by
 the pulse width.}
   \label{fig:dds_sweep_window_setup}
 \end{figure}
-
 In \Cref{tab:dds_signal_parameters} we can find an overview of the
 experimental parameters.
-
 \begin{table}[h]
   \centering
   \begin{tabular}{|c|c|c|c|c|}
@@ -61,9 +53,9 @@ experimental parameters.
     Window duration $T_w$ \\
     \hline
     \SI{80}{\mega\hertz} &
-    \SI{4.88}{\mega\hertz} &
-    \SI{200.00}{\micro\second} &
-    \SI{26.84}{\milli\second} \\
+    \SI{120}{\mega\hertz} &
+    \SI{30}{\milli\second} &
+    \SI{50}{\micro\second} \\
     \hline
   \end{tabular}
   \captionsetup{width=.8\textwidth}
@@ -71,7 +63,6 @@ experimental parameters.
   of the \gls{dds}.}
   \label{tab:dds_signal_parameters}
 \end{table}
-
 The specified frequency range is motivated to cover
 the greatest possible spatial dimensions permitted by the dimensions of the
 optics. Sweep and window duration where selected as a compromise between the
@@ -92,7 +83,6 @@ partition the data into overlapping time chunks while performing \gls{fft}
 which allows us to combine time and frequency domain specific
 characteristics. In our case we choose the relative spectral power to be
 encoded through color.
-
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
@@ -103,7 +93,6 @@ encoded through color.
     discrete set of frequencies.}
   \label{fig:signal_synthesis_spectrogram}
 \end{figure}
-
 \Cref{fig:signal_synthesis_spectrogram} depicts four spectrograms, each taken
 at a different time window of the frequency sweep passthrough. The first
 spectrogram captures the start of the frequency sweep. We can see how for the
@@ -113,18 +102,15 @@ final frequency of \SI{120}{\mega\hertz} as can be seen in the lower right
 spectrogram at the end of the frequency sweep.
 
 \subsection{Amplitude frequency response}
-\label{subsec:signal_synthesizer_amplitude_frequency_response}
-
-Although the previous section satisfied our curiousity, it did only confirm
-made presumptions. We will now move on with the examination of the amplitude
-frequency response which by all means shows unexpected behaviour.
 
 In the Fourier space we can locate the dominant frequency at the maximum of
 the power spectrum. That in mind we can reduce the previous obtained time
-window measurements to pairs of dominant frequency and maximum amplitude.
-Under the assumption that the maximum amplitude lies closely in range of the
-mean amplitude we find the amplitude frequency response spectrum.
-
+window measurements to pairs of dominant frequencies and maximum amplitude.
+Under the assumption that the maximum voltage per measurement is approximately
+the mean peak-to-peak amplitude of the signal we can find the amplitude
+frequency response spectrum with manageable effort. Alternatively one could
+try to perform a mean peak-to-peak measurement through the oscilloscope, which
+implementation would have been a big time investment.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/inverse-sinc.pdf}}
@@ -134,7 +120,6 @@ mean amplitude we find the amplitude frequency response spectrum.
     \gls{dds} was configured with enabled inverse-sinc filter.}
   \label{fig:signal_synthesis_inverse_sinc}
 \end{figure}
-
 \Cref{fig:signal_synthesis_inverse_sinc} visualized the previously described
 routine for the \gls{dds} assigned to the vertical \gls{aod}. The data
 trace for the horizontal \gls{dds} is of equal shape, thus there are no
@@ -327,7 +312,7 @@ able to provide \SI{2}{\watt} of output power as required by the \gls{aod}.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.8\textwidth]{\mediadir{setup/transducer.pdf}}
+  \includegraphics[width=.8\textwidth]{\figuredir{signal/setup-transducer.pdf}}
   \captionsetup{width=\textwidth}
   \caption{Experimental setup to measure the reflection at the acouso-optic
   transducer component. The network analyzer supplies an input signal to
