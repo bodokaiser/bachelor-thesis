@@ -16,19 +16,19 @@ measurements of the frequency resolution and the amplitude resposne. Physical
 analysis of the \gls{dds} output \gls{rf} signal is in fact no simple
 endeavour as usual operation time scales are of many magnitudes
 greater than the signal periodicity. The strategy we used to resolve this
-circumstance is depcited in \Cref{fig:dds_sweep_window}. The strategy
+circumstance is depcited in \Cref{fig:signal_window}. The strategy
 consists of capturing multiple, small time windows of the signal which
 delayed would cover the complete signal trace.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/sweep-window.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{signal/window.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Idealized \gls{dds} signal output with constant frequency
     increments. The measured window only captures a subset (gray) of the complete
-    modulation (shades of blue).}\label{fig:dds_sweep_window}
+    modulation (shades of blue).}\label{fig:signal_window}
 \end{figure}
 The experimental setup is schematically drawn in
-\Cref{fig:dds_sweep_window_setup}. In between the oscilloscope and the
+\Cref{fig:signal_window_setup}. In between the oscilloscope and the
 trigger source we inserted a pulse generator. The pulse generator width
 corresponds to the delay time of the oscilloscope as the oscilloscope is
 configured to capture on the falling edge signal of the pulse generator.
@@ -39,9 +39,9 @@ configured to capture on the falling edge signal of the pulse generator.
   \caption{By inserting a pulse generator in between the trigger source and
   the oscilloscope we can delay the capture window of the oscilloscope by
 the pulse width.}
-  \label{fig:dds_sweep_window_setup}
+  \label{fig:signal_window_setup}
 \end{figure}
-In \Cref{tab:dds_signal_parameters} we can find an overview of the
+In \Cref{tab:signal_parameters_dds} we can find an overview of the
 experimental parameters.
 \begin{table}[h]
   \centering
@@ -61,7 +61,7 @@ experimental parameters.
   \captionsetup{width=.8\textwidth}
   \caption{Experimental parameters used to inspect the output \gls{rf} signal
   of the \gls{dds}.}
-  \label{tab:dds_signal_parameters}
+  \label{tab:signal_parameters_dds}
 \end{table}
 The specified frequency range is motivated to cover
 the greatest possible spatial dimensions permitted by the dimensions of the
@@ -71,7 +71,7 @@ oscilloscope being able to resolve the signal fine enough to perform
 delay between windows was choosen to be $T_s/300$, thus we will capture 300
 overlapping time windows.
 
-\subsection{Discrete frequency spectrum}
+\subsubsection{Frequency spectrum}
 
 For an ideal linear frequency sweep we would expect a continous increase of
 the frequency with respect to time, yet we know that \gls{dds} makes use of
@@ -85,7 +85,7 @@ characteristics. In our case we choose the relative spectral power to be
 encoded through color.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.pdf}}
+  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Spectrogram of delayed time windows of the \gls{dds} output signal
     configured to perform a linear frequency sweep. For an ideal linear sweep
@@ -101,7 +101,7 @@ of \SI{80}{\mega\hertz} which then is increased by increments to reach the
 final frequency of \SI{120}{\mega\hertz} as can be seen in the lower right
 spectrogram at the end of the frequency sweep.
 
-\subsection{Amplitude frequency response}
+\subsubsection{Amplitude frequency response}
 
 In the Fourier space we can locate the dominant frequency at the maximum of
 the power spectrum. That in mind we can reduce the previous obtained time
@@ -113,7 +113,7 @@ try to perform a mean peak-to-peak measurement through the oscilloscope, which
 implementation would have been a big time investment.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/inverse-sinc.pdf}}
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/response.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Maximum amplitude of the \gls{dds} signal output at different
     frequencies during linear sweep operation. In the bottom trace the
@@ -140,16 +140,6 @@ range and in fact as we can see in the lower trace in
 \Cref{fig:signal_synthesis_inverse_sinc} the enabled inverse-sinc filter
 does not account for our observed amplitude response.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/csample-dramp.pdf}}
-  \captionsetup{width=.9\textwidth}
-  \caption{Maximum amplitude of the \gls{dds} signal output at different
-    frequencies once obtained by linear sweep operation and once through
-    manual frequency sampling.}
-  \label{fig:signal_synthesis_scample_dramp}
-\end{figure}
-
 One hypothesis suggested that the observed amplitude response is caused by
 fact that the frequencies are sampled internally from the digital ramp logic.
 Therefore we collected second data where we configured the vertical \gls{dds}
@@ -168,7 +158,7 @@ method demands power not usually met by \gls{rf} signal sources such as the
 \gls{dds}. Therefore it is essential to amplify the \gls{rf} signal through
 a power amplifier.
 
-\subsection{Amplitude frequency response}
+\subsubsection{Amplitude frequency response}
 
 The measurement procedure described in the previous section is still valid
 for the now amplified signal of projected \SI{33}{\decibel\meter}. At the
@@ -183,7 +173,7 @@ data analysis was performed analogue to the unamplified case.
 
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/amplitude-response.pdf}}
+  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/response.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Maximum amplitude at dominant frequency per delayed window for two
   different amplifiers. We can see the discreteness of the frequency domain
@@ -204,17 +194,6 @@ evidence for discrete frequencies from
 \Cref{fig:signal_amplification_frequency_max_amplitude} when we emphasize the
 subtile horizontal pattern of the markers.
 
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/comparison.pdf}}
-  \captionsetup{width=.9\textwidth}
-  \caption{Relative amplitude at dominant frequency per delayed window for
-  two different amplifiers and their digital signal source. In comparison to
-the signal source the amplifiers introduce a further resonance at the
-center frequency.}
-  \label{fig:signal_amplification_comparison}
-\end{figure}
-
 \Cref{fig:signal_amplification_comparison} shows the min-max-normalized
 amplified signals with the min-max-normalized input signal from the horizontal
 \gls{dds}. After normalization the fixed offset difference, we observed
@@ -230,7 +209,7 @@ at around \SI{102}{\mega\hertz} of the source signal. However the amplifier
 possess resonances around \SI{98}{\mega\hertz} and \SI{110}{\mega\hertz}
 where the amplitudes drop.
 
-\subsection{Network analyzer transmission}
+\subsubsection{Network analyzer transmission}
 
 We previously discovered that the amplifier amends the frequency amplitude
 response, nevertheless it is difficult to isolate the actual influence of
