@@ -128,10 +128,44 @@ of the parameters can be either determined by reading from memory or through
 generation of another circuit. In a later section we will discuss the case of
 a linear frequency sweep provided by a digital ramp.
 
-\section{Quantization errors}
+\section{Quantization effects}
+
+At the beginning of this chapter we elaborated greatly on the advantages that
+digital signal synthesis has to offer. Yet we know that every technical design
+involves its unqiue set of compromises. One important part in any engineering
+process is to carefully evaluate the implications of these compromises. In
+that sense we will discuss the side-effects arising from the digital nature of
+digital signal synthesis and what methods there exists to reduce them.
+
+\subsubsection{Phase jitter}
+
+Phase jitter is created when one configures an output frequency for which
+$\Delta\varphi$ is not a divider of $2^N$. In this case a phase error of
+$-\varphi/(\Delta\varphi)$ builds up until it reaches a full clock period. One
+method to circumvent the phase error is to add a delay line after the phase
+accumulator\cite{Vankka2013}.
+
+\subsubsection{Phase truncation}
+
+Phase truncation occurs because the amplitude lookup table usually has a
+reduced precision $P$ compared to the phase accumulator. The reduced precision
+is necessary as most phase accumulators in \gls{dds} nowadays have at least 
+$N=\SI{32}{\bit}$ entries and a lookup table supporting that many entries at
+high frequencies becomes impractical\cite{Cordesses2004}. Fortunately there
+are many procedures to use the limited memory of a sinewave lookup table
+more efficiently. For example one can reduce the sinewave data to the domain
+from $0$ to $\pi/4$ and use symmetry to infer the values from $\pi/4$ to
+$2\pi$. Sophisticated compressions methods allow compression ratios up to
+165:1\cite{Cordesses2004} so that in practice phase truncation is not a
+problem.
+
+There of course exists many more sources of signal imperfection from which
+many can be described analytically \cite{Goldberg1994}. 
+
 \section{Frequency response}
 
-\section{Operating range}
+
+\section{Frequency resolution}
 
 We apply a reference signal of
 \begin{equation}
