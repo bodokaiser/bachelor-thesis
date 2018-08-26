@@ -5,7 +5,7 @@ signal and the intensity transmission of the \gls{aod}. Therewith the
 groundwork has been set out to finally approach the mission of minimizing the
 intensity variance to obtain a homogenous optical potential.
 
-But how do we minimize the intensity variance? The \gls{dds} permit to read
+But how do we minimize the intensity variance? The \gls{dds} permits to read
 $N=1024$ amplitude values from memory. The optimization problem therefore is to
 minimize the variance of the intensity distribution $I(A)$ subject to an
 amplitude vector $A\in[0,1]^N$. The conclusions drawn from the intensity
@@ -25,11 +25,10 @@ random search which was proven to yield better results as grid search
 
 \subsubsection{Overview}
 
-First of we want to provide an overview of the final optimization results
+First, we want to provide an overview of the final optimization results
 obtained at different hyperparameters for the random search. The
-hyperparameter include the number of amplitude segments $N/m$ and the target
+hyperparameter includes the number of amplitude segments $N/m$ and the target
 intensity.
-
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{intensity/optimization/overview.pdf}}
@@ -39,8 +38,7 @@ intensity.
   amplitude segments greater than eight.}
   \label{fig:intensity_optimization_overview}
 \end{figure}
-
-In \Cref{fig:intensity_optimization_overview} we are presented the final
+In \Cref{fig:intensity_optimization_overview} we present the final
 optimization results for target intensities of \SI{800}{\milli\volt},
 \SI{1000}{\milli\volt} and \SI{1200}{\milli\volt} and amplitude segments
 $8,16,32$. We observe heavy oscillations for amplitude segments greater than
