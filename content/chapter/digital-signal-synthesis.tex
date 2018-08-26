@@ -1,20 +1,20 @@
 \chapter{Digital signal synthesis}\label{ch:digital_signal_synthesis}
 
-The previous chapters have covered the physical theory behind our targeted
-application. From that we were able to recover some technical requirements
-imposed on our implementation. In this chapter we will review the fundamentals
-of digital signal synthesis as \gls{rf} signal source to control the \gls{aod}.
-
-\gls{dds} offer some distinct advantages over traditional analog synthesiser.
-For one they can cover up a wide frequency range with high tuning resolution.
-In contrast thereto analog devices have to be fitted to a narrow operation
-range and are subject to variations caused by aging, thermal drift and
-manufacturing. In addition \gls{dds} permit extremly fast, phase-continous
-changes of the output signal parameters, without the loop-settling behaviour
-known to analog devices. Most recently \gls{dds} can easily be integrated into
-existing digital circuits giving rise to a cost-competitive remote
-controllable device. Overall these advantages make the \gls{dds} an attractive
-solution for our projected application \gls{rf} signal source \cite{ADTutDDS}.
+\textit{The previous chapters have covered the physics of our application and
+  we were able to recover some technical requirements imposed on our
+  implementation. In this chapter we will review the fundamentals of digital
+  signal synthesis as \gls{rf} signal source to control the \gls{aod}.
+  \gls{dds} offer some distinct advantages over traditional analog
+  synthesiser. For one they can cover up a wide frequency range with high
+  tuning resolution. In contrast thereto analog devices have to be fitted to
+  a narrow operation range and are subject to variations caused by aging,
+  thermal drift and manufacturing. In addition \gls{dds} permit extremly fast,
+  phase-continous frequency changes, without the loop-settling behaviour
+  known to analog devices. Most recently \gls{dds} can easily be integrated
+  into existing digital circuits giving rise to a cost-competitive remote
+  controllable device. Overall these advantages make the \gls{dds} an
+  attractive solution for our projected application \gls{rf} signal source
+  \cite{ADTutDDS}.}
 
 \section{Operating principle}
 
@@ -25,14 +25,15 @@ accumulator increment
 \begin{equation}
   \Delta\varphi
   =
-  \lceil\frac{f_\text{out}}{f_\text{sys}}2^N+\frac{1}{2}\rceil
+  \left\lceil\frac{f_\text{out}}{f_\text{sys}}2^N\right\rceil
   \label{eq:dds_phase_increment}
 \end{equation}
-where $N$ denotes the number of bits the phase accumulator can store.
+where $N$ denotes the number of bits the phase accumulator can store and
+$\lceil\cdot\rceil$ is the ceiling function.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-architecture.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \captionsetup{width=.9\textwidth}
   \caption{Signal flow through a simple \gls{dds}. The output frequency
     determines a phase step by which the accumulator is incremented at each
     clock cycle. The value of the phase accumulator is used for amplitude
@@ -57,7 +58,7 @@ $f_\text{out}=\SI{100}{\mega\hertz}$.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-output.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \captionsetup{width=.9\textwidth}
   \caption{Signal outputs at different stages in a simple \gls{dds}. The
     phase accumulator is incremented at each clock cycle by $\Delta\phi$. The
     phase accumulator value is used to lookup a sinusoidal amplitude value
@@ -84,7 +85,7 @@ sampling theorem.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/clock-generation.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \captionsetup{width=.9\textwidth}
   \caption{Clock generation signal generation with \gls{pll} and multiplier.
     The phase detector compares the output system phase with the reference
     phase and yields a non-linear error response. The low-pass filter removes
@@ -109,14 +110,13 @@ and phase modulation too.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/modulation-architecture.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{
-    \gls{dds} architecture supporting modulation of frequency, amplitude and
-    phase offset parameters. Phase accumulator increment is now time dependent.
-    The phase offset is also time dependent is added as last step to the
-    phase accumulator before supplied to the \gls{dac}. The time dependent
-    amplitude parameter is multiplied with the amplitude obtained from the
-    lookup table.
+  \captionsetup{width=.9\textwidth}
+  \caption{\gls{dds} architecture supporting modulation of frequency,
+    amplitude and phase offset parameters. Phase accumulator increment is now
+    time dependent. The phase offset is also time dependent is added as last
+    step to the phase accumulator before supplied to the \gls{dac}. The time
+    dependent amplitude parameter is multiplied with the amplitude obtained
+    from the lookup table.
     }\label{fig:dds_modulation_architecture}
 \end{figure}
 In \Cref{fig:dds_modulation_architecture} we can see one realization of an
