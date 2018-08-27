@@ -164,6 +164,20 @@ many can be described analytically \cite{Goldberg1994}.
 
 \section{Frequency response}
 
+In the previous section we discussed how the signal amplitude deviates from
+the ideal amplitude because of reduced precision. In addition the theory of
+digital signal synthesis describes a sinc dependency of the amplitude with
+respect to frequency caused by the finite precision of the \gls{dac}. The
+sinc response can be easily modulated by the zero-order hold model used
+in signal processing. The zero-order hold model assumes that a signal $x(t)$
+is reconstructed by a piecewise linear approximation
+\begin{equation}
+  x(t)
+  \approx
+  \sum_{n\in\mathbb{Z}}x_n\theta\left(\frac{t}{T}-\frac{1-2n}{2}\right)
+
+\end{equation}
+where $\theta(t)$ denotes the Heaviside function.
 
 \section{Frequency resolution}
 
