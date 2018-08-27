@@ -319,6 +319,67 @@ map also seems more symmetric with respect to the frequency axis. In fact
 for these configurations the amplitude dependence seems to be essentially
 independent of the frequency dependence.
 
+\subsubsection{Incident angle}
+
+The 2D \gls{aod} casing allows to rotate the individual \gls{aod} elements. So
+far we choose the rotation angle of the \gls{aod} elements that maximizes the
+intensity transmission at the center frequency. What would we obtain if we
+tilted the rotation angle a bit to the left and to the right?
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-tilted.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution at different amplitudes for tilted
+    individual \gls{aod}. We observe that the intensity decreases if the
+    incident angle deviates from \ang{90}.
+  }\label{fig:intensity_distribution_tilted}
+\end{figure}
+In \Cref{fig:intensity_distribution_tilted} we find the answer to this
+question. We observe changes in shape and overall intensity with respect
+to the incident angle. We should note that small changes in the incident
+angle cause already large deflections of the beam, thus it is not guaranteed
+that the left and right measurements are free from aperture effects.
+Nevertheless we can record that the incident beam angle is an important
+parameter in the intensity transmission of the \gls{aod}s. In particular we
+need to consider the incident beam angle for the 2D \gls{aod} configuration.
+It may make sense to change the setup to a configuration consisting of two
+1D \gls{aod} with a telescope in between.
+
+\subsubsection{Polarisation}
+
+Another parameter we did not consider so far is the leverage of the beam
+polarisation. That is why we conducted changed the polarisation angle of the
+$\lambda/4$ plate in front of Cube 2 in \Cref{fig:intensity_control_setup}.
+Because Cube 2 is a beam splitter sensible to polarisation, we expect the
+intensity to naturally decrease as it is redirected into the beam dump. Yet,
+we may observe non-linear changes in the intensity and amplitude dependency
+that can not be attributed to beam splitter but to the \gls{aod}.
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-polarisation-broad.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution at different amplitudes for a wide range
+    of polarisation angles.
+  }\label{fig:intensity_distribution_polarisation_broad}
+\end{figure}
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-polarisation-narrow.png}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity distribution at different amplitudes for a narrow range
+    of polarisation angles.
+  }\label{fig:intensity_distribution_polarisation_narrow}
+\end{figure}
+\Cref{fig:intensity_distribution_polarisation_broad} and
+\Cref{fig:intensity_distribution_polarisation_narrow} show how the intensity
+transmission changes for different polarisation angles for the \gls{h}
+\gls{aod} in the \gls{h} slot. Beside of the linear intensity decrease when
+departing from \ang{128} polarisation caused by the beam splitter we cannot
+observe differences in shape. Yet, we should note that it is possible that
+the \gls{h} \gls{aod} was designed to be unpolarising as it is the first
+\gls{aod} to interact with the laser beam but not the \gls{v} aod.
+
+
 \subsection{Paired acousto-optic deflectors}
 
 The \gls{aod} elements differ significantly in their intensity transmission
