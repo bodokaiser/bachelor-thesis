@@ -51,14 +51,19 @@
   toc
 ]{glossaries}
 
+% print long references
+\emergencystretch=1em
+
+% include paths for figures and images
 \newcommand{\mediadir}[1]{../media/#1}
 \newcommand{\figuredir}[1]{../figure/#1}
-\newcommand{\notebookdir}[1]{../notebook/#1}
 
+% syntax highlighting
 \usemintedstyle{tango}
 
 \addbibresource{literature.bib}
 
+% acronyms
 \makeglossaries
 \newglossaryentry{ad9910}
 {name=AD9910, description={a direct digital synthesizer from Analog Devices}}

@@ -1,6 +1,6 @@
 \chapter{Experimental setup}\label{ch:experimental_setup}
 
-The exerimental setup was largely adopted from \cite{Hertlein2017}. Amendments
+The exerimental setup was largely adopted from~\cite{Hertlein2017}. Amendments
 made include the \gls{rf} signal source of the \gls{aod} and an additional
 photodiode to measure the deflected beam intensity.
 
@@ -12,7 +12,7 @@ to below $\SI{2}{\milli\watt}$ and includes an \gls{aom} for intensity
 regulation, and an open second section for beam deflection.
 Both sections are connected through a \gls{smf}.
 
-\subsection{Power reduction}
+\subsection{Power reduction}\label{subsec:setup_power_reduction}
 
 Because of safety concerns the power reduction section is confined into a
 visually sealed box housing. \Cref{fig:setup_power_reduction} reveals the
@@ -34,7 +34,7 @@ subject to amplitude modulation to the \gls{aom}. Finally a tunable
 $\lambda/2$ retarder plate can be used to couple the beam polarization with
 the \gls{smf}.
 
-\subsection{Beam deflection and detection}
+\subsection{Beam deflection and detection}\label{subsec:setup_deflection_detection}
 
 The section for beam deflection and detection as disclosed in
 \Cref{fig:setup_beam_deflection} receives the down-powered laser beam from
@@ -93,3 +93,12 @@ it was necessary to design a global trigger source that outputs a rising edge
 signal to multiple devices and exposes a network programable interface.
 The schematics and board layout can be found in the
 \Cref{app:electronics:trigger_hub}.
+
+\section{Communication}
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=\textwidth]{\figuredir{intensity/projection/bodo.pdf}}
+  \caption{Text projection as captured by the \gls{ccd} camera.
+  }\label{fig:setup_projection}
+\end{figure}

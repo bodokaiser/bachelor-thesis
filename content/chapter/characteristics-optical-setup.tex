@@ -22,7 +22,7 @@ decide on different intervals between the measurements in order to separate
 local from global trends. \Cref{tab:intensity_control_times} summarizes the
 different time intervals for the conducted short- and long-term measurement
 of the intensity control and a measurement involving the \gls{aod}s.
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|}
     \hline
@@ -83,7 +83,7 @@ we observe small oscillations on the fine time scale.
 \Cref{tab:intensity_control} depicts the corresponding descriptive statistics
 of the intensity voltage time series and an intensity measure involving the
 \gls{aod}s for comparison.
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|}
     \hline
@@ -117,26 +117,23 @@ of the intensity voltage time series and an intensity measure involving the
   \end{tabular}
   \captionsetup{width=.8\textwidth}
   \caption{Descriptive statistics of the short term measurement of the
-  intensity with controlled intensity. Note the small standard deviation.}
-  \label{tab:intensity_control}
+    intensity with controlled intensity. Note the small standard deviation.
+  }\label{tab:intensity_control}
 \end{table}
-
 The previous section gave us already some good insights about the long term
 stability of the intensity control loop. Yet in practice typical intensity
 measurements are of much smaller magnitude, henceforth it seems close at hand
-to also conduct a short term measurement.
-
-For the short term measurement time parameters were adjusted to a sample
-interval of \SI{10}{\second} and measurment were performed over \SI{1}{\hour}.
-
-The intensity time series of the short term measurement is depicted in
-\Cref{fig:intensity_control_short} and the associated descriptive
-statistics are presented in \Cref{tab:intensity_control_short}.
+to also conduct a short term measurement. For the short term measurement time
+parameters were adjusted to a sample interval of \SI{10}{\second} and
+measurment were performed over \SI{1}{\hour}. The intensity time series of the
+short term measurement is depicted in \Cref{fig:intensity_control} and
+the associated descriptive statistics are presented in
+\Cref{tab:intensity_control}.
 
 On a smaller timescale we see that the intensity control loop performs
 periodic oscillations, however the descriptive statistics show much smaller
 deviation from the mean, than observed in the long term measurements. As we
-do not see outliers in \Cref{fig:intensity_control_short} we can pay more
+do not see outliers in \Cref{fig:intensity_control} we can pay more
 attention to the value range of \SI{0.05}{\volt} which was obfuscated in
 the long term measurement because of outliers.
 
@@ -216,13 +213,14 @@ however this is caused by a saturation of the pixels in this area. We could
 reduce the intensity or apply an optical filter to the camera to resolve the
 intensity gradient inside the spot, but only at the cost of the intensity
 distribution around the spot. Around the circular spot we can see a
-diffraction ring. The diffraction ring is well described in
-\cite{Hertlein2017} and originates from the finite aperture of the objectives.
+diffraction ring. The diffraction ring is well described
+in~\cite{Hertlein2017} and originates from the finite aperture of the
+objectives.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.5\textwidth]{\figuredir{intensity/profile/profile2d.pdf}}
-  \caption{Image of the focused laser beam measured with the \gls{ccd} camera.}
-  \label{fig:intensity_profile_2d}
+  \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
+  }\label{fig:intensity_profile_2d}
 \end{figure}
 For better comparison of the radial symmetry we performed two perpendicular
 cuts and visualized the one dimensional spatial beam distribution in
@@ -233,8 +231,8 @@ cuts and visualized the one dimensional spatial beam distribution in
   \captionsetup{width=.8\textwidth}
   \caption{One dimensional perpendicular cut of the two dimensional intensity
     distribution from the two dimensional beam profile in
-    \Cref{fig:intensity_profile_2d} with fitted gaussian curve.}
-  \label{fig:intensity_profile_1d}
+    \Cref{fig:intensity_profile_2d} with fitted gaussian curve.
+  }\label{fig:intensity_profile_1d}
 \end{figure}
 In \Cref{fig:intensity_profile_1d} we can clearly observe the effects of
 saturation around the center and how we would expect the intensity to be
@@ -244,7 +242,7 @@ the otherwise Gaussian profile causes by the finite aperture. Further we can
 now clearly observe assymmetry from the intensity contributions around the
 Gaussian which means that our alignment is not perfect.
 
-We can confirm the results reported in \cite{Hertlein2017} that the spatial
+We can confirm the results reported in~\cite{Hertlein2017} that the spatial
 beam profile equals a two dimensional Gaussian combined with a Airy disks
 caused from the finite aperture of the objectives. Further we observe
 slight assymmetries in the diffraction ring suggesting inperfect alignment.
@@ -297,7 +295,8 @@ different heatmaps and can be related to the measured voltage from the
 photodiode via the colorbar on the right-hand side.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-amplitude.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/unpaired-amplitude.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution over linear frequency sweep at different
   configured \gls{dds} amplitudes for different individual \gls{aod}
@@ -327,7 +326,8 @@ intensity transmission at the center frequency. What would we obtain if we
 tilted the rotation angle a bit to the left and to the right?
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-tilted.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/unpaired-tilted.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution at different amplitudes for tilted
     individual \gls{aod}. We observe that the intensity decreases if the
@@ -356,7 +356,8 @@ we may observe non-linear changes in the intensity and amplitude dependency
 that can not be attributed to beam splitter but to the \gls{aod}.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-polarisation-broad.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/unpaired-polarisation-broad.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution at different amplitudes for a wide range
     of polarisation angles.
@@ -364,7 +365,8 @@ that can not be attributed to beam splitter but to the \gls{aod}.
 \end{figure}
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/unpaired-polarisation-narrow.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/unpaired-polarisation-narrow.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution at different amplitudes for a narrow range
     of polarisation angles.
@@ -379,7 +381,6 @@ observe differences in shape. Yet, we should note that it is possible that
 the \gls{h} \gls{aod} was designed to be unpolarising as it is the first
 \gls{aod} to interact with the laser beam but not the \gls{v} aod.
 
-
 \subsection{Paired acousto-optic deflectors}
 
 The \gls{aod} elements differ significantly in their intensity transmission
@@ -391,7 +392,8 @@ to eachother. We may find more evidence for this hypothesis by mounting both
 \gls{aod} elements in their intended and exchanged slots.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-amplitude.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/paired-amplitude.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution over linear frequency sweep at different
   configured \gls{dds} amplitudes for different individual \gls{aod}
@@ -434,8 +436,8 @@ photodiode where we measure the intensity with respect to the configured
   \includegraphics[width=\textwidth]{\mediadir{setup/intensity-distribution.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Experimental setup used to measure the intensity transmission of
-  the 2D \gls{aod} in dependence of the configured \gls{dds} signal.}
-  \label{fig:intensity_distribution_setup}
+    the 2D \gls{aod} in dependence of the configured \gls{dds} signal.
+  }\label{fig:intensity_distribution_setup}
 \end{figure}
 
 \subsubsection{Digital ramp frequency sweep}
@@ -448,15 +450,16 @@ procedure is repeated until the first \gls{dds} covered the same frequency
 range as the second \gls{dds}.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/distribution/paired-frequency.png}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/paired-frequency.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}. The
     left map is obtained by enabling the digital ramp on the horizontal
     \gls{dds} whereas the vertical \gls{dds} is configured to output a
     constant frequency which is manually increased after each measurement.
-    On the right-hand side map the roles are exchanged.}
-  \label{fig:intensity_distribution_frequency}
+    On the right-hand side map the roles are exchanged.
+  }\label{fig:intensity_distribution_frequency}
 \end{figure}
 In \Cref{fig:intensity_distribution_frequency} we present the intensity
 measured at the second photodiode in the setup shown in
@@ -469,7 +472,8 @@ configuration as the manual increments require driver calls whereas the
 digital ramp increments are performed internal of the \gls{dds}.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.7\textwidth]{\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
+  \includegraphics[width=.7\textwidth]
+  {\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Absolute difference between the 2D intensity distribution
   performed with the digital ramp configured set to different axes.}
@@ -497,13 +501,14 @@ arise in the transmission frequency response of the \gls{aod} as the \gls{aod}
 is not a purely electronic device.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=.7\textwidth]{\figuredir{intensity/distribution/sample-frequency.pdf}}
+  \includegraphics[width=.7\textwidth]
+  {\figuredir{intensity/distribution/sample-frequency.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}.
     Frequency pairs are sampled over a uniform distribution and then passed
-  as constant output frequency paramter to the \gls{dds}.}
-  \label{fig:intensity_distribution_frequency_sampled}
+    as constant output frequency paramter to the \gls{dds}.
+  }\label{fig:intensity_distribution_frequency_sampled}
 \end{figure}
 To partly answer this question we sampled random frequency pairs over a
 two dimensional uniform distribution and passed them as constant frequency
@@ -524,7 +529,7 @@ order to further investigate this phenomena we decided to replace one
 configured to output a constant \SI{100}{\mega\hertz} signal. The output
 level of the signal generator was configured to match the output level of
 the \gls{dds} and amplified using the usual power amplifier.
-\Cref{fig>intensity_distribution_signal_sources} discloses the different
+\Cref{fig:intensity_distribution_signal_sources} discloses the different
 intensity transmission registered by the photodiode for a frequency sweep
 performed by the \gls{dds} through the digital ramp and by the signal
 generator. In comparison to the \gls{dds} the signal generator does not
@@ -537,8 +542,8 @@ between the frequency increments of the signal generator trace.
   \caption{Intensity measured as voltage at the photodiode with one \gls{aod}
     at constant center frequency supplied by a \gls{dds} and the other
     \gls{aod} performing a linear frequency sweep with the \gls{dds} and a
-  high-quality signal generator.}
-  \label{fig:intensity_distribution_signal_sources}
+    high-quality signal generator.
+  }\label{fig:intensity_distribution_signal_sources}
 \end{figure}
 Further ignoring these intensity drops we observe that the global response
 characteristics differ in particular at the begin of the frequency sweep and

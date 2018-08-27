@@ -147,9 +147,9 @@ where we introduced the Rabi frequency
   \label{eq:rabi_frequency}.
 \end{equation}
 Explicit values for general dipole transition elements for one and two
-electron systems can be found in \cite{Bethe1957}. Transition elements
-vanishes for states with same parity, in particular $\Omega_{nn}=0$
-\cite{Bartelmann2018}.
+electron systems can be found in~\cite{Bethe1957}. Transition elements
+vanishes for states with same parity, in particular
+$\Omega_{nn}=0$~\cite{Bartelmann2018}.
 
 \subsubsection{Two state system}
 
@@ -176,7 +176,7 @@ approximation is motivated by the fact that oscillations of frequency
 $\omega+\omega_0$ are fast compared to changes in the population dynamics and
 therefore vanish on average.
 
-We now define $a_g=c_g$ and $a_e=c_ee^{i\Delta\omega t}$ and refine
+We now define $a_g=c_g$ and $a_e=c_e e^{i\Delta\omega t}$ and refine
 \cref{eq:differential_equation_population_dynamics_two_state_system_rwa} by
 \begin{align}
   i\dot{a}_g=\frac{\Omega_0}{2}a_e(t) &&
@@ -229,11 +229,11 @@ gaussian mode described by
   \vb{E}(r,z)
   =
   \vb{E}_0\frac{w(0)}{w(z)}
-  \exp{-\frac{r^2}{w(z)^2}}
+  \exp{-\frac{r^2}{w{(z)}^2}}
   \exp{-ik\left(z+\frac{r^2}{2R(z)}-\arctan(\frac{z}{z_R})\right)}
   \label{eq:gaussian_beam}
 \end{equation}
-where $w(z)$ is the waist radius, $z_R=\pi w(0)^2/\lambda$ the Rayleigh
+where $w{(z)}$ is the waist radius, $z_R=\pi w{(0)}^2/\lambda$ the Rayleigh
 range and $R(z)$ the radius of curvature of the beam's wavefronts at $z$.
 \begin{figure}[ht]
   \centering
@@ -251,9 +251,11 @@ $R(z)$ relates to the wavefront curvature and $z_R$ is the distance from
 origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$. Beam width
 and curvature radius evolve according to
 \begin{align}
-  w(z)=w(0)\left[1+\left(\frac{z}{z_R}\right)^2\right]^{1/2}
+  w{(z)}
+  =
+  w{(0)}{\left[1+{\left(\frac{z}{z_R}\right)}^2\right]}^{1/2}
   &&
-  R(z)=z\left[1+\left(\frac{z_R}{z}\right)^2\right]
+  R{(z)}=z{\left[1+{\left(\frac{z_R}{z}\right)}^2\right]}
   \label{eq:gaussian_beam_evolvement}.
 \end{align}
 
@@ -265,11 +267,11 @@ distribution
   I(r,z)
   =
   I_0
-  \left(\frac{w(0)}{w(z)}\right)^2
-  \exp{-\frac{2r^2}{w(z)^2}}
+  {\left(\frac{w(0)}{w(z)}\right)}^2
+  \exp{-\frac{2r^2}{w{(z)}^2}}
   =
   I_0
-  \frac{\exp{-\frac{2r^2}{w(z)^2}}}{1+\left(\frac{z}{z_R}\right)^2}
+  \frac{\exp{-\frac{2r^2}{w{(z)}^2}}}{1+{\left(\frac{z}{z_R}\right)}^2}
   \label{eq:gaussian_intensity}
 \end{equation}
 where $I_0$ is the maximum intensity at $r=z=0$.
@@ -291,11 +293,11 @@ Therewith the intensity distribution equals
   I(z)
   =
   4I_0\cos^2(kz)
-  \frac{\exp{-\frac{2r^2}{w(z)^2}}}{1+\left(\frac{z}{z_R}\right)^2}
+  \frac{\exp{-\frac{2r^2}{w{(z)}^2}}}{1+{\left(\frac{z}{z_R}\right)}^2}
   \label{eq:lattice_intensity}
 \end{equation}
 contributed through the constructive interference.
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -312,14 +314,15 @@ contributed through the constructive interference.
   \end{tabular}
   \captionsetup{width=.8\textwidth}
   \caption{Typical values for a Gaussian beam used to construct an optical
-    lattice potential.}
-  \label{tab:gaussian_beam_lattice}
+    lattice potential.
+  }\label{tab:gaussian_beam_lattice}
 \end{table}
 \Cref{tab:gaussian_beam_lattice} lists typical values for a Gaussian beam
 used to construct an optical lattice potential. Optical lattices have up to
-50 lattice sites spanning over a range of $l=50a\approx\SI{27}{\micro\meter}$
-\cite{Rom2009}. For $-l/2<z<+l/2$ we find that $w(z)\approx w(0)$ and because
-$r\ll1$ we can approximate \cref{eq:lattice_intensity} to follow
+50 lattice sites spanning over a range of
+$l=50a\approx\SI{27}{\micro\meter}$~\cite{Rom2009}. For $-l/2<z<+l/2$ we find
+that $w(z)\approx w(0)$ and because
+$r\ll1$ we can approximate~\cref{eq:lattice_intensity} to follow
 \begin{equation}
   I(z)
   \approx
@@ -332,9 +335,9 @@ dimensional optical lattices.
 \subsubsection{Perturbation intensity}
 
 The laser beam used to perturbate the optical lattice potential has slightly
-different parameters \cite{Hertlein2017} as we can see in
+different parameters~\cite{Hertlein2017} as we can see in
 \Cref{tab:gaussian_beam_perturbation}.
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|}
     \hline
@@ -349,8 +352,8 @@ different parameters \cite{Hertlein2017} as we can see in
   \end{tabular}
   \captionsetup{width=.8\textwidth}
   \caption{Typical values for a Gaussian beam used to perturbate the optical
-    lattice potential reported by \cite{Hertlein2017}.}
-  \label{tab:gaussian_beam_perturbation}
+    lattice potential reported by~\cite{Hertlein2017}.
+  }\label{tab:gaussian_beam_perturbation}
 \end{table}
 For these parameters approximations made for optical lattice are not valid
 because of the small beam waist and Rayleigh length and we need to the exact

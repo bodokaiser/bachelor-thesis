@@ -48,7 +48,7 @@ such frequencies causes very different behaviour as the electromagnetic wave
 is reflected subject to the actual frequency inside the coaxial cable. In 
 \Cref{tab:signal_parameters_dds} we can find an overview of the experimental
 parameters used.
-\begin{table}[h]
+\begin{table}[ht]
   \centering
   \begin{tabular}{|c|c|c|c|c|c|}
     \hline
@@ -65,8 +65,8 @@ parameters used.
   \end{tabular}
   \captionsetup{width=.8\textwidth}
   \caption{Experimental parameters used to inspect the output \gls{rf} signal
-  of the \gls{dds}.}
-  \label{tab:signal_parameters_dds}
+    of the \gls{dds}.
+  }\label{tab:signal_parameters_dds}
 \end{table}
 The specified frequency range is motivated to cover the greatest possible
 spatial dimensions permitted by the dimensions of the optics. Sweep and
@@ -94,8 +94,8 @@ encoded through color.
   \caption{Spectrogram of delayed time windows of the \gls{dds} output signal
     configured to perform a linear frequency sweep. For an ideal linear sweep
     we would expect a linear timeline of the frequency, instead we observe a
-    discrete set of frequencies.}
-  \label{fig:signal_synthesis_spectrogram}
+    discrete set of frequencies.
+  }\label{fig:signal_synthesis_spectrogram}
 \end{figure}
 \Cref{fig:signal_synthesis_spectrogram} depicts four spectrograms, each taken
 at a different time window of the frequency sweep passthrough. The first
@@ -111,7 +111,7 @@ how the \gls{dds} outputs a constant frequency over a short time period,
 therefore the frequency range consists of discrete frequencies. We can
 actually even observe such a frequency increment in the second, third and
 fifth spectrogram. Finally in the last spectrogram the frequency drops back
-to the initial value - a side effect of the \gls{dds} sweep mode which
+to the initial value --- a side effect of the \gls{dds} sweep mode which
 supports an external trigger signal.
 
 \subsubsection{Amplitude frequency response}
@@ -120,11 +120,12 @@ In the Fourier space we can locate the dominant frequency at the maximum of
 the power spectrum. That in mind we can reduce the previous obtained time
 window measurements to pairs of dominant frequencies and maximum amplitude.
 Under the assumption that the maximum voltage per measurement is approximately
-the mean peak-to-peak amplitude of the signal - which during the oscilloscope
-suggested during measurements - we can find the amplitude frequency response
-spectrum with manageable effort. \Cref{fig:signal_synthesis_response}
-visualizes the described routine for the \gls{dds} assigned to the \gls{h} and
-\gls{v} \gls{aod} with frequency control by digital ramp and manual increments.
+the mean peak-to-peak amplitude of the signal --- which during the
+oscilloscope suggested during measurements --- we can find the amplitude
+frequency response spectrum with manageable effort.
+\Cref{fig:signal_synthesis_response} visualizes the described routine for the
+\gls{dds} assigned to the \gls{h} and \gls{v} \gls{aod} with frequency control
+by digital ramp and manual increments.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/response.pdf}}
@@ -174,9 +175,9 @@ attentuators (order given from coaxial cable to oscilloscope):
 The order was chosen in such a way to distribute heat dissipation uniformly
 accross the attentuators. The total damping of this configuration yields
 \SI{33}{\decibel} which should give us the same signal power from the
-\gls{dds}. \Cref{fig:signal_amplification_frequency_max_amplitude} presents us
-the damped output signal subject to the signal frequency after amplification
-for the two distinct (\gls{h}, \gls{v}) amplifiers and \gls{dds} signals.
+\gls{dds}. \Cref{fig:signal_amplification_response} presents us the damped
+output signal subject to the signal frequency after amplification for the two
+distinct (\gls{h}, \gls{v}) amplifiers and \gls{dds} signals.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/response.pdf}}
@@ -212,8 +213,8 @@ the network analyzer input and the power amplifier output.
   \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/transmission.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Frequency transmission spectrum obtained via the network analyzer
-  of the horziontal and vertical amplifiers.}
-  \label{fig:signal_amplification_spectrum}
+    of the horziontal and vertical amplifiers.
+  }\label{fig:signal_amplification_spectrum}
 \end{figure}
 In \Cref{fig:signal_amplification_spectrum} we see the frequency transmission
 spectrum obtained through the network analyzer connected to the horizontal
@@ -224,7 +225,7 @@ difference of $L=\SI{.2}{\decibel}$, i.e.\ between \SI{80}{\mega\hertz} and
 \begin{equation}
   P
   =
-  P_010^{L/\SI{10}{\decibel}}
+  P_0 10^{L/\SI{10}{\decibel}}
   \label{eq:power_gain_decibel}
 \end{equation}
 and $P_0=\SI{2}{\watt}$ we would have to expect a drop of up to
@@ -260,8 +261,8 @@ a maximum output power of \SI{10}{\decibel\meter}.
   \includegraphics[width=.9\textwidth]{\figuredir{signal/reflection/direct.pdf}}
   \captionsetup{width=.8\textwidth}
   \caption{Signal reflection of the two different \gls{aod} when directly
-    connected to the network analyzer.}
-  \label{fig:signal_reflection_direct}
+    connected to the network analyzer.
+  }\label{fig:signal_reflection_direct}
 \end{figure}
 The most interesting finding in \Cref{fig:signal_reflection_direct} is that
 the power reflection shows very different behaviour in between the distinct

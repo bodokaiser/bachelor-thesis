@@ -1,20 +1,20 @@
 \chapter{Digital signal synthesis}\label{ch:digital_signal_synthesis}
 
 \textit{The previous chapters have covered the physics of our application and
-  we were able to recover some technical requirements imposed on our
-  implementation. In this chapter we will review the fundamentals of digital
-  signal synthesis as \gls{rf} signal source to control the \gls{aod}.
-  \gls{dds} offer some distinct advantages over traditional analog
-  synthesiser. For one they can cover up a wide frequency range with high
-  tuning resolution. In contrast thereto analog devices have to be fitted to
-  a narrow operation range and are subject to variations caused by aging,
-  thermal drift and manufacturing. In addition \gls{dds} permit extremly fast,
-  phase-continous frequency changes, without the loop-settling behaviour
-  known to analog devices. Most recently \gls{dds} can easily be integrated
-  into existing digital circuits giving rise to a cost-competitive remote
-  controllable device. Overall these advantages make the \gls{dds} an
-  attractive solution for our projected application \gls{rf} signal source
-  \cite{ADTutDDS}.}
+we were able to recover some technical requirements imposed on our
+implementation. In this chapter we will review the fundamentals of digital
+signal synthesis as \gls{rf} signal source to control the \gls{aod}.
+\gls{dds} offer some distinct advantages over traditional analog
+synthesiser. For one they can cover up a wide frequency range with high
+tuning resolution. In contrast thereto analog devices have to be fitted to
+a narrow operation range and are subject to variations caused by aging,
+thermal drift and manufacturing. In addition \gls{dds} permit extremly fast,
+phase-continous frequency changes, without the loop-settling behaviour
+known to analog devices. Most recently \gls{dds} can easily be integrated
+into existing digital circuits giving rise to a cost-competitive remote
+controllable device. Overall these advantages make the \gls{dds} an
+attractive solution for our projected application \gls{rf} signal
+source~\cite{ADTutDDS}.}
 
 \section{Operating principle}
 
@@ -32,7 +32,8 @@ where $N$ denotes the number of bits the phase accumulator can store and
 $\lceil\cdot\rceil$ is the ceiling function.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-architecture.pdf}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{digital-signal-synthesis/simple-architecture.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Signal flow through a simple \gls{dds}. The output frequency
     determines a phase step by which the accumulator is incremented at each
@@ -57,7 +58,8 @@ $f_\text{sys}=\SI{1}{\giga\hertz}$ and output frequency
 $f_\text{out}=\SI{100}{\mega\hertz}$.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/simple-output.pdf}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{digital-signal-synthesis/simple-output.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Signal outputs at different stages in a simple \gls{dds}. The
     phase accumulator is incremented at each clock cycle by $\Delta\phi$. The
@@ -84,7 +86,8 @@ cannot directly be used as system clock according to the Nyquist-Shannon
 sampling theorem.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/clock-generation.pdf}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{digital-signal-synthesis/clock-generation.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{Clock generation signal generation with \gls{pll} and multiplier.
     The phase detector compares the output system phase with the reference
@@ -109,7 +112,8 @@ the previous architecture can be easily extended to support amplitude
 and phase modulation too.
 \begin{figure}[ht]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{digital-signal-synthesis/modulation-architecture.pdf}}
+  \includegraphics[width=\textwidth]
+  {\figuredir{digital-signal-synthesis/modulation-architecture.pdf}}
   \captionsetup{width=.9\textwidth}
   \caption{\gls{dds} architecture supporting modulation of frequency,
     amplitude and phase offset parameters. Phase accumulator increment is now
@@ -160,7 +164,7 @@ $2\pi$. Sophisticated compressions methods allow compression ratios up to
 problem.
 
 There of course exists many more sources of signal imperfection from which
-many can be described analytically \cite{Goldberg1994}. 
+many can be described analytically~\cite{Goldberg1994}. 
 
 \section{Frequency response}
 
@@ -175,7 +179,6 @@ is reconstructed by a piecewise linear approximation
   x(t)
   \approx
   \sum_{n\in\mathbb{Z}}x_n\theta\left(\frac{t}{T}-\frac{1-2n}{2}\right)
-
 \end{equation}
 where $\theta(t)$ denotes the Heaviside function.
 
@@ -221,7 +224,7 @@ The theoretical limit for the maximum output frequency then is found via
   =
   \SI{500}{\mega\hertz}.
 \end{equation*}
-Yet the datasheet \cite{AD9910} reports $f_\text{max}=\SI{420}{\mega\hertz}$
+Yet the datasheet~\cite{AD9910} reports $f_\text{max}=\SI{420}{\mega\hertz}$
 and in fact we found the output signal to be very noisy at the theoretical
 limit.
 
@@ -249,13 +252,15 @@ The sweep duration is deterimened by $S,M$ through
   =
   \frac{f_\text{upper}-f_\text{lower}}{\Delta f}\Delta t
   =
-  2^{32}\frac{f_\text{upper}-f_\text{lower}}{f_\text{sys}}\frac{S/M}{f_\text{timer}}
+  2^{32}\frac{f_\text{upper}-f_\text{lower}}
+  {f_\text{sys}}\frac{S/M}{f_\text{timer}}
 \end{equation}
 for a target sweep duration of $T_\text{duration}=\SI{10}{ms}$ we find
 \begin{equation*}
   \frac{S}{M}
   =
-  \frac{T f_\text{timer}}{2^{32}}\frac{f_\text{sys}}{f_\text{upper}-f_\text{lower}}
+  \frac{T f_\text{timer}}{2^{32}}
+  \frac{f_\text{sys}}{f_\text{upper}-f_\text{lower}}
   =
   \frac{10^9}{2^{35}}
   \approx
@@ -264,7 +269,7 @@ for a target sweep duration of $T_\text{duration}=\SI{10}{ms}$ we find
   \frac{1819}{62500}
 \end{equation*}
 the last step can be obtained by best ratio approximation using continued
-fractions as for example described in \cite{Ashley2003}. It should be kept in
+fractions as for example described in~\cite{Ashley2003}. It should be kept in
 mind that the best ratio approximation is likable to introduce an error,
 therefore realistic durations may differ from the configured value and it
 is possible that better approximations exist that allow smaller $\Delta f,
@@ -300,4 +305,3 @@ which gives us range from $\min\Delta t=\SI{4}{\nano\second}$ to
 $\max\Delta t=\SI{26.14}{\micro\second}$. As we incorporate all of the 1024
 data points this gives us a duration range from about
 $\min T=\SI{4}{\micro\second}$ to $\max T=\SI{26.84}{\milli\second}$.
-
