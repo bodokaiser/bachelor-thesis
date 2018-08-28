@@ -179,27 +179,30 @@ oscillations cover a much smaller range as the uncontrolled oscillations.
 \section{Beam profile}
 
 Perpendicular to the error introduced by the imperfect intensity control,
-errors can originate from unideal optical alignment and calibration. One way
-to assess the quality of our alignment is to evaluate the spatial profile of
-the laser beam as registered with the \gls{ccd} camera.
-
-In the previous setup we used a second photodiode to measure the temporal
-deviations of the intensity. In order to measure spatial deviations of the
-intensity we replaced the photodiode with a \gls{ccd} camera. In
-\Cref{fig:intensity_profile_setup} we see the setup used to measure the beam
-profile. The \gls{aod}s are configured at a center frequency of
-\SI{100}{\mega\hertz}. The distance between Lens 4 and the \gls{ccd} sensor is
-chosen such that the laser beam is focused onto the \gls{ccd} sensor of the
-camera.
-\begin{figure}[ht]
+errors can originate from unideal optical alignment. One way to assess the
+quality of our alignment is to evaluate the spatial profile of the laser beam
+as registered with the \gls{ccd} camera.
+\begin{figure}[htb!]
   \centering
   \includegraphics[width=\textwidth]{\mediadir{setup/intensity-profile.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{The beam is focused onto the \gls{ccd} sensor of the camera. The
-    \gls{aod} are configured at \SI{100}{\mega\hertz} center frequency.
+  \captionsetup{width=.9\textwidth}
+  \caption{The beam is focused onto the \gls{ccd} sensor of the camera.
   }\label{fig:intensity_profile_setup}
 \end{figure}
-In \Cref{fig:intensity_profile_2d} we can see an enlarged image patch of the
+In \Cref{fig:intensity_profile_setup} we present the setup used to measure
+the spatial beam profile. In comparison to the previous setup we replaced
+Photodiode 2 with a \gls{ccd} camera. The \gls{aod}s are configured at a
+center frequency of \SI{100}{\mega\hertz}. The distance between Lens 4 and
+the \gls{ccd} sensor is chosen such that the laser beam is focused onto the
+\gls{ccd} sensor of the camera.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=.6\textwidth]
+  {\figuredir{intensity/profile/image.pdf}}
+  \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
+  }\label{fig:intensity_spatial_image}
+\end{figure}
+\Cref{fig:intensity_spatial_image} shows an enlarged image patch of the
 complete image capture taken with the \gls{ccd} camera. We can see a strong
 illuminated circular spot in the center of the image with an area of about
 \SI{2.5}{\milli\meter}. The intensity inside the spot seems homogeneous,
@@ -210,25 +213,19 @@ distribution around the spot. Around the circular spot we can see a
 diffraction ring. The diffraction ring is well described
 in~\cite{Hertlein2017} and originates from the finite aperture of the
 objectives.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.5\textwidth]{\figuredir{intensity/profile/profile2d.pdf}}
-  \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
-  }\label{fig:intensity_profile_2d}
+  \includegraphics[width=.9\textwidth]{\figuredir{intensity/profile/profile.pdf}}
+  \captionsetup{width=.9\textwidth}
+  \caption{One dimensional perpendicular cut of the two dimensional intensity
+    distribution from the two dimensional beam profile in
+    \Cref{fig:intensity_spatial_image} with fitted gaussian curve.
+  }\label{fig:intensity_spatial_profile}
 \end{figure}
 For better comparison of the radial symmetry we performed two perpendicular
 cuts and visualized the one dimensional spatial beam distribution in
-\Cref{fig:intensity_profile_1d}.
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/profile/profile1d.pdf}}
-  \captionsetup{width=.8\textwidth}
-  \caption{One dimensional perpendicular cut of the two dimensional intensity
-    distribution from the two dimensional beam profile in
-    \Cref{fig:intensity_profile_2d} with fitted gaussian curve.
-  }\label{fig:intensity_profile_1d}
-\end{figure}
-In \Cref{fig:intensity_profile_1d} we can clearly observe the effects of
+\Cref{fig:intensity_spatial_profile}.
+In \Cref{fig:intensity_spatial_profile} we can clearly observe the effects of
 saturation around the center and how we would expect the intensity to be
 if we could experimentally resolve it in the Gaussian fit. In contrast to the
 ideal Gaussian profile we again observe contributions to the Airy disc around
