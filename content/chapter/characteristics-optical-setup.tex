@@ -247,24 +247,22 @@ Our optical setup uses a single two dimensional \gls{aod} that comprises two
 \gls{aod} elements perpendicular to each other. At first we want to examine the
 behaviour of the individual \gls{aod} elements to each other. In particular we
 are interested if and how the elements differ.
-
-A schematic drawing of the \gls{aod} is depicted in \Cref{fig:aod_socket}. We see the
-two \gls{aod} elements in the respective horizontal and vertical slot. The
-internals of the vertical \gls{aod} (left-hand side) are illustrated. The
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{\mediadir{setup/aod-socket.png}}
+  \captionsetup{width=.9\textwidth}
+  \caption{Drawing of the used 2D \gls{aod}.
+  }\label{fig:aod_socket}
+\end{figure}
+A schematic drawing of the \gls{aod} is depicted in \Cref{fig:aod_socket}. We
+see the two \gls{aod} elements in the respective horizontal and vertical slot.
+The internals of the vertical \gls{aod} (left-hand side) are illustrated. The
 element itself spans through the casing (dashed line) while the acousto-optic
 crystal (dotted line) is glued onto the element. The laser beam (green) passes
 through the acousto-optic crystal. In the following we will refer to the
 horizontal \gls{aod} element as the \gls{aod} element anticipated for the
 horizontal slot and accordingly to the vertical \gls{aod} element as the
 \gls{aod} element intended for the vertical \gls{aod} socket.
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/aod-socket.png}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Drawing of the used 2D \gls{aod}. The 2D \gls{aod} comprises two
-    perpendicular orientated \gls{aod} elements.
-  }\label{fig:aod_socket}
-\end{figure}
 
 \subsection{Individual acousto-optic deflectors}
 
@@ -277,45 +275,97 @@ and measure the beam intensity subject to the linear frequency sweep from
 signal source the amplifier and \gls{dds} combination intended for the
 horizontal \gls{aod} element was used to avoid influences of the amplification
 offset between the two amplifiers.
-
-The results for the four configurations (horizontal element in horizontal slot,
-horizontal element in vertical slot, vertical element in horizontal slot
-and vertical element in vertical slot) are visualized as heatmaps in
-\Cref{fig:intensity_distribution_unpaired}. The color values are normalized in between the
-different heatmaps and can be related to the measured voltage from the
-photodiode via the colorbar on the right-hand side.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
   {\figuredir{intensity/distribution/unpaired-amplitude.png}}
   \captionsetup{width=.8\textwidth}
   \caption{Intensity distribution over linear frequency sweep at different
-  configured \gls{dds} amplitudes for different individual \gls{aod}
-  configurations.
+    configured \gls{dds} amplitudes for different individual \gls{aod}
+    configurations.
   }\label{fig:intensity_distribution_unpaired}
 \end{figure}
-Oddly enough we observe that both \gls{aod}s differ strongly in their
-respective intensity transmission behaviour depending on their slot position.
-Furthermore we observe that the intensity transmission is much higher in the
-case of the horizontal \gls{aod} element mounted to the intended horizontal
-slot compared to all other configurations. In addition we can see that the
-intensity map measured with the horizontal \gls{aod} displays a jump. The
-highest intensity transmission is obtained for relative
-amplitudes configured between \SI{60}{\percent} and \SI{90}{\percent} with
-large dependence on the frequency. Another interesting observation is that
-the intensity transmission seems very similar for the horizontal element in
-the vertical slot and the vertical element in the vertical slot whose
-map also seems more symmetric with respect to the frequency axis. In fact
-for these configurations the amplitude dependence seems to be essentially
-independent of the frequency dependence.
-
-\subsubsection{Incident angle}
+The results for the four configurations (horizontal element in horizontal
+slot, horizontal element in vertical slot, vertical element in horizontal
+slot and vertical element in vertical slot) are visualized as heatmaps in
+\Cref{fig:intensity_distribution_unpaired}. The color values are normalized in
+between the different heatmaps and can be related to the measured voltage from
+the photodiode via the colorbar on the right-hand side. Oddly enough we
+observe that both \gls{aod}s differ strongly in their respective intensity
+transmission behaviour depending on their slot position. Furthermore we
+observe that the intensity transmission is much higher in the case of the
+horizontal \gls{aod} element mounted to the intended horizontal slot compared
+to all other configurations. In addition we can see that the intensity map
+measured with the horizontal \gls{aod} displays a jump. The highest intensity
+transmission is obtained for relative amplitudes configured between
+\SI{60}{\percent} and \SI{90}{\percent} with large dependence on the
+frequency. Another interesting observation is that the intensity transmission
+seems very similar for the horizontal element in the vertical slot and the
+vertical element in the vertical slot whose map also seems more symmetric with
+respect to the frequency axis. In fact for these configurations the amplitude
+dependence seems to be essentially independent of the frequency dependence.
+We assume that the individual elements are designed for different
+polarisation angles. In order to prove this hypothesis we added a tunable
+$\lambda/2$ retarder plate after Cube 2. Tuning the $\lambda/2$ retarder
+before Cube 2 would change the intensity fraction that gets redirected into
+the beam dump as Cube 2 is a beam splitter sensible to polarisation.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/polarisation-horizontal.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity transmission of the \gls{h} \gls{aod} in the \gls{h} slot
+    at maximum output amplitude for different polarisation angles.
+  }\label{fig:intensity_polarisation_h}
+\end{figure}
+In \Cref{fig:intensity_polarisation_h} the intensity transmission of the
+\gls{h} \gls{aod} in the \gls{h} slot at maximum output amplitude is presented
+for different polarisation angles. The polarisation angles are the remainders
+of the angles read of from the retarder plate mount divided by \ang{90}. The
+reason behind this step is that a rotation of a retarder plate by $\phi$
+effectively changes the polarisation angle by $2\phi$. Further the
+polarisation domain is limited to $\left[0,\ang{90}\right]$.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/polarisation-vertical.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity transmission of the \gls{v} \gls{aod} in the \gls{v} slot
+    at maximum output amplitude for different polarisation angles.
+  }\label{fig:intensity_polarisation_v}
+\end{figure}
+We note the maximum intensity transmission of the \gls{h} \gls{aod} at
+\ang{20} and the minimum intensity transmission at around \ang{70}. The
+difference between the polarisation angle at minimum and maximum intensity
+is about \ang{50} which is close to \ang{45} that would suggest that
+intensity minimum and maximum are located at the respective perpendicular
+polarisation axis. In \Cref{fig:intensity_polarisation_v} the intensity
+transmission subject to the polarisation angle of the \gls{v} \gls{aod} in
+the \gls{v} slot is shown. We again observe a difference of about \ang{45}
+between the polarisation angles at maximum and minimum intensity transmission.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]
+  {\figuredir{intensity/distribution/polarisation.pdf}}
+  \captionsetup{width=.8\textwidth}
+  \caption{Intensity transmission of the \gls{h} and \gls{v} \gls{aod} at
+    \SI{100}{\mega\hertz} and maximum output amplitude for different
+    polarisation angles.
+  }\label{fig:intensity_polarisation}
+\end{figure}
+Finally we want to compare the polarisation angles between the individual
+\gls{aod}s. Therefore we extracted the intensity transmission at
+\SI{100}{\mega\hertz} frequency for both \gls{aod} measurements and plotted
+them against the polarisation angle in \Cref{fig:intensity_polarisation}. We
+observe a sinusoidal shaped intensity response of the polarisation angle
+for the \gls{h} and \gls{v} \gls{aod} which seem out of phase by nearly
+\ang{90}.
 
 The 2D \gls{aod} casing allows to rotate the individual \gls{aod} elements. So
 far we choose the rotation angle of the \gls{aod} elements that maximizes the
 intensity transmission at the center frequency. What would we obtain if we
 tilted the rotation angle a bit to the left and to the right?
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
   {\figuredir{intensity/distribution/unpaired-tilted.png}}
@@ -335,42 +385,6 @@ parameter in the intensity transmission of the \gls{aod}s. In particular we
 need to consider the incident beam angle for the 2D \gls{aod} configuration.
 It may make sense to change the setup to a configuration consisting of two
 1D \gls{aod} with a telescope in between.
-
-\subsubsection{Polarisation}
-
-Another parameter we did not consider so far is the leverage of the beam
-polarisation. That is why we conducted changed the polarisation angle of the
-$\lambda/4$ plate in front of Cube 2 in \Cref{fig:intensity_control_setup}.
-Because Cube 2 is a beam splitter sensible to polarisation, we expect the
-intensity to naturally decrease as it is redirected into the beam dump. Yet,
-we may observe non-linear changes in the intensity and amplitude dependency
-that can not be attributed to beam splitter but to the \gls{aod}.
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/unpaired-polarisation-broad.png}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Intensity distribution at different amplitudes for a wide range
-    of polarisation angles.
-  }\label{fig:intensity_distribution_polarisation_broad}
-\end{figure}
-\begin{figure}[ht]
-  \centering
-  \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/unpaired-polarisation-narrow.png}}
-  \captionsetup{width=.8\textwidth}
-  \caption{Intensity distribution at different amplitudes for a narrow range
-    of polarisation angles.
-  }\label{fig:intensity_distribution_polarisation_narrow}
-\end{figure}
-\Cref{fig:intensity_distribution_polarisation_broad} and
-\Cref{fig:intensity_distribution_polarisation_narrow} show how the intensity
-transmission changes for different polarisation angles for the \gls{h}
-\gls{aod} in the \gls{h} slot. Beside of the linear intensity decrease when
-departing from \ang{128} polarisation caused by the beam splitter we cannot
-observe differences in shape. Yet, we should note that it is possible that
-the \gls{h} \gls{aod} was designed to be unpolarising as it is the first
-\gls{aod} to interact with the laser beam but not the \gls{v} aod.
 
 \subsection{Paired acousto-optic deflectors}
 
