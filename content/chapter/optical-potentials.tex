@@ -1,46 +1,54 @@
 \chapter{Optical potentials}
 
-In the introduction we emphasized the importance of optical lattices, yet we
-left out many details, for instance, how these optical lattices are created
-and how the optical quantities enter the potential energy of the atoms. In
-this chapter we will make up for said gaps. First we will recapitulate the
-theory behind laser light intensities and then derive a formulation of the
-effective lattice potentials felt by the atoms.
+\textit{In the introduction we emphasized the importance of optical lattices,
+yet we left out many details, for instance, how these optical lattices are
+created and how the optical quantities enter the potential energy of the
+atoms. In this chapter we will make up for said gaps. First we will
+recapitulate the theory behind laser light intensities and then derive a
+formulation of the effective lattice potentials felt by the atoms.}
 
 \section{Atom-light interaction}
 
 At first we need to ask ourselves how the laser field acts as a perturbation
 to the Hamiltonian of the atomic system and how this perturbation leads to an
-intensity dependent potential for the atoms, which we can control throughout
-the experiment.
+intensity dependent potential for the atoms, which we can control in the
+experiment. In deviations are loosely based on
+references~\cite{Gerry2004,Jackson2005,Bartelmann2018}.
 
 \subsection{Dipole potential}
 
-We will use \gls{si} units if not noted else. The Hamiltonian of an electron
+We will use \gls{si} units unless stated otherwise. The Hamiltonian of an electron
 in an external electromagnetic field reads
 \begin{equation}
   \hat{H}_\text{em}
-  =\frac{1}{2m}{\left(\hat{\vb{p}}+e\vb{A}\right)}^2-e\Phi+\hat{V}_0
-  \label{eq:hamiltonian_em}
+  =\frac{1}{2m_e}{\left(\hat{\vb{p}}+e\vb{A}\right)}^2-e\Phi+\hat{V}_0
+  \label{eq:hamiltonian_em},
 \end{equation}
 with vector potential $\vb{A}$ and scalar potential $\Phi$ of the external
-field and the Coulomb potential of the nucleus $\hat{V}_0$.
+field and the Coulomb potential of the nucleus $\hat{V}_0$. Further $m_e$
+denotes the electron mass and $e$ the elementary charge.
 \Cref{eq:hamiltonian_em} is exact for the hydrogen atom that only hosts one
 electron. For alkali atoms we know that inner electron shells are closed and
 the single outer electron is approximately described by
 \cref{eq:hamiltonian_em}. The electromagnetic field relates to the
 vector and scalar potential through
 \begin{align}
-  \vb{E}=-\grad{\Phi}-\pdv{\vb{A}}{t} &&
-  \vb{B}=\curl{\vb{A}}
+  \vb{E}=-\grad{\Phi}-\pdv{\vb{A}}{t}, &&
+  \vb{B}=\curl{\vb{A}},
   \label{eq:field_em_potentials}
 \end{align}
 where $\vb{E}$ is the electric and $\vb{B}$ the magnetic field component.
 
-\subsubsection{Gauge freedom}
+The representation used in \cref{eq:field_em_potentials} is actually difficult
+to work with. Fortunately Gauge freedom allows us to transform
+\cref{eq:field_em_potentials} to a more simple form. We usually only consider
+the electromagnetic field to represent physical reality, thus Gauge freedom
+describes physical redunancy in mathematically distinct
+solutions.\footnote{The Aharonov-Bohm effect actually provides evidence that
+also the electromagnetic potentials represent physical reality.}
 
-Gauge freedom of the electromagnetic vector and scalar potential permit
-transformations of kind
+Gauge freedom of the
+electromagnetic vector and scalar potential permit transformations of kind
 \begin{align}
   \vb{A}\to\vb{A}+\grad{\chi}
   &&
@@ -52,14 +60,7 @@ with gauge function $\chi(\vb{x},t)$.
 We can see that insertion of \cref{eq:gauge_transform_em} into
 \cref{eq:field_em_potentials} and applying vector calculus identities yields
 expressions for the electromagnetic field components independent of the gauge
-function $\chi$. We usually only consider the electromagnetic field to
-represent physical reality, thus Gauge freedom describes physical redunancy
-in mathematically distinct solutions.\footnote{The Aharonov-Bohm effect
-actually provides evidence that also the electromagnetic potentials represent
-physical reality.}
-
-\subsubsection{Dipole approximation}
-
+function $\chi$. 
 In the following we choose the gauge function $\chi=-\vb{A}\cdot\vb{x}$ and
 assume the dipole approximation $\vb{A}(\vb{x},t)\approx\vb{A}(t)$. The
 dipole approximation is reasonable as wave length of visible light are much
