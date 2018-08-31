@@ -39,35 +39,30 @@ vector and scalar potential through
 \end{align}
 where $\vb{E}$ is the electric and $\vb{B}$ the magnetic field component.
 
-The representation used in \cref{eq:field_em_potentials} is actually difficult
-to work with. Fortunately Gauge freedom allows us to transform
-\cref{eq:field_em_potentials} to a more simple form. We usually only consider
-the electromagnetic field to represent physical reality, thus Gauge freedom
-describes physical redunancy in mathematically distinct
-solutions.\footnote{The Aharonov-Bohm effect actually provides evidence that
-also the electromagnetic potentials represent physical reality.}
-
-Gauge freedom of the
-electromagnetic vector and scalar potential permit transformations of kind
+The canonical momentum $\hat{\vb{p}}+e\vb{A}$ in \cref{eq:hamiltonian_em} is
+difficult to work with. Fortunately Gauge transforms
 \begin{align}
   \vb{A}\to\vb{A}+\grad{\chi}
   &&
   \Phi\to\Phi-\pdv{\chi}{t}
   \label{eq:gauge_transform_em}
 \end{align}
-with gauge function $\chi(\vb{x},t)$.
-
-We can see that insertion of \cref{eq:gauge_transform_em} into
-\cref{eq:field_em_potentials} and applying vector calculus identities yields
-expressions for the electromagnetic field components independent of the gauge
-function $\chi$. 
-In the following we choose the gauge function $\chi=-\vb{A}\cdot\vb{x}$ and
-assume the dipole approximation $\vb{A}(\vb{x},t)\approx\vb{A}(t)$. The
-dipole approximation is reasonable as wave length of visible light are much
-larger then atomic length scales\cite{Gerry2004}. In the dipole
+allow us to simplify \cref{eq:hamiltonian_em} by choosing a specific Gauge
+function $\chi(\vb{x},t)$. The Gauge function itself $\chi$ does not amend the
+electromagnetic field components \cref{eq:field_em_potentials} which we
+usually consider to represent physical reality --- in contrast to the
+electromagnetic potentials $\vb{A},\Phi$ which are usually only considered
+mathematical aid.\footnote{The Aharonov-Bohm effect actually provides evidence
+that aso the electromagnetic potentials represent physical reality.} In the
+following we choose the gauge function $\chi=-\vb{A}\cdot\vb{x}$ and assume
+the dipole approximation $\vb{A}(\vb{x},t)\approx\vb{A}(t)$. The dipole
+approximation neglects the spatial variation of the electromagnetic field
+over the atom and instead assumes a small separation of opposite charges at
+the nucleus. The dipole approximation is reasonable as wave length of visible
+light are much larger than atomic length scales~\cite{Gerry2004}. In the dipole
 approximation $\chi$ satisfies the Coulomb gauge condition
-$\divergence{\vb{A}}=0$ allowing us to set $\Phi=0$ as no external sources
-are present\cite{Jackson2005}. Finally we can rewrite
+$\divergence{\vb{A}}=0$ allowing us to set $\Phi=0$ as no external sources are
+present~\cite{Jackson2005}. Finally we can rewrite
 \cref{eq:hamiltonian_em} as
 \begin{equation}
   \hat{H}_\text{dip}
@@ -81,10 +76,10 @@ with the dipole potential
   =-\hat{\vb{d}}\cdot\vb{E}
   \label{eq:potential_dip},
 \end{equation}
-dipole operator $\hat{\vb{d}}=-e\vb{x}$ and spatially homogeneous light
-field $\vb{E}(t)$.
+the dipole operator $\hat{\vb{d}}=-e\vb{x}$ and the spatially homogeneous
+light field $\vb{E}(t)$.
 
-\subsection{Effective potential}
+\subsection{AC-Stark effect}
 
 We are now going to solve \cref{eq:hamiltonian_dip} for an arbitrary light
 field of the form
@@ -94,8 +89,8 @@ field of the form
   \label{eq:light_field}
 \end{equation}
 where $\vb{E}_0(\vb{x})$ should be compatible with Maxwell's equations and
-be approximately constant on atomic length scales to not infringe with the
-dipole approximation. Further we need the laser frequency $\omega$ to be
+be approximately constant on atomic length scales to not violate the dipole
+approximation. Further we need the laser frequency $\omega$ to be
 far-off-resonant to the atomic transition frequencies to avoid population
 dynamics.
 
@@ -107,8 +102,8 @@ unperturbated Hamiltonian $\hat{H}_0$
   =\hbar\omega_n\ket{n}
   \label{eq:eigenvalue_energy_unperturbated}.
 \end{equation}
-At $t>0$ the external light field appears instantaneous. The new state
-$\ket{\psi}$ can be expanded in the complete base of the previous energy
+At $t>0$ the external light field appears immediately. The new state
+$\ket{\psi}$ can be expanded in the complete basis of the previous energy
 eigenstates
 \begin{equation}
   \ket{\psi}
@@ -117,7 +112,7 @@ eigenstates
   \label{eq:state_expansion_unperturbated}.
 \end{equation}
 Inserting \cref{eq:state_expansion_unperturbated} into the time-dependent
-Schrödinger equation with dipole Hamiltonian \cref{eq:hamiltonian_dip} and
+Schrödinger equation with the dipole Hamiltonian \cref{eq:hamiltonian_dip} and
 applying $\bra{m}{e^{i{\omega_m}t}}$ to the right hand side leads us to a set
 of differential equations
 \begin{equation}
@@ -128,12 +123,12 @@ of differential equations
   \label{eq:differential_equation_population_dynamics}
 \end{equation}
 with $\omega_{nm}=\omega_n-\omega_m$. One can read
-\cref{eq:differential_equation_population_dynamics} as the probability
-amplitude change in time of a state $m$ is equal to the the sum of
-oscillations to between states $n$ and $m$ weighted by the current population
-$c_n(t)$ of state $n$ and the interaction strength. If we are able to solve
-\cref{eq:differential_equation_population_dynamics} for $c_n(t)$ the
-population dynamics are entirely described by the time-dependent probability
+\cref{eq:differential_equation_population_dynamics} as the rate by which
+the probability amplitude of a state $m$ changes in time. It is equal to the
+sum of oscillations between states $n$ and $m$ weighted by the current
+probability of state $c_n(t)$ and the interaction strength. If we are able to
+solve \cref{eq:differential_equation_population_dynamics} for $c_n(t)$ the
+population dynamic is entirely described by the time-dependent probabilities
 $\abs{c_n(t)}^2$. By using \cref{eq:light_field} we can rewrite the dipole
 transition matrix elements
 \begin{equation}
@@ -147,85 +142,81 @@ where we introduced the Rabi frequency
   =\bra{n}\hat{\vb{d}}\cdot\vb{E}_0(\vb{x})\ket{m}/\hbar
   \label{eq:rabi_frequency}.
 \end{equation}
-Explicit values for general dipole transition elements for one and two
-electron systems can be found in~\cite{Bethe1957}. Transition elements
-vanishes for states with same parity, in particular
-$\Omega_{nn}=0$~\cite{Bartelmann2018}.
+More general expressions for dipole transition elements of one and two
+electron systems can be found in Reference~\cite{Bethe1957}. 
 
-\subsubsection{Two state system}
+\subsubsection{Two-level system}
 
-From now on we assume a two state system that initially is only populated in
-the ground state $c_g(0)=1,c_e(0)=0$. For ultracold atoms which only populate
-the first two energy states this is a very good approximation. Under these
-circumstances the dynamics described in
+From now on we assume a two state system that initially is in the ground
+state $c_g(0)=1,c_e(0)=0$. Under these circumstances the dynamics described in
 \cref{eq:differential_equation_population_dynamics} simplify to
 \begin{align}
-  i\dot{c}_g=\Omega_0c_e(t)\cos(\omega t)e^{+i\omega_0 t} &&
-  i\dot{c}_e=\Omega_0c_g(t)\cos(\omega t)e^{-i\omega_0 t}
+  i\dot{c}_g=\Omega_{ge}c_e(t)\cos(\omega t)e^{+i\omega_0 t} &&
+  i\dot{c}_e=\Omega_{ge}c_g(t)\cos(\omega t)e^{-i\omega_0 t}
   \label{eq:differential_equation_population_dynamics_two_state_system}
 \end{align}
-with $\Omega_0=\Omega_{ge}(\vb{x})$. Expansion of $\cos(\omega t)$ in terms
-of the exponential function and dropping $e^{\pm i(\omega+\omega_0)t}$ yields
+Writing $\cos(\omega t)$ in terms of exponential functions and dropping
+$e^{\pm i(\omega+\omega_{ge})t}$ yields the so-called \gls{rwa}
 \begin{align}
-  i\dot{c}_g\approx\frac{\Omega_0}{2}c_e(t)e^{+i\Delta\omega t} &&
-  i\dot{c}_e\approx\frac{\Omega_0}{2}c_g(t)e^{-i\Delta\omega t}
+  i\dot{c}_g\approx\frac{\Omega_{ge}}{2}c_e(t)e^{+i\Delta\omega t} &&
+  i\dot{c}_e\approx\frac{\Omega_{ge}}{2}c_g(t)e^{-i\Delta\omega t}
   \label{eq:differential_equation_population_dynamics_two_state_system_rwa}
 \end{align}
 where we introduced the frequency detuning
-$\Delta\omega=\abs{\omega-\omega_0}$. The so-called rotating wave
-approximation is motivated by the fact that oscillations of frequency
-$\omega+\omega_0$ are fast compared to changes in the population dynamics and
-therefore vanish on average.
+$\Delta\omega=\abs{\omega-\omega_0}$. The \gls{rwa} is motivated by the fact
+that oscillations of frequency $\omega+\omega_0$ are fast compared to changes
+in the population dynamics and therefore vanish on average.
 
-We now define $a_g=c_g$ and $a_e=c_e e^{i\Delta\omega t}$ and refine
+We now define $a_g=c_g$ and $a_e=c_e e^{i\Delta\omega t}$ and rewrite
 \cref{eq:differential_equation_population_dynamics_two_state_system_rwa} by
 \begin{align}
-  i\dot{a}_g=\frac{\Omega_0}{2}a_e(t) &&
-  i\dot{a}_e=\frac{\Omega_0}{2}a_g(t)-a_e\Delta\omega
+  i\dot{a}_g=\frac{\Omega_{ge}}{2}a_e(t) &&
+  i\dot{a}_e=\frac{\Omega_{ge}}{2}a_g(t)-a_e\Delta\omega
   \label{eq:differential_equation_population_dynamics_two_state_system_shift}.
 \end{align}
-In the former form we can diagonalize the Hamiltonian and find energy
-eigenvalues to be
+Using
+\cref{eq:differential_equation_population_dynamics_two_state_system_shift} we
+can diagonalize the Hamiltonian and find the energy eigenvalues to be
 \begin{equation}
   E_{e,g}
-  =\frac{\hbar}{2}\left(-\Delta\omega\mp\sqrt{\Omega_0^2+\Delta\omega^2}\right)
+  =\frac{\hbar}{2}\left(-\Delta\omega\mp\sqrt{\Omega_{ge}^2+\Delta\omega^2}\right)
   \approx
-  \mp\frac{\hbar\Omega_0^2}{4\Delta\omega}
+  \mp\frac{\hbar\Omega_{ge}^2}{4\Delta\omega}
   \label{eq:eigenvalues_energy_light_shift}
 \end{equation}
-where we applied Taylor expansion to the square root for
-$\Delta\omega\gg\Omega_0$.
+where we applied a Taylor expansion for $\Omega_{ge}/\Delta\omega\ll1$ around
+$\Omega_{ge}/\Delta\omega=0$ and omitted terms of higher order.
 
-\subsubsection{AC light shift}
-
-In result atoms in an external off-resonant light field experience an
+Consequently, atoms in an external off-resonant light field experience an
 effective periodic dipole potential
 \begin{equation}
   \hat{V}_\text{eff}(\vb{x})
   =
-  \mp\frac{\hbar\Omega_0^2(\vb{x})}{4\Delta\omega}
+  \mp\frac{\hbar\Omega_{ge}^2(\vb{x})}{4\Delta\omega}
   =
   \mp\frac{d_0^2E_0^2(\vb{x})}{4\hbar\Delta\omega}
   \label{eq:potential_effective}
 \end{equation}
 with dipole element $d_0$. The sign has to be chosen with respect to the
-direction of the laser detuning from resonance. If the laser is redshifted
-towards the resonance frequency, $\omega-\omega_0>0$, we need to choose the
-negative sign as the particles are drawn towards the areas of maximum
-intensity. The same results can also be obtained by the use of second order
-perturbation theory, however the presented approach is more clear on
-assumptions and time dependence\cite{Grimm2008}.
+direction of the laser detuning from resonance. If the laser is red-shifted
+compared to the resonance frequency, $\omega-\omega_0>0$, we need to choose
+the negative sign as the particles are drawn towards the areas of maximum
+intensity. If the laser is blue-shifted compared to the resonance frequency,
+$\omega-\omega_0<0$, we need to choose the positive sign as the particles are
+drawn towards the area of minimum intensity. The same results can also be
+obtained by the use of second order perturbation theory~\cite{Grimm2008}.
 
 \section{Laser light fields}
 
-In this section our focus will be on the laser light field that creates the
-optical lattice potential and the laser light field that creates the
-time-averaged dynamic potentials.
+In this section our focus will be on the spatial distribution of the lattice
+and perturbation laser light fields that create the time-averaged dynamical
+potentials we discussed in the introduction.
 
 \subsection{Gaussian beams}
 
 The predominant output mode of most lasers is the fundamental transverse
-gaussian mode described by
+gaussian mode. For a laser beam propagating along the $z$-direction it is
+described by
 \begin{equation}
   \vb{E}(r,z)
   =
@@ -235,22 +226,22 @@ gaussian mode described by
   \label{eq:gaussian_beam}
 \end{equation}
 where $w{(z)}$ is the waist radius, $z_R=\pi w{(0)}^2/\lambda$ the Rayleigh
-range and $R(z)$ the radius of curvature of the beam's wavefronts at $z$.
+range and $R(z)$ the radius of curvature of the beam's wavefront at position
+$z$.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.9\textwidth]{\mediadir{image/gaussian-beam.pdf}}
   \captionsetup{width=.9\textwidth}
-  \caption{Illustration of gaussian beam parameters from $\aleph$ (Aleph),
-    http://commons.wikimedia.org translated into English with changed radius
-    of curvature. The waist radius $w(z)$ relates to the beam width, $R(z)$
-    relates to the wavefront curvature and $z_R$ is the distance from origin
-    $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$.}\label{fig:gaussian_beam}
+  \caption{Illustration of Gaussian beam parameters from Ref.~\cite{Aleph2014}
+    translated into English with changed radius of curvature.
+  }\label{fig:gaussian_beam}
 \end{figure}
 \Cref{fig:gaussian_beam} unveils how the parameters relate to the beam
-profile propagation. The waist radius $w(z)$ corresponds to the beam width,
-$R(z)$ relates to the wavefront curvature and $z_R$ is the distance from
-origin $z=0$ where the beam width is $w(z)=\sqrt{2}w(0)$. Beam width
-and curvature radius evolve according to
+profile as a function of propagation distance $z$. The waist radius $w(z)$
+corresponds to the \gls{fwhm} by $w(z)=FWHM(z)/\sqrt{2\ln2}$, $R(z)$ relates
+to the wavefront curvature and $z_R$ is the distance from origin $z=0$ where
+the beam waist is $w(z)=\sqrt{2}w(0)$. Beam waist and curvature of radius
+evolve according to
 \begin{align}
   w{(z)}
   =
@@ -279,92 +270,101 @@ where $I_0$ is the maximum intensity at $r=z=0$.
 
 \subsubsection{Lattice intensity}
 
-An one dimensional optical lattices can be generated through the interference
-of two counter-propagating Gaussian beams
+A \gls{1d} optical lattices can be generated through the interference
+of two counter-propagating Gaussian beams. One way to achieve
+counter-propagation while keeping the coherence stable, is to use a mirror.
+Under the assumption of perfect reflection of the mirror, the electrical field
+component of the laser beam is described by
 \begin{align*}
   \vb{E}_\rightarrow(\vb{x},t)+\vb{E}_\leftarrow(\vb{x},t)
   &=
-  \vb{E}_0(r,z)\cos(kz-\omega t)+\vb{E}_0(r,z)\cos(kz-\omega t)\\
+  \vb{E}_0(r,z)\cos(\omega t-kz)+\vb{E}_0(r,z)\cos(\omega t+kz)\\
   &=
-  2\vb{E}_0(r,z)\cos(kz)\cos(\omega t)
+  2\vb{E}_0(r,z)\cos(kz)\cos(\omega t).
 \end{align*}
-Therewith the intensity distribution equals
+Hence, the intensity distribution equals
 \cref{eq:gaussian_intensity} with an additional $4\cos^2(kz)$ factor
 \begin{equation}
-  I(z)
+  I(r,z)
   =
   4I_0\cos^2(kz)
   \frac{\exp{-\frac{2r^2}{w{(z)}^2}}}{1+{\left(\frac{z}{z_R}\right)}^2}
   \label{eq:lattice_intensity}
 \end{equation}
-contributed through the constructive interference.
+caused by the constructive interference.
 \begin{table}[ht]
   \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
+  \begin{tabular}{cccc}
+    \toprule
     Laser wavelength $\lambda$ &
     Lattice constant $a=\lambda/2$ &
     Beam waist $w(0)$ &
     Rayleigh length $z_R$ \\
-    \hline
+    \midrule
     \SI{1064}{\nano\meter} &
     \SI{532}{\nano\meter} &
     \SI{150}{\micro\meter} &
     \SI{66}{\milli\meter} \\
-    \hline
+    \bottomrule
   \end{tabular}
   \captionsetup{width=.8\textwidth}
-  \caption{Typical values for a Gaussian beam used to construct an optical
+  \caption{Typical values for a Gaussian beam used to generate an optical
     lattice potential.
   }\label{tab:gaussian_beam_lattice}
 \end{table}
 \Cref{tab:gaussian_beam_lattice} lists typical values for a Gaussian beam
-used to construct an optical lattice potential. Optical lattices have up to
-50 lattice sites spanning over a range of
-$l=50a\approx\SI{27}{\micro\meter}$~\cite{Rom2009}. For $-l/2<z<+l/2$ we find
-that $w(z)\approx w(0)$ and because
-$r\ll1$ we can approximate~\cref{eq:lattice_intensity} to follow
+used to construct an optical lattice potential. Typical atom clouds occupy
+about 50--100 lattice sites spanning over a range of
+$l=50a\approx\SI{27}{\micro\meter}$~\cite{Rom2009}. As typical atom clouds
+are much smaller then the typical beam waists used for optical lattices, we
+have $r/w(z)\ll1$ and can approximate \cref{eq:lattice_intensity}
 \begin{equation}
-  I(z)
+  I(r,z)
   \approx
   4I_0\cos^2(kz)
   \label{eq:gaussian_intensity_approx}
 \end{equation}
-which we will use from now on as the intenisty distribution for one
-dimensional optical lattices.
+which we will use from now on as the intensity distribution for \gls{1d}
+optical lattices.
 
 \subsubsection{Perturbation intensity}
 
-The laser beam used to perturbate the optical lattice potential has slightly
-different parameters~\cite{Hertlein2017} as we can see in
-\Cref{tab:gaussian_beam_perturbation}.
+For the generation of optical lattices we want large beam waists because
+otherwise the potential is not homogeneous and there is a potential energy
+difference between neighboring lattice sites. For our perturbation potential,
+however, we need very high resolution on the order of a single lattice site,
+and therefore need a tightly focused beam.
 \begin{table}[ht]
   \centering
-  \begin{tabular}{|c|c|c|c|}
-    \hline
+  \begin{tabular}{cccc}
+    \toprule
     Laser wavelength $\lambda$ &
     Beam waist $w(0)$ &
     Rayleigh length $z_R$ \\
-    \hline
+    \midrule
     \SI{532}{\nano\meter} &
     \SI{1}{\micro\meter} &
     \SI{6}{\micro\meter} \\
-    \hline
+    \bottomrule
   \end{tabular}
   \captionsetup{width=.8\textwidth}
   \caption{Typical values for a Gaussian beam used to perturbate the optical
     lattice potential reported by~\cite{Hertlein2017}.
   }\label{tab:gaussian_beam_perturbation}
 \end{table}
-For these parameters approximations made for optical lattice are not valid
-because of the small beam waist and Rayleigh length and we need to the exact
-\cref{eq:gaussian_intensity} formula.
+\Cref{tab:gaussian_beam_perturbation} summarizes the beam parameter of the
+perturbation potential as suggested in Ref.~\cite{Hertlein2017}. For these
+parameters approximations made for optical lattice are not valid because of
+the small beam waist and Rayleigh length and we need to the exact
+\cref{eq:gaussian_intensity} formula. In fact for an actual experiment we
+would like to focus the laser beam to even smaller waists. The ultimate goal
+would be the ability to address single lattice sites.
 
 \section{Effective local potentials}
 
 With \cref{eq:potential_effective} we found an expression of the potential
-energy in terms of atomic properties like the dipole transition element and
-resonance and the laser intensity distribution. For the laser intensity
+energy in terms of atomic properties like the dipole transition element, the
+atomic resonance and the laser intensity distribution. For the laser intensity
 distribution of the optical lattice we derived
 \cref{eq:gaussian_intensity_approx} and we concluded that the intensity of the
 laser used for the creation of local potentials obeys
