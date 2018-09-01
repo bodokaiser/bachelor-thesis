@@ -1,9 +1,9 @@
-\chapter{Time scales in optical lattice}
+\chapter{Characteristic energy scales}
 
-In the previous chapter we focused on the effective potential obtained by the
-superposition of the averaged superposition of the perturbation potential and
-the lattice potential. In this chapter we want to emphasize on the physics
-that determine the time scale of the perturbation potential.
+\textit{In the previous chapter we focused on the effective potential obtained
+by the superposition of the averaged superposition of the perturbation
+potential and the lattice potential. In this chapter we want to emphasize on
+the physics that determine the time scale of the perturbation potential.}
 
 \section{Harmonic approximation}
 
@@ -55,17 +55,49 @@ In \Cref{fig:wavefunction_harmonic} we have visualized the harmonic
 approximation for lattice depths $V_0=-50E_r$ including the probability
 densities of the wave functions up to the fourth energy level.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{hopping/harmonic.pdf}}
-  \captionsetup{width=.9\textwidth}
-  \caption{Harmonic approximation of the optical lattice potential with
-    probability density of harmonic wave functions. We can see that the
-    probability density decays exponentially at the potential boundaries
-    such that the probability for an atom to tunnel to the neighbouring
-    lattice site vanish.
-  }
-  \label{fig:wavefunction_harmonic}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/energy.pgf}
+  \end{adjustbox}
+  \caption{Energy scales.
+  }\label{fig:scale_energy}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/structure.pgf}
+  \end{adjustbox}
+  \caption{Energy band structure.
+  }\label{fig:scale_energy_structure}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/hopping-nn.pgf}
+  \end{adjustbox}
+  \caption{Nearest neighbour hopping.
+  }\label{fig:scale_hopping_nn}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/hopping.pgf}
+  \end{adjustbox}
+  \caption{Hopping.
+  }\label{fig:scale_hopping}
+\end{figure}
+
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/frequency.pgf}
+  \end{adjustbox}
+  \caption{Frequency scale.
+  }\label{fig:scale_frequency}
 \end{figure}
 
 We can see that the probablity density decays exponentially at the potential
