@@ -2,8 +2,13 @@
 
 \textit{In the previous chapter we focused on the effective potential obtained
 by the superposition of the averaged superposition of the perturbation
-potential and the lattice potential. In this chapter we want to emphasize on
-the physics that determine the time scale of the perturbation potential.}
+potential and the lattice potential. In this chapter we want to understand the
+characteristic energy scales in an optical lattice in order to infer the
+scanning timescales needed for the generation of a time-averaged optical
+potential the physics that determine the time scale of the perturbation
+potential. In particular we will discuss energy bands and hopping terms.}
+
+\section{Energy}
 
 \section{Harmonic approximation}
 
@@ -50,7 +55,14 @@ we find the time independent wave functions for energy level $n$ to be
 \end{equation}
 where $H_n(x)$ is the $n$th Hermite polynom and the spatial dimension is
 expessed in units of $(2E_r/\abs{V_0})^{1/4}/k$.
-
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/harmonic.pgf}
+  \end{adjustbox}
+  \caption{Energy scales.
+  }\label{fig:scale_harmonic}
+\end{figure}
 In \Cref{fig:wavefunction_harmonic} we have visualized the harmonic
 approximation for lattice depths $V_0=-50E_r$ including the probability
 densities of the wave functions up to the fourth energy level.
@@ -238,6 +250,8 @@ with recoil energy $E_r=\hbar^2k^2/(2m)$.
 \Cref{eq:eigenvalue_energy_lattice_explicit} has to be solved for known
 $\hat{V}_\text{lat}$ numerically. We will do this later for the effective
 optical lattice potential from \cref{eq:potential_effective}.
+
+\section{Hopping}
 
 \subsection{Wannier states}
 
