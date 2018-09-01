@@ -380,10 +380,11 @@ One embodiment of local potentials we described in the introduction was the
 barrier potential. A barrier potential confines atoms to a subspace of the
 global lattice and could be used to model thermodynamical equilibrium
 processes.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{potential/barrier.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/potential/barrier.pgf}
+  \end{adjustbox}
   \caption{Local barrier potential and lattice potential in recoil energies.
     The barrier potential is created by targetting two different focus points
     with the perturbation beam (first two rows). If both focus points are
@@ -396,18 +397,19 @@ barrier the perturbation beam needs to change between two focus points (first
 and second row). If we average over these two focus points we yield the
 effective potential (third row).
 
-\subsubsection{Pot}
+\subsubsection{Box}
 
 As a second example of local potentials we named a pot potential that could
 draw surrounding atoms.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{potential/pot.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/potential/box.pgf}
+  \end{adjustbox}
   \caption{Local pot potential and lattice potential in recoil energies. The
     pot potential is created by targetting multiple focus points close to
-  each other. Over average this yields a kind of potential
-valley.}\label{fig:effective_potential_pot}
+    each other. Over average this yields a kind of potential valley.
+  }\label{fig:effective_potential_pot}
 \end{figure}
 \Cref{fig:effective_potential_pot} visualized such a potential. In comparison
 to the barrier potential more focus points with closer distance are required.
