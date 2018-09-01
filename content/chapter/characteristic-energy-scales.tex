@@ -6,24 +6,24 @@ potential and the lattice potential. In this chapter we want to understand the
 characteristic energy scales in an optical lattice in order to infer the
 scanning timescales needed for the generation of a time-averaged optical
 potential the physics that determine the time scale of the perturbation
-potential. In particular we will discuss energy bands and hopping terms.}
+potential.}
 
 \section{Energy}
 
 \section{Harmonic approximation}
 
-Given the effective lattice potential \cref{eq:potential_effective} the
-effective lattice Hamiltonian reads
+Given the optical lattice potential \cref{eq:potential_effective} the
+lattice Hamiltonian reads
 \begin{equation}
-  \hat{H}_\text{eff}
-  =\frac{\hat{p}^2}{2m}+\hat{V}_\text{eff}
-  \label{eq:hamiltonian_effective}.
+  \hat{H}_\text{lat}
+  =\frac{\hat{p}^2}{2m}+\hat{V}_\text{lat}
+  \label{eq:hamiltonian_lattice}.
 \end{equation}
 One first naive approach to solve the time-independent Schrödinger equation
 subject to the effective lattice Hamiltonian would be to Taylor expand
-the effective potential in second order
+the lattice potential up to second order in $kx$
 \begin{equation}
-  \hat{V}_\text{eff}
+  V_\text{lat}(x)
   =V_0\cos^2(kx)
   \approx V_0\left(1-\frac{1}{2}(kx)^2\right)
   \label{eq:potential_harmonic_approximation}.
@@ -32,19 +32,20 @@ With \cref{eq:potential_harmonic_approximation} we get the Hamiltonian of a
 linear harmonic quantum oscillator
 \begin{equation}
   \hat{H}_\text{har}-V_0
-  =\frac{\hat{p}^2}{2m}-\frac{1}{2}V_0k^2x^2
+  =\frac{\hat{p}^2}{2m}-\frac{1}{2}V_0k^2\hat{x}^2
   \label{eq:hamiltonian_harmonic_approximation}
 \end{equation}
-with well-known energy levels
+with the well-known energy levels
 \begin{equation}
   E_n=\hbar\omega(2n+1)/2
   \qc
-  \omega=\sqrt{\abs{V_0}/m}k=\sqrt{2\abs{V_0}E_r}/\hbar
+  \omega=\sqrt{\abs{V_0}/m}k=\sqrt{2\abs{V_0}E_r}/\hbar,
   \label{eq:energy_harmonic_approximation}
 \end{equation}
 where we introduced the recoil energy $E_r=(\hbar k)^2/(2m)$ as an
-atom-independent energy scale. In natural scales of the quantum oscillator
-we find the time independent wave functions for energy level $n$ to be
+atom-independent energy scale. In natural scales of the quantum harmonic
+oscillator we find the time-independent wave functions for the energy level
+$n$ to be
 \begin{equation}
   \psi_n(x)
   =
@@ -53,240 +54,243 @@ we find the time independent wave functions for energy level $n$ to be
   \frac{\exp(-\frac{1}{2}x^2)}{\sqrt{2^nn!}\pi^{1/4}}H_n(x)
   \label{eq:wavefunction_harmonic}
 \end{equation}
-where $H_n(x)$ is the $n$th Hermite polynom and the spatial dimension is
-expessed in units of $(2E_r/\abs{V_0})^{1/4}/k$.
+where $H_n(x)$ is the $n$th Hermite polynomial and the spatial coordinate $x$
+is expessed in natural length units of $xi=(2E_r/\abs{V_0})^{1/4}/k$.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
     \input{../figure/scale/harmonic.pgf}
   \end{adjustbox}
-  \caption{Energy scales.
+  \caption{Probability density of the wave functions of the harmonic
+    approximation of the lattice potential.
   }\label{fig:scale_harmonic}
 \end{figure}
-In \Cref{fig:wavefunction_harmonic} we have visualized the harmonic
-approximation for lattice depths $V_0=-50E_r$ including the probability
-densities of the wave functions up to the fourth energy level.
+In \Cref{fig:scale_harmonic} we have visualized the probability densities of
+the wave functions of the harmonic approximation for the lattice depth
+$V_0=-30E_r$ up to the fourth energy level. The probablity density decays
+exponentially at the potential boundary and thereby the probability for a
+particle to tunnel through the lattice potential vanishes. It turns out that
+the harmonic approximation is not suited for usual lattice depths of below
+$V_0=-30E_r$ as we will after comparing the energy levels of the harmonic
+approximation with the exact energies. Nevertheless the harmonic approximation
+gives a correct magnitude of the energy while being soft on complexity.
 
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/scale/energy.pgf}
-  \end{adjustbox}
-  \caption{Energy scales.
-  }\label{fig:scale_energy}
-\end{figure}
+\subsection{Exact treatment}
 
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/scale/structure.pgf}
-  \end{adjustbox}
-  \caption{Energy band structure.
-  }\label{fig:scale_energy_structure}
-\end{figure}
+The periodicity of the lattice potential \cref{eq:potential_effective}
+suggests that there exists a finite representation in the frequency domain.
+In the context of lattice structures the frequency domain is commonly known
+as the reciprocal lattice.
 
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/scale/hopping-nn.pgf}
-  \end{adjustbox}
-  \caption{Nearest neighbour hopping.
-  }\label{fig:scale_hopping_nn}
-\end{figure}
+\subsubsection{Lattice structures}
 
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/scale/hopping.pgf}
-  \end{adjustbox}
-  \caption{Hopping.
-  }\label{fig:scale_hopping}
-\end{figure}
-
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/scale/frequency.pgf}
-  \end{adjustbox}
-  \caption{Frequency scale.
-  }\label{fig:scale_frequency}
-\end{figure}
-
-We can see that the probablity density decays exponentially at the potential
-boundary and thereby the probability for a particle to tunnel through the
-lattice potential vanishes. We conclude that the harmonic approximation is
-not suited to describe the hopping probability and we proceed with a more
-elaborate treatment of \cref{eq:hamiltonian_effective} in the next section.
-
-\section{Periodic lattice potentials}
-
-The following section is dedicated to the quantum mechanics of periodic
-lattice potentials. We will develope a toolset which allows us to find an
-exact solution to \cref{eq:hamiltonian_effective} and other periodic
-potentials. We are going to start of with a recap of lattice structures and
-examine how Bloch states can be used as ansatz for periodic potentials. From
-there on we will derive a general expression for the energy band structure
-that arises with Bloch states and then finally discuss Wannier states as
-a change of reference frame from the expanded lattice structure to the local
-lattice sites.
-
-\subsection{Lattice structures}
-
-A Bravais lattice of dimension $N$ consists of the discrete points
+Let
 \begin{equation}
-  \vb{r}
-  =\bra{\vb{x}}\ket{\vb{r}}
+  \vb{R}
+  =\bra{\vb{x}}\ket{\vb{R}}
   =\sum_{i=1}^Nn_i\vb{a}_i
   \qc n_1,\dots,n_N\in\mathbb{Z}
 \end{equation}
-where $\vb{a}_i$ are the primitive vectors that span the primitive lattice
-cell. We define the reciprocal lattice as the discrete points
+be an element of the Bravais lattice, i.e.\ a member of the lattice in the
+spatial domain, with $\vb{a}_i$ being the primitive vectors that span the
+primitive lattice cell. Then the reciprocal lattice is defined as the discrete
+point set
 \begin{equation}
-  \vb{g}
-  =\bra{\vb{p}}\ket{\vb{g}}
+  \vb{G}
+  =\bra{\vb{p}}\ket{\vb{G}}
   =\sum_{i=1}^Nm_i\vb{b}_i
   \qc m_1,\dots,m_N\in\mathbb{Z}
 \end{equation}
-that satisfy the condition $\exp(\vb{r}\cdot\vb{g})=1$. For a simple cubic
-lattice structure $\vb{b}_i=2\pi\vb{a}/{{\vb{a}_i}^2}$ satisfies said
-condition. For the subsequent sections we will only consider the one
-dimensional simple cubic lattice. Cubic lattices of higher dimension however
-can be easily obtained by superposition of the potentials.
-
-As the reciprocal lattice space can be seen as the Fourier transform of the
-Bravais lattice, it is especially simple to express periodic functions and it
-suggests the representation of periodic potentials in reciprocal lattice
-space. Let $\ket{g_n}$ denote the $n$th reciprocal lattice point then the
-transformation rule is
+that satisfy the condition $\exp(\vb{R}\cdot\vb{G})=1$, with $\vb{b}_i$ being
+the reciprocal primitive lattice vector. For a simple cubic lattice structure
+the reciprocal primitive lattice vector relates to the primitive vector by
 \begin{equation}
-  \bra{g_n}\hat{V}\ket{g_m}
-  =\int\dd{x}\bra{g_n}\ket{x}^*V(x)\bra{g_m}\ket{x}
-  =\int\dd{x}V(x)e^{2ikx(n-m)}
-  \label{eq:potential_in_reciprocal_lattice}.
+  \vb{b}_i
+  =2\pi\vb{a}_i/{{\vb{a}_i}^2}.
 \end{equation}
-Evaluation of \cref{eq:potential_in_reciprocal_lattice} for a specific
-potential will usually yield a finite number of terms in dependence of
-$n-m$ as we actually determine the Fourier coefficients of a discrete Fourier
-transform.
-
-\subsection{Bloch states}
-
-Bloch's theorem states that for a periodic lattice potential
+For the subsequent sections we will only consider the one dimensional simple
+cubic lattice. Cubic lattices of higher dimension, however, can be easily
+obtained by superposition of the potentials. We now take $\ket{G_n}$ to be
+the $n$th reciprocal lattice point. An arbitrary operator $\hat{A}$ with
+known representation in the spatial domain can be expressed in the recoprocal
+lattice basis through the transformation
 \begin{equation}
-  V_\text{lat}(\vb{x}+\vb{a})=V_\text{lat}(\vb{x})
+  \bra{G_u}\hat{A}\ket{g_v}
+  =\int\dd{x}\bra{G_u}\ket{x}^*A(x)\bra{G_v}\ket{x}
+  =\int\dd{x}A(x)e^{2ikx(u-v)}
+  \label{eq:operator_in_reciprocal_lattice}.
+\end{equation}
+Evaluation of \cref{eq:operator_in_reciprocal_lattice} for the specific
+lattice potential found in \cref{eq:potential_effective} yields
+\begin{equation}
+  \bra{G_u}\hat{V}_\text{lat}\ket{G_v}
+  =\frac{1}{4}V_0\left(2\delta^u_v+\delta^u_{v-1}+\delta^s_{u+v}\right),
+  \label{eq:elements_effective_potential_in_reciprocal_state}
+\end{equation}
+which is much easier to work with compared to \cref{eq:potential_effective}.
+
+\subsubsection{Bloch states}
+
+While \cref{eq:elements_effective_potential_in_reciprocal_state} gives us a
+simple representation of the periodic lattice potential we are missing an
+Ansatz for the wave function to solve the time-independent Schrödinger
+equation. Fortunately Bloch's theorem states that for a periodic potential
+\begin{equation}
+  V_\text{per}(x+a)=V_\text{per}(x)
   \label{eq:potential_periodic}
 \end{equation}
-there exists a complete set of wavefunctions that are energy eigenstates
+there exists a complete set of wave functions that are energy eigenstates
 of the Hamiltonian
 \begin{equation}
-  \hat{H}_\text{lat}
-  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{lat}
+  \hat{H}_\text{per}
+  =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_\text{per}
   \label{eq:hamiltonian_periodic},
 \end{equation}
 and each of these Bloch waves can be written into the form
 \begin{equation}
-  \bra{\vb{x}}\ket{\Psi^n_{\vb{q}}}
-  =\Psi^n_{\vb{q}}(\vb{x})
-  =e^{i\vb{q}\cdot\vb{x}}\psi^n_{\vb{q}}(\vb{x})
+  \bra{x}\ket{\Psi^n_q}
+  =\Psi^n_q(x)
+  =e^{iqx}\psi^n_q(x)
   \label{eq:state_bloch}
 \end{equation}
-with $\psi^n_{\vb{q}}(\vb{x}+\vb{a})=\psi^n_{\vb{q}}(\vb{x})$, wave vector
-$\vb{q}$ and bandindex $n$. We confine the wave number to the first Brillouin
-zone $-k<q<+k$. For a proof of Bloch's theorem see \cite{Roessler2004} or
-\cite{Bartelmann2018}.
+with $\psi^n_q(x+a)=\psi^n_q(x)$, wave vector $q$ and bandindex $n$. We
+confine the wave number to the first Brillouin zone $-k\leq q<+k$. The
+first Brillouin zone is also the primitive cell of the reciprocal lattice. For
+a proof of Bloch's theorem see Ref.~\cite{Roessler2004} or
+Ref.~\cite{Bartelmann2018}.
 
-\subsection{Energy bands}
+\subsubsection{Band structure}
 
-The Bloch states \cref{eq:state_bloch} can be used as ansatz to solve the
-periodic lattice Hamiltonian
-\begin{equation}
-  \hat{H}_\text{lat}
-  =\frac{\hat{p}^2}{2m}+\hat{V}_\text{lat}
-  \label{eq:hamiltonian_lattice}.
-\end{equation}
-We notice that by the product rule
-$\hat{p}^2\Psi^n_q(x)=e^{iqx}(\hat{p}+\hbar q)\psi^n_q(x)$,
-thus we find
+Using the Bloch states \cref{eq:state_bloch} as ansatz to solve
+\cref{eq:hamiltonian_lattice} and noting that by the product rule
+$\hat{p}^2\Psi^n_q(x)=e^{iqx}(\hat{p}+\hbar q)\psi^n_q(x)$, we find
 \begin{equation}
   E^n_q\ket{\Psi^n_{q}}
   =\hat{H}_{lat}\ket{\Psi^n_{q}}
   =e^{iqx}\left(\frac{(\hat{p}+\hbar q)^2}{2m}+\hat{V}_\text{lat}\right)\ket{\psi^n_{q}}
   \label{eq:eigenvalue_energy_lattice}.
 \end{equation}
-Expansion of the state $\ket{n,q}$ in states of the reciprocal lattice returns
+Expansion of the state $\psi^n_q$ in states of the reciprocal lattice returns
 \begin{equation}
-  \ket{\Psi^n_q}
-  =\left(\sum_s\ket{g_s}\bra{g_s}\right)\ket{\Psi^n_q}
-  =\sum_s\braket{g_s}{\Psi^n_q}\ket{g_s}
-  =\sum_sc^n_{sq}\ket{g_s}
+  \ket{\psi^n_q}
+  =\left(\sum_{u\in\mathbb{Z}}\ket{G_u}\bra{G_u}\right)\ket{\psi^n_q}
+  =\sum_{u\in\mathbb{Z}}\braket{G_u}{\psi^n_q}\ket{G_u}
+  =\sum_{u\in\mathbb{Z}}c^n_{uq}\ket{G_u}
   \label{eq:state_bloch_in_reciprocal_lattice}.
 \end{equation}
-The momentum eigenvalues of the state $\ket{g_s}$ can be found by expansion
+The momentum eigenvalues of the state $\ket{G_u}$ can be found by expansion
 into position space
 \begin{equation}
-  \hat{p}\ket{g_s}
-  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{g_s}
+  \hat{p}\ket{G_s}
+  =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{G_s}
   \label{eq:eigenvalue_momentum_reciprocal_lattice1}.
 \end{equation}
 With $\bra{y}\hat{p}\ket{x}=-i\hbar\delta(y-x)\dv{x}$ we can take the
-derivative of $\bra{x}\ket{g_s}=e^{2ikxs}$ and simplify
+derivative of $\bra{x}\ket{G_s}=e^{2ikxu}$ and simplify
 \cref{eq:eigenvalue_momentum_reciprocal_lattice1} down to
 \begin{equation}
-  \hat{p}\ket{g_s}
-  =2\hbar ks\int\dd{x}\ket{x}\bra{x}\ket{g_s}
-  =2\hbar ks\ket{g_s}
+  \hat{p}\ket{G_u}
+  =2\hbar ku\int\dd{x}\ket{x}\bra{x}\ket{G_u}
+  =2\hbar ku\ket{G_u}
   \label{eq:eigenvalue_momentum_reciprocal_lattice2}.
 \end{equation}
 Finally we insert \cref{eq:state_bloch_in_reciprocal_lattice} into
-\cref{eq:eigenvalue_energy_lattice} and apply $\bra{g_t}$ to the
+\cref{eq:eigenvalue_energy_lattice} and apply $\bra{G_v}$ to the
 right hand side while using \cref{eq:potential_in_reciprocal_lattice} and
 \cref{eq:eigenvalue_momentum_reciprocal_lattice2}, yielding
 \begin{equation}
-  E^n_qc^n_{tq}
-  =c^n_{tq}\frac{(2s+q/k)^2}{2m}E_r+\sum_sc^n_{sq}\bra{g_t}\hat{V}_\text{lat}\ket{g_s}
+  E^n_qc^n_{vq}
+  =c^n_{vq}
+  \frac{(2u+q/k)^2}{2m}E_r+
+  \sum_{u\in\mathbb{Z}}c^n_{uq}\bra{G_v}\hat{V}_\text{lat}\ket{G_u},
   \label{eq:eigenvalue_energy_lattice_explicit}
 \end{equation}
-with recoil energy $E_r=\hbar^2k^2/(2m)$.
-\Cref{eq:eigenvalue_energy_lattice_explicit} has to be solved for known
-$\hat{V}_\text{lat}$ numerically. We will do this later for the effective
-optical lattice potential from \cref{eq:potential_effective}.
+with recoil energy $E_r=\hbar^2k^2/(2m)$. Using
+\cref{eq:elements_effective_potential_in_reciprocal_state} we finally find the
+matrix elements of the lattice Hamiltonian \cref{eq:hamiltonian_lattice} to be
+\begin{equation}
+  H_{uv}
+  =\bra{G_u}\hat{H}_\text{lat}\ket{G_v}
+  =\begin{cases}
+    (2u+q/k)^2E_r+\frac{1}{2}V_0, & \text{if }u=v\\
+    \frac{1}{4}V_0, & \text{if } \abs{u-v}=1\\
+    0, & \text{otherwise}
+  \end{cases}
+  \label{eq:hamiltonian_effective_elements}.
+\end{equation}
+By choosing a sufficient matrix dimension (we choose $M=60$), setting its
+values according to \cref{eq:hamiltonian_effective_elements} and finding its
+eigenvalues, we are able to reproduce the energy band structure.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/structure.pgf}
+  \end{adjustbox}
+  \caption{Energy band structure for $N=51$ lattice sites and various lattice
+    potential depths $V_0$.
+  }\label{fig:scale_energy_structure}
+\end{figure}
+The energy band structure is depicted in \Cref{fig:scale_energy_structure}
+for $N=51$ lattice sites numbered from $-24,-23,\dots,-1,0,+1,\dots,+24$
+for various lattice depths from $V_0=0$ to $V_0=-30E_r$. For $V_0=0$ we can
+see how the confinement to the first Brillouin zone causes the energy band to
+be reflective at the boundaries of the Brillouin zone. Further we see that
+with increasing lattice depth the energy spacing increases.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/energy.pgf}
+  \end{adjustbox}
+  \caption{Minimum and maximum energy range for the first four energy bands
+    with the energy levels derived from the harmonic approximation.
+  }\label{fig:scale_energy}
+\end{figure}
+In \Cref{fig:scale_energy} we plotted the minimum and maximum energy range
+for the first four energy bands with increasing lattice depth next to the
+energy levels of the harmonic approximation. We can see how with increasing
+lattice depth the energy bands narrow to discrete energy levels as predicted
+with the harmonic approximation \cref{eq:energy_harmonic_approximation}.
 
 \section{Hopping}
+
+Beside of the energy levels, we know that quantum particles have a non-zero
+probability amplitude to tunnel through classically forbidden potentials. In
+our context these quantum tunneling effects are described by the hopping term
+--- an energy which corresponds to the mobility of the atoms in the lattice.
 
 \subsection{Wannier states}
 
 So far we studied the effects of a periodic lattice potential on the energy
-levels and the Bloch wave functions that propagate over the complete lattice.
-Lattice hopping however is a local effect, therefore we need a spatially
-localized set of wave functions to describe the effect of lattice hopping.
-Fortunately the so called Wannier fullfill these requirements.
+levels and the Bloch wave functions that are extended over the full lattice.
+As lattice hopping is a local effect it makes sense to use a more localized
+basis like the Wannier basis.
 
 \subsubsection{Definition via Bloch superpositions}
 
-The orthodox definition of the Wannier function with bandindex $n$ at lattice
-site $l$ reads
+The most common definition of the Wannier function with bandindex $n$ on
+lattice site $l$ reads
 \begin{equation}
   \ket{\phi^n_{l}}
   =\frac{1}{\sqrt{N}}\sum_qe^{-iqla}\ket{\Psi^n_{q}}
   \label{eq:state_wannier_orthodox}
 \end{equation}
-wherein $\ket{\Psi^n_q}$ is the Bloch wave functions from
-\cref{eq:state_bloch}, $N$ the total number of lattice sites and the sum
-over $q$ is confined to the first Brillouin zone with $q$ that satisfy the
+where $\ket{\Psi^n_q}$ is the Bloch wave function defined in
+\cref{eq:state_bloch}, $N$ is the total number of lattice sites and the sum
+over $q$ restricted to the first Brillouin zone and $q$ satisfying the
 periodic boundary condition $-k\leq q=2ki/N\leq+k$ with integer
 $i\in\mathbb{Z}$.
 
 \subsubsection{Definition via the band projected position operator}
 
-The defintion \cref{eq:state_wannier_orthodox} is valid for simple lattice
-structures, however for more sophisticated lattices Gauge freedom of the
-phase of the Bloch states leads to different Wannier states, whereof only
-one is the maximally localized one \cite{Goerg2014}. One can find the
-phase of the Bloch state that is maximally localized by minimizing the spread
-of the Wannier states, however there also exists a more general definition
-that incorporates the phase ubiquity. In the general definition the Wannier
-states are best to construct as the eigenstates of the band projected
-position operator. The band projector to bandindex $n$ is defined as
+The defintion in \cref{eq:state_wannier_orthodox} is valid for simple lattice
+structures, however for more sophisticated lattices. The Gauge degree of
+freedom of the phase of the Bloch states leads to different Wannier states,
+whereof only one is the maximally localized one \cite{Goerg2014}. One can find
+the phase of the Bloch states by minimizing the spread of the Wannier
+functions defined in \cref{eq:state_wannier_orthodox}, however there exists
+an alternative definition that resolves the phase ubiquity. According to this
+definition the Wannier states are best to construct as the eigenstates of the band projected
+position operator. The band projector for a band $n$ is defined as
 \begin{equation}
   \hat{P}_n
   =\sum_q\ket{\Psi^n_q}\bra{\Psi^n_q}
@@ -298,22 +302,22 @@ and the band projected position operator just follows as
   =\hat{P}_n\hat{x}_n\hat{P}_n
   \label{eq:operator_band_projected_position}.
 \end{equation}
-The wannier states are now defined as the eigenstates of the eigenvalue
+The Wannier states are now defined as the eigenstates of the eigenvalue
 equation
 \begin{equation}
   \hat{x}_n\ket{\phi^n_l}=x^n_l\ket{\phi^n_l}
   \label{eq:eigenvalue_band_projected_position}
 \end{equation}
 where $x^n_l$ is the $l$th lattice site in the $n$th energy band. Choosing
-the Bloch base to find the elements of the band projected position operator
-\cref{eq:operator_band_projected_position} through
+the Bloch functions to find the elements of the band projected position
+operator \cref{eq:operator_band_projected_position} through
 \begin{equation}
   X^{nn^\prime}_{qq^\prime}
   =\bra{\Psi^n_q}\hat{x}_n\ket{\Psi^{n^\prime}_{q^\prime}}
   =\int_0^{Na}\dd{x}\Psi^n_q(x)^*x\Psi^{n^\prime}_{q^\prime}(x)
   \label{eq:element_band_projected_position}
 \end{equation}
-which give an analytical expression to solve to determine the matrix elements
+provides an analytical expression to calculate the matrix elements
 \cite{Bissbort2013}. Let $d^{mn}_{lq}$ be the diagonalized
 matrix $X^{nn^\prime}_{qq^\prime}$ in
 \cref{eq:element_band_projected_position} then the Wannier states are fully
@@ -324,23 +328,20 @@ determined by
   \label{eq:state_wannier}.
 \end{equation}
 
-\subsection{Hopping amplitude}
+\subsection{Tunneling matrix element}
 
 With the previous tools in place we are now set to give an expression for the
-quantum hopping amplitude between lattices.
-
-We define the hopping probability from lattice site $l$ to lattice site
-$l^\prime$ at bandindex $n$ as
+tunneling matrix element between neighboring lattice sites. We define the
+hopping from lattice site $l$ to lattice site $l^\prime$ for bandindex $n$ as
 \begin{equation}
-  J^n_{ll^\prime}
-  =-\bra{\phi^n_l}\hat{H}_\text{lat}\ket{\phi^n_{l^\prime}}
+  J^n_{l-l^\prime}
+  =-\bra{\phi^n_l}\hat{H}_\text{lat}\ket{\phi^n_{l^\prime}}.
   \label{eq:element_hopping}
 \end{equation}
-this definition makes intuitive sense if we remind us at the dipole transition
-element and the Wannier states. Using the orthodox definition of the Wannier
-states \cref{eq:state_wannier_orthodox} for \cref{eq:element_hopping} we find
+Using the common definition of the Wannier states
+\cref{eq:state_wannier_orthodox} for \cref{eq:element_hopping} we find
 \begin{equation}
-  J^n_{ll^\prime}
+  J^n_{l-l^\prime}
   =\frac{1}{N}\sum_{q,q^\prime}e^{iqa(l-l^\prime)}
   \bra{\Psi^n_q}\hat{H}_\text{lat}\ket{\Psi^n_{q^\prime}}
   \label{eq:element_hopping2}.
@@ -348,12 +349,12 @@ states \cref{eq:state_wannier_orthodox} for \cref{eq:element_hopping} we find
 The Bloch states are energy eigenstates
 \cref{eq:eigenvalue_energy_lattice_explicit} and orthonormal, henceforth
 \begin{equation}
-  J^n_{ll^\prime}
+  J^n_{l-l^\prime}
   =\frac{1}{N}\sum_{q}E^n_qe^{iqa(l-l^\prime)}
   \label{eq:element_hopping3}.
 \end{equation}
-Expression \cref{eq:element_hopping3} is exact for a given number of lattices
-$N$ and can be evaluated numerically. The form of \cref{eq:element_hopping3}
+Expression \cref{eq:element_hopping3} is exact for a given number of lattice
+sites $N$ and can be evaluated numerically. The form of \cref{eq:element_hopping3}
 resembles a discrete Fourier transform. The inverse Fourier transform gives us
 the energies in terms of the hopping probabilites
 \begin{equation}
@@ -387,54 +388,33 @@ the results from another yields us
 which says that the hopping probability is approximate one quarter of the
 energy bandwidth.
 
-\section{Numerical determination of hopping frequency}
 
-Finally we want to apply the previous results on the previously found
-effective potential $V(z)=V_0\cos^2(kz)$ \cref{eq:potential_effective}. Using
-\cref{eq:potential_in_reciprocal_lattice} we find that the matrix elements of
-the effective potential indeed have the simple form
-\begin{equation}
-  \bra{g_s}\hat{V}_\text{eff}\ket{g_t}
-  =\frac{1}{4}V_0\left(2\delta^s_t+\delta^s_{t-1}+\delta^s_{t+1}\right)
-  \label{eq:elements_effective_potential_in_reciprocal_state}
-\end{equation}
-in reciprocal space. Using
-\cref{eq:elements_effective_potential_in_reciprocal_state} for the matrix
-elements of the effective Hamiltonian using
-\cref{eq:eigenvalue_energy_lattice_explicit} gives us
-\begin{equation}
-  H_{st}
-  =\bra{g_s}\hat{H}_\text{eff}\ket{g_t}
-  =\begin{cases}
-    (2s+q/k)^2E_r+\frac{1}{2}V_0, & \text{if }s=t\\
-    \frac{1}{4}V_0, & \text{if } \abs{s-t}=1\\
-    0, & \text{otherwise}
-  \end{cases}
-  \label{eq:hamiltonian_effective_elements}.
-\end{equation}
-Now that we have found a definite expression for the Hamiltonian matrix
-elements \cref{eq:hamiltonian_effective_elements} we can use the energy
-eigenvalue equation \cref{eq:eigenvalue_energy_lattice_explicit} to calculate
-the energy bands in dependence of the quasi-momentum $\hbar q$.
-
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{hopping/band-structure.pdf}}
-  \captionsetup{width=.9\textwidth}
-  \caption{First three energy bands for an optical lattice depth of
-      $V_0=-10E_r$.}
-  \label{fig:band_structure}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/hopping-nn.pgf}
+  \end{adjustbox}
+  \caption{Nearest neighbour hopping.
+  }\label{fig:scale_hopping_nn}
 \end{figure}
 
-In \Cref{fig:band_structure} we visualized the first energy bands for a
-lattice depth of $V_0=-10E_r$ from a matrix with dimensions 60.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/hopping.pgf}
+  \end{adjustbox}
+  \caption{Hopping.
+  }\label{fig:scale_hopping}
+\end{figure}
 
-the coefficients of the Bloch states
-\cref{eq:state_bloch_in_reciprocal_lattice} numerically and thereof the
-hopping terms using either the exact expression
-\cref{eq:element_energy_hopping} over all quasi-momenta $\hbar q$ or through
-the tight binding approximation \cref{eq:hopping_amplitude_energies}.
-
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/scale/frequency.pgf}
+  \end{adjustbox}
+  \caption{Frequency scale.
+  }\label{fig:scale_frequency}
+\end{figure}
 \subsection{Analytical proximity}
 
 The literature \cite{Bloch2008} also reports the analytical proxmity
@@ -448,9 +428,3 @@ to be derived from the Mathieu equation. The Mathieu equation can be obtained
 from the time-independent Schrödinger equation with
 $V_0\cos^2(kx)=\frac{1}{2}V_0\left(1-\cos(2kx)\right)$. \cite{Connor1984}
 gives a more elaborate deviation of \cref{eq:hopping_proximity}.
-
-\subsection{Results}
-
-Comparison of different methods to obtain the hopping amplitude and how
-they behave for different potential deeps. Conversion of the hopping term to
-a frequency and significance for our experiment.
