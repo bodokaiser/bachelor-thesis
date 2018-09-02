@@ -8,9 +8,9 @@ intensity variance to obtain a homogenous optical potential.
 But how do we minimize the intensity variance? The \gls{dds} permits to read
 $N=1024$ amplitude values from memory. The optimization problem therefore is to
 minimize the variance of the intensity distribution $I(A)$ subject to an
-amplitude vector $A\in[0,1]^N$. The conclusions drawn from the intensity
+amplitude vector $A\in{[0,1]}^N$. The conclusions drawn from the intensity
 measurements suggest that we have to expect non-linear, irregular behaviour
-in $I(A)$. and indeed first attempts to model $I(A)$ through polynomial fits,
+in $I(A)$, and indeed first attempts to model $I(A)$ through polynomial fits,
 multilayer perceptron networks and least-squared minimizations have failed.
 
 During these optimization procedures we observed that changing an amplitude
@@ -20,8 +20,8 @@ order with respect to increasing frequency during optimization we where able
 to bypass these effects. Further we created amplitude segments
 $\left(A_j,\dots,A_{j+m}\right)$ consisting of $m$ ordered amplitude values
 to reduce the optimization time. Optimization then was performed through
-random search which was proven to yield better results as grid search
-\cite{Bergstra2012}.
+random search which was proven to yield better results as grid
+search~\cite{Bergstra2012}.
 
 \subsubsection{Overview}
 
@@ -31,11 +31,13 @@ hyperparameter includes the number of amplitude segments $N/m$ and the target
 intensity.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{../figure/intensity/optimization/overview.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{overview.pgf}
+  \end{adjustbox}
   \caption{Minimized intensity variance for different target intensities
-  and number of amplitude segments. We note heavy oscillations for
-  amplitude segments greater than eight.}
-  \label{fig:intensity_optimization_overview}
+    and number of amplitude segments. We note heavy oscillations for
+    amplitude segments greater than eight.
+  }\label{fig:intensity_optimization_overview}
 \end{figure}
 In \Cref{fig:intensity_optimization_overview} we present the final
 optimization results for target intensities of \SI{800}{\milli\volt},
@@ -47,16 +49,16 @@ than the run with 32 amplitude segments.
 We assume that inductive effects occur when choosing more amplitude segments
 that consolidate a non-linear intensity response. For the sake of simplicity
 we will first limit us to the case of eight amplitude segments.
-
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{../figure/intensity/optimization/intensity-amplitude.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{intensity-amplitude.pgf}
+  \end{adjustbox}
   \caption{Final result of the intensity variance minimization and the
-  corresponding amplitude segment values obtained through random search with
-  eight independent amplitude segments.}
-  \label{fig:intensity_optimization_intensity_amplitude}
+    corresponding amplitude segment values obtained through random search with
+    eight independent amplitude segments.
+  }\label{fig:intensity_optimization_intensity_amplitude}
 \end{figure}
-
 In \Cref{fig:intensity_optimization_intensity_amplitude} we have a closer
 view on the first column of \Cref{fig:intensity_optimization_overview}. We
 can notice similar characteristics observed in the \gls{rf} signal. In
@@ -69,16 +71,16 @@ sweep.
 We now want to elaborate on the optimization process. We limit ourselves to
 the optimization process with eight amplitude segments as it was the most
 successful one and can be covered completly with eight plots.
-
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{../figure/intensity/optimization/process.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{process.pgf}
+  \end{adjustbox}
   \caption{Intensity and amplitude at different stages of the optimization
-  process. In each column a different amplitude segment is optimized.
-  The different traces in each plot mark the respective iteration.}
-  \label{fig:intensity_optimization_process}
+    process. In each column a different amplitude segment is optimized.
+    The different traces in each plot mark the respective iteration.
+  }\label{fig:intensity_optimization_process}
 \end{figure}
-
 In \Cref{fig:intensity_optimization_process} we see the intensity and
 amplitude at different optimization stages. At each stage one amplitude
 segment is sampled from a uniform distribution over $[0.2,0.8]$. The intensity
@@ -102,17 +104,17 @@ segments we would expect it to improve if we choose a more amplitude segments,
 yet we observed heavy oscillations. In this section we want to check the
 optimization process in the case of 32 amplitude segments to investigate in
 possible origins of the optimization failure.
-
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{../figure/intensity/optimization/failure.pdf}
-  \caption{Optimization progress for the 2.,4.,6.,8.,10. and 20. amplitude
-  segment of the failed optimization run with 32 amplitude segments. We can
-  see that with increasing amplitude segments the non-linear response
-  following the optimized amplitude segment increases.}
-  \label{fig:intensity_optimization_failure}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{failure.pgf}
+  \end{adjustbox}
+  \caption{Optimization progress for the 2.,4.,6.,8.,10.\ and 20.\ amplitude
+    segment of the failed optimization run with 32 amplitude segments. We can
+    see that with increasing amplitude segments the non-linear response
+    following the optimized amplitude segment increases.
+  }\label{fig:intensity_optimization_failure}
 \end{figure}
-
 In \Cref{fig:intensity_optimization_failure} we can see the optimization
 progress for selected amplitude segments of the optimization run with 32
 segments. We observe that with the non-linear response following the actual
