@@ -18,8 +18,9 @@ measurements as depicted in \Cref{fig:intensity_uncontrolled} where we can
 observe short- and long-term oscillations over a large intensity range.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/control/uncontrolled.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/intensity/control/uncontrolled.pgf}
+  \end{adjustbox}
   \caption{Time evolution of the uncontrolled laser intensity.
   }\label{fig:intensity_uncontrolled}
 \end{figure}
@@ -32,7 +33,7 @@ photodiode gain of Photodiode 2 was lowered from \SI{70}{\decibel} to
 photodiode to saturate.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{../media/setup/intensity-control.pdf}
+  \includegraphics[width=\textwidth]{../media/setup/intensity-control.pdf}
   \caption{Optical setup and intensity detection. The beam hits Photodiode 2
     which is connected to the oscilloscope.
   }\label{fig:intensity_control_setup}
@@ -117,7 +118,9 @@ comparison. \Cref{tab:intensity_control_statistics} presents the statistics of
 said intensity measurements.
 \begin{figure}[htb]
   \centering
-\includegraphics[width=\textwidth]{../figure/intensity/control/long-short.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/intensity/control/long-short.pgf}
+  \end{adjustbox}
   \caption{Long- and short-term measurement of the controlled intensity at
     different voltage scales.
   }\label{fig:intensity_control}
@@ -145,8 +148,9 @@ where $\overline{I}$ denotes the intensity mean. In
 uncontrolled as the controlled measurements are presented as boxplots.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-{../figure/intensity/control/relative-mean-deviation.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/intensity/control/relative-mean-deviation.pgf}
+  \end{adjustbox}
   \caption{Relative mean deviation of uncontrolled and controlled long- and
     short-term measurement as well as typical controlled intensity measurement.
   }\label{fig:intensity_control_rmd}
@@ -190,8 +194,9 @@ the \gls{ccd} sensor is chosen such that the laser beam is focused onto the
 \gls{ccd} sensor of the camera.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.6\textwidth]
-  {../figure/intensity/profile/image.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/profile}{image.pgf}
+  \end{adjustbox}
   \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
   }\label{fig:intensity_spatial_image}
 \end{figure}
@@ -208,7 +213,9 @@ in~\cite{Hertlein2017} and originates from the finite aperture of the
 objectives.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{../figure/intensity/profile/profile.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/intensity/profile/profile.pgf}
+  \end{adjustbox}
   \caption{One dimensional perpendicular cut of the two dimensional intensity
     distribution from the two dimensional beam profile in
     \Cref{fig:intensity_spatial_image} with fitted gaussian curve.
@@ -268,8 +275,9 @@ horizontal \gls{aod} element was used to avoid influences of the amplification
 offset between the two amplifiers.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/unpaired-amplitude.png}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{unpaired-amplitude.pgf}
+  \end{adjustbox}
   \caption{Intensity distribution over linear frequency sweep at different
     configured \gls{dds} amplitudes for different individual \gls{aod}
     configurations.
@@ -301,8 +309,9 @@ before Cube 2 would change the intensity fraction that gets redirected into
 the beam dump as Cube 2 is a beam splitter sensible to polarisation.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/polarisation-horizontal.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{polarisation-horizontal.pgf}
+  \end{adjustbox}
   \caption{Intensity transmission of the \gls{h} \gls{aod} in the \gls{h} slot
     at maximum output amplitude for different polarisation angles.
   }\label{fig:intensity_polarisation_h}
@@ -316,8 +325,9 @@ effectively changes the polarisation angle by $2\phi$. Further the
 polarisation domain is limited to $\left[0,\ang{90}\right]$.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/polarisation-vertical.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{polarisation-vertical.pgf}
+  \end{adjustbox}
   \caption{Intensity transmission of the \gls{v} \gls{aod} in the \gls{v} slot
     at maximum output amplitude for different polarisation angles.
   }\label{fig:intensity_polarisation_v}
@@ -333,8 +343,9 @@ the \gls{v} slot is shown. We again observe a difference of about \ang{45}
 between the polarisation angles at maximum and minimum intensity transmission.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/polarisation.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{polarisation.pgf}
+  \end{adjustbox}
   \caption{Intensity transmission of the \gls{h} and \gls{v} \gls{aod} at
     \SI{100}{\mega\hertz} and maximum output amplitude for different
     polarisation angles.
@@ -354,8 +365,9 @@ intensity transmission at the center frequency. What would we obtain if we
 tilted the rotation angle a bit to the left and to the right?
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/unpaired-tilted.png}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{unpaired-tilted.pgf}
+  \end{adjustbox}
   \caption{Intensity distribution at different amplitudes for tilted
     individual \gls{aod}. We observe that the intensity decreases if the
     incident angle deviates from \ang{90}.
@@ -371,41 +383,6 @@ parameter in the intensity transmission of the \gls{aod}s. In particular we
 need to consider the incident beam angle for the 2D \gls{aod} configuration.
 It may make sense to change the setup to a configuration consisting of two
 1D \gls{aod} with a telescope in between.
-
-\subsection{Paired acousto-optic deflectors}
-
-The \gls{aod} elements differ significantly in their intensity transmission
-in between and with respect to their position. We find the horizontal element
-in the anticipated horizontal position to have a significantly higher
-transmission then any other configuration. Therefore we presume that the
-\gls{aod} elements have a very high polarization dependency and are concerted
-to eachother. We may find more evidence for this hypothesis by mounting both
-\gls{aod} elements in their intended and exchanged slots.
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/paired-amplitude.png}
-  \caption{Intensity distribution over linear frequency sweep at different
-  configured \gls{dds} amplitudes for different individual \gls{aod}
-  configurations.
-  }\label{fig:intensity_distribution_paired}
-\end{figure}
-In \Cref{fig:intensity_distribution_paired} the measured voltage of the
-second photodiode are visualized in a two-dimensional heatmap. The horizontal
-axis represents the frequency of the \gls{rf} signal applied to the \gls{aod}
-elements whereas the vertical axis the configured \gls{dds} relative
-amplitude. In the first row the elements where in their intended slots whereas
-we exchanged them for the second row. In the first column the frequency
-sweep was applied such that the beam moves along the horizontal axis while
-in the second column the frequency sweep was applied to the element that
-causes beam movement in the vertical direction.
-
-We see that for the exchanged positions the transmission is reduced and
-asymmetric with respect to the sweep direction whereas the elements in their
-intended position perform better in every aspect. We therefore conclude that
-the \gls{aod} are cut in a intended way to account among others for
-polarization effects and it is advised to operate them in their anticipated
-slot as we will do for all following experiments.
 
 \section{2D intensity distribution}
 
@@ -439,8 +416,9 @@ procedure is repeated until the first \gls{dds} covered the same frequency
 range as the second \gls{dds}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/intensity/distribution/paired-frequency.png}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{paired-frequency.pgf}
+  \end{adjustbox}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}. The
     left map is obtained by enabling the digital ramp on the horizontal
@@ -460,8 +438,9 @@ configuration as the manual increments require driver calls whereas the
 digital ramp increments are performed internal of the \gls{dds}.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.7\textwidth]
-  {../figure/intensity/distribution/paired-frequency-residue.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{paired-frequency-residue.pgf}
+  \end{adjustbox}
   \caption{Absolute difference between the 2D intensity distribution
     performed with the digital ramp configured set to different axes.
   }\label{fig:intensity_distribution_frequency_residue}
@@ -486,10 +465,11 @@ the \gls{dds} and frequency increments performed by manually updating the
 output frequency through the driver. Yet, it remains open if differences
 arise in the transmission frequency response of the \gls{aod} as the \gls{aod}
 is not a purely electronic device.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.7\textwidth]
-  {../figure/intensity/distribution/sample-frequency.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{sample-frequency.pgf}
+  \end{adjustbox}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}.
     Frequency pairs are sampled over a uniform distribution and then passed
@@ -523,7 +503,9 @@ support continous frequency changes as we can see from the intensity drops
 between the frequency increments of the signal generator trace.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{../figure/intensity/distribution/signal-sources.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/distribution}{signal-sources.pgf}
+  \end{adjustbox}
   \caption{Intensity measured as voltage at the photodiode with one \gls{aod}
     at constant center frequency supplied by a \gls{dds} and the other
     \gls{aod} performing a linear frequency sweep with the \gls{dds} and a
