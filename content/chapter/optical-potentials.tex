@@ -375,12 +375,39 @@ find that its shape deviates from the idealized local potentials we presented
 in the introduction in \Cref{fig:optical_lattice_local_pot} and 
 \Cref{fig:optical_lattice_local_barrier}.
 
+\subsubsection{Box}
+
+In an first embodiment of local potentials we describe a box potential. A box
+potential could be used to draw surrounding atoms and confine them to a
+sharp-edged box. One application for such a box potential would be to replace
+the currently used harmonic traps imposed on optical lattice structures to
+prevent atoms to move away from the optical lattice.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/potential/box.pgf}
+  \end{adjustbox}
+  \caption{Local pot potential and lattice potential in recoil energies. The
+    pot potential is created by targetting multiple focus points close to
+    each other. Over average this yields a kind of potential valley.
+  }\label{fig:effective_potential_pot}
+\end{figure}
+\Cref{fig:effective_potential_pot} visualizes the realization of such a box
+potential through time-averaged high-resolution perturbation. In the first
+three plots we see how the perturbation is created at three neighboring
+lattice sites. In the final plot we see how an average of such a perturbation
+could look like. We note that the spatial resoltuion of the applied
+perturbation has to be very high in order to create a flat valley ---
+otherwise one would create additional barriers and/or canyons inside the box.
+In practice it is difficult to guarantee such high resolution. Fortunately
+there is an alternative realization which can be used to confine atoms inside
+a subregion of an optical lattice.
+
 \subsubsection{Barrier}
 
-One embodiment of local potentials we described in the introduction was the
-barrier potential. A barrier potential confines atoms to a subspace of the
-global lattice and could be used to model thermodynamical equilibrium
-processes.
+The alternative approach to confine atoms in an optical lattice consists of
+creating an additive positive barrier potential as depicted in
+\Cref{fig:effective_potential_barrier}.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -392,27 +419,10 @@ processes.
     targetted in a sufficiently short period an average potential (last row)
     can be created.}\label{fig:effective_potential_barrier}
 \end{figure}
-In \Cref{fig:effective_potential_barrier} the potential energies in terms
-of recoil energy are drawn for the barrier potential. To create a two sided
-barrier the perturbation beam needs to change between two focus points (first
-and second row). If we average over these two focus points we yield the
-effective potential (third row).
-
-\subsubsection{Box}
-
-As a second example of local potentials we named a pot potential that could
-draw surrounding atoms.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/potential/box.pgf}
-  \end{adjustbox}
-  \caption{Local pot potential and lattice potential in recoil energies. The
-    pot potential is created by targetting multiple focus points close to
-    each other. Over average this yields a kind of potential valley.
-  }\label{fig:effective_potential_pot}
-\end{figure}
-\Cref{fig:effective_potential_pot} visualized such a potential. In comparison
-to the barrier potential more focus points with closer distance are required.
-If the focus points change in a sufficient short period an average potential
-is felt by the atoms (last row) that resembles a valley.
+For the simple \gls{1d} case, it would be sufficient to alternate the
+perturbation between two distinct lattice sites. For higher dimensions,
+however, multiple lattice sites are again necessary with the requirement of
+high resolution deflection in order to create a continuous barrier.
+Nevertheless precision demands are slightly lifted compared to the box
+potential as deflection at overlapping sites will only cause the barrier to be
+higher.
