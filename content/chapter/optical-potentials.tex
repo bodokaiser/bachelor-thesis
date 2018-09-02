@@ -59,10 +59,11 @@ the dipole approximation $\vb{A}(\vb{x},t)\approx\vb{A}(t)$. The dipole
 approximation neglects the spatial variation of the electromagnetic field
 over the atom and instead assumes a small separation of opposite charges at
 the nucleus. The dipole approximation is reasonable as wave length of visible
-light are much larger than atomic length scales~\cite{Gerry2004}. In the dipole
-approximation $\chi$ satisfies the Coulomb gauge condition
-$\divergence{\vb{A}}=0$ allowing us to set $\Phi=0$ as no external sources are
-present~\cite{Jackson2005}. Finally we can rewrite
+light are much larger than atomic length scales~\cite{Gerry2004}. For a
+rigorous upper error bound on the dipole approximation see
+Ref.~\cite{Bossmann2016}. In the dipole approximation $\chi$ satisfies the
+Coulomb gauge condition $\divergence{\vb{A}}=0$ allowing us to set $\Phi=0$
+as no external sources are present~\cite{Jackson2005}. Finally we can rewrite
 \cref{eq:hamiltonian_em} as
 \begin{equation}
   \hat{H}_\text{dip}
@@ -188,14 +189,14 @@ where we applied a Taylor expansion for $\Omega_{ge}/\Delta\omega\ll1$ around
 $\Omega_{ge}/\Delta\omega=0$ and omitted terms of higher order.
 
 Consequently, atoms in an external off-resonant light field experience an
-effective periodic dipole potential
+effective periodic lattice potential
 \begin{equation}
-  \hat{V}_\text{eff}(\vb{x})
+  \hat{V}_\text{lat}(\vb{x})
   =
   \mp\frac{\hbar\Omega_{ge}^2(\vb{x})}{4\Delta\omega}
   =
   \mp\frac{d_0^2E_0^2(\vb{x})}{4\hbar\Delta\omega}
-  \label{eq:potential_effective}
+  \label{eq:potential_lattice}
 \end{equation}
 with dipole element $d_0$. The sign has to be chosen with respect to the
 direction of the laser detuning from resonance. If the laser is red-shifted
@@ -251,7 +252,7 @@ evolve according to
   \label{eq:gaussian_beam_evolvement}.
 \end{align}
 
-Fortunately \cref{eq:potential_effective} only depends on the absolute
+Fortunately \cref{eq:potential_lattice} only depends on the absolute
 square of the electric field, thus we can drop the complex exponential from
 \cref{eq:gaussian_beam} to find an expression for the Gaussian intensity
 distribution
@@ -362,7 +363,7 @@ would be the ability to address single lattice sites.
 
 \section{Effective local potentials}
 
-With \cref{eq:potential_effective} we found an expression of the potential
+With \cref{eq:potential_lattice} we found an expression of the potential
 energy in terms of atomic properties like the dipole transition element, the
 atomic resonance and the laser intensity distribution. For the laser intensity
 distribution of the optical lattice we derived

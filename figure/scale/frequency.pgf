@@ -1828,7 +1828,7 @@
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=2.230402in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=0\)}%
+\pgftext[x=2.230402in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=1\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1842,7 +1842,7 @@
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=3.239802in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=1\)}%
+\pgftext[x=3.239802in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=2\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1856,7 +1856,7 @@
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=4.249202in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=2\)}%
+\pgftext[x=4.249202in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=3\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetrectcap%
@@ -1870,7 +1870,7 @@
 \pgfusepath{stroke}%
 \end{pgfscope}%
 \begin{pgfscope}%
-\pgftext[x=5.258602in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=3\)}%
+\pgftext[x=5.258602in,y=0.186889in,left,base]{\fontsize{14.000000}{16.800000}\selectfont \(\displaystyle n=4\)}%
 \end{pgfscope}%
 \begin{pgfscope}%
 \pgfsetbuttcap%

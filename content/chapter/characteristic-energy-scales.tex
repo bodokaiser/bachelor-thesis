@@ -8,11 +8,9 @@ scanning timescales needed for the generation of a time-averaged optical
 potential the physics that determine the time scale of the perturbation
 potential.}
 
-\section{Energy}
-
 \section{Harmonic approximation}
 
-Given the optical lattice potential \cref{eq:potential_effective} the
+Given the optical lattice potential \cref{eq:potential_lattice} the
 lattice Hamiltonian reads
 \begin{equation}
   \hat{H}_\text{lat}
@@ -75,16 +73,13 @@ $V_0=-30E_r$ as we will after comparing the energy levels of the harmonic
 approximation with the exact energies. Nevertheless the harmonic approximation
 gives a correct magnitude of the energy while being soft on complexity.
 
-\subsection{Exact treatment}
+\section{Lattice structures}
 
-The periodicity of the lattice potential \cref{eq:potential_effective}
+The periodicity of the lattice potential \cref{eq:potential_lattice}
 suggests that there exists a finite representation in the frequency domain.
 In the context of lattice structures the frequency domain is commonly known
-as the reciprocal lattice.
-
-\subsubsection{Lattice structures}
-
-Let
+as the reciprocal lattice. We will shortly recapitulate the lattice structure
+basics from Ref.~\cite{Roessler2004}. Let
 \begin{equation}
   \vb{R}
   =\bra{\vb{x}}\ket{\vb{R}}
@@ -110,31 +105,31 @@ the reciprocal primitive lattice vector relates to the primitive vector by
 \end{equation}
 For the subsequent sections we will only consider the one dimensional simple
 cubic lattice. Cubic lattices of higher dimension, however, can be easily
-obtained by superposition of the potentials. We now take $\ket{G_n}$ to be
-the $n$th reciprocal lattice point. An arbitrary operator $\hat{A}$ with
+obtained by superposition of the potentials. We now take $\ket{G_u}$ to be
+the $u$th reciprocal lattice point. An arbitrary operator $\hat{A}$ with
 known representation in the spatial domain can be expressed in the recoprocal
 lattice basis through the transformation
 \begin{equation}
-  \bra{G_u}\hat{A}\ket{g_v}
-  =\int\dd{x}\bra{G_u}\ket{x}^*A(x)\bra{G_v}\ket{x}
+  \bra{G_u}\hat{A}\ket{G_v}
+  =\int\dd{x}\bra{G_u}\ket{x}^*\bra{x}\hat{A}\ket{x}\bra{G_v}\ket{x}
   =\int\dd{x}A(x)e^{2ikx(u-v)}
   \label{eq:operator_in_reciprocal_lattice}.
 \end{equation}
 Evaluation of \cref{eq:operator_in_reciprocal_lattice} for the specific
-lattice potential found in \cref{eq:potential_effective} yields
+lattice potential found in \cref{eq:potential_lattice} yields
 \begin{equation}
   \bra{G_u}\hat{V}_\text{lat}\ket{G_v}
   =\frac{1}{4}V_0\left(2\delta^u_v+\delta^u_{v-1}+\delta^s_{u+v}\right),
-  \label{eq:elements_effective_potential_in_reciprocal_state}
+  \label{eq:potential_in_reciprocal_lattice}
 \end{equation}
-which is much easier to work with compared to \cref{eq:potential_effective}.
+which we will later use as matrix elements.
 
-\subsubsection{Bloch states}
+\section{Bloch states}
 
-While \cref{eq:elements_effective_potential_in_reciprocal_state} gives us a
-simple representation of the periodic lattice potential we are missing an
-Ansatz for the wave function to solve the time-independent Schrödinger
-equation. Fortunately Bloch's theorem states that for a periodic potential
+While \cref{eq:potential_in_reciprocal_lattice} gives us a simple representation
+of the periodic lattice potential we are missing an Ansatz for the wave
+function to solve the time-independent Schrödinger equation. Fortunately
+Bloch's theorem states that for a periodic potential
 \begin{equation}
   V_\text{per}(x+a)=V_\text{per}(x)
   \label{eq:potential_periodic}
@@ -154,12 +149,19 @@ and each of these Bloch waves can be written into the form
   \label{eq:state_bloch}
 \end{equation}
 with $\psi^n_q(x+a)=\psi^n_q(x)$, wave vector $q$ and bandindex $n$. We
-confine the wave number to the first Brillouin zone $-k\leq q<+k$. The
-first Brillouin zone is also the primitive cell of the reciprocal lattice. For
-a proof of Bloch's theorem see Ref.~\cite{Roessler2004} or
-Ref.~\cite{Bartelmann2018}.
+confine the wave number to the first Brillouin zone $\left[-k,+k\right[$,
+also known as the primitive cell of the reciprocal lattice,
+\begin{equation}
+  q=\frac{ks}{N}
+  \qc s\in\left[-N,N-1\right]\cap\mathbb{Z},
+  \label{eq:wavenumber_quasi}
+\end{equation}
+with $N$ being the number of lattice sites. The discretization arises from
+the Born-von Karman boundary condition. For a complete proof of Bloch's
+theorem as well as details on the Born-von Karman boundary condition we refer
+the reader to Ref.~\cite{Roessler2004} and Ref.~\cite{Bartelmann2018}.
 
-\subsubsection{Band structure}
+\section{Energy band structure}
 
 Using the Bloch states \cref{eq:state_bloch} as ansatz to solve
 \cref{eq:hamiltonian_lattice} and noting that by the product rule
@@ -173,13 +175,15 @@ $\hat{p}^2\Psi^n_q(x)=e^{iqx}(\hat{p}+\hbar q)\psi^n_q(x)$, we find
 Expansion of the state $\psi^n_q$ in states of the reciprocal lattice returns
 \begin{equation}
   \ket{\psi^n_q}
-  =\left(\sum_{u\in\mathbb{Z}}\ket{G_u}\bra{G_u}\right)\ket{\psi^n_q}
-  =\sum_{u\in\mathbb{Z}}\braket{G_u}{\psi^n_q}\ket{G_u}
-  =\sum_{u\in\mathbb{Z}}c^n_{uq}\ket{G_u}
-  \label{eq:state_bloch_in_reciprocal_lattice}.
+  =\left(\sum_u\ket{G_u}\bra{G_u}\right)\ket{\psi^n_q}
+  =\sum_u \braket{G_u}{\psi^n_q}\ket{G_u}
+  =\sum_u c^n_{uq}\ket{G_u}
+  \label{eq:state_bloch_in_reciprocal_lattice},
 \end{equation}
-The momentum eigenvalues of the state $\ket{G_u}$ can be found by expansion
-into position space
+where the summation over $u$ is restricted to the number of reciprocal
+lattice sites one wants to consider for numeric evaluation, or the set of
+integer numbers in general. The momentum eigenvalues of the state $\ket{G_u}$
+can be found by expansion into position space
 \begin{equation}
   \hat{p}\ket{G_s}
   =\int\int\dd{x}\dd{y}\ket{y}\bra{y}\hat{p}\ket{x}\bra{x}\ket{G_s}
@@ -202,12 +206,12 @@ right hand side while using \cref{eq:potential_in_reciprocal_lattice} and
   E^n_qc^n_{vq}
   =c^n_{vq}
   \frac{(2u+q/k)^2}{2m}E_r+
-  \sum_{u\in\mathbb{Z}}c^n_{uq}\bra{G_v}\hat{V}_\text{lat}\ket{G_u},
+  \sum_u c^n_{uq}\bra{G_v}\hat{V}_\text{lat}\ket{G_u},
   \label{eq:eigenvalue_energy_lattice_explicit}
 \end{equation}
 with recoil energy $E_r=\hbar^2k^2/(2m)$. Using
-\cref{eq:elements_effective_potential_in_reciprocal_state} we finally find the
-matrix elements of the lattice Hamiltonian \cref{eq:hamiltonian_lattice} to be
+\cref{eq:potential_in_reciprocal_lattice} we finally find the matrix elements
+of the lattice Hamiltonian \cref{eq:hamiltonian_lattice} to be
 \begin{equation}
   H_{uv}
   =\bra{G_u}\hat{H}_\text{lat}\ket{G_v}
@@ -216,11 +220,27 @@ matrix elements of the lattice Hamiltonian \cref{eq:hamiltonian_lattice} to be
     \frac{1}{4}V_0, & \text{if } \abs{u-v}=1\\
     0, & \text{otherwise}
   \end{cases}
-  \label{eq:hamiltonian_effective_elements}.
+  \label{eq:hamiltonian_lattice_elements}.
 \end{equation}
-By choosing a sufficient matrix dimension (we choose $M=60$), setting its
-values according to \cref{eq:hamiltonian_effective_elements} and finding its
-eigenvalues, we are able to reproduce the energy band structure.
+By choosing a sufficient large matrix dimension, setting its values according
+to \cref{eq:hamiltonian_lattice_elements} and finding its eigenvalues, we
+are able to reproduce the energy band structure.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Lattice sites $N$ & Matrix dimension $M$ & Matrix indices $u,v$ \\
+    \midrule
+    51 & 60 & -25,-24,+24,+25 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Parameters used for the lattice Hamiltonian matrix elements to
+    calculate the energy bands.
+  }\label{tab:hamiltonian_elements}
+\end{table}
+\Cref{tab:hamiltonian_elements} lists the parameters we choose to calculate
+the energy bands for the lattice Hamiltonian matrix elements defined in
+\cref{eq:hamiltonian_lattice_elements}.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -230,11 +250,10 @@ eigenvalues, we are able to reproduce the energy band structure.
     potential depths $V_0$.
   }\label{fig:scale_energy_structure}
 \end{figure}
-The energy band structure is depicted in \Cref{fig:scale_energy_structure}
-for $N=51$ lattice sites numbered from $-24,-23,\dots,-1,0,+1,\dots,+24$
-for various lattice depths from $V_0=0$ to $V_0=-30E_r$. For $V_0=0$ we can
-see how the confinement to the first Brillouin zone causes the energy band to
-be reflective at the boundaries of the Brillouin zone. Further we see that
+The energy band structure for these parameters is depicted in
+\Cref{fig:scale_energy_structure} for various lattice depths. For $V_0=0$ we
+can see how the confinement to the first Brillouin zone causes the energy band
+to be reflective at the boundaries of the Brillouin zone. Further we see that
 with increasing lattice depth the energy spacing increases.
 \begin{figure}[htb]
   \centering
@@ -251,21 +270,17 @@ energy levels of the harmonic approximation. We can see how with increasing
 lattice depth the energy bands narrow to discrete energy levels as predicted
 with the harmonic approximation \cref{eq:energy_harmonic_approximation}.
 
-\section{Hopping}
-
 Beside of the energy levels, we know that quantum particles have a non-zero
 probability amplitude to tunnel through classically forbidden potentials. In
 our context these quantum tunneling effects are described by the hopping term
 --- an energy which corresponds to the mobility of the atoms in the lattice.
 
-\subsection{Wannier states}
+\section{Wannier states}
 
 So far we studied the effects of a periodic lattice potential on the energy
 levels and the Bloch wave functions that are extended over the full lattice.
 As lattice hopping is a local effect it makes sense to use a more localized
 basis like the Wannier basis.
-
-\subsubsection{Definition via Bloch superpositions}
 
 The most common definition of the Wannier function with bandindex $n$ on
 lattice site $l$ reads
@@ -275,21 +290,15 @@ lattice site $l$ reads
   \label{eq:state_wannier_orthodox}
 \end{equation}
 where $\ket{\Psi^n_q}$ is the Bloch wave function defined in
-\cref{eq:state_bloch}, $N$ is the total number of lattice sites and the sum
-over $q$ restricted to the first Brillouin zone and $q$ satisfying the
-periodic boundary condition $-k\leq q=2ki/N\leq+k$ with integer
-$i\in\mathbb{Z}$.
-
-\subsubsection{Definition via the band projected position operator}
-
-The defintion in \cref{eq:state_wannier_orthodox} is valid for simple lattice
-structures, however for more sophisticated lattices. The Gauge degree of
-freedom of the phase of the Bloch states leads to different Wannier states,
-whereof only one is the maximally localized one \cite{Goerg2014}. One can find
-the phase of the Bloch states by minimizing the spread of the Wannier
-functions defined in \cref{eq:state_wannier_orthodox}, however there exists
-an alternative definition that resolves the phase ubiquity. According to this
-definition the Wannier states are best to construct as the eigenstates of the band projected
+\cref{eq:state_bloch}. The defintion in \cref{eq:state_wannier_orthodox} is
+valid for simple lattice structures, however for more sophisticated lattices
+the Gauge degree of freedom of the phase of the Bloch states leads to
+different Wannier states, whereof only one is the maximally localized
+one~\cite{Goerg2014}. One can find the phase of the Bloch states by minimizing
+the spread of the Wannier functions defined in
+\cref{eq:state_wannier_orthodox}, however there exists an alternative
+definition that resolves the phase ubiquity. According to this definition the
+Wannier states are best to construct as the eigenstates of the band projected
 position operator. The band projector for a band $n$ is defined as
 \begin{equation}
   \hat{P}_n
@@ -328,7 +337,7 @@ determined by
   \label{eq:state_wannier}.
 \end{equation}
 
-\subsection{Tunneling matrix element}
+\section{Hopping energy}
 
 With the previous tools in place we are now set to give an expression for the
 tunneling matrix element between neighboring lattice sites. We define the
@@ -351,53 +360,71 @@ The Bloch states are energy eigenstates
 \begin{equation}
   J^n_{l-l^\prime}
   =\frac{1}{N}\sum_{q}E^n_qe^{iqa(l-l^\prime)}
-  \label{eq:element_hopping3}.
+  \label{eq:element_hopping3},
 \end{equation}
+where the sum covers all allowed $q$ as defined in \cref{eq:wavenumber_quasi}.
 Expression \cref{eq:element_hopping3} is exact for a given number of lattice
-sites $N$ and can be evaluated numerically. The form of \cref{eq:element_hopping3}
-resembles a discrete Fourier transform. The inverse Fourier transform gives us
-the energies in terms of the hopping probabilites
+sites $N$ and can be evaluated numerically. The form of
+\cref{eq:element_hopping3} resembles a discrete Fourier transform. The
+inverse Fourier transform gives us the energies in terms of the hopping
+probabilites
 \begin{equation}
   E^n_q
-  =\sum_{l-l^\prime}J^n_{l,l^\prime}e^{-iqa(l-l^\prime)}
+  =\sum_{l-l^\prime}J^n_{l-l^\prime}e^{-iqa(l-l^\prime)},
   \label{eq:element_energy_hopping}
 \end{equation}
-which in practice is easier to calculate then \cref{eq:element_hopping} as
-can be seen in the consecutive section.
+where the sum runs from $l-l^\prime=-N$ to $l-l^\prime=+N$.
 
-\subsubsection{Tight-binding approximation}
+\subsection{Nearest-neighbor approximation}
 
-For deep potentials $V_0\gtrapprox3E_r$ hopping only contributes from direct
-neighbour sites \cite{Rom2009}. Thus we can \cref{eq:element_energy_hopping}
-reduces to
+For deep potentials $V_0\gtrapprox-3E_r$ hopping only contributes from direct
+neighbour sites~\cite{Rom2009}, thus we can abort the sum in
+\cref{eq:element_energy_hopping} for $\abs{l-l^\prime}>1$
 \begin{equation}
   E^n_q
-  \approx J^n_{l,l+1}e^{-iqa}+J^n_{l,l-1}e^{+iqa}+J^n_{ll}
-  =J^n_0+2J^n_1\cos(qa)
-  \label{eq:element_energy_hopping_tb_approx}
+  \approx J^n_{l+1-l}e^{-iqa}+J^n_{l-1-l}e^{+iqa}+J^n_{l-l}
+  =J^n_0+2J^n_1\cos(qa),
+  \label{eq:hopping_nn}
 \end{equation}
-where we have $J^n_{l,l-1}=J^n_{l,l+1}=J_1$ because of translation invariance.
-Using evaluation of $J^n_0=J^n_{ll}$ with \cref{eq:element_hopping} tells us
-that $J^n_0$ just is the average energy of an energy band. Evaluation of
-\cref{eq:element_energy_hopping_tb_approx} at $q=0$ and $q=k$ and subtracting
-the results from another yields us
+where we have used $J^n_{-1}=J^n_{+1}=J_1$ because of translation invariance.
+Evaluation of $J^n_0$ using \cref{eq:element_hopping} tells us that $J^n_0$
+just is the average energy of an energy band. Evaluation of
+\cref{eq:hopping_nn} at $q=0$ and $q=k$ and subtracting the results from
+eachother yields us the tight-binding approximation
 \begin{equation}
-  J^n_1\approx\frac{1}{4}\left(E^n_k-E^n_0\right)
-  \label{eq:hopping_amplitude_energies}
+  J^n_1\approx\frac{1}{4}\left(E^n_k-E^n_0\right),
+  \label{eq:hopping_nn_tight}
 \end{equation}
-which says that the hopping probability is approximate one quarter of the
-energy bandwidth.
-
-
+which assumes a $\cos(qa)$ shaped energy band. Further~\cite{Bloch2008}
+reports an analytical proxmity
+\begin{equation}
+  J^n_1\approx
+  \frac{4}{\sqrt{\pi}}\left(\frac{V_0}{E_r}\right)^{3/4}\exp(-2\sqrt{V_0/E_r})
+  \label{eq:hopping_nn_proximity}
+\end{equation}
+to be valid for sinusoidal potentials like \cref{eq:potential_lattice} and
+to be derived from the Mathieu equation. The Mathieu equation can be obtained
+from the time-independent Schrödinger equation with
+$V_0\cos^2(kx)=\frac{1}{2}V_0\left(1-\cos(2kx)\right)$.
+In Ref.~\cite{Connor1984} we found a more elaborate deviation of
+\cref{eq:hopping_nn_proximity}.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
     \input{../figure/scale/hopping-nn.pgf}
   \end{adjustbox}
-  \caption{Nearest neighbour hopping.
+  \caption{Nearest-neighbor hopping energy derived from the exact numerical
+    calculations, the tight-binding approximation and an analytical proxmity
+    \cref{eq:hopping_nn_proximity}.
   }\label{fig:scale_hopping_nn}
 \end{figure}
-
+\Cref{fig:scale_hopping_nn} compares the exact numerical calculations using
+\cref{eq:element_hopping3} for $l-l^\prime=1$, the tight-binding approximation
+defined in \cref{eq:hopping_nn_tight} and an analytical proximity
+\cref{eq:hopping_nn_proximity}. We note that the tight-binding approximation
+and the exact calculations converge already for small lattice depths for the
+first energy band and for medium lattice depths for the second energy band.
+For the third and higher energy bands the numerical evaluation should be used.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -406,25 +433,43 @@ energy bandwidth.
   \caption{Hopping.
   }\label{fig:scale_hopping}
 \end{figure}
+From now on we will use the exact numerical calculation of the hopping energy.
+In \Cref{fig:scale_hopping} we calculated the hopping terms using
+\cref{eq:element_hopping3} for different $l-l^\prime$ as well as a sum over
+all $l-l^\prime$. We can see that the nearest-neighbor term $J^n_1$ is most
+dominant, and, except for the second energy band, greater than the sum over
+all hopping terms. Because of this and the fact that perturbation potential
+is about the size of a single lattice site, as we have seen in the previous
+chapter, we will reduce ourselves to the nearest-neighbor hopping term
+$J^n_1$.
 
+\section{Conclusion}
+
+Through the Planck-Einstein formula $E=hf$, one can express energies as
+frequencies.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
     \input{../figure/scale/frequency.pgf}
   \end{adjustbox}
-  \caption{Frequency scale.
+  \caption{Nearest-neighbor hopping energy as frequency and relative energy
+    band differences with respect as frequency.
   }\label{fig:scale_frequency}
 \end{figure}
-\subsection{Analytical proximity}
+We have used $f=E/h$ to express the nearest-neighbor hopping and band
+energies relative to ground level as frequency. The so obtained
+frequencies should give us the magnitude of the sweep frequencies used for our
+envisioned perturbation potential in order for the time-average to hold.
+\Cref{fig:scale_frequency} discloses the frequencies of hopping and band
+energies relative to the first energy band. We note that the hopping
+frequencies of the first four energy bands are in the single digit
+\si{\kilo\hertz} range while the energy band frequencies of the first four
+energy bands releative to the first energy band go up to \SI{40}{\kilo\hertz}.
+The energy band frequencies are obviously higher then the hopping frequency,
+and thus should be a better upper bound. Regardless, it is left for discussion
+if the hopping frequencies are not more relevant for the ungoing physics. For
+the now we will take \SI{50}{\kilo\hertz} as an upper bound for generation
+of time-averaged potentials. This relates to a maximum duration of
+\SI{20}{\micro\second} the perturbation laser beam should spent between
+being deflected to the same lattice site.
 
-The literature \cite{Bloch2008} also reports the analytical proxmity
-\begin{equation}
-  J^n_1\approx
-  \frac{4}{\sqrt{\pi}}\left(\frac{V_0}{E_r}\right)^{3/4}\exp(-2\sqrt{V_0/E_r})
-  \label{eq:hopping_proximity}
-\end{equation}
-to be valid for sinusoidal potentials like \cref{eq:potential_effective} and
-to be derived from the Mathieu equation. The Mathieu equation can be obtained
-from the time-independent Schrödinger equation with
-$V_0\cos^2(kx)=\frac{1}{2}V_0\left(1-\cos(2kx)\right)$. \cite{Connor1984}
-gives a more elaborate deviation of \cref{eq:hopping_proximity}.
