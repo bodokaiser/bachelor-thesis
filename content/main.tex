@@ -58,6 +58,13 @@
 
 \addbibresource{literature.bib}
 
+% required to load imshow plots
+\newcommand\inputpgf[2]{{
+\let\pgfimageWithoutPath\pgfimage
+\renewcommand{\pgfimage}[2][]{\pgfimageWithoutPath[##1]{#1/##2}}
+\input{#1/#2}
+}}
+
 \makeglossaries
 \newglossaryentry{si}
 {name=SI, description={International System of Units}}

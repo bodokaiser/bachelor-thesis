@@ -57,8 +57,9 @@ $f_\text{sys}=\SI{1}{\giga\hertz}$ and output frequency
 $f_\text{out}=\SI{100}{\mega\hertz}$.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]
-  {../figure/digital-signal-synthesis/simple-output.pdf}
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/digital-signal-synthesis/simple-output.pgf}
+  \end{adjustbox}
   \caption{Signal outputs at different stages in a simple \gls{dds}. The
     phase accumulator is incremented at each clock cycle by $\Delta\phi$. The
     phase accumulator value is used to lookup a sinusoidal amplitude value
