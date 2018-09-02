@@ -19,8 +19,7 @@ observe short- and long-term oscillations over a large intensity range.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/control/uncontrolled.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/intensity/control/uncontrolled.pdf}
   \caption{Time evolution of the uncontrolled laser intensity.
   }\label{fig:intensity_uncontrolled}
 \end{figure}
@@ -33,8 +32,7 @@ photodiode gain of Photodiode 2 was lowered from \SI{70}{\decibel} to
 photodiode to saturate.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\mediadir{setup/intensity-control.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../media/setup/intensity-control.pdf}
   \caption{Optical setup and intensity detection. The beam hits Photodiode 2
     which is connected to the oscilloscope.
   }\label{fig:intensity_control_setup}
@@ -63,7 +61,6 @@ measurement of the intensity control.
     \SI{<2}{\hour} \\
     \bottomrule
   \end{tabular}
-  \captionsetup{width=.9\textwidth}
   \caption{Interval and duration times of the short- and long-term measurement
     as well as a typical sweep measurement.
   }\label{tab:intensity_control_times}
@@ -106,7 +103,6 @@ that the intensity evolution performs periodic oscillations.
     \SI{27.69}{\percent} \\
     \bottomrule
   \end{tabular}
-  \captionsetup{width=.9\textwidth}
   \caption{Descriptive statistics of uncontrolled and controlled short- and
     long-term intensity evolutions as well as a typical intensity measurement
     with \gls{aod}s for comparison.
@@ -121,8 +117,7 @@ comparison. \Cref{tab:intensity_control_statistics} presents the statistics of
 said intensity measurements.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/control/long-short.pdf}}
-  \captionsetup{width=.9\textwidth}
+\includegraphics[width=\textwidth]{../figure/intensity/control/long-short.pdf}
   \caption{Long- and short-term measurement of the controlled intensity at
     different voltage scales.
   }\label{fig:intensity_control}
@@ -151,8 +146,7 @@ uncontrolled as the controlled measurements are presented as boxplots.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/control/relative-mean-deviation.pdf}}
-  \captionsetup{width=.9\textwidth}
+{../figure/intensity/control/relative-mean-deviation.pdf}
   \caption{Relative mean deviation of uncontrolled and controlled long- and
     short-term measurement as well as typical controlled intensity measurement.
   }\label{fig:intensity_control_rmd}
@@ -182,10 +176,9 @@ Perpendicular to the error introduced by the imperfect intensity control,
 errors can originate from unideal optical alignment. One way to assess the
 quality of our alignment is to evaluate the spatial profile of the laser beam
 as registered with the \gls{ccd} camera.
-\begin{figure}[htb!]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-profile.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=\textwidth]{../media/setup/intensity-profile.pdf}
   \caption{The beam is focused onto the \gls{ccd} sensor of the camera.
   }\label{fig:intensity_profile_setup}
 \end{figure}
@@ -198,7 +191,7 @@ the \gls{ccd} sensor is chosen such that the laser beam is focused onto the
 \begin{figure}[htb]
   \centering
   \includegraphics[width=.6\textwidth]
-  {\figuredir{intensity/profile/image.pdf}}
+  {../figure/intensity/profile/image.pdf}
   \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
   }\label{fig:intensity_spatial_image}
 \end{figure}
@@ -215,8 +208,7 @@ in~\cite{Hertlein2017} and originates from the finite aperture of the
 objectives.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/profile/profile.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/intensity/profile/profile.pdf}
   \caption{One dimensional perpendicular cut of the two dimensional intensity
     distribution from the two dimensional beam profile in
     \Cref{fig:intensity_spatial_image} with fitted gaussian curve.
@@ -249,8 +241,7 @@ behaviour of the individual \gls{aod} elements to each other. In particular we
 are interested if and how the elements differ.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/aod-socket.png}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=\textwidth]{../media/setup/aod-socket.png}
   \caption{Drawing of the used 2D \gls{aod}.
   }\label{fig:aod_socket}
 \end{figure}
@@ -278,8 +269,7 @@ offset between the two amplifiers.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/unpaired-amplitude.png}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/unpaired-amplitude.png}
   \caption{Intensity distribution over linear frequency sweep at different
     configured \gls{dds} amplitudes for different individual \gls{aod}
     configurations.
@@ -312,8 +302,7 @@ the beam dump as Cube 2 is a beam splitter sensible to polarisation.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/polarisation-horizontal.pdf}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/polarisation-horizontal.pdf}
   \caption{Intensity transmission of the \gls{h} \gls{aod} in the \gls{h} slot
     at maximum output amplitude for different polarisation angles.
   }\label{fig:intensity_polarisation_h}
@@ -328,8 +317,7 @@ polarisation domain is limited to $\left[0,\ang{90}\right]$.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/polarisation-vertical.pdf}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/polarisation-vertical.pdf}
   \caption{Intensity transmission of the \gls{v} \gls{aod} in the \gls{v} slot
     at maximum output amplitude for different polarisation angles.
   }\label{fig:intensity_polarisation_v}
@@ -346,8 +334,7 @@ between the polarisation angles at maximum and minimum intensity transmission.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/polarisation.pdf}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/polarisation.pdf}
   \caption{Intensity transmission of the \gls{h} and \gls{v} \gls{aod} at
     \SI{100}{\mega\hertz} and maximum output amplitude for different
     polarisation angles.
@@ -368,8 +355,7 @@ tilted the rotation angle a bit to the left and to the right?
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/unpaired-tilted.png}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/unpaired-tilted.png}
   \caption{Intensity distribution at different amplitudes for tilted
     individual \gls{aod}. We observe that the intensity decreases if the
     incident angle deviates from \ang{90}.
@@ -395,11 +381,10 @@ transmission then any other configuration. Therefore we presume that the
 \gls{aod} elements have a very high polarization dependency and are concerted
 to eachother. We may find more evidence for this hypothesis by mounting both
 \gls{aod} elements in their intended and exchanged slots.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/paired-amplitude.png}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/paired-amplitude.png}
   \caption{Intensity distribution over linear frequency sweep at different
   configured \gls{dds} amplitudes for different individual \gls{aod}
   configurations.
@@ -436,10 +421,9 @@ their anticipated position. The \gls{aod} elements are aligned to maximize
 intensity at the center frequency. The laser beam is directed into a second
 photodiode where we measure the intensity with respect to the configured
 \gls{dds} signal.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\mediadir{setup/intensity-distribution.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../media/setup/intensity-distribution.pdf}
   \caption{Experimental setup used to measure the intensity transmission of
     the 2D \gls{aod} in dependence of the configured \gls{dds} signal.
   }\label{fig:intensity_distribution_setup}
@@ -453,11 +437,10 @@ using the internal digital ramp. After one such sweep the constant frequency
 output of the first \gls{dds} is increased and the measurement repeats. The
 procedure is repeated until the first \gls{dds} covered the same frequency
 range as the second \gls{dds}.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{intensity/distribution/paired-frequency.png}}
-  \captionsetup{width=.8\textwidth}
+  {../figure/intensity/distribution/paired-frequency.png}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}. The
     left map is obtained by enabling the digital ramp on the horizontal
@@ -475,14 +458,13 @@ direction. The frequency sweep performed by the digital ramp is more dense
 compared to the frequency sweep performed by manual increments in our
 configuration as the manual increments require driver calls whereas the
 digital ramp increments are performed internal of the \gls{dds}.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=.7\textwidth]
-  {\figuredir{intensity/distribution/paired-frequency-residue.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/intensity/distribution/paired-frequency-residue.pdf}
   \caption{Absolute difference between the 2D intensity distribution
-  performed with the digital ramp configured set to different axes.}
-  \label{fig:intensity_distribution_frequency_residue}
+    performed with the digital ramp configured set to different axes.
+  }\label{fig:intensity_distribution_frequency_residue}
 \end{figure}
 As the differences in \Cref{fig:intensity_distribution_frequency} are of only
 subtile nature we additionally reveal the absolute difference between both
@@ -507,8 +489,7 @@ is not a purely electronic device.
 \begin{figure}[ht]
   \centering
   \includegraphics[width=.7\textwidth]
-  {\figuredir{intensity/distribution/sample-frequency.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/intensity/distribution/sample-frequency.pdf}
   \caption{Intensity measured as voltage at the photodiode in dependence of
     the horizontal and vertical applied frequency signal to the \gls{aod}.
     Frequency pairs are sampled over a uniform distribution and then passed
@@ -540,10 +521,9 @@ performed by the \gls{dds} through the digital ramp and by the signal
 generator. In comparison to the \gls{dds} the signal generator does not
 support continous frequency changes as we can see from the intensity drops
 between the frequency increments of the signal generator trace.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{intensity/distribution/signal-sources.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/intensity/distribution/signal-sources.pdf}
   \caption{Intensity measured as voltage at the photodiode with one \gls{aod}
     at constant center frequency supplied by a \gls{dds} and the other
     \gls{aod} performing a linear frequency sweep with the \gls{dds} and a

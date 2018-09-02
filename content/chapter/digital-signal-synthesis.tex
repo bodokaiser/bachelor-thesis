@@ -30,11 +30,10 @@ accumulator increment
 \end{equation}
 where $N$ denotes the number of bits the phase accumulator can store and
 $\lceil\cdot\rceil$ is the ceiling function.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{digital-signal-synthesis/simple-architecture.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/digital-signal-synthesis/simple-architecture.pdf}
   \caption{Signal flow through a simple \gls{dds}. The output frequency
     determines a phase step by which the accumulator is incremented at each
     clock cycle. The value of the phase accumulator is used for amplitude
@@ -56,11 +55,10 @@ different processing stages inside a simple \gls{dds} are presented for a
 \SI{8}{\bit} precision, system clock frequency
 $f_\text{sys}=\SI{1}{\giga\hertz}$ and output frequency
 $f_\text{out}=\SI{100}{\mega\hertz}$.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{digital-signal-synthesis/simple-output.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/digital-signal-synthesis/simple-output.pdf}
   \caption{Signal outputs at different stages in a simple \gls{dds}. The
     phase accumulator is incremented at each clock cycle by $\Delta\phi$. The
     phase accumulator value is used to lookup a sinusoidal amplitude value
@@ -84,11 +82,10 @@ frequency $f_\text{sys}=f_\text{samp}$ as given. In practice reliable
 reference signals are clocked below the desired output range and thereby
 cannot directly be used as system clock according to the Nyquist-Shannon
 sampling theorem.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{digital-signal-synthesis/clock-generation.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/digital-signal-synthesis/clock-generation.pdf}
   \caption{Clock generation signal generation with \gls{pll} and multiplier.
     The phase detector compares the output system phase with the reference
     phase and yields a non-linear error response. The low-pass filter removes
@@ -110,11 +107,10 @@ clock by $f_\text{sys}=Mf_\text{ref}$ with $1<M\in\mathbb{N}$.
 So far we only discussed the case of frequency modulation. We will see that
 the previous architecture can be easily extended to support amplitude
 and phase modulation too.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]
-  {\figuredir{digital-signal-synthesis/modulation-architecture.pdf}}
-  \captionsetup{width=.9\textwidth}
+  {../figure/digital-signal-synthesis/modulation-architecture.pdf}
   \caption{\gls{dds} architecture supporting modulation of frequency,
     amplitude and phase offset parameters. Phase accumulator increment is now
     time dependent. The phase offset is also time dependent is added as last
@@ -155,12 +151,12 @@ Phase truncation occurs because the amplitude lookup table usually has a
 reduced precision $P$ compared to the phase accumulator. The reduced precision
 is necessary as most phase accumulators in \gls{dds} nowadays have at least 
 $N=\SI{32}{\bit}$ entries and a lookup table supporting that many entries at
-high frequencies becomes impractical\cite{Cordesses2004}. Fortunately there
+high frequencies becomes impractical~\cite{Cordesses2004}. Fortunately there
 are many procedures to use the limited memory of a sinewave lookup table
 more efficiently. For example one can reduce the sinewave data to the domain
 from $0$ to $\pi/4$ and use symmetry to infer the values from $\pi/4$ to
 $2\pi$. Sophisticated compressions methods allow compression ratios up to
-165:1\cite{Cordesses2004} so that in practice phase truncation is not a
+165:1~\cite{Cordesses2004} so that in practice phase truncation is not a
 problem.
 
 There of course exists many more sources of signal imperfection from which
@@ -178,7 +174,7 @@ is reconstructed by a piecewise linear approximation
 \begin{equation}
   x(t)
   \approx
-  \sum_{n\in\mathbb{Z}}x_n\theta\left(\frac{t}{T}-\frac{1-2n}{2}\right)
+  \sum_{n\in\mathbb{Z}}x_n\theta\left(\frac{t}{T}-\frac{1-2n}{2}\right),
 \end{equation}
 where $\theta(t)$ denotes the Heaviside function.
 

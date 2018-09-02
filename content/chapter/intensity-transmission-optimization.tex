@@ -29,10 +29,9 @@ First, we want to provide an overview of the final optimization results
 obtained at different hyperparameters for the random search. The
 hyperparameter includes the number of amplitude segments $N/m$ and the target
 intensity.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/optimization/overview.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/intensity/optimization/overview.pdf}
   \caption{Minimized intensity variance for different target intensities
   and number of amplitude segments. We note heavy oscillations for
   amplitude segments greater than eight.}
@@ -49,10 +48,9 @@ We assume that inductive effects occur when choosing more amplitude segments
 that consolidate a non-linear intensity response. For the sake of simplicity
 we will first limit us to the case of eight amplitude segments.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/optimization/intensity-amplitude.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/intensity/optimization/intensity-amplitude.pdf}
   \caption{Final result of the intensity variance minimization and the
   corresponding amplitude segment values obtained through random search with
   eight independent amplitude segments.}
@@ -72,10 +70,9 @@ We now want to elaborate on the optimization process. We limit ourselves to
 the optimization process with eight amplitude segments as it was the most
 successful one and can be covered completly with eight plots.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/optimization/process.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/intensity/optimization/process.pdf}
   \caption{Intensity and amplitude at different stages of the optimization
   process. In each column a different amplitude segment is optimized.
   The different traces in each plot mark the respective iteration.}
@@ -84,7 +81,7 @@ successful one and can be covered completly with eight plots.
 
 In \Cref{fig:intensity_optimization_process} we see the intensity and
 amplitude at different optimization stages. At each stage one amplitude
-segment is sampled from a uniform distribution over $[.2, .8]$. The intensity
+segment is sampled from a uniform distribution over $[0.2,0.8]$. The intensity
 segment associated with this amplitude segment is then used to calculate
 the \gls{mse} and compare it to the previous best \gls{mse}. If the new
 \gls{mse} is less than the previous best \gls{mse} the previous best \gls{mse}
@@ -106,10 +103,9 @@ yet we observed heavy oscillations. In this section we want to check the
 optimization process in the case of 32 amplitude segments to investigate in
 possible origins of the optimization failure.
 
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{intensity/optimization/failure.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/intensity/optimization/failure.pdf}
   \caption{Optimization progress for the 2.,4.,6.,8.,10. and 20. amplitude
   segment of the failed optimization run with 32 amplitude segments. We can
   see that with increasing amplitude segments the non-linear response

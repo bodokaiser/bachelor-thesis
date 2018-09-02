@@ -19,20 +19,18 @@ Physical analysis of the \gls{dds} output \gls{rf} signal is in fact no simple
 endeavour as usual operation time scales are of many magnitudes greater than
 the signal periodicity. The strategy we used to resolve this circumstance is
 depcited in \Cref{fig:signal_window}.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/window.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=\textwidth]{../figure/signal/window.pdf}
   \caption{Idealized \gls{dds} signal output with constant frequency
     increments. The measured window only captures a subset (gray) of the complete
     modulation (shades of blue).}\label{fig:signal_window}
 \end{figure}
 The strategy consists of capturing multiple, small time windows of the signal
 (gray) which delayed would cover the complete signal trace (blue).
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.8\textwidth]{\figuredir{signal/setup-dds.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=.8\textwidth]{../figure/signal/setup-dds.pdf}
   \caption{Measurement setup of the synthesiyer signal. By inserting a pulse
     generator in between the trigger source and the oscilloscope we can delay
     the capture window of the oscilloscope by the pulse width.
@@ -48,22 +46,21 @@ such frequencies causes very different behaviour as the electromagnetic wave
 is reflected subject to the actual frequency inside the coaxial cable. In 
 \Cref{tab:signal_parameters_dds} we can find an overview of the experimental
 parameters used.
-\begin{table}[ht]
+\begin{table}[htb]
   \centering
-  \begin{tabular}{|c|c|c|c|c|c|}
-    \hline
+  \begin{tabular}{cccccc}
+    \toprule
     Frequency Range $f$ &
     Sweep Duration $T_s$ &
     Window Duration $T_w$ &
     Number Windows $N_w$ \\
-    \hline
+    \midrule
     \SIrange{80}{120}{\mega\hertz} &
     \SI{30}{\milli\second} &
     \SI{50}{\micro\second} &
     300 \\
-    \hline
+    \bottomrule
   \end{tabular}
-  \captionsetup{width=.8\textwidth}
   \caption{Experimental parameters used to inspect the output \gls{rf} signal
     of the \gls{dds}.
   }\label{tab:signal_parameters_dds}
@@ -87,10 +84,9 @@ partition the data into overlapping time chunks while performing \gls{fft}
 which allows us to combine time and frequency domain specific
 characteristics. In our case we choose the relative spectral power to be
 encoded through color.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/synthesis/spectrogram.png}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/signal/synthesis/spectrogram.png}
   \caption{Spectrogram of delayed time windows of the \gls{dds} output signal
     configured to perform a linear frequency sweep. For an ideal linear sweep
     we would expect a linear timeline of the frequency, instead we observe a
@@ -126,10 +122,9 @@ frequency response spectrum with manageable effort.
 \Cref{fig:signal_synthesis_response} visualizes the described routine for the
 \gls{dds} assigned to the \gls{h} and \gls{v} \gls{aod} with frequency control
 by digital ramp and manual increments.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/synthesis/response.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/signal/synthesis/response.pdf}
   \caption{Amplitude frequency response of the \gls{dds} signal sources for
     the \gls{h} and \gls{v} \gls{aod}. The frequency increments
     are performed through the integrated digital ramp and manually.
@@ -178,10 +173,9 @@ accross the attentuators. The total damping of this configuration yields
 \gls{dds}. \Cref{fig:signal_amplification_response} presents us the damped
 output signal subject to the signal frequency after amplification for the two
 distinct (\gls{h}, \gls{v}) amplifiers and \gls{dds} signals.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/response.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/signal/amplification/response.pdf}
   \caption{Amplitude frequency response of the \gls{dds} signal after power
     amplification. In comparison to the \gls{dds} we observe very small
     oscillations.
@@ -208,10 +202,9 @@ the previous measurement. As in the measurement with the oscilloscope we also
 have to protect the network analyzer against the output power of the
 amplifier. This time we used a single \SI{30}{\decibel} attentuator in between
 the network analyzer input and the power amplifier output.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/amplification/transmission.pdf}}
-  \captionsetup{width=.9\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/signal/amplification/transmission.pdf}
   \caption{Frequency transmission spectrum obtained via the network analyzer
     of the horziontal and vertical amplifiers.
   }\label{fig:signal_amplification_spectrum}
@@ -256,10 +249,9 @@ signal and measure the reflection through a direct-coupler.
 \Cref{fig:signal_reflection_direct} visualizes the power reflection spectrum
 of both \gls{aod} elements when directly connected to the network analyzer at
 a maximum output power of \SI{10}{\decibel\meter}.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.9\textwidth]{\figuredir{signal/reflection/direct.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=.9\textwidth]{../figure/signal/reflection/direct.pdf}
   \caption{Signal reflection of the two different \gls{aod} when directly
     connected to the network analyzer.
   }\label{fig:signal_reflection_direct}
@@ -278,10 +270,9 @@ In the second procedure we amplify the signal and couple the network analyzer
 through a direct-coupler to measure the refleciton. This is done in order to
 avoid harm to the network analyzer and because the network analyzer is not
 able to provide \SI{2}{\watt} of output power as required by the \gls{aod}.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=.8\textwidth]{\figuredir{signal/setup-transducer.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=.8\textwidth]{../figure/signal/setup-transducer.pdf}
   \caption{Experimental setup to measure the reflection at the acouso-optic
   transducer component. The network analyzer supplies an input signal to
   the amplifier. The output signal of the amplifier is connected through
@@ -294,10 +285,9 @@ The network analyzer on the left-hand side supplies an input signal to the
 amplifier. The input signal changes linear in frequency. The output signal
 of the amplifier is connected through a direct-coupler with the acousto-optic
 element. The direct-coupler allows to measure input and output reflection.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupler.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/signal/reflection/coupler.pdf}
   \caption{Input power reflection when supplying the direct-coupler with
     \SI{-10}{\decibel\meter} input signal and reflection at the closed output
     of the direct-coupler while other ports are closed with \SI{50}{\ohm}.
@@ -307,10 +297,9 @@ The direct-coupler is an apparatus comprising a coaxial input and output
 port as well as a coaxial input reflection and output reflection port. It is
 disignated to measure the reflection of a (possible) high power signal
 without jeopardizing measurement equipement.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/coupled.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/signal/reflection/coupled.pdf}
   \caption{Reflection at the direct-coupler output after amplification of the
   network analyzer input signal for different effective powers. We see that
 the applied power does not effect the spectrum.
@@ -339,10 +328,9 @@ reflection.
 In the previous part we saw that the reflection spectrum does not show any
 power dependence, thus we should be able to compare the spectrum we obtained
 directly with the amplified result.
-\begin{figure}[ht]
+\begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{\figuredir{signal/reflection/comparison.pdf}}
-  \captionsetup{width=.8\textwidth}
+  \includegraphics[width=\textwidth]{../figure/signal/reflection/comparison.pdf}
   \caption{Reflection from amplified input signal and direct signal as well as
     transmission from the amplifier spectrum.
   }\label{fig:signal_reflection_comparison}
