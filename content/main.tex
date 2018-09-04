@@ -14,6 +14,7 @@
 ]{babel}
 \usepackage[T1]{fontenc}
 \usepackage{fontspec}
+\usepackage{lmodern}
 \usepackage{bm}
 \usepackage{xcolor}
 \usepackage{a4wide}
@@ -32,7 +33,6 @@
 \usepackage[section]{placeins}
 \usepackage{enumerate}
 \usepackage{graphicx}
-\usepackage{unicode-math}
 \usepackage[hidelinks]{hyperref}
 \usepackage{cleveref}
 \usepackage[
@@ -57,6 +57,9 @@
 \usemintedstyle{tango}
 
 \addbibresource{literature.bib}
+
+\DeclareMathOperator{\rect}{rect}
+\DeclareMathOperator{\sinc}{sinc}
 
 % required to load imshow plots
 \newcommand\inputpgf[2]{{
@@ -124,14 +127,14 @@
 
 \tableofcontents
 
-\include{chapter/introduction}
-\include{chapter/optical-potentials}
-\include{chapter/characteristic-energy-scales}
+%\include{chapter/introduction}
+%\include{chapter/optical-potentials}
+%\include{chapter/characteristic-energy-scales}
 \include{chapter/digital-signal-synthesis}
 \include{chapter/experimental-setup}
-\include{chapter/characteristics-electronic-setup}
-\include{chapter/characteristics-optical-setup}
-\include{chapter/intensity-transmission-optimization}
+%\include{chapter/characteristics-electronic-setup}
+%\include{chapter/characteristics-optical-setup}
+%\include{chapter/intensity-transmission-optimization}
 \include{chapter/conclusion}
 
 \printglossaries
