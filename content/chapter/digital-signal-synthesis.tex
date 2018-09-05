@@ -327,126 +327,218 @@ scale as \si{\giga\hertz}. In the second plot we show the frequency range
 for our \gls{dds}. For said operating range the power falls off linearly by
 about \SI{2.6}{\percent}.
 
-\section{Frequency resolution}
+\section{Digital ramp and playback}
 
-We apply a reference signal of
+In this last section we will discuss frequency and amplitude modulation by
+the digital ramp and memory playback integrated into the \gls{ad9910},
+therefore the following insights will be very specific to the \gls{ad9910}.
+The digital ramp is used to implement sweep modulation with constant
+increments. In our case we will use the digital ramp to sweep the frequency
+applied to the \gls{aod} from \SIrange{80}{120}{\mega\hertz}. The playback
+mode allows modulation from memory. We can use it to define up to \num{1024}
+distinct amplitude values in order to indirectly modulate efficiency of the
+diffraction of the \gls{aod}. Both digital ramp and memory playback are
+controled by a timer that is clocked with
 \begin{equation}
-  f_\text{ref}=\SI{10}{\mega\hertz}
+  f_{\text{timer}}
+  =f_{\text{sys}}/4
+  =\SI{250}{\mega\hertz}
+  \label{eq:dds_timer}.
 \end{equation}
-configured to be used with a \gls{pll} multiplier of
-$N=100$ yielding a system clock of
+The sample interval of the memory playback is controlled by a $\SI{16}{\bit}$
+playback rate word
 \begin{equation}
-  f_\text{sys}=Nf_\text{ref}=\SI{1}{\giga\hertz}.
+  \Delta t_\text{mem}
+  =\frac{P}{f_\text{timer}}
+  =\frac{4P}{f_\text{sys}}
+  \label{eq:dds_playback_rate}.
 \end{equation}
-The timer clock used for the linear ramp and memory playback runs with
-a quarter of the system clock
-\begin{equation}
-  f_\text{timer}=f_\text{sys}/4=\SI{250}{\mega\hertz}.
-\end{equation}
+In \Cref{fig:dds_playback_rate} we illustrate the playback sample interval
+and total playback duration when using the complete playback memory in
+dependency of the playback rate word $P$.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \input{../figure/digital-signal-synthesis/playback-rate.pgf}
+  \end{adjustbox}
+  \caption{Playback sample interval and total playback duration when using the
+    complete \num{1024} memory points in dependency of the playback rate word
+    $P$.
+  }\label{fig:dds_playback_rate}
+\end{figure}
+In \Cref{tab:dds_playback_rate} we present the minimal and maximal playback
+parameters. The maximum duration of one iteration through all playback values
+$T$ will limit the duration of the digital ramp as we will see later.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Rate Word $P$ &
+    Sample Interval $\Delta t_\text{mem}$ &
+    Duration $T_\text{mem}$ \\
+    \midrule
+    \num{1} &
+    \SI{4}{\nano\second} &
+    \SI{4.096}{\milli\second} \\
+    \num{65 536} &
+    \SI{262.144}{\micro\second} &
+    \SI{268.435456}{\milli\second} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Minimal and maximal playback parameters of the \gls{ad9910}
+  according to \cref{eq:dds_playback_rate} with
+  $f_\text{sys}=\SI{1}{\giga\hertz}$.
+  }\label{tab:dds_playback_rate}
+\end{table}
 
-The \gls{ad9910} uses a \SI{14}{\bit} \gls{asf} and \SI{32}{\bit} \gls{ftw}
-to parameterize amplitude $A(t)$ and output frequency $f(t)$ by
+The digital ramp allows amplitude, frequency or phase offset modulation with
+constant increments. In our setup we use the digital ramp to sweep the
+frequency range \SIrange{80}{120}{\mega\hertz} to change the beam deflection
+angle via \gls{aod}. In \Cref{tab:dds_dramp_register} the register of the
+digital ramp to perform frequency increments are listed.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{cccc}
+    \toprule
+    Lower Limit $L$ &
+    Upper Limit $U$ &
+    Step Size $S$ &
+    Step Rate $R$ \\
+    \midrule
+    \SI{32}{\bit} &
+    \SI{32}{\bit} &
+    \SI{32}{\bit} &
+    \SI{16}{\bit} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Digital ramp register that control the frequency and their
+    respective presicion.
+  }\label{tab:dds_dramp_register}
+\end{table}
+The lower and upper limits are related to the start and final frequency of a
+sweep by
 \begin{align}
-  FTW
-  :=
-  \left\lfloor2^{32}\left(\frac{f_\text{out}}{f_\text{sys}}\right)\right\rceil
-  &&
-  ASF
-  :=
-  \left\lfloor\frac{A_\text{out}}{2^{14}}\right\rceil
-  \label{eq:elec:ftwasf}
+  L=\left\lfloor2^{32}\frac{f_\text{start}}{f_\text{sys}}\right\rceil &&
+  U=\left\lfloor2^{32}\frac{f_\text{final}}{f_\text{sys}}\right\rceil
+  \label{eq:dds_dramp_limits},
 \end{align}
-wherein $\lfloor{\cdot}\rceil$ rounds the given float to the nearest integer.
-The theoretical limit for the maximum output frequency then is found via
-\begin{equation*}
-  f_\text{max}
-  =
-  \left(1-\frac{2^{31}-1}{2^{32}}\right)f_\text{sys}
-  =
-  \left(\frac{1}{2}-\frac{1}{2^{31}}\right)f_\text{sys}
-  \approx
-  \frac{1}{2}f_\text{sys}
-  =
-  \SI{500}{\mega\hertz}.
-\end{equation*}
-Yet the datasheet~\cite{AD9910} reports $f_\text{max}=\SI{420}{\mega\hertz}$
-and in fact we found the output signal to be very noisy at the theoretical
-limit.
-
-We continue with the assessment of the digital ramp that does a unidrectional
-linear sweep on the frequency from \SI{90}{\mega\hertz} to
-\SI{110}{\mega\hertz}. The digital ramp of the \gls{ad9910} lets us define
-a \gls{ftw} step $M$ word of \SI{32}{\bit} as well as a step rate word $S$ of
-\SI{16}{\bit} resolution. They relate to the frequency step and the time
-step through
+where $\lfloor\cdot\rceil$ maps to the closest integer. In
+\Cref{tab:dds_dramp_limits} we present the digital ramp limit register values
+for a frequency sweep from \SIrange{80}{120}{\mega\hertz} as used for later
+measurements.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Register & Value & Quantity \\
+    \midrule
+    Lower Limit $L$ & \num{343 597 384} & \SI{80}{\mega\hertz} \\
+    Upper Limit $U$ & \num{515 396 076} & \SI{120}{\mega\hertz} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Digital ramp limit registers for a frequency sweep from
+    \SIrange{80}{120}{\mega\hertz}.
+  }\label{tab:dds_dramp_limits}
+\end{table}
+The slope rate $R$ and the step size $S$ relate to the frequency and time
+increments via
 \begin{align}
-  \Delta f
-  =
-  \frac{M}{2^{32}}f_\text{sys}
-  &&
-  \Delta t
-  =
-  \frac{S}{f_\text{timer}}
-  =
-  \frac{S}{4f_\text{sys}}.
-  \label{eq:elec:step}
+  \Delta t_\text{ramp}=\frac{R}{f_\text{timer}}=\frac{4R}{f_\text{sys}} &&
+  \Delta f_\text{ramp}=\frac{S}{2^{32}}f_\text{sys}
+  \label{eq:dds_dramp_steps}.
 \end{align}
-The sweep duration is deterimened by $S,M$ through
+In the driver we set $R$ and $S$ indirectly through the sweep duration
 \begin{equation}
-  T_\text{duration}
+  T_\text{ramp}
   =
-  \frac{f_\text{upper}-f_\text{lower}}{\Delta f}\Delta t
-  =
-  2^{32}\frac{f_\text{upper}-f_\text{lower}}
-  {f_\text{sys}}\frac{S/M}{f_\text{timer}}
+  \frac{U-L}{S}\frac{4R}{f_\text{sys}}
+  \Delta t_\text{ramp}
+  \label{eq:dds_dramp_duration}.
 \end{equation}
-for a target sweep duration of $T_\text{duration}=\SI{10}{ms}$ we find
-\begin{equation*}
-  \frac{S}{M}
-  =
-  \frac{T f_\text{timer}}{2^{32}}
-  \frac{f_\text{sys}}{f_\text{upper}-f_\text{lower}}
-  =
-  \frac{10^9}{2^{35}}
-  \approx
-  \num{2.9104e-2}
-  =
-  \frac{1819}{62500}
-\end{equation*}
-the last step can be obtained by best ratio approximation using continued
-fractions as for example described in~\cite{Ashley2003}. It should be kept in
-mind that the best ratio approximation is likable to introduce an error,
-therefore realistic durations may differ from the configured value and it
-is possible that better approximations exist that allow smaller $\Delta f,
-\Delta t$, thus providing a sweep resolution. In the above case the given
-time duration translates to
-\begin{align*}
-  \Delta f
-  =
-  \frac{62500}{2^{32}}f_\text{sys}
-  \approx
-  \SI{145}{\kilo\hertz}
-  &&
-  \Delta t
-  =
-  \frac{1819}{f_\text{timer}}
-  \approx
-  \SI{7.28}{\micro\second}
-\end{align*}
-or $(f_\text{upper}-f_\text{lower})/\Delta f=138$ discrete data points.
+The integer ratio $R/S$ is found using best-ratio approximation as described
+in Ref.~\cite{Ashley2003}. In \Cref{tab:dds_dramp_steps} the step register
+values of the digital ramp for the most common sweep duration of
+\SI{260}{\milli\second} used in our measurements are listed.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Register & Value & Quantity \\
+    \midrule
+    Step Size $S$ & \num{42949673} & \SI{10}{\mega\hertz} \\
+    Step Rate $R$ & \num{16250112} & \SI{65}{\milli\second} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Digital ramp step registers for a frequency sweep from
+    \SIrange{80}{120}{\mega\hertz} with duration
+    $T_\text{ramp}=\SI{260}{\milli\second}$.
+  }\label{tab:dds_dramp_steps}
+\end{table}
+The increments reported in \Cref{tab:dds_dramp_steps} are converted
+internally in the \gls{ad9910} and applied to the phase accumulator of the
+\gls{ad9910}, thus even though the step size and rate are large compared to
+the sweep duration and frequency range, the effective frequency increments
+are of finer scale as we later measurements will show. Unfortunately the
+datasheet of the \gls{ad9910}~\cite{AD9910} does not disclose any details on
+the exact conversion of the digital ramp steps to the phase accumulator,
+such that we cannot estimate the effective frequency resolution of the digital
+ramp of the \gls{ad9910}.
 
-Eventually we are left with the assessment of the amplitude sequence. The
-memory fits at most 1024 discrete amplitude values and the \gls{ad9910}
-allows us to set the time spent at each amplitude value via the \SI{16}{\bit}
-playback rate $P$ word
+\section{Frequency and time resolution}
+
+Although we cannot give the exact frequency resolution imposed by the digital
+ramp of the \gls{ad9910}, we can compare the possible time scales of the
+digital ramp and memory playback mode with the time scales found in
+\cref{ch:energy_scales}. Furthermore the specified frequency resolution
+of \SI{230}{\milli\hertz} in the constant frequency operation mode of the
+\gls{dds} can give us a rough estimate of the achievable spatial resolution.
+
+The time scale of the \gls{ad9910} are limited by the playback duration time
 \begin{equation}
-  \Delta t
-  =
-  \frac{P}{f_\text{timer}}
-  =
-  \frac{4P}{f_\text{sys}}
+  T_\text{mem}
+  =N\frac{4P}{f_\text{sys}}
+  \label{eq:dds_playback_duration},
 \end{equation}
-which gives us range from $\min\Delta t=\SI{4}{\nano\second}$ to
-$\max\Delta t=\SI{26.14}{\micro\second}$. As we incorporate all of the 1024
-data points this gives us a duration range from about
-$\min T=\SI{4}{\micro\second}$ to $\max T=\SI{26.84}{\milli\second}$.
+where $N$ is the number of memory words used. The \gls{ad9910} supports up to
+$N=1024$ memory words. Using the fact that $P$ is of \SI{16}{\bit} precision
+we can calculate the minimal and maximal durations times for the \gls{dds}.
+\begin{table}[htb]
+  \centering
+  \begin{tabular}{ccc}
+    \toprule
+    Memory Words $N$ & Playback Rate $P$ & Duration $T$ \\
+    \midrule
+    \num{1} & \num{1} & \SI{4}{\nano\second} \\
+    \num{1024} & \num{1} & \SI{4}{\micro\second} \\
+    \num{1} & \num{65536} & \SI{262}{\micro\second} \\
+    \num{1024} & \num{65536} & \SI{268}{\milli\second} \\
+    \bottomrule
+  \end{tabular}
+  \caption{Time scales of the \gls{ad9910} imposed by the technical limits of
+    the playback duration time of the \gls{ad9910}.
+  }\label{tab:dds_time_scale}
+\end{table}
+In \Cref{tab:dds_time_scale} we are presented the possible time scales
+imposed by the playback duration time of the \gls{ad9910}. From
+\cref{ch:energy_scales} we know that a good time scale would be about
+\SI{10}{\nano\second}. We can see that for $P=1$ and $N=2$ we could --- in
+principle --- achieve a duration time of below $\SI{10}{\nano\second}$ and
+realize a \gls{1d} potential barrier with two distinct frequencyes as
+illustrated in \cref{ch:optical_potentials}. Ref.~\cite{Hertlein2017}
+discloses a linear model for the spatial resolution in the atomic plane in
+terms of the \gls{aod} frequencies
+\begin{align}
+  x(f_h)/\si{\micro\meter}=3.66\frac{f_h}{\SI{1}{\mega\hertz}}-379 &&
+  y(f_v)/\si{\micro\meter}=3.62\frac{f_v}{\SI{1}{\mega\hertz}}-360
+  \label{eq:spatial_position_frequency},
+\end{align}
+wherein $f_h,f_v$ denote the frequencies applied the \gls{h} respective
+\gls{v} \gls{aod}. Neglecting frequency dependent amplification the frequency
+resolution of $\Delta f=\SI{230}{\milli\hertz}$ translates to a spatial
+resolution of about
+\begin{equation}
+  \Delta x\approx \Delta y\approx\SI{8}{\pico\meter}
+  \label{eq:spatial_resolution}.
+\end{equation}
+We conclude that there are other effects that limit the spatial resolution
+before \cref{eq:spatial_resolution} will become relevant.
