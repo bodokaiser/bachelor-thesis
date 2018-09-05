@@ -1,4 +1,4 @@
-\chapter{Characterisation of the optical setup}
+\chapter{Characterisation of the acousto-optic deflectors}\label{ch:acousto_optic_deflectors}
 
 \textit{In the previous chapter we seeked for different aspects of the
 \gls{rf} signal powering the \gls{aod} elements and found that the
@@ -7,238 +7,6 @@ In this chapter we want to examine the intensity characteristics subject
 to frequency and amplitude parameters of the \gls{rf} signal. In the end
 we will find that the intensity shows highly non-linear behaviour with
 respect to the \gls{rf} signal parameters.}
-
-\section{Intensity control}
-
-In \cref{ch:experimental_setup} we stated that the laser intensity is
-regulated by a control loop using an \gls{aom} in the power reduction setup.
-Without the additional intensity regulation we would
-observe various intensity drifts from the laser source throughout the
-measurements as depicted in \Cref{fig:intensity_uncontrolled} where we can
-observe short- and long-term oscillations over a large intensity range.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/intensity/control/uncontrolled.pgf}
-  \end{adjustbox}
-  \caption{Time evolution of the uncontrolled laser intensity.
-  }\label{fig:intensity_uncontrolled}
-\end{figure}
-The setup used to record the intensity evolutions is disclosed in
-\Cref{fig:intensity_control_setup}. It differs from the optical setup
-described in \cref{ch:experimental_setup} by the absence of the \gls{aod}
-and the relocation of Photodiode 2 at the end of the laser beam. The
-photodiode gain of Photodiode 2 was lowered from \SI{70}{\decibel} to
-\SI{50}{\decibel} because the lack of \gls{aod}s would otherwise cause the
-photodiode to saturate.
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=\textwidth]{../media/setup/intensity-control.pdf}
-  \caption{Optical setup and intensity detection. The beam hits Photodiode 2
-    which is connected to the oscilloscope.
-  }\label{fig:intensity_control_setup}
-\end{figure}
-In order to to estimate the error contribution due to imperfect intensity
-regulation, we will conduct a short- and a long-term measurement of the
-controlled intensity. Technically a typical intensity measurement takes about
-a fraction of a millisecond, yet we can decide on different intervals between
-the measurements in order to separate local from global trends like the ones
-noted in the uncontrolled meausrement. \Cref{tab:intensity_control_times}
-summarizes the different time scales for the conducted short- and long-term
-measurement of the intensity control.
-\begin{table}[htb]
-  \centering
-  \begin{tabular}{cccc}
-    \toprule
-    & Short & Long & Typical \\
-    \midrule
-    Interval &
-    \SI{10}{\second} &
-    \SI{120}{\second} &
-    \SI{3}{\second} \\
-    Duration &
-    \SI{1}{\hour} &
-    \SI{16}{\hour} &
-    \SI{<2}{\hour} \\
-    \bottomrule
-  \end{tabular}
-  \caption{Interval and duration times of the short- and long-term measurement
-    as well as a typical sweep measurement.
-  }\label{tab:intensity_control_times}
-\end{table}
-The voltage time series for both intensity control measurements are presented
-in \Cref{fig:intensity_control}. The outlier at about 22:45 h was caused by
-accidently interfering with the setup during measurement. Beside of that
-incident the long-term intensity seems stable. On a smaller timescale we see
-that the intensity evolution performs periodic oscillations.
-\begin{table}[htb]
-  \centering
-  \begin{tabular}{lcccc}
-    \toprule
-    Measure & Uncontrolled & Long & Short & Typical \\
-    \midrule
-    Mean $\mu$ &
-    \SI{8.45}{\volt} &
-    \SI{6.79}{\volt} &
-    \SI{6.79}{\volt} &
-    \SI{1.95}{\volt} \\
-    Minimum &
-    \SI{7.43}{\volt} &
-    \SI{4.88}{\volt} &
-    \SI{6.77}{\volt} &
-    \SI{0.00}{\volt} \\
-    Maximum &
-    \SI{6.82}{\volt} &
-    \SI{6.86}{\volt} &
-    \SI{6.82}{\volt} &
-    \SI{9.08}{\volt} \\
-    Standard Deviation $\sigma$ &
-    \SI{0.49}{\volt} &
-    \SI{0.09}{\volt} &
-    \SI{0.01}{\volt} &
-    \SI{0.54}{\volt} \\
-    Relative Standard Deviation $\sigma/\mu$ &
-    \SI{5.75}{\percent} &
-    \SI{1.35}{\percent} &
-    \SI{0.19}{\percent} &
-    \SI{27.69}{\percent} \\
-    \bottomrule
-  \end{tabular}
-  \caption{Descriptive statistics of uncontrolled and controlled short- and
-    long-term intensity evolutions as well as a typical intensity measurement
-    with \gls{aod}s for comparison.
-  }\label{tab:intensity_control_statistics}
-\end{table}
-Overall we can confirm that the intensity control loop successfully holds the
-intensity mean, though with small oscillations. In order to estimate the
-relevance for these small oscillations of the controlled intensity for later
-measurements, we selected an measurement of the intensity transmission
-response of the \gls{aod} subject to constant frequency increments for
-comparison. \Cref{tab:intensity_control_statistics} presents the statistics of
-said intensity measurements.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/intensity/control/long-short.pgf}
-  \end{adjustbox}
-  \caption{Long- and short-term measurement of the controlled intensity at
-    different voltage scales.
-  }\label{fig:intensity_control}
-\end{figure}
-We should note that not all of the statistical measurements are directly
-comparable because of the \SI{20}{\decibel} higher photodiode gain used in
-the typical measurement with \gls{aod}s. Nevertheless we can directly compare
-the uncontrolled and the controlled short- and long-term measurements
-directly. As we divide by the mean $\mu$, the relative standard deviation
-$\sigma/\mu$ is a scale invariant statistical measure and thereby comparable
-through measurements conducted with different photodiode gain setting.
-Comparing the relative standard deviation yields that the intensity drifts
-are small on a short time scale compared to intensity variations in a typcial
-measurement. In contrast the uncontrolled intensity --- also conducted on
-a short-term time scale --- contributes a significant error. In order to
-compare the intensity deviations further we calculate the \gls{rmd} via
-\begin{equation}
-  I_\text{rmd}
-  =
-  \frac{I-\overline{I}}{\overline{I}}
-  \label{eq:relative_mean_deviation}
-\end{equation}
-where $\overline{I}$ denotes the intensity mean. In
-\Cref{fig:intensity_control_rmd} the \gls{rmd} of the controlled and
-uncontrolled as the controlled measurements are presented as boxplots.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/intensity/control/relative-mean-deviation.pgf}
-  \end{adjustbox}
-  \caption{Relative mean deviation of uncontrolled and controlled long- and
-    short-term measurement as well as typical controlled intensity measurement.
-  }\label{fig:intensity_control_rmd}
-\end{figure}
-Boxplots are heavily based on the concept of \gls{iqr}. The \gls{iqr} is a
-scale invariant measure of statistical dispersion and is defined as the
-inverse of the \gls{cdf}. The start and end of the boxes inside a boxplot
-denote the lower (first) quantile $Q_1$ and the upper (third) quantile $Q_3$
-of the \gls{iqr}. Expressed through the \gls{cdf} these read
-\begin{align}
-  Q_1=\text{CDF}^{-1}{\left(\frac{1}{4}\right)} &&
-  Q_3=\text{CDF}^{-1}{\left(\frac{3}{4}\right)}.
-\end{align}
-Alternatively one can define $Q_1$ as the median of the $n$ smallest entries
-and $Q_3$ as the median of the $n$ largest entries where the total dataset
-consists out of $2n$ entries for the even and $2n+1$ entries for the odd case.
-The whiskers below and atop of the boxes are at $Q_1\pm1.5IQR$. Values outside
-this range are usually considered outliers and marked as circles. The median
-is denoted with an orange line. The left boxplot confirms that the
-oscillations of the controlled intensity are negligible for typical intensity
-measurements. Further the right boxplot confirms that the intensity control
-oscillations cover a much smaller range as the uncontrolled oscillations.
-
-\section{Beam profile}
-
-Perpendicular to the error introduced by the imperfect intensity control,
-errors can originate from unideal optical alignment. One way to assess the
-quality of our alignment is to evaluate the spatial profile of the laser beam
-as registered with the \gls{ccd} camera.
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=\textwidth]{../media/setup/intensity-profile.pdf}
-  \caption{The beam is focused onto the \gls{ccd} sensor of the camera.
-  }\label{fig:intensity_profile_setup}
-\end{figure}
-In \Cref{fig:intensity_profile_setup} we present the setup used to measure
-the spatial beam profile. In comparison to the previous setup we replaced
-Photodiode 2 with a \gls{ccd} camera. The \gls{aod}s are configured at a
-center frequency of \SI{100}{\mega\hertz}. The distance between Lens 4 and
-the \gls{ccd} sensor is chosen such that the laser beam is focused onto the
-\gls{ccd} sensor of the camera.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \inputpgf{../figure/intensity/profile}{image.pgf}
-  \end{adjustbox}
-  \caption{Image of the focused laser beam measured with the \gls{ccd} camera.
-  }\label{fig:intensity_spatial_image}
-\end{figure}
-\Cref{fig:intensity_spatial_image} shows an enlarged image patch of the
-complete image capture taken with the \gls{ccd} camera. We can see a strong
-illuminated circular spot in the center of the image with an area of about
-\SI{2.5}{\milli\meter}. The intensity inside the spot seems homogeneous,
-however this is caused by a saturation of the pixels in this area. We could
-reduce the intensity or apply an optical filter to the camera to resolve the
-intensity gradient inside the spot, but only at the cost of the intensity
-distribution around the spot. Around the circular spot we can see a
-diffraction ring. The diffraction ring is well described
-in~\cite{Hertlein2017} and originates from the finite aperture of the
-objectives.
-\begin{figure}[htb]
-  \centering
-  \begin{adjustbox}{width=\textwidth}
-    \input{../figure/intensity/profile/profile.pgf}
-  \end{adjustbox}
-  \caption{One dimensional perpendicular cut of the two dimensional intensity
-    distribution from the two dimensional beam profile in
-    \Cref{fig:intensity_spatial_image} with fitted gaussian curve.
-  }\label{fig:intensity_spatial_profile}
-\end{figure}
-For better comparison of the radial symmetry we performed two perpendicular
-cuts and visualized the one dimensional spatial beam distribution in
-\Cref{fig:intensity_spatial_profile}.
-In \Cref{fig:intensity_spatial_profile} we can clearly observe the effects of
-saturation around the center and how we would expect the intensity to be
-if we could experimentally resolve it in the Gaussian fit. In contrast to the
-ideal Gaussian profile we again observe contributions to the Airy disc around
-the otherwise Gaussian profile causes by the finite aperture. Further we can
-now clearly observe assymmetry from the intensity contributions around the
-Gaussian which means that our alignment is not perfect.
-
-We can confirm the results reported in~\cite{Hertlein2017} that the spatial
-beam profile equals a two dimensional Gaussian combined with a Airy disks
-caused from the finite aperture of the objectives. Further we observe
-slight assymmetries in the diffraction ring suggesting inperfect alignment.
-Though asymetries in the spatial beam profile are present, we do not see any
-further complications as the intensity measurements with the photodiode will
-cover the complete beam profile.
 
 \section{Difference between individual acousto-optic deflectors}
 
@@ -249,7 +17,7 @@ are interested if and how the elements differ.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{../media/setup/aod-socket.png}
-  \caption{Drawing of the used 2D \gls{aod}.
+  \caption{Drawing of the used \gls{2d} \gls{aod}.
   }\label{fig:aod_socket}
 \end{figure}
 A schematic drawing of the \gls{aod} is depicted in \Cref{fig:aod_socket}. We
@@ -304,9 +72,9 @@ respect to the frequency axis. In fact for these configurations the amplitude
 dependence seems to be essentially independent of the frequency dependence.
 We assume that the individual elements are designed for different
 polarisation angles. In order to prove this hypothesis we added a tunable
-$\lambda/2$ retarder plate after Cube 2. Tuning the $\lambda/2$ retarder
-before Cube 2 would change the intensity fraction that gets redirected into
-the beam dump as Cube 2 is a beam splitter sensible to polarisation.
+$\lambda/2$ retarder plate after Cube \num{2}. Tuning the $\lambda/2$ retarder
+before Cube \num{2} would change the intensity fraction that gets redirected into
+the beam dump as Cube \num{2} is a beam splitter sensible to polarisation.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -359,10 +127,10 @@ observe a sinusoidal shaped intensity response of the polarisation angle
 for the \gls{h} and \gls{v} \gls{aod} which seem out of phase by nearly
 \ang{90}.
 
-The 2D \gls{aod} casing allows to rotate the individual \gls{aod} elements. So
-far we choose the rotation angle of the \gls{aod} elements that maximizes the
-intensity transmission at the center frequency. What would we obtain if we
-tilted the rotation angle a bit to the left and to the right?
+The \gls{2d} \gls{aod} casing allows to rotate the individual \gls{aod}
+elements. So far we choose the rotation angle of the \gls{aod} elements that
+maximizes the intensity transmission at the center frequency. What would we
+obtain if we tilted the rotation angle a bit to the left and to the right?
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -380,9 +148,9 @@ angle cause already large deflections of the beam, thus it is not guaranteed
 that the left and right measurements are free from aperture effects.
 Nevertheless we can record that the incident beam angle is an important
 parameter in the intensity transmission of the \gls{aod}s. In particular we
-need to consider the incident beam angle for the 2D \gls{aod} configuration.
-It may make sense to change the setup to a configuration consisting of two
-1D \gls{aod} with a telescope in between.
+need to consider the incident beam angle for the \gls{2d} \gls{aod}
+configuration. It may make sense to change the setup to a configuration
+consisting of two \gls{1d} \gls{aod} with a telescope in between.
 
 \section{2D intensity distribution}
 
@@ -537,3 +305,282 @@ too many factors to consider to describe with a simple analytical model and we
 will further try to work with a model-free optimization procedure in the next
 chapter in order to minimize the intensity transmission variance and produce
 a constant laser intensity in the atom plane.
+
+\section{Diffraction efficiency optimization}
+
+The previous two chapters addressed the characteristics of the \gls{rf}
+signal and the intensity transmission of the \gls{aod}. Therewith the
+groundwork has been set out to finally approach the mission of minimizing the
+intensity variance to obtain a homogenous optical potential.
+
+But how do we minimize the intensity variance? The \gls{dds} permits to read
+$N=1024$ amplitude values from memory. The optimization problem therefore is to
+minimize the variance of the intensity distribution $I(A)$ subject to an
+amplitude vector $A\in{[0,1]}^N$. The conclusions drawn from the intensity
+measurements suggest that we have to expect non-linear, irregular behaviour
+in $I(A)$, and indeed first attempts to model $I(A)$ through polynomial fits,
+multilayer perceptron networks and least-squared minimizations have failed.
+
+During these optimization procedures we observed that changing an amplitude
+value $A_i\in A$ does affect the intensity voltage at subsequent
+$A_{i+1},\dots,A_N$. Fortunately we found that by respecting the amplitude
+order with respect to increasing frequency during optimization we where able
+to bypass these effects. Further we created amplitude segments
+$\left(A_j,\dots,A_{j+m}\right)$ consisting of $m$ ordered amplitude values
+to reduce the optimization time. Optimization then was performed through
+random search which was proven to yield better results as grid
+search~\cite{Bergstra2012}.
+
+\subsubsection{Overview}
+
+First, we want to provide an overview of the final optimization results
+obtained at different hyperparameters for the random search. The
+hyperparameter includes the number of amplitude segments $N/m$ and the target
+intensity.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{overview.pgf}
+  \end{adjustbox}
+  \caption{Minimized intensity variance for different target intensities
+    and number of amplitude segments. We note heavy oscillations for
+    amplitude segments greater than eight.
+  }\label{fig:intensity_optimization_overview}
+\end{figure}
+In \Cref{fig:intensity_optimization_overview} we present the final
+optimization results for target intensities of \SI{800}{\milli\volt},
+\SI{1000}{\milli\volt} and \SI{1200}{\milli\volt} and amplitude segments
+$8,16,32$. We observe heavy oscillations for amplitude segments greater than
+eight. The optimization results using \num{16} amplitude segments performs
+better than the run with \num{32} amplitude segments.
+
+We assume that inductive effects occur when choosing more amplitude segments
+that consolidate a non-linear intensity response. For the sake of simplicity
+we will first limit us to the case of eight amplitude segments.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{intensity-amplitude.pgf}
+  \end{adjustbox}
+  \caption{Final result of the intensity variance minimization and the
+    corresponding amplitude segment values obtained through random search with
+    eight independent amplitude segments.
+  }\label{fig:intensity_optimization_intensity_amplitude}
+\end{figure}
+In \Cref{fig:intensity_optimization_intensity_amplitude} we have a closer
+view on the first column of \Cref{fig:intensity_optimization_overview}. We
+can notice similar characteristics observed in the \gls{rf} signal. In
+particular the more power drop near the center frequency is present and the
+linear power fall off with the frequency in the second half of the frequency
+sweep.
+
+\subsubsection{Process}
+
+We now want to elaborate on the optimization process. We limit ourselves to
+the optimization process with eight amplitude segments as it was the most
+successful one and can be covered completly with eight plots.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{process.pgf}
+  \end{adjustbox}
+  \caption{Intensity and amplitude at different stages of the optimization
+    process. In each column a different amplitude segment is optimized.
+    The different traces in each plot mark the respective iteration.
+  }\label{fig:intensity_optimization_process}
+\end{figure}
+In \Cref{fig:intensity_optimization_process} we see the intensity and
+amplitude at different optimization stages. At each stage one amplitude
+segment is sampled from a uniform distribution over $[0.2,0.8]$. The intensity
+segment associated with this amplitude segment is then used to calculate
+the \gls{mse} and compare it to the previous best \gls{mse}. If the new
+\gls{mse} is less than the previous best \gls{mse} the previous best \gls{mse}
+is updated and the amplitude segment value is saved. This procedure is
+repeated \num{500} times. Every time a new best value was found we saved the
+data. For the diagrams we choose the four most separated iteration steps to
+visualize the process of the optimization.
+
+If we take a look at the succeeding segment from the currently optimized
+amplitude segment we observe that these differ for different amplitude
+values and henceforth confirms that amplitude values are not independent but
+affect subsequent segments.
+
+\subsubsection{Failure}
+
+With the optimization showing reasonable convergence for eight amplitude
+segments we would expect it to improve if we choose a more amplitude segments,
+yet we observed heavy oscillations. In this section we want to check the
+optimization process in the case of \num{32} amplitude segments to investigate
+in possible origins of the optimization failure.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{failure.pgf}
+  \end{adjustbox}
+  \caption{Optimization progress for the 2.,4.,6.,8.,10.\ and 20.\ amplitude
+    segment of the failed optimization run with 32 amplitude segments. We can
+    see that with increasing amplitude segments the non-linear response
+    following the optimized amplitude segment increases.
+  }\label{fig:intensity_optimization_failure}
+\end{figure}
+In \Cref{fig:intensity_optimization_failure} we can see the optimization
+progress for selected amplitude segments of the optimization run with 32
+segments. We observe that with the non-linear response following the actual
+optimized amplitude segment increases more and more.
+
+\subsubsection{Summary}
+
+Our attemps to minimize the intensity variance where of mixed success. One
+the one hand side we were able to minimize the intensity deviation down
+to \SI{100}{\milli\volt} on the other hand we were not able to train any
+model on the intensity response that would allow fast optimization or even
+predicition of the expected intensity response given an amplitude
+configuration.
+
+However we also found out that irregularities arise with increase in the
+number of amplitude segments. We suspect that fast changes of the output
+amplitude draws power that may non deterministicyl affect the next clock
+cycle inside the \gls{dds}. Given that the one dimensional optimizations
+already required multiple hours to run and the non-linear response between
+amplitude segments we do not believe that it is not in the capabilites of the
+\gls{dds} to compensate for the two dimensional intensity distribution
+measured in the previous chapter.
+\chapter{Intensity transmission optimization}
+
+The previous two chapters addressed the characteristics of the \gls{rf}
+signal and the intensity transmission of the \gls{aod}. Therewith the
+groundwork has been set out to finally approach the mission of minimizing the
+intensity variance to obtain a homogenous optical potential.
+
+But how do we minimize the intensity variance? The \gls{dds} permits to read
+$N=1024$ amplitude values from memory. The optimization problem therefore is to
+minimize the variance of the intensity distribution $I(A)$ subject to an
+amplitude vector $A\in{[0,1]}^N$. The conclusions drawn from the intensity
+measurements suggest that we have to expect non-linear, irregular behaviour
+in $I(A)$, and indeed first attempts to model $I(A)$ through polynomial fits,
+multilayer perceptron networks and least-squared minimizations have failed.
+
+During these optimization procedures we observed that changing an amplitude
+value $A_i\in A$ does affect the intensity voltage at subsequent
+$A_{i+1},\dots,A_N$. Fortunately we found that by respecting the amplitude
+order with respect to increasing frequency during optimization we where able
+to bypass these effects. Further we created amplitude segments
+$\left(A_j,\dots,A_{j+m}\right)$ consisting of $m$ ordered amplitude values
+to reduce the optimization time. Optimization then was performed through
+random search which was proven to yield better results as grid
+search~\cite{Bergstra2012}.
+
+\subsubsection{Overview}
+
+First, we want to provide an overview of the final optimization results
+obtained at different hyperparameters for the random search. The
+hyperparameter includes the number of amplitude segments $N/m$ and the target
+intensity.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{overview.pgf}
+  \end{adjustbox}
+  \caption{Minimized intensity variance for different target intensities
+    and number of amplitude segments. We note heavy oscillations for
+    amplitude segments greater than eight.
+  }\label{fig:intensity_optimization_overview}
+\end{figure}
+In \Cref{fig:intensity_optimization_overview} we present the final
+optimization results for target intensities of \SI{800}{\milli\volt},
+\SI{1000}{\milli\volt} and \SI{1200}{\milli\volt} and amplitude segments
+$8,16,32$. We observe heavy oscillations for amplitude segments greater than
+eight. The optimization results using \num{16} amplitude segments performs
+better than the run with \num{32} amplitude segments.
+
+We assume that inductive effects occur when choosing more amplitude segments
+that consolidate a non-linear intensity response. For the sake of simplicity
+we will first limit us to the case of eight amplitude segments.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{intensity-amplitude.pgf}
+  \end{adjustbox}
+  \caption{Final result of the intensity variance minimization and the
+    corresponding amplitude segment values obtained through random search with
+    eight independent amplitude segments.
+  }\label{fig:intensity_optimization_intensity_amplitude}
+\end{figure}
+In \Cref{fig:intensity_optimization_intensity_amplitude} we have a closer
+view on the first column of \Cref{fig:intensity_optimization_overview}. We
+can notice similar characteristics observed in the \gls{rf} signal. In
+particular the more power drop near the center frequency is present and the
+linear power fall off with the frequency in the second half of the frequency
+sweep.
+
+\subsubsection{Process}
+
+We now want to elaborate on the optimization process. We limit ourselves to
+the optimization process with eight amplitude segments as it was the most
+successful one and can be covered completly with eight plots.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+  %  \inputpgf{../figure/intensity/optimization}{process.pgf}
+  \end{adjustbox}
+  \caption{Intensity and amplitude at different stages of the optimization
+    process. In each column a different amplitude segment is optimized.
+    The different traces in each plot mark the respective iteration.
+  }\label{fig:intensity_optimization_process}
+\end{figure}
+In \Cref{fig:intensity_optimization_process} we see the intensity and
+amplitude at different optimization stages. At each stage one amplitude
+segment is sampled from a uniform distribution over $[0.2,0.8]$. The intensity
+segment associated with this amplitude segment is then used to calculate
+the \gls{mse} and compare it to the previous best \gls{mse}. If the new
+\gls{mse} is less than the previous best \gls{mse} the previous best \gls{mse}
+is updated and the amplitude segment value is saved. This procedure is
+repeated \num{500} times. Every time a new best value was found we saved the
+data. For the diagrams we choose the four most separated iteration steps to
+visualize the process of the optimization.
+
+If we take a look at the succeeding segment from the currently optimized
+amplitude segment we observe that these differ for different amplitude
+values and henceforth confirms that amplitude values are not independent but
+affect subsequent segments.
+
+\subsubsection{Failure}
+
+With the optimization showing reasonable convergence for eight amplitude
+segments we would expect it to improve if we choose a more amplitude segments,
+yet we observed heavy oscillations. In this section we want to check the
+optimization process in the case of \num{32} amplitude segments to investigate
+in possible origins of the optimization failure.
+\begin{figure}[htb]
+  \centering
+  \begin{adjustbox}{width=\textwidth}
+    \inputpgf{../figure/intensity/optimization}{failure.pgf}
+  \end{adjustbox}
+  \caption{Optimization progress for the 2.,4.,6.,8.,10.\ and 20.\ amplitude
+    segment of the failed optimization run with \num{32} amplitude segments.
+    We can see that with increasing amplitude segments the non-linear response
+    following the optimized amplitude segment increases.
+  }\label{fig:intensity_optimization_failure}
+\end{figure}
+In \Cref{fig:intensity_optimization_failure} we can see the optimization
+progress for selected amplitude segments of the optimization run with 32
+segments. We observe that with the non-linear response following the actual
+optimized amplitude segment increases more and more.
+
+\subsubsection{Summary}
+
+Our attemps to minimize the intensity variance where of mixed success. One
+the one hand side we were able to minimize the intensity deviation down
+to \SI{100}{\milli\volt} on the other hand we were not able to train any
+model on the intensity response that would allow fast optimization or even
+predicition of the expected intensity response given an amplitude
+configuration.
+
+However we also found out that irregularities arise with increase in the
+number of amplitude segments. We suspect that fast changes of the output
+amplitude draws power that may non deterministicly affect the next clock
+cycle inside the \gls{dds}. Given that the one dimensional optimizations
+already required multiple hours to run and the non-linear response between
+amplitude segments we do not believe that it is not in the capabilites of the
+\gls{dds} to compensate for the two dimensional intensity distribution
+measured in the previous chapter.

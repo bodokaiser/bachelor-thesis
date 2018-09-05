@@ -1,4 +1,4 @@
-\chapter{Characteristic energy scales}
+\chapter{Characteristic energy scales}\label{ch:energy_scales}
 
 \textit{In the previous chapter we focused on the effective potential obtained
 by the superposition of the averaged superposition of the perturbation
@@ -31,14 +31,14 @@ linear harmonic quantum oscillator
 \begin{equation}
   \hat{H}_\text{har}-V_0
   =\frac{\hat{p}^2}{2m}-\frac{1}{2}V_0k^2\hat{x}^2
-  \label{eq:hamiltonian_harmonic_approximation}
+  \label{eq:hamiltonian_harmonic_approximation},
 \end{equation}
 with the well-known energy levels
 \begin{equation}
   E_n=\hbar\omega(2n+1)/2
   \qc
-  \omega=\sqrt{\abs{V_0}/m}k=\sqrt{2\abs{V_0}E_r}/\hbar,
-  \label{eq:energy_harmonic_approximation}
+  \omega=\sqrt{\abs{V_0}/m}k=\sqrt{2\abs{V_0}E_r}/\hbar
+  \label{eq:energy_harmonic_approximation},
 \end{equation}
 where we introduced the recoil energy $E_r=(\hbar k)^2/(2m)$ as an
 atom-independent energy scale. In natural scales of the quantum harmonic
@@ -50,7 +50,7 @@ $n$ to be
   \bra{x}\ket{\psi}
   =
   \frac{\exp(-\frac{1}{2}x^2)}{\sqrt{2^nn!}\pi^{1/4}}H_n(x)
-  \label{eq:wavefunction_harmonic}
+  \label{eq:wavefunction_harmonic},
 \end{equation}
 where $H_n(x)$ is the $n$th Hermite polynomial and the spatial coordinate $x$
 is expessed in natural length units of $xi=(2E_r/\abs{V_0})^{1/4}/k$.
@@ -84,7 +84,7 @@ basics from Ref.~\cite{Roessler2004}. Let
   \vb{R}
   =\bra{\vb{x}}\ket{\vb{R}}
   =\sum_{i=1}^Nn_i\vb{a}_i
-  \qc n_1,\dots,n_N\in\mathbb{Z}
+  \qc n_1,\dots,n_N\in\mathbb{Z},
 \end{equation}
 be an element of the Bravais lattice, i.e.\ a member of the lattice in the
 spatial domain, with $\vb{a}_i$ being the primitive vectors that span the
@@ -94,7 +94,7 @@ point set
   \vb{G}
   =\bra{\vb{p}}\ket{\vb{G}}
   =\sum_{i=1}^Nm_i\vb{b}_i
-  \qc m_1,\dots,m_N\in\mathbb{Z}
+  \qc m_1,\dots,m_N\in\mathbb{Z},
 \end{equation}
 that satisfy the condition $\exp(\vb{R}\cdot\vb{G})=1$, with $\vb{b}_i$ being
 the reciprocal primitive lattice vector. For a simple cubic lattice structure
@@ -119,8 +119,8 @@ Evaluation of \cref{eq:operator_in_reciprocal_lattice} for the specific
 lattice potential found in \cref{eq:potential_lattice} yields
 \begin{equation}
   \bra{G_u}\hat{V}_\text{lat}\ket{G_v}
-  =\frac{1}{4}V_0\left(2\delta^u_v+\delta^u_{v-1}+\delta^s_{u+v}\right),
-  \label{eq:potential_in_reciprocal_lattice}
+  =\frac{1}{4}V_0\left(2\delta^u_v+\delta^u_{v-1}+\delta^s_{u+v}\right)
+  \label{eq:potential_in_reciprocal_lattice},
 \end{equation}
 which we will later use as matrix elements.
 
@@ -132,7 +132,7 @@ function to solve the time-independent Schrödinger equation. Fortunately
 Bloch's theorem states that for a periodic potential
 \begin{equation}
   V_\text{per}(x+a)=V_\text{per}(x)
-  \label{eq:potential_periodic}
+  \label{eq:potential_periodic},
 \end{equation}
 there exists a complete set of wave functions that are energy eigenstates
 of the Hamiltonian
@@ -146,15 +146,15 @@ and each of these Bloch waves can be written into the form
   \bra{x}\ket{\Psi^n_q}
   =\Psi^n_q(x)
   =e^{iqx}\psi^n_q(x)
-  \label{eq:state_bloch}
+  \label{eq:state_bloch},
 \end{equation}
 with $\psi^n_q(x+a)=\psi^n_q(x)$, wave vector $q$ and bandindex $n$. We
 confine the wave number to the first Brillouin zone $\left[-k,+k\right[$,
 also known as the primitive cell of the reciprocal lattice,
 \begin{equation}
   q=\frac{ks}{N}
-  \qc s\in\left[-N,N-1\right]\cap\mathbb{Z},
-  \label{eq:wavenumber_quasi}
+  \qc s\in\left[-N,N-1\right]\cap\mathbb{Z}
+  \label{eq:wavenumber_quasi},
 \end{equation}
 with $N$ being the number of lattice sites. The discretization arises from
 the Born-von Karman boundary condition. For a complete proof of Bloch's
@@ -206,8 +206,8 @@ right hand side while using \cref{eq:potential_in_reciprocal_lattice} and
   E^n_qc^n_{vq}
   =c^n_{vq}
   \frac{(2u+q/k)^2}{2m}E_r+
-  \sum_u c^n_{uq}\bra{G_v}\hat{V}_\text{lat}\ket{G_u},
-  \label{eq:eigenvalue_energy_lattice_explicit}
+  \sum_u c^n_{uq}\bra{G_v}\hat{V}_\text{lat}\ket{G_u}
+  \label{eq:eigenvalue_energy_lattice_explicit},
 \end{equation}
 with recoil energy $E_r=\hbar^2k^2/(2m)$. Using
 \cref{eq:potential_in_reciprocal_lattice} we finally find the matrix elements
@@ -231,7 +231,7 @@ are able to reproduce the energy band structure.
     \toprule
     Lattice sites $N$ & Matrix dimension $M$ & Matrix indices $u,v$ \\
     \midrule
-    51 & 60 & -25,-24,\dots,+24,+25 \\
+    \num{51} & \num{60} & $-25,-24,\dots,+24,+25$ \\
     \bottomrule
   \end{tabular}
   \caption{Parameters used for the lattice Hamiltonian matrix elements to
@@ -287,7 +287,7 @@ lattice site $l$ reads
 \begin{equation}
   \ket{\phi^n_{l}}
   =\frac{1}{\sqrt{N}}\sum_qe^{-iqla}\ket{\Psi^n_{q}}
-  \label{eq:state_wannier_orthodox}
+  \label{eq:state_wannier_orthodox},
 \end{equation}
 where $\ket{\Psi^n_q}$ is the Bloch wave function defined in
 \cref{eq:state_bloch}. The defintion in \cref{eq:state_wannier_orthodox} is
@@ -303,7 +303,7 @@ position operator. The band projector for a band $n$ is defined as
 \begin{equation}
   \hat{P}_n
   =\sum_q\ket{\Psi^n_q}\bra{\Psi^n_q}
-  \label{eq:operator_band_projector}
+  \label{eq:operator_band_projector},
 \end{equation}
 and the band projected position operator just follows as
 \begin{equation}
@@ -315,7 +315,7 @@ The Wannier states are now defined as the eigenstates of the eigenvalue
 equation
 \begin{equation}
   \hat{x}_n\ket{\phi^n_l}=x^n_l\ket{\phi^n_l}
-  \label{eq:eigenvalue_band_projected_position}
+  \label{eq:eigenvalue_band_projected_position},
 \end{equation}
 where $x^n_l$ is the $l$th lattice site in the $n$th energy band. Choosing
 the Bloch functions to find the elements of the band projected position
@@ -324,7 +324,7 @@ operator \cref{eq:operator_band_projected_position} through
   X^{nn^\prime}_{qq^\prime}
   =\bra{\Psi^n_q}\hat{x}_n\ket{\Psi^{n^\prime}_{q^\prime}}
   =\int_0^{Na}\dd{x}\Psi^n_q(x)^*x\Psi^{n^\prime}_{q^\prime}(x)
-  \label{eq:element_band_projected_position}
+  \label{eq:element_band_projected_position},
 \end{equation}
 provides an analytical expression to calculate the matrix elements
 \cite{Bissbort2013}. Let $d^{mn}_{lq}$ be the diagonalized
@@ -344,8 +344,8 @@ tunneling matrix element between neighboring lattice sites. We define the
 hopping from lattice site $l$ to lattice site $l^\prime$ for bandindex $n$ as
 \begin{equation}
   J^n_{l-l^\prime}
-  =-\bra{\phi^n_l}\hat{H}_\text{lat}\ket{\phi^n_{l^\prime}}.
-  \label{eq:element_hopping}
+  =-\bra{\phi^n_l}\hat{H}_\text{lat}\ket{\phi^n_{l^\prime}}
+  \label{eq:element_hopping}.
 \end{equation}
 Using the common definition of the Wannier states
 \cref{eq:state_wannier_orthodox} for \cref{eq:element_hopping} we find
@@ -370,8 +370,8 @@ inverse Fourier transform gives us the energies in terms of the hopping
 probabilites
 \begin{equation}
   E^n_q
-  =\sum_{l-l^\prime}J^n_{l-l^\prime}e^{-iqa(l-l^\prime)},
-  \label{eq:element_energy_hopping}
+  =\sum_{l-l^\prime}J^n_{l-l^\prime}e^{-iqa(l-l^\prime)}
+  \label{eq:element_energy_hopping},
 \end{equation}
 where the sum runs from $l-l^\prime=-N$ to $l-l^\prime=+N$.
 
@@ -383,8 +383,8 @@ neighbour sites~\cite{Rom2009}, thus we can abort the sum in
 \begin{equation}
   E^n_q
   \approx J^n_{l+1-l}e^{-iqa}+J^n_{l-1-l}e^{+iqa}+J^n_{l-l}
-  =J^n_0+2J^n_1\cos(qa),
-  \label{eq:hopping_nn}
+  =J^n_0+2J^n_1\cos(qa)
+  \label{eq:hopping_nn},
 \end{equation}
 where we have used $J^n_{-1}=J^n_{+1}=J_1$ because of translation invariance.
 Evaluation of $J^n_0$ using \cref{eq:element_hopping} tells us that $J^n_0$
@@ -392,15 +392,15 @@ just is the average energy of an energy band. Evaluation of
 \cref{eq:hopping_nn} at $q=0$ and $q=k$ and subtracting the results from
 eachother yields us the tight-binding approximation
 \begin{equation}
-  J^n_1\approx\frac{1}{4}\left(E^n_k-E^n_0\right),
-  \label{eq:hopping_nn_tight}
+  J^n_1\approx\frac{1}{4}\left(E^n_k-E^n_0\right)
+  \label{eq:hopping_nn_tight},
 \end{equation}
 which assumes a $\cos(qa)$ shaped energy band. Further~\cite{Bloch2008}
 reports an analytical proxmity
 \begin{equation}
   J^n_1\approx
   \frac{4}{\sqrt{\pi}}\left(\frac{V_0}{E_r}\right)^{3/4}\exp(-2\sqrt{V_0/E_r})
-  \label{eq:hopping_nn_proximity}
+  \label{eq:hopping_nn_proximity},
 \end{equation}
 to be valid for sinusoidal potentials like \cref{eq:potential_lattice} and
 to be derived from the Mathieu equation. The Mathieu equation can be obtained
@@ -430,7 +430,7 @@ For the third and higher energy bands the numerical evaluation should be used.
   \begin{adjustbox}{width=\textwidth}
     \input{../figure/scale/hopping.pgf}
   \end{adjustbox}
-  \caption{Hopping.
+  \caption{Hopping energies for different neighbour ranges.
   }\label{fig:scale_hopping}
 \end{figure}
 From now on we will use the exact numerical calculation of the hopping energy.
@@ -472,4 +472,3 @@ the now we will take \SI{50}{\kilo\hertz} as an upper bound for generation
 of time-averaged potentials. This relates to a maximum duration of
 \SI{20}{\micro\second} the perturbation laser beam should spent between
 being deflected to the same lattice site.
-

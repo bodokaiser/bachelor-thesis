@@ -1,4 +1,4 @@
-\chapter{Optical potentials}
+\chapter{Optical potentials}\label{ch:optical_potentials}
 
 \textit{In the introduction we emphasized the importance of optical lattices,
 yet we left out many details, for instance, how these optical lattices are
@@ -34,8 +34,8 @@ the single outer electron is approximately described by
 vector and scalar potential through
 \begin{align}
   \vb{E}=-\grad{\Phi}-\pdv{\vb{A}}{t}, &&
-  \vb{B}=\curl{\vb{A}},
-  \label{eq:field_em_potentials}
+  \vb{B}=\curl{\vb{A}}
+  \label{eq:field_em_potentials},
 \end{align}
 where $\vb{E}$ is the electric and $\vb{B}$ the magnetic field component.
 
@@ -45,7 +45,7 @@ difficult to work with. Fortunately Gauge transforms
   \vb{A}\to\vb{A}+\grad{\chi}
   &&
   \Phi\to\Phi-\pdv{\chi}{t}
-  \label{eq:gauge_transform_em}
+  \label{eq:gauge_transform_em},
 \end{align}
 allow us to simplify \cref{eq:hamiltonian_em} by choosing a specific Gauge
 function $\chi(\vb{x},t)$. The Gauge function itself $\chi$ does not amend the
@@ -69,7 +69,7 @@ as no external sources are present~\cite{Jackson2005}. Finally we can rewrite
   \hat{H}_\text{dip}
   =\frac{\hat{\vb{p}}^2}{2m}+\hat{V}_0+\hat{V}_\text{dip}
   =\hat{H}_0+\hat{V}_\text{dip}
-  \label{eq:hamiltonian_dip}
+  \label{eq:hamiltonian_dip},
 \end{equation}
 with the dipole potential
 \begin{equation}
@@ -87,7 +87,7 @@ field of the form
 \begin{equation}
   \vb{E}(t,\vb{x})
   =\vb{E}_0(\vb{x})\cos(\omega t)
-  \label{eq:light_field}
+  \label{eq:light_field},
 \end{equation}
 where $\vb{E}_0(\vb{x})$ should be compatible with Maxwell's equations and
 be approximately constant on atomic length scales to not violate the dipole
@@ -121,7 +121,7 @@ of differential equations
   =
   -\frac{i}{\hbar}\sum_n{c_n(t)}{e^{-i\omega_{nm}t}}
   \bra{m}\hat{V}_\text{dip}\ket{n}
-  \label{eq:differential_equation_population_dynamics}
+  \label{eq:differential_equation_population_dynamics},
 \end{equation}
 with $\omega_{nm}=\omega_n-\omega_m$. One can read
 \cref{eq:differential_equation_population_dynamics} as the rate by which
@@ -135,7 +135,7 @@ transition matrix elements
 \begin{equation}
   \bra{m}\hat{V}_\text{dip}\ket{n}
   =\Omega_{nm}(\vb{x})\cos(\omega t)\hbar
-  \label{eq:elements_dipole_transition_matrix}
+  \label{eq:elements_dipole_transition_matrix},
 \end{equation}
 where we introduced the Rabi frequency
 \begin{equation}
@@ -154,14 +154,14 @@ state $c_g(0)=1,c_e(0)=0$. Under these circumstances the dynamics described in
 \begin{align}
   i\dot{c}_g=\Omega_{ge}c_e(t)\cos(\omega t)e^{+i\omega_0 t} &&
   i\dot{c}_e=\Omega_{ge}c_g(t)\cos(\omega t)e^{-i\omega_0 t}
-  \label{eq:differential_equation_population_dynamics_two_state_system}
+  \label{eq:differential_equation_population_dynamics_two_state_system}.
 \end{align}
 Writing $\cos(\omega t)$ in terms of exponential functions and dropping
 $e^{\pm i(\omega+\omega_{ge})t}$ yields the so-called \gls{rwa}
 \begin{align}
   i\dot{c}_g\approx\frac{\Omega_{ge}}{2}c_e(t)e^{+i\Delta\omega t} &&
   i\dot{c}_e\approx\frac{\Omega_{ge}}{2}c_g(t)e^{-i\Delta\omega t}
-  \label{eq:differential_equation_population_dynamics_two_state_system_rwa}
+  \label{eq:differential_equation_population_dynamics_two_state_system_rwa},
 \end{align}
 where we introduced the frequency detuning
 $\Delta\omega=\abs{\omega-\omega_0}$. The \gls{rwa} is motivated by the fact
@@ -183,7 +183,7 @@ can diagonalize the Hamiltonian and find the energy eigenvalues to be
   =\frac{\hbar}{2}\left(-\Delta\omega\mp\sqrt{\Omega_{ge}^2+\Delta\omega^2}\right)
   \approx
   \mp\frac{\hbar\Omega_{ge}^2}{4\Delta\omega}
-  \label{eq:eigenvalues_energy_light_shift}
+  \label{eq:eigenvalues_energy_light_shift},
 \end{equation}
 where we applied a Taylor expansion for $\Omega_{ge}/\Delta\omega\ll1$ around
 $\Omega_{ge}/\Delta\omega=0$ and omitted terms of higher order.
@@ -196,7 +196,7 @@ effective periodic lattice potential
   \mp\frac{\hbar\Omega_{ge}^2(\vb{x})}{4\Delta\omega}
   =
   \mp\frac{d_0^2E_0^2(\vb{x})}{4\hbar\Delta\omega}
-  \label{eq:potential_lattice}
+  \label{eq:potential_lattice},
 \end{equation}
 with dipole element $d_0$. The sign has to be chosen with respect to the
 direction of the laser detuning from resonance. If the laser is red-shifted
@@ -224,14 +224,14 @@ described by
   \vb{E}_0\frac{w(0)}{w(z)}
   \exp{-\frac{r^2}{w{(z)}^2}}
   \exp{-ik\left(z+\frac{r^2}{2R(z)}-\arctan(\frac{z}{z_R})\right)}
-  \label{eq:gaussian_beam}
+  \label{eq:gaussian_beam},
 \end{equation}
 where $w{(z)}$ is the waist radius, $z_R=\pi w{(0)}^2/\lambda$ the Rayleigh
 range and $R(z)$ the radius of curvature of the beam's wavefront at position
 $z$.
 \begin{figure}[htb]
   \centering
-  \includegraphics[width=\textwidth]{../media/image/gaussian-beam.pdf}
+  \includegraphics[width=.8\textwidth]{../media/image/gaussian-beam.pdf}
   \caption{Illustration of Gaussian beam parameters from Ref.~\cite{Aleph2014}
     translated into English with changed radius of curvature.
   }\label{fig:gaussian_beam}
@@ -250,7 +250,6 @@ evolve according to
   R{(z)}=z{\left[1+{\left(\frac{z_R}{z}\right)}^2\right]}
   \label{eq:gaussian_beam_evolvement}.
 \end{align}
-
 Fortunately \cref{eq:potential_lattice} only depends on the absolute
 square of the electric field, thus we can drop the complex exponential from
 \cref{eq:gaussian_beam} to find an expression for the Gaussian intensity
@@ -264,7 +263,7 @@ distribution
   =
   I_0
   \frac{\exp{-\frac{2r^2}{w{(z)}^2}}}{1+{\left(\frac{z}{z_R}\right)}^2}
-  \label{eq:gaussian_intensity}
+  \label{eq:gaussian_intensity},
 \end{equation}
 where $I_0$ is the maximum intensity at $r=z=0$.
 
@@ -289,7 +288,7 @@ Hence, the intensity distribution equals
   =
   4I_0\cos^2(kz)
   \frac{\exp{-\frac{2r^2}{w{(z)}^2}}}{1+{\left(\frac{z}{z_R}\right)}^2}
-  \label{eq:lattice_intensity}
+  \label{eq:lattice_intensity},
 \end{equation}
 caused by the constructive interference.
 \begin{table}[htb]
@@ -322,7 +321,7 @@ have $r/w(z)\ll1$ and can approximate \cref{eq:lattice_intensity}
   I(r,z)
   \approx
   4I_0\cos^2(kz)
-  \label{eq:gaussian_intensity_approx}
+  \label{eq:gaussian_intensity_approx},
 \end{equation}
 which we will use from now on as the intensity distribution for \gls{1d}
 optical lattices.

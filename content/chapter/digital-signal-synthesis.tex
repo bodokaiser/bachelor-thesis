@@ -24,7 +24,7 @@ accumulator increment
   \Delta\varphi
   =
   \left\lceil\frac{f_\text{out}}{f_\text{sys}}2^N\right\rceil
-  \label{eq:dds_phase_increment}
+  \label{eq:dds_phase_increment},
 \end{equation}
 where $N$ denotes the number of bits the phase accumulator can store and
 $\lceil\cdot\rceil$ is the ceiling function.
@@ -170,8 +170,8 @@ Phase jitter is created when one configures an output frequency for which
 $\Delta\varphi$ is not a divider of $2^N$. In this case a phase error builds
 up in each clock cycle~\cite{Vankka2013}. According to
 \begin{equation}
-  \frac{f_\text{out}}{f_\text{sys}}2^N-\Delta\varphi,
-  \label{eq:dds_phase_error}
+  \frac{f_\text{out}}{f_\text{sys}}2^N-\Delta\varphi
+  \label{eq:dds_phase_error},
 \end{equation}
 with the phase accumulator increment $\Delta\varphi$ defined in
 \cref{eq:dds_phase_increment}, we have a phase error of $.4$ per clock cycle
@@ -223,8 +223,8 @@ discrete-time signal obtained from amplitude lookup table of the \gls{dds}
   x(t)
   =A(t)\sum_n \delta(t-nT)
   =\sum_n A(nT)\delta(t-nT)
-  =\sum_n A_n\delta(t-nT),
-  \label{eq:signal_sampled}
+  =\sum_n A_n\delta(t-nT)
+  \label{eq:signal_sampled},
 \end{equation}
 where we define the delta distribution to be
 \begin{align}
@@ -233,8 +233,8 @@ where we define the delta distribution to be
   \begin{cases}
     \infty, & \text{if }t=0\\
     0, & \text{otherwise}
-  \end{cases},
-  \label{eq:delta}
+  \end{cases}
+  \label{eq:delta},
 \end{align}
 and the sum is evaluated over the total number of samples and
 $T=1/f_\text{sys}$ denotes the sampling period. Most \gls{dac} --- including
@@ -244,8 +244,8 @@ one sample interval, this can be expressed by
 \begin{equation}
   y(t)
   =
-  \sum_n A_n\rect\left(\frac{t-Tn}{T}\right),
-  \label{eq:signal_reconstructed}
+  \sum_n A_n\rect\left(\frac{t-Tn}{T}\right)
+  \label{eq:signal_reconstructed},
 \end{equation}
 where the sum has to be taken over the number of sampled points, and
 \begin{align}
@@ -254,8 +254,8 @@ where the sum has to be taken over the number of sampled points, and
   \begin{cases}
     1, & \text{if }0\leq t<1\\
     0, & \text{otherwise}
-  \end{cases},
-  \label{eq:rect}
+  \end{cases}
+  \label{eq:rect},
 \end{align}
 being the piecewise-constant output signal of the \gls{dac}. The \gls{dac}
 output can be modeleled through a linear transfer function $h$ that relates
@@ -282,16 +282,16 @@ where we define the $\sinc$ function to be
   \begin{cases}
     \frac{\sin(x)}{x}, & t\in\mathbb{R}\setminus\{0\}\\
     1, & t=0
-  \end{cases}.
-  \label{eq:sinc}
+  \end{cases}
+  \label{eq:sinc}.
 \end{align}
 According to the Convolution theorem the convolution of two functions in the
 time domain equals the product of the two functions in the frequency domain,
 thus by using
 \begin{equation}
   Y(\omega)
-  =X(\omega)H(\omega),
-  \label{eq:transfer_fourier}
+  =X(\omega)H(\omega)
+  \label{eq:transfer_fourier},
 \end{equation}
 \cref{eq:signal_sampled_fourier} and \cref{eq:signal_reconstructed_fourier},
 we can easily read of the transfer function in the frequency domain
