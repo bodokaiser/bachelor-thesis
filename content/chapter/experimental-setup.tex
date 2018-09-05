@@ -1,31 +1,34 @@
 \chapter{Experimental setup}\label{ch:experimental_setup}
 
-The exerimental setup was largely adopted from~\cite{Hertlein2017}. Amendments
-made include the \gls{rf} signal source of the \gls{aod} and an additional
-photodiode to measure the deflected beam intensity.
+The exerimental setup was largely adopted from Ref.~\cite{Hertlein2017} and we
+will only give a brief summary including a short characterization. Amendments
+we made include the \gls{rf} signal source of the \gls{aod}.
 
 \section{Optics}
 
-The optical setup can be disected into a closed first section that reduces
-the power of the $\SI{532}{\nano\meter}$ laser source from $\SI{10}{\watt}$
-to below $\SI{2}{\milli\watt}$ and includes an \gls{aom} for intensity
-regulation, and an open second section for beam deflection.
-Both sections are connected through a \gls{smf}.
+The optical setup can be disected into two parts: a closed first section that
+reduces the power of the $\SI{532}{\nano\meter}$ laser source from
+$\SI{10}{\watt}$ to below $\SI{2}{\milli\watt}$, it also includes an \gls{aom}
+for intensity regulation. The second section is the actual setup where a
+\gls{2d} \gls{aod} is used to manipulate the angle of the laser beam in order
+to dynamically control the position of the tightly-focused laser beam in the
+imaging plane. Both sections are connected through a \gls{smf}.
 
-\subsection{Power reduction}\label{subsec:setup_power_reduction}
+\subsection{First section: power reduction}\label{subsec:setup_power_reduction}
 
 Because of safety concerns the power reduction section is confined into a
 visually sealed box housing. \Cref{fig:setup_power_reduction} reveals the
-inside of the power reduction box.
+inside of the power reduction setup.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{../figure/setup/power-reduction.pdf}
   \caption{Optical configuration of the power reduction section.
   }\label{fig:setup_power_reduction}
 \end{figure}
-The laser beam leaving the laser source is polarized by a $\lambda/2$ retarder
-plate such that the succeeding high power beamsplitter diverts the majority
-of the beam power into a beam dump. Afterwards Mirror 1 and Mirror 2 direct
+The laser beam leaving the laser source is linearyly polarized. In order to
+divert the majority of the power into a beam dump we use a $\lambda/2$
+retarder plate and a high-power polarizing beam splitter. Afterwards Mirror
+\num{1} and Mirror \num{2} direct
 the beam towards the center of a $2:1$ telescope composed of Lens 1 and
 Lens 2. An \gls{aom} diffracts the laser beam into multiple orders. Mirror 3
 and Mirror 4 project theses orders onto a pinhole which is configured to
