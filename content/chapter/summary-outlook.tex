@@ -1,8 +1,21 @@
-\chapter{Conclusion}
+\chapter{Summary and outlook}
 
-\subsubsection{Summary}
-
-\subsubsection{Outlook}
+We began this thesis with an introduction to the field of ultracold atoms
+in optical lattice and motivated the need for local time-averaged optical
+potentials as an alternative to harmonic traps as well as a pathway for new
+potential dynamics. From there we went on to the physics of optical lattices
+and atoms in optical lattices, in order to obtain an understanding of the
+requirements placed on our technical implementation. In this context we found
+that the deflection of our optical perurbation needs to operate on a time
+scale of at least \SI{50}{\kilo\hertz}. We later found that --- at least in
+theory --- the \gls{ad9910} is capable of operating on such time scales.
+However, the maximum system clock of the \gls{ad9910} limits the number of
+output frequencies at such time scales, such that it would only be possible
+to create the presented time-averaged barrier potential for the \gls{1d} case.
+Nevertheless we did not find any evidence in the theory of digital signal
+synthesis, why it should not be possible to construct a \gls{dds} that runs at
+a higher system clock in order to sample sufficient frequency points even for
+the \gls{2d} case.
 
 It remains unclear if the \gls{aod} is designed to have a homogeneous
 intensity transmission when supplied with sufficient power or intensity

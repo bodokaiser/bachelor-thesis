@@ -48,11 +48,7 @@ table and output a sawtooth output signal by suppling the phase accumulator
 output directly to the \gls{dac} or a square wave signal output by suppling
 the most significant bit directly. Finally a \gls{dac} converts the digital
 amplitude value to an analog signal. An optional analog filter can be used to
-smooth the discrete output. \Cref{tab:dds_parameters} discloses system
-parameters used for our \gls{dds} model and the \gls{ad9910} we use in our
-setup~\cite{AD9910}. Except for the precision which in practice is not the
-same accross the phase accumulator, lookup table and \gls{dac} our model
-parameters are choosen to be similar to the ones used in the setup.
+smooth the discrete output.
 \begin{table}[htb]
   \centering
   \begin{tabular}{ccc}
@@ -77,9 +73,13 @@ parameters are choosen to be similar to the ones used in the setup.
     used in the \gls{ad9910}.
   }\label{tab:dds_parameters}
 \end{table}
-In \Cref{fig:dds_simple_output} the signal of our model \gls{dds} at different
-processing stages with the model parameters from \cref{tab:dds_parameters} are
-illustrated.
+\Cref{tab:dds_parameters} discloses system parameters used for our \gls{dds}
+model and the \gls{ad9910} we use in our setup~\cite{AD9910}. Except for the
+precision which in practice is not the same accross the phase accumulator,
+lookup table and \gls{dac} our model parameters are choosen to be similar to
+the ones used in the setup. In \Cref{fig:dds_simple_output} the signal of our
+model \gls{dds} at different processing stages with the model parameters
+from \cref{tab:dds_parameters} are illustrated.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -112,26 +112,24 @@ sampling theorem.
   \centering
   \includegraphics[width=\textwidth]
   {../figure/digital-signal-synthesis/clock-generation.pdf}
-  \caption{Clock generation signal generation with \gls{pll} and multiplier.
-    The phase detector compares the output system phase with the reference
-    phase and yields a non-linear error response. The low-pass filter removes
-    fast oscillations. The \gls{vco} changes the output phase in dependence
-    of the error response. Finally system and reference phase will go in lock.
+  \caption{Block diagram of the system clock generation from reference
+    clock through \gls{pll} and divider.
     }\label{fig:dds_clock_generation}
 \end{figure}
 In \Cref{fig:dds_clock_generation} the system clock generation from a
 reference signal is illustrated. The phase detector yields a non-linear error
-response comparing the output signal phase with the reference signal phase.
-After a low-pass filter removes fast oscillations a \gls{vco} changes its
-phase proportional to the error signal. Finally a frequency multiplier creates
-harmonics of the reference frequency and extracts a programmed frequency
-multiple of $M$ such that the system frequency relates to the reference
-clock by $f_\text{sys}=Mf_\text{ref}$ with $\mathbb{N}\ni M>1$.
+response comparing the phase of the \gls{vco} with the phase of the reference
+signal. A low-pass filter removes fast oscillations from the phase detector
+output. The \gls{vco} changes its phase according to the error signal. One can
+use a system clock of a multiple frequency of the reference clock by using
+a frequency divider in between the phase detector and the output of the
+\gls{vco}. A divider of $M\in\mathbb{N}$ results in a system clock running
+at $f_\text{sys}=Mf_\text{ref}$.
 
 \subsection{Parameter modulation}
 
 So far we only discussed the case of frequency modulation of the generated
-output signal, however,wWe will see that it can be easily extended to support
+output signal, however, we will see that it can be easily extended to support
 amplitude and phase modulation too.
 \begin{figure}[htb]
   \centering
@@ -139,7 +137,7 @@ amplitude and phase modulation too.
   {../figure/digital-signal-synthesis/modulation-architecture.pdf}
   \caption{\gls{dds} architecture supporting modulation of frequency,
     amplitude and phase offset parameters. Phase accumulator increment
-    $\Delta\varphi(t)$ is now time dependent. The phase offset $\varphi_0(t)$
+    $\Delta\varphi_n(t)$ is now time dependent. The phase offset $\varphi_n(t)$
     is also time dependent and is added as a last step to the phase
     accumulator before supplied to the \gls{dac}. The time dependent amplitude
     parameter $A_n(t)$ is multiplied with the amplitude obtained from the
@@ -162,7 +160,7 @@ digital signal synthesis has to offer. Yet we know that every technical design
 involves its unqiue set of compromises. One important part in any engineering
 process is to carefully evaluate the implications of these compromises. In
 that sense we will discuss the side-effects arising from the digital nature of
-digital signal synthesis and what methods there exists to reduce them.
+digital signal synthesis and what methods exist to reduce them.
 
 \subsubsection{Phase jitter}
 
@@ -174,8 +172,8 @@ up in each clock cycle~\cite{Vankka2013}. According to
   \label{eq:dds_phase_error},
 \end{equation}
 with the phase accumulator increment $\Delta\varphi$ defined in
-\cref{eq:dds_phase_increment}, we have a phase error of $.4$ per clock cycle
-for the model system parameters listed in \Cref{tab:dds_parameters}. 
+\cref{eq:dds_phase_increment}, we have a phase error of \num{0.4} per clock
+cycle for the model system parameters listed in \Cref{tab:dds_parameters}. 
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -193,8 +191,8 @@ accumulator value yields zero for the phase error defined in
 first row of \Cref{fig:dds_phase_error} we can see how the phase error builds
 up with every clock cycle. After $255$ cycles the phase error resets. In the
 second row we can see how the output signal with phase error differs from the
-idea output signal where no phase error is present. In the last row we see the
-power spectrum of the ideal and erroneous output signal. Because the
+ideal output signal where no phase error is present. In the last row we see
+the power spectrum of the ideal and erroneous output signal. Because the
 instantaneous frequency relates to the change in phase of a periodic signal,
 we can see how the linear increasing phase error shifts the output frequency
 to the right.
@@ -210,15 +208,16 @@ $\pi/4$ to $2\pi$. Sophisticated compressions methods allow compression ratios
 up to 165:1~\cite{Cordesses2004} so that in practice phase truncation is not a
 problem.
 
-There of course exists other sources of signal imperfection from which
-many can be described analytically~\cite{Goldberg1994}. 
+There of course exists other sources of signal imperfection, for instance
+because of \gls{pll} errors, not covered in this section from which many can
+be described analytically~\cite{Goldberg1994}. 
 
 \section{Frequency response}
 
 Beside the previously discussed signal shape deviations caused by finite
 precision, sampling theory predicts a $\sinc$ frequency response of
 the amplitude for the \gls{dac}~\cite{Oppenheim1997}. Let us considers the
-discrete-time signal obtained from amplitude lookup table of the \gls{dds}
+discrete-time signal obtained from the amplitude lookup table of the \gls{dds}
 \begin{equation}
   x(t)
   =A(t)\sum_n \delta(t-nT)
@@ -307,7 +306,7 @@ the output frequency $f_\text{out}$
   =\sinc^2\left(\pi\frac{f_\text{out}}{f_\text{sys}}\right).
 \end{equation}
 We visualized the frequency roll-off of the \gls{dac} in
-\Cref{fig:dds_dac_response} from zero to the Nyqiost frequency
+\Cref{fig:dds_dac_response} from zero to the Nyquist frequency
 $f_\text{sys}/2$.
 \begin{figure}[htb]
   \centering
@@ -320,25 +319,22 @@ $f_\text{sys}/2$.
     for the later operating range of the \gls{dds}.
   }\label{fig:dds_dac_response}
 \end{figure}
-For the parameters used in \Cref{tab:dds_parameters},
-$f_\text{sys}=\SI{1}{\giga\hertz}$, we can also read the relative frequency
-scale as \si{\giga\hertz}. In the second plot we show the frequency range
-\SIrange{80}{120}{\mega\hertz} which we will use as the operating range
-for our \gls{dds}. For said operating range the power falls off linearly by
-about \SI{2.6}{\percent}.
+In the second plot we show the frequency range \SIrange{80}{120}{\mega\hertz}
+which we will use as the operating range for our \gls{dds}. For said operating
+range the power falls off linearly by about \SI{2.6}{\percent}.
 
-\section{Digital ramp and playback}
+\section{Memory playback}
 
-In this last section we will discuss frequency and amplitude modulation by
-the digital ramp and memory playback integrated into the \gls{ad9910},
-therefore the following insights will be very specific to the \gls{ad9910}.
-The digital ramp is used to implement sweep modulation with constant
-increments. In our case we will use the digital ramp to sweep the frequency
-applied to the \gls{aod} from \SIrange{80}{120}{\mega\hertz}. The playback
-mode allows modulation from memory. We can use it to define up to \num{1024}
-distinct amplitude values in order to indirectly modulate efficiency of the
-diffraction of the \gls{aod}. Both digital ramp and memory playback are
-controled by a timer that is clocked with
+In this and the next section we will discuss frequency and amplitude
+modulation by the digital ramp and memory playback integrated into the
+\gls{ad9910}, therefore the following insights will be very specific to the
+\gls{ad9910}. The digital ramp is used to implement sweep modulation with
+constant increments. In our case we will use the digital ramp to sweep the
+frequency applied to the \gls{aod} from \SIrange{80}{120}{\mega\hertz}. The
+playback mode allows modulation from memory. We can use it to define up to
+\num{1024} distinct amplitude values in order to indirectly modulate the
+efficiency of the diffraction of the \gls{aod}. Both digital ramp and memory
+playback are controled by a timer that is clocked with
 \begin{equation}
   f_{\text{timer}}
   =f_{\text{sys}}/4
@@ -379,7 +375,7 @@ $T$ will limit the duration of the digital ramp as we will see later.
     \midrule
     \num{1} &
     \SI{4}{\nano\second} &
-    \SI{4.096}{\milli\second} \\
+    \SI{4.096}{\micro\second} \\
     \num{65 536} &
     \SI{262.144}{\micro\second} &
     \SI{268.435456}{\milli\second} \\
@@ -390,6 +386,8 @@ $T$ will limit the duration of the digital ramp as we will see later.
   $f_\text{sys}=\SI{1}{\giga\hertz}$.
   }\label{tab:dds_playback_rate}
 \end{table}
+
+\section{Digital ramp}
 
 The digital ramp allows amplitude, frequency or phase offset modulation with
 constant increments. In our setup we use the digital ramp to sweep the
@@ -506,7 +504,7 @@ we can calculate the minimal and maximal durations times for the \gls{dds}.
   \centering
   \begin{tabular}{ccc}
     \toprule
-    Memory Words $N$ & Playback Rate $P$ & Duration $T$ \\
+    Memory Words $N$ & Playback Rate $P$ & Maximum Duration $T$ \\
     \midrule
     \num{1} & \num{1} & \SI{4}{\nano\second} \\
     \num{1024} & \num{1} & \SI{4}{\micro\second} \\
@@ -520,19 +518,18 @@ we can calculate the minimal and maximal durations times for the \gls{dds}.
 \end{table}
 In \Cref{tab:dds_time_scale} we are presented the possible time scales
 imposed by the playback duration time of the \gls{ad9910}. From
-\cref{ch:energy_scales} we know that a good time scale would be about
-\SI{10}{\nano\second}. We can see that for $P=1$ and $N=2$ we could --- in
-principle --- achieve a duration time of below $\SI{10}{\nano\second}$ and
-realize a \gls{1d} potential barrier with two distinct frequencyes as
-illustrated in \cref{ch:optical_potentials}. Using the linear model on how
-the frequency translates to a spatial position offset,
-\cref{eq:spatial_position_frequency}, disclosed in Ref.~\cite{Hertlein2017}
-and neglecting the frequency dependency of the power amplifier, the frequency
-resolution of $\Delta f=\SI{230}{\milli\hertz}$ translates to a spatial
-resolution of about
+\cref{ch:energy_scales} we know that we need to operate on a time scale of below
+\SI{10}{\micro\second}. We can see that for $P=1$ and $N=1024$ we could --- in
+principle --- achieve such duration times. If we use the memory playback to
+modulate the frequencies, we could address up to \num{1024} distinct positions
+on the lattice. The frequency resolution of the \gls{ad9910} is given with
+$\Delta f=\SI{230}{\milli\hertz}$~\cite{AD9910} which translates to a spatial
+resolution using \cref{eq:spatial_position_frequency} of about
 \begin{equation}
   \Delta x\approx \Delta y\approx\SI{8}{\pico\meter}
-  \label{eq:spatial_resolution}.
+  \label{eq:spatial_resolution},
 \end{equation}
-We conclude that there are other effects that limit the spatial resolution
-before \cref{eq:spatial_resolution} will become relevant.
+which is smaller than the actual laser wavelength. We therefore conclude that
+the frequency and time resolution of the \gls{dds} are in theory sufficient
+to implement the time-averaged perturbation potentials discussed in
+\cref{ch:optical_potentials}.
