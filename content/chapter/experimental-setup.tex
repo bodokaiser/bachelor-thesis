@@ -6,11 +6,33 @@ we made include the \gls{rf} signal source of the \gls{aod}.
 
 \section{Optics}
 
-\subsection{Acousto-optics}
+We start by describing the optical aspects of our setup. The main component
+of this work is the \gls{aod} we will describe some of its properties below
+and then head on to the optical setup.
 
-\subsubsection{Modulators}
+\subsection{Acousto-optics deflectors}
 
-\subsubsection{Deflectors}
+Under the assumption of a light polarized perpendicular or parallel to the
+elastic waves under normal incident angle Ref.~\cite{Royer1999} reports that
+the acousto-optic acts as a diffraction gratting with
+\begin{equation}
+  \sin\theta_n=\pm n\frac{\lambda}{\Lambda}
+  \label{eq:angle_gratting},
+\end{equation}
+where $\theta_n$ denotes the angle of the $n$th diffraction order, $\lambda$
+the laser wavelength and $\Lambda$ the wavelength of the elastic wave inside
+the acousto-optic crystal.
+
+Ref.~\cite{Hertlein2017}
+discloses a linear model for the spatial resolution in the atomic plane in
+terms of the \gls{aod} frequencies
+\begin{align}
+  x(f_h)/\si{\micro\meter}=3.66\frac{f_h}{\SI{1}{\mega\hertz}}-379 &&
+  y(f_v)/\si{\micro\meter}=3.62\frac{f_v}{\SI{1}{\mega\hertz}}-360
+  \label{eq:spatial_position_frequency},
+\end{align}
+wherein $f_h,f_v$ denote the frequencies applied the \gls{h} respective
+\gls{v} \gls{aod}.
 
 \subsection{Setup}
 
