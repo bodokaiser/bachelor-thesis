@@ -18,11 +18,11 @@ observe short- and long-term oscillations over a large intensity range.
 \end{figure}
 The setup used to record the intensity evolutions is disclosed in
 \Cref{fig:intensity_control_setup}. It differs from the optical setup
-described in \cref{ch:experimental_setup} by the absence of the \gls{aod}
-and the relocation of Photodiode 2 at the end of the laser beam. The
-photodiode gain of Photodiode 2 was lowered from \SI{70}{\decibel} to
+described in \Cref{ch:experimental_setup} by the absence of the \gls{aod}
+and the relocation of Photodiode \num{2} at the end of the laser beam. The
+photodiode gain of Photodiode \num{2} was lowered from \SI{70}{\decibel} to
 \SI{50}{\decibel} because the lack of \gls{aod}s would otherwise cause the
-photodiode to saturate.
+photodiode to saturate due to higher intensities.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{../media/setup/intensity-control.pdf}
@@ -32,17 +32,17 @@ photodiode to saturate.
 \end{figure}
 In order to to estimate the error contribution due to imperfect intensity
 regulation, we will conduct a short- and a long-term measurement of the
-controlled intensity. Technically a typical intensity measurement takes about
+stabilized intensity. Technically a typical photodiode measurement takes about
 a fraction of a millisecond, yet we can decide on different intervals between
-the measurements in order to separate local from global trends like the ones
-noted in the uncontrolled meausrement. \Cref{tab:intensity_control_times}
-summarizes the different time scales for the conducted short- and long-term
-measurement of the intensity control.
+the measurements in order to separate short-term from long-term trends like
+the ones noted in the uncontrolled meausrement.
+\Cref{tab:intensity_control_times} summarizes the different time scales for
+the conducted short- and long-term measurement of the intensity control.
 \begin{table}[htb]
   \centering
   \begin{tabular}{cccc}
     \toprule
-    & Short & Long & Typical \\
+    & Short & Long & \gls{aod} \\
     \midrule
     Interval &
     \SI{10}{\second} &
@@ -55,7 +55,7 @@ measurement of the intensity control.
     \bottomrule
   \end{tabular}
   \caption{Interval and duration times of the short- and long-term measurement
-    as well as a typical sweep measurement.
+    as well as a typical \gls{aod} frequency sweep measurement.
   }\label{tab:intensity_control_times}
 \end{table}
 The voltage time series for both intensity control measurements are presented
@@ -67,7 +67,7 @@ that the intensity evolution performs periodic oscillations.
   \centering
   \begin{tabular}{lcccc}
     \toprule
-    Measure & Uncontrolled & Long & Short & Typical \\
+    Measure & Not-Stabilized & Long & Short & \gls{aod} \\
     \midrule
     Mean $\mu$ &
     \SI{8.45}{\volt} &
@@ -96,18 +96,18 @@ that the intensity evolution performs periodic oscillations.
     \SI{27.69}{\percent} \\
     \bottomrule
   \end{tabular}
-  \caption{Descriptive statistics of uncontrolled and controlled short- and
-    long-term intensity evolutions as well as a typical intensity measurement
-    with \gls{aod}s for comparison.
+  \caption{Descriptive statistics of not-stabilized and actively stabilized
+    short- and long-term intensity evolutions as well as a typical \gls{aod}
+    frequency sweep measurement for comparison.
   }\label{tab:intensity_control_statistics}
 \end{table}
 Overall we can confirm that the intensity control loop successfully holds the
 intensity mean, though with small oscillations. In order to estimate the
-relevance for these small oscillations of the controlled intensity for later
-measurements, we selected an measurement of the intensity transmission
-response of the \gls{aod} subject to constant frequency increments for
-comparison. \Cref{tab:intensity_control_statistics} presents the statistics of
-said intensity measurements.
+relevance of these small oscillations of the controlled intensity for later
+measurements, we performed a measurement of the intensity variations introduced
+by the \gls{aod} subject to constant frequency increments for comparison.
+\Cref{tab:intensity_control_statistics} presents the statistics of said
+intensity measurements.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -119,16 +119,15 @@ said intensity measurements.
 \end{figure}
 We should note that not all of the statistical measurements are directly
 comparable because of the \SI{20}{\decibel} higher photodiode gain used in
-the typical measurement with \gls{aod}s. Nevertheless we can directly compare
+the \gls{aod} frequency sweep measurement. Nevertheless we can directly compare
 the uncontrolled and the controlled short- and long-term measurements
 directly. As we divide by the mean $\mu$, the relative standard deviation
 $\sigma/\mu$ is a scale invariant statistical measure and thereby comparable
 through measurements conducted with different photodiode gain setting.
 Comparing the relative standard deviation yields that the intensity drifts
 are small on a short time scale compared to intensity variations in a typcial
-measurement. In contrast the uncontrolled intensity --- also conducted on
-a short-term time scale --- contributes a significant error. In order to
-compare the intensity deviations further we calculate the \gls{rmd} via
+measurement. In order to compare the intensity deviations further we calculate
+the \gls{rmd} via
 \begin{equation}
   I_\text{rmd}
   =
@@ -136,15 +135,16 @@ compare the intensity deviations further we calculate the \gls{rmd} via
   \label{eq:relative_mean_deviation},
 \end{equation}
 where $\overline{I}$ denotes the intensity mean. In
-\Cref{fig:intensity_control_rmd} the \gls{rmd} of the controlled and
-uncontrolled as the controlled measurements are presented as boxplots.
+\Cref{fig:intensity_control_rmd} the \gls{rmd} of the not-stabilized and
+the actively stabilized measurements are presented as boxplots.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
     \input{../figure/intensity/control/relative-mean-deviation.pgf}
   \end{adjustbox}
-  \caption{Relative mean deviation of uncontrolled and controlled long- and
-    short-term measurement as well as typical controlled intensity measurement.
+  \caption{\gls{rmd} of not-stabilized and actively stabilized long- and
+    short-term measurement as well an actively stabilized \gls{aod}
+    intensity measurement.
   }\label{fig:intensity_control_rmd}
 \end{figure}
 Boxplots are heavily based on the concept of \gls{iqr}. The \gls{iqr} is a
@@ -159,20 +159,20 @@ of the \gls{iqr}. Expressed through the \gls{cdf} these read
 Alternatively one can define $Q_1$ as the median of the $n$ smallest entries
 and $Q_3$ as the median of the $n$ largest entries where the total dataset
 consists out of $2n$ entries for the even and $2n+1$ entries for the odd case.
-The whiskers below and atop of the boxes are at $Q_1\pm1.5IQR$. Values outside
-this range are usually considered outliers and marked as circles. The median
-is denoted with an orange line. The left boxplot confirms that the
+The whiskers below and atop of the boxes are at $Q_1\pm1.5\text{IQR}$. Values
+outside this range are usually considered outliers and marked as circles. The
+median is denoted with an orange line. The left boxplot confirms that the
 oscillations of the controlled intensity are negligible for typical intensity
 measurements. Further the right boxplot confirms that the intensity control
 oscillations cover a much smaller range as the uncontrolled oscillations.
 
 \section{Beam profile}
 
-Perpendicular to the error introduced by the imperfect intensity control,
+Independently of the error introduced by the imperfect intensity control,
 errors can originate from unideal optical alignment. One way to assess the
 quality of our alignment is to evaluate the spatial profile of the laser beam
 as registered with the \gls{ccd} camera.
-\begin{figure}[htb]
+\begin{figure}[h]
   \centering
   \includegraphics[width=\textwidth]{../media/setup/intensity-profile.pdf}
   \caption{The beam is focused onto the \gls{ccd} sensor of the camera.
@@ -217,17 +217,25 @@ For better comparison of the radial symmetry we performed two perpendicular
 cuts and visualized the one dimensional spatial beam distribution in
 \Cref{fig:intensity_spatial_profile}.
 In \Cref{fig:intensity_spatial_profile} we can clearly observe the effects of
-saturation around the center and how we would expect the intensity to be
-if we could experimentally resolve it in the Gaussian fit. In contrast to the
-ideal Gaussian profile we again observe contributions to the Airy disc around
-the otherwise Gaussian profile causes by the finite aperture. Further we can
-now clearly observe assymmetry from the intensity contributions around the
-Gaussian which means that our alignment is not perfect.
+saturation around the center. The Gaussian fit illustrated how we would expect
+the intensity to be if we could experimentally resolve it. In contrast to the
+ideal Gaussian profile we again observe contributions in the wings due to the
+Airy disc causes by the finite aperture of the objectives in the optical setup,
+see \Cref{fig:setup_beam_deflection}. Further we can clearly observe
+an assymmetry in the intensity distributions in the wings which means that
+our alignment is not perfect. Using
+\begin{equation}
+  \text{FWHM}=2\sqrt{2\ln2}\sigma
+  \label{eq:fwhm_sigma},
+\end{equation}
+we can find the \gls{FHWM} from the Gaussian fit, being
+\SI{0.89}{\micro\meter} for the horizontal and \SI{1.02}{\micro\meter} for
+the vertical axis of the beam in the atomic plane.
 
 We can confirm the results reported in~\cite{Hertlein2017} that the spatial
-beam profile equals a two dimensional Gaussian combined with a Airy disks
-caused from the finite aperture of the objectives. Further we observe
-slight assymmetries in the diffraction ring suggesting inperfect alignment.
-Though asymetries in the spatial beam profile are present, we do not see any
-further complications as the intensity measurements with the photodiode will
-cover the complete beam profile.
+beam profile equals a two dimensional Airy disk caused by the finite
+aperture of the objectives. Further we observe slight assymmetries in the
+diffraction ring suggesting inperfect alignment. Though asymetries in the
+spatial beam profile are present, we do not see any further complications as
+the intensity measurements with the photodiode will cover the complete beam
+profile.
