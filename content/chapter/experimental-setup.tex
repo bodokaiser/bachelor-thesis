@@ -6,6 +6,14 @@ we made include the \gls{rf} signal source of the \gls{aod}.
 
 \section{Optics}
 
+\subsection{Acousto-optics}
+
+\subsubsection{Modulators}
+
+\subsubsection{Deflectors}
+
+\subsection{Setup}
+
 The optical setup can be disected into two parts: a closed first section that
 reduces the power of the $\SI{532}{\nano\meter}$ laser source from
 $\SI{10}{\watt}$ to below $\SI{2}{\milli\watt}$, it also includes an \gls{aom}
@@ -14,7 +22,7 @@ for intensity regulation. The second section is the actual setup where a
 to dynamically control the position of the tightly-focused laser beam in the
 imaging plane. Both sections are connected through a \gls{smf}.
 
-\subsection{First section: power reduction}\label{subsec:setup_power_reduction}
+\subsubsection{First section: power reduction}\label{subsec:setup_power_reduction}
 
 Because of safety concerns the power reduction section is confined into a
 visually sealed box housing. \Cref{fig:setup_power_reduction} reveals the
@@ -39,7 +47,7 @@ order can be controlled by changing the \gls{rf} power sent to the \gls{aom}.
 Finally a $\lambda/2$ retarder plate is used together with Mirror \num{3} and
 Mirror \num{4} to couple the beam with the polarization-maintaining \gls{smf}.
 
-\subsection{Beam deflection and detection}\label{subsec:setup_deflection_detection}
+\subsubsection{Beam deflection and detection}\label{subsec:setup_deflection_detection}
 
 The section for beam deflection and detection as disclosed in
 \Cref{fig:setup_beam_deflection} receives the down-powered laser beam from
@@ -106,8 +114,10 @@ amplifier.
 In \Cref{fig:setup_elop_aod} the electronic setup connecting the \gls{2d}
 \gls{aod} with the \gls{dds} signal sources are presented. The \gls{dds}
 output is configured through a network interface as we will explain later.
-First we will elaborate on the general components used in
-\Cref{fig:setup_elop} as well as our experiments.
+Furthermore there is a reference signal source (not shown) that provides a
+\SI{10}{\mega\hertz} reference signal to the \gls{dds}. First we will
+elaborate on the general components used in \Cref{fig:setup_elop} as well as
+our experiments.
 
 \subsection{Signal source}\label{subsec:setup_signal_source}
 
@@ -182,7 +192,7 @@ it was necessary to design a network programable trigger source that outputs
 a square pulse and forwards it to multiple devices. The schematics, board
 layout and source code can be found in the \Cref{app:electronics:trigger_hub}.
 
-\section{Software}
+\section{Communication}
 
 In the last section of this chapter we will see that the diffraction
 efficiency of the \gls{aod}s is not constant and requires readjustment by
@@ -190,9 +200,38 @@ amplitude modulation of the \gls{rf} signal supplied to the \gls{aod}s. We
 consider this readjustment step a calibration process. The efficienct
 implementation of such a calibration process requires an orchestrated
 interplay of different electronic devices which we will discuss now.
+\begin{figure}[htb]
+  \centering
+  \includegraphics[width=\textwidth]{../figure/setup/network.pdf}
+  \caption{Communication setup of the electronic devices in the experimental
+    setup.
+  }\label{fig:setup_network}
+\end{figure}
+In \Cref{fig:setup_network} the communication setup of our electronic devices
+is illustrated. The computer, the trigger host, the oscilloscope and the
+\gls{dds} host are connected to the \gls{lan}. The trigger host and the
+\gls{dds} host are both \gls{bbb} that run a \gls{http} server from which the
+computer can change parameters over the network. The implementation of the
+\gls{http} server of the trigger host as well as the schematics of the trigger
+hub can be found in \Cref{app:electronics:trigger_hub}. The \gls{http} service
+that runs on the \gls{dds} host also contains a driver which writes the
+\gls{dds} parameters over \gls{spi} to the respective \gls{dds} board. The
+oscilloscope can be controlled through \gls{visa}.
+\begin{listing}[htb]
+  \inputminted[linenos,xleftmargin=.2\linewidth]{python}
+  {../media/source/example.py}
+  \caption{Example usage of the Python module to control the setup.
+  }\label{lis:control_example}
+\end{listing}
+In \Cref{lis:control_example} we can see an examplary measurement using a
+Python module we wrote to abstract away the interaction with the setup.
 
 \section{Trial run}
 
+After we integrated the \gls{dds} into the experimental setup, we wanted to
+test its capabilities. Therefore we wrote a simple script that transforms
+short letter sequences to a list of frequency pairs that we can playback
+from the \gls{h} and \gls{v} \gls{dds}.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -201,3 +240,13 @@ interplay of different electronic devices which we will discuss now.
   \caption{Text projection as captured by the \gls{ccd} camera.
   }\label{fig:setup_projection}
 \end{figure}
+In \Cref{fig:setup_projection} we see the projected text as captured by the
+camera. The text projection is created by iterating through a set of frequency
+pairs, which as we know, correspond to a position offset. For a sufficient
+exposure of the \gls{ccd} camera we can capture a time average over all
+single points just as we plan to do with the optical potentials. Even though
+we configured the \gls{dds} with constant amplitude, we notice that the
+illumination is not homogenous. In fact we will see that the diffraction
+efficiency of the \gls{aod} depends heavy on the frequency and it will
+turn out to be a challenging endeavour trying to compensate for this
+dependency as we will see in the final part of this thesis.
