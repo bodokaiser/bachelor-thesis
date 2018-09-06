@@ -5,7 +5,7 @@ we were able to recover some technical requirements imposed on our
 implementation. In this chapter we will review the fundamentals of digital
 signal synthesis, the theory on which the \gls{dds} --- our \gls{rf} signal
 source to control the \gls{aod} --- are based on. \gls{dds} offer some
-distinct advantages over traditional analog synthesiser. For one they can
+distinct advantages over traditional analog synthesizer. For one they can
 cover a wide frequency range with high tuning resolution. In contrast analog
 devices have to be fitted to a narrow operation range and are subject to
 variations caused by aging, thermal drift and manufacturing. In addition
@@ -33,10 +33,11 @@ $\lceil\cdot\rceil$ is the ceiling function.
   \includegraphics[width=\textwidth]
   {../figure/digital-signal-synthesis/simple-architecture.pdf}
   \caption{Signal flow through a simple \gls{dds}. The output frequency
-    determines a phase step $\Delta\varphi$ by which the accumulator is incremented at each
-    clock cycle. The value of the phase accumulator is used for amplitude
-    lookup of the desired output signal shape. A \gls{dac} samples the output
-    signal which then is filtered to smooth the discrete \gls{dac} output.
+    determines a phase step $\Delta\varphi$ by which the accumulator is
+    incremented at each clock cycle. The value of the phase accumulator is
+    used for amplitude lookup of the desired output signal shape. A \gls{dac}
+    samples the output signal which then is filtered to smooth the discrete
+    \gls{dac} output.
   }\label{fig:dds_simple_architecture}
 \end{figure}
 For every clock cycle the phase accumulator is incremented by $\Delta\varphi$.

@@ -2,47 +2,63 @@
 
 We began this thesis with an introduction to the field of ultracold atoms
 in optical lattice and motivated the need for local time-averaged optical
-potentials as an alternative to harmonic traps as well as a pathway for new
-potential dynamics. From there we went on to the physics of optical lattices
-and atoms in optical lattices, in order to obtain an understanding of the
-requirements placed on our technical implementation. In this context we found
-that the deflection of our optical perurbation needs to operate on a time
-scale of at least \SI{50}{\kilo\hertz}. We later found that --- at least in
-theory --- the \gls{ad9910} is capable of operating on such time scales.
-However, the maximum system clock of the \gls{ad9910} limits the number of
-output frequencies at such time scales, such that it would only be possible
-to create the presented time-averaged barrier potential for the \gls{1d} case.
-Nevertheless we did not find any evidence in the theory of digital signal
-synthesis, why it should not be possible to construct a \gls{dds} that runs at
-a higher system clock in order to sample sufficient frequency points even for
-the \gls{2d} case.
+potentials as an alternative to harmonic traps, as well as a pathway for new
+potential dynamics. From there we dove into the physics of atoms in optical
+lattices, in order to obtain an understanding of the requirements placed on
+our technical implementation. In this context we found that the deflection of
+our optical perurbation needs to operate on a time scale of about
+\SI{100}{\kilo\hertz} and that we need a tightly focused laser beam in order
+to create high-precision perturbation potentials. Fortunately
+Hertlein has already proven in Ref.~\cite{Hertlein2017} that our optical setup
+is capable of creating such high-precision beams in the atom plane. So we were
+left with exploring the limitations of our electronic and acousto-optic setup.
 
-It remains unclear if the \gls{aod} is designed to have a homogeneous
-intensity transmission when supplied with sufficient power or intensity
-irregularities arise in a complex interaction between acousto-optic and
-electronic defects. Our experimental results support the first case but
-evidence can be questioned and one shall not fall for hastly judgement.
-One possibility to answer this question once and for all would be to use a
-precision watt meter together with the direct-coupler we already used in XX
-and to manually control a power level over a set of frequencies. The
-resulting intensities should then indicate whether a homogeneous intensity
-field is feasible (if necessary with calibration procedure) or not.
+In \Cref{ch:digital_signal_synthesis} we concluded that digital signal
+synthesis is in theory an ideal platform for us to create a stable, phase
+continous, high-precision \gls{rf} signal and in fact measurements in
+\Cref{ch:electronic_setup} have proven mostly good characteristics of the
+used \gls{ad9910} \gls{dds}. However, we also found that our \gls{ad9910}
+implementation shows a signal delay when receiving an external trigger of up
+to \SI{40}{\micro\second} which is a deal breaker as we need to operate on
+time scales below \SI{10}{\micro\second}. Furthermore the frequency resolution
+of the digital ramp is too low to create spatially homogenous potentials in
+the atom plane. Howsoever we need to recognize that the \gls{ad9910} is sold
+as a general purpose \gls{dds}. It is likely that there are other \gls{dds}
+that suit our demands better or that one can create an own \gls{dds} design
+using \gls{fpga}.
 
-Regardless we have found that it is a challenging undertaking to maintain a
-constant high-power \gls{rf} signal over a frequency range. The available
-\gls{dds} and power amplifier do clearly not meet these demands. The
-\gls{dds} also fail to provide sufficient frequency resolution on time scales
-necessary for the practical use in ultracold atom experiments. However it is
-likely that a custom \gls{fpga} with power amplification may be suited to
-face such challenge.
+In the second part of our work we investigated in the characteristics of our
+\gls{2d} \gls{aod}. We found that the \gls{aod}s exhibit non-linear response
+to the relative amplitude and frequency of the applied \gls{rf} signal. It
+remains open if its just the \gls{aod} to blame for or if there are electronic
+effects we did not unvealed. Evidence that points into the direction that
+there may be electronic defects contributing to the non-linear characteristic
+of the \gls{aod} where found in \Cref{subsec:different_signal_source} where
+we used a signal generator to perform a frequency sweep and found differences
+in the diffraction efficiency spectrum. We would like to check if these
+observed difference are due to different current characteristics. So far we
+only measured the voltage amplitude of the amplified \gls{dds} where we did
+not observe significant frequency dependency.
 
-Before that though we need to dig deeper into the theory of acousto-optics
-and check if the acousto-optics can handle the targeted time scales or if
-the laser beam will be subject to acoustic lensing effects. Literature that
-covers these and more can be found with~\cite{Goutzoulis1994}
-and~\cite{Royer1999}.
+We would also like to dig deeper into the theory of acousto-optics to check
+if there are any reports of the observed characteristics and if there are
+workarounds. In addition we would find theoretical evidence that our
+acousto-optics can handle the targeted time scales. It may be very well the
+case that the speed of sound inside the acousto-optics is too slow to deflect
+the laser beam on our required time scale. This would also explain the
+instability we observed in the attempt to minimize the variance of the
+diffraction efficiency. Good literature that should answer these and more
+questions can be found in Ref.~\cite{Goutzoulis1994} and Ref.~\cite{Royer1999}.
 
-Finally there are also interesting industrial application to consider if the
+In case that the \gls{aod} do show theoretial limitations, or we can exclude
+electronic defects for the observed characteristics and we need to accept
+these characteristics as given, we could also investigate \gls{eod}. \gls{eod}
+utilize the electro-optical effect to deflect a laser beam. Usually electrical
+fields are well understood and controllable, such that these do not fall under
+the same limitations as the \gls{aod}, however \gls{eod} require high voltages
+which may be a problem.
+
+Finally there are also interesting industrial applications to consider if the
 outstanding issues can be resolved. For example the field of ophthalmologics
 covers a wide range of opportunities for precision laser control like
 corrective eye surgeries which according to~\cite{US20180110655},

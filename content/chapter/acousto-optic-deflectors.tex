@@ -3,32 +3,18 @@
 \textit{In the previous chapter we seeked for different aspects of the
 \gls{rf} signal powering the \gls{aod} elements and found that the
 electronic equipement provides an overall stable signal for the \gls{aod}.
-In this chapter we want to examine the intensity characteristics subject
-to frequency and amplitude parameters of the \gls{rf} signal. In the end
-we will find that the intensity shows highly non-linear behaviour with
-respect to the \gls{rf} signal parameters.}
+In this chapter we want to explore the diffraction efficiency characteristics
+of the \gls{aod}s subject to the different frequency and amplitude parameters
+one can configure the \gls{dds} with. In the end we will find that the
+intensity shows highly non-linear behaviour with respect to the \gls{rf}
+signal parameters.}
 
 \section{Difference between individual acousto-optic deflectors}
 
 Our optical setup uses a single two dimensional \gls{aod} that comprises two
 \gls{aod} elements perpendicular to each other. At first we want to examine the
-behaviour of the individual \gls{aod} elements to each other. In particular we
-are interested if and how the elements differ.
-\begin{figure}[htb]
-  \centering
-  \includegraphics[width=\textwidth]{../media/setup/aod-socket.png}
-  \caption{Drawing of the used \gls{2d} \gls{aod}.
-  }\label{fig:aod_socket}
-\end{figure}
-A schematic drawing of the \gls{aod} is depicted in \Cref{fig:aod_socket}. We
-see the two \gls{aod} elements in the respective horizontal and vertical slot.
-The internals of the vertical \gls{aod} (left-hand side) are illustrated. The
-element itself spans through the casing (dashed line) while the acousto-optic
-crystal (dotted line) is glued onto the element. The laser beam (green) passes
-through the acousto-optic crystal. In the following we will refer to the
-horizontal \gls{aod} element as the \gls{aod} element anticipated for the
-horizontal slot and accordingly to the vertical \gls{aod} element as the
-\gls{aod} element intended for the vertical \gls{aod} socket.
+behaviour of the individual \gls{aod} elements in comparison to each other. In
+particular we are interested if and how the elements differ.
 
 \subsection{Individual acousto-optic deflectors}
 
@@ -81,23 +67,24 @@ the beam dump as Cube \num{2} is a beam splitter sensible to polarisation.
     \inputpgf{../figure/intensity/distribution}{polarisation-horizontal.pgf}
   \end{adjustbox}
   \caption{Intensity transmission of the \gls{h} \gls{aod} in the \gls{h} slot
-    at maximum output amplitude for different polarisation angles.
+    at maximum output amplitude for different angles of the $\lambda/2$ plate.
   }\label{fig:intensity_polarisation_h}
 \end{figure}
 In \Cref{fig:intensity_polarisation_h} the intensity transmission of the
-\gls{h} \gls{aod} in the \gls{h} slot at maximum output amplitude is presented
-for different polarisation angles. The polarisation angles are the remainders
-of the angles read of from the retarder plate mount divided by \ang{90}. The
-reason behind this step is that a rotation of a retarder plate by $\phi$
-effectively changes the polarisation angle by $2\phi$. Further the
-polarisation domain is limited to $\left[0,\ang{90}\right]$.
+\gls{h} \gls{aod} in the \gls{h} slot at maximum \gls{rf} amplitude is
+presented for different polarisation angles. The polarisation angles are the
+remainder left after division by \ang{90} of the angles read of from the
+retarder plate mount. The reason behind this step is that a rotation of a
+retarder plate by $\phi$ effectively changes the polarisation angle by
+$2\phi$. Further the polarisation angles are uniquely contained in the range
+$\left[\ang{0},\ang{180}\right[$.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
     \inputpgf{../figure/intensity/distribution}{polarisation-vertical.pgf}
   \end{adjustbox}
   \caption{Intensity transmission of the \gls{v} \gls{aod} in the \gls{v} slot
-    at maximum output amplitude for different polarisation angles.
+    at maximum output amplitude for different angles of the $\lambda/2$ plate.
   }\label{fig:intensity_polarisation_v}
 \end{figure}
 We note the maximum intensity transmission of the \gls{h} \gls{aod} at
@@ -123,9 +110,10 @@ Finally we want to compare the polarisation angles between the individual
 \gls{aod}s. Therefore we extracted the intensity transmission at
 \SI{100}{\mega\hertz} frequency for both \gls{aod} measurements and plotted
 them against the polarisation angle in \Cref{fig:intensity_polarisation}. We
-observe a sinusoidal shaped intensity response of the polarisation angle
-for the \gls{h} and \gls{v} \gls{aod} which seem out of phase by nearly
-\ang{90}.
+observe a sinusoidal shaped intensity response as a function of the angle
+for the \gls{h} and \gls{v} \gls{aod} which seem to be out of phase by nearly
+\ang{90}. This, however, makes sense as the polarisation in the first
+diffraction order is rotated by \ang{90}.
 
 The \gls{2d} \gls{aod} casing allows to rotate the individual \gls{aod}
 elements. So far we choose the rotation angle of the \gls{aod} elements that
@@ -137,7 +125,7 @@ obtain if we tilted the rotation angle a bit to the left and to the right?
     \inputpgf{../figure/intensity/distribution}{unpaired-tilted.pgf}
   \end{adjustbox}
   \caption{Intensity distribution at different amplitudes for tilted
-    individual \gls{aod}. We observe that the intensity decreases if the
+    individual \gls{aod}s. We observe that the intensity decreases if the
     incident angle deviates from \ang{90}.
   }\label{fig:intensity_distribution_tilted}
 \end{figure}
@@ -149,23 +137,19 @@ that the left and right measurements are free from aperture effects.
 Nevertheless we can record that the incident beam angle is an important
 parameter in the intensity transmission of the \gls{aod}s. In particular we
 need to consider the incident beam angle for the \gls{2d} \gls{aod}
-configuration. It may make sense to change the setup to a configuration
-consisting of two \gls{1d} \gls{aod} with a telescope in between.
+configuration.
 
 \section{2D intensity distribution}
 
-In the previous section we sorted out the influence of the \gls{aod} element
-position and acknowledged that \gls{aod}s differ significant in their
-optical properties. In the present section we now want to explore the
-intensity transmission for a two dimensional sweep as intended to be used
-for the optical potentials.
+In the present section we now want to explore the intensity transmission for
+a two dimensional sweep as intended to be used for the optical potentials.
 
 The experimental setup is similar to the previous setups and is shown in
 \Cref{fig:intensity_distribution_setup}. We have both \gls{aod}s mounted in
 their anticipated position. The \gls{aod} elements are aligned to maximize
-intensity at the center frequency. The laser beam is directed into a second
-photodiode where we measure the intensity with respect to the configured
-\gls{dds} signal.
+intensity at the center frequency. The laser beam is directed into
+Photodiode \num{2} where we measure the intensity with respect to the
+configured \gls{dds} signal.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{../media/setup/intensity-distribution.pdf}
@@ -198,12 +182,13 @@ range as the second \gls{dds}.
 In \Cref{fig:intensity_distribution_frequency} we present the intensity
 measured at the second photodiode in the setup shown in
 \Cref{fig:intensity_distribution_setup}. On the left-hand map the first
-\gls{dds} is the \gls{dds} responsible for translations in vertical direction
-whereas the second \gls{dds} is responsible for translations in horizontal
-direction. The frequency sweep performed by the digital ramp is more dense
-compared to the frequency sweep performed by manual increments in our
-configuration as the manual increments require driver calls whereas the
-digital ramp increments are performed internal of the \gls{dds}.
+\gls{dds} is the \gls{dds} responsible for translations in the vertical
+direction whereas the second \gls{dds} is responsible for translations in
+horizontal direction. The frequency sweep performed by the digital ramp is
+more dense compared to the frequency sweep performed through the driver. We
+of course could also perform increments through the driver with the same
+precision as the digital ramp, this, however, would make measurements much
+more time consuming.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -216,11 +201,11 @@ digital ramp increments are performed internal of the \gls{dds}.
 As the differences in \Cref{fig:intensity_distribution_frequency} are of only
 subtile nature we additionally reveal the absolute difference between both
 maps in \Cref{fig:intensity_distribution_frequency_residue}. We observe
-nearly a binary map of dark purple and yellow areas whereas the dark area can
-be intepreted as small and the yellow area as large difference. The binary
+nearly a binary map of dark and bright blue areas whereas the dark area can
+be intepreted as small and the bright area as large difference. The binary
 nature of the absolute difference could be interpreted as a fixed offset
 in the power level between the \gls{h} and \gls{v} \gls{rf} signal supplied to
-the \gls{aod}s. In areas of small intensity difference (purple) the ouptut
+the \gls{aod}s. In areas of small intensity difference (dark blue) the ouptut
 level may be sufficient to saturate the acousto-optics. However we must admit
 that these are simply suggestions and need further evidence.
 
@@ -254,11 +239,11 @@ differences are more concentrated around the vertical axis. We believe that
 acousto-optics possess a non-instantaneous frequency response characteristic
 that requires further investigation.
 
-\subsubsection{Different radio frequency signal source}
+\subsubsection{Different radio frequency signal source}\label{subsec:different_signal_source}
 
-In the previous two sections we found that the \gls{aod}s are quite sensible
-to the method used to perform frequency increments in a frequency sweep. In
-order to further investigate this phenomena we decided to replace one
+In the previous two sections we found that the \gls{aod}s are independent of
+the method used to perform the frequency increments. In order to further
+gather further proof, we decided to replace one
 \gls{dds} with a high-quality signal generator while the other \gls{dds} was
 configured to output a constant \SI{100}{\mega\hertz} signal. The output
 level of the signal generator was configured to match the output level of
@@ -285,21 +270,22 @@ characteristics differ in particular at the begin of the frequency sweep and
 at the center. As the power amplifier remains unchanged through the
 measurements and the output voltage of the signal sources are independent of
 frequency, we are only left with two explainations. For one the power supplied
-to the \gls{aod} could differ as we did not meausre the current response. On
-the other the frequency drops in between frequency increments of the signal
-generator could cause the observed characteristis. The later hyphothesis would
-also confirm the result of the previous section in which we found a different
-transmission characteristic for differen frequency sampling strategies.
+to the \gls{aod} could differ as we did not measure the current response. On
+the other hand the frequency drops in between frequency increments of the
+signal generator could cause the observed characteristis. The later
+hyphothesis would also confirm the result of the previous sections in which we
+found a different transmission characteristic for different frequency
+sampling strategies.
 
 \subsubsection{Summary}
 
-In summary we found that the intensity transmission of the \gls{aod} show a
-highly non-linear dependency in the applied power and the method used for
-frequency sampling. It will continue to be interesting to explore the
+In summary we found that the intensity transmission of the \gls{aod}s show a
+highly non-linear dependence in the applied power and the method used for
+frequency sampling. It would be interesting to continue to explore the
 intensity transmission subject to the effective power of the \gls{rf} signal
 applied to the \gls{aod}. So far we only know that the voltage of the \gls{rf}
 signal of the \gls{dds} is constant over our frequency range of
-\SI{80}{\mega\hertz} to \SI{120}{\mega\hertz}, however we cannot make any
+\SI{80}{\mega\hertz} to \SI{120}{\mega\hertz}, however, we cannot make any
 statements with respect to the current characteristics. All in all there are
 too many factors to consider to describe with a simple analytical model and we
 will further try to work with a model-free optimization procedure in the next
@@ -352,11 +338,9 @@ optimization results for target intensities of \SI{800}{\milli\volt},
 \SI{1000}{\milli\volt} and \SI{1200}{\milli\volt} and amplitude segments
 $8,16,32$. We observe heavy oscillations for amplitude segments greater than
 eight. The optimization results using \num{16} amplitude segments performs
-better than the run with \num{32} amplitude segments.
-
-We assume that inductive effects occur when choosing more amplitude segments
-that consolidate a non-linear intensity response. For the sake of simplicity
-we will first limit us to the case of eight amplitude segments.
+better than the run with \num{32} amplitude segments. At present we have no
+explainations for this behaviour. For the sake of simplicity we will limit us
+to the case of eight amplitude segments.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -368,11 +352,7 @@ we will first limit us to the case of eight amplitude segments.
   }\label{fig:intensity_optimization_intensity_amplitude}
 \end{figure}
 In \Cref{fig:intensity_optimization_intensity_amplitude} we have a closer
-view on the first column of \Cref{fig:intensity_optimization_overview}. We
-can notice similar characteristics observed in the \gls{rf} signal. In
-particular the more power drop near the center frequency is present and the
-linear power fall off with the frequency in the second half of the frequency
-sweep.
+view on the first column of \Cref{fig:intensity_optimization_overview}.
 
 \subsubsection{Process}
 
@@ -408,10 +388,10 @@ affect subsequent segments.
 \subsubsection{Failure}
 
 With the optimization showing reasonable convergence for eight amplitude
-segments we would expect it to improve if we choose a more amplitude segments,
+segments we would expect it to improve if we choose more amplitude segments,
 yet we observed heavy oscillations. In this section we want to check the
 optimization process in the case of \num{32} amplitude segments to investigate
-in possible origins of the optimization failure.
+in the possible origins of the optimization failure.
 \begin{figure}[htb]
   \centering
   \begin{adjustbox}{width=\textwidth}
@@ -425,23 +405,23 @@ in possible origins of the optimization failure.
 \end{figure}
 In \Cref{fig:intensity_optimization_failure} we can see the optimization
 progress for selected amplitude segments of the optimization run with 32
-segments. We observe that with the non-linear response following the actual
-optimized amplitude segment increases more and more.
+segments. We observe that non-linear oscillations increase during the
+optimization process.
 
 \subsubsection{Summary}
 
-Our attemps to minimize the intensity variance where of mixed success. One
-the one hand side we were able to minimize the intensity deviation down
-to \SI{100}{\milli\volt} on the other hand we were not able to train any
+Our attemps to minimize the intensity variance where of mixed success. On
+the one hand we were able to minimize the intensity deviation down
+to \SI{100}{\milli\volt}, on the other hand we were not able to train any
 model on the intensity response that would allow fast optimization or even
 predicition of the expected intensity response given an amplitude
 configuration.
 
-However we also found out that irregularities arise with increase in the
+However, we also found that irregularities arise when increasing the
 number of amplitude segments. We suspect that fast changes of the output
-amplitude draws power that may non deterministicyl affect the next clock
+amplitude draws power that may non-deterministically affect the next clock
 cycle inside the \gls{dds}. Given that the one dimensional optimizations
 already required multiple hours to run and the non-linear response between
-amplitude segments we do not believe that it is not in the capabilites of the
-\gls{dds} to compensate for the two dimensional intensity distribution
+amplitude segments we do not believe that it is not within the capabilites of
+our present setup to compensate for the two dimensional intensity distribution
 measured in the previous chapter.
