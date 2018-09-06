@@ -7,14 +7,14 @@ we made include the \gls{rf} signal source of the \gls{aod}.
 \section{Optics}
 
 We start by describing the optical aspects of our setup. The main component
-of this work is the \gls{aod} we will describe some of its properties below
+of this work is the \gls{aod}. We will describe some of its properties below
 and then head on to the optical setup.
 
-\subsection{Acousto-optics deflectors}
+\subsection{Acousto-optic deflectors}
 
 Under the assumption of a light polarized perpendicular or parallel to the
 elastic waves under normal incident angle Ref.~\cite{Royer1999} reports that
-the acousto-optic acts as a diffraction gratting with
+the acousto-optic acts as a diffraction grating with
 \begin{equation}
   \sin\theta_n=\pm n\frac{\lambda}{\Lambda}
   \label{eq:angle_gratting},
@@ -31,7 +31,7 @@ terms of the \gls{aod} frequencies
   y(f_v)/\si{\micro\meter}=3.62\frac{f_v}{\SI{1}{\mega\hertz}}-360
   \label{eq:spatial_position_frequency},
 \end{align}
-wherein $f_h,f_v$ denote the frequencies applied the \gls{h} respective
+wherein $f_h,f_v$ denote the frequencies applied to the \gls{h} respective
 \gls{v} \gls{aod}.
 
 \subsection{Setup}
@@ -55,33 +55,33 @@ inside of the power reduction setup.
   \caption{Optical configuration of the power reduction section.
   }\label{fig:setup_power_reduction}
 \end{figure}
-The laser beam leaving the laser source is linearyly polarized. In order to
+The laser beam leaving the laser source is linearly polarized. In order to
 divert the majority of the power into a beam dump we use a $\lambda/2$
 retarder plate and a high-power polarizing beam splitter. Afterwards Mirror
 \num{1} and Mirror \num{2} direct the beam towards the center of a $2:1$
 telescope composed of Lens \num{1} and Lens \num{2}. The telescope is there to
 reduce the beam diameter by \num{2} in order to avoid cut-off at the aperture
 of the subsequent \gls{aom}. The \gls{aom} diffracts the laser beam into
-multiple orders as it acts as a tunable diffraction gratting. Mirror \num{3}
-and Mirror \num{4} direct theses orders onto a pinhole which is configured to
+multiple orders as it acts as a tunable diffraction grating. Mirror \num{3}
+and Mirror \num{4} direct these orders onto a pinhole which is configured to
 intromit only the first order deflection. The power in the first diffraction
 order can be controlled by changing the \gls{rf} power sent to the \gls{aom}.
 Finally a $\lambda/2$ retarder plate is used together with Mirror \num{3} and
-Mirror \num{4} to couple the beam with the polarization-maintaining \gls{smf}.
+Mirror \num{4} to couple the beam into the polarization-maintaining \gls{smf}.
 
 \subsubsection{Beam deflection and detection}\label{subsec:setup_deflection_detection}
 
 The section for beam deflection and detection as disclosed in
 \Cref{fig:setup_beam_deflection} receives the down-powered laser beam from
-previously described section by a \gls{smf}. Hereinafter the beam passes a
-rotatable retarder plate and beam splitter Cube \num{1} to clean the
+the previously described section by a \gls{smf}. Hereinafter the beam passes
+a rotatable retarder plate and beam splitter Cube \num{1} to clean the
 polarization of the laser beam after passing through the \gls{smf}. A second
 polarizer with Cube \num{2} is used to branch off a part of the beam to
 Photodiode \num{1} that is positioned to be at the focal point of Lens
 \num{1}. Photodiode \num{1} is connected via a feedback loop with the
 amplitude modulation of the \gls{aom} depicted in
-\Cref{fig:setup_power_reduction} to stabilize the laser intensity against for
-instance thermal drifts.
+\Cref{fig:setup_power_reduction} to stabilize the laser intensity against, for
+instance, thermal drifts.
 \begin{figure}[htb]
   \centering
   \includegraphics[width=\textwidth]{../figure/setup/beam-deflection.pdf}
@@ -90,20 +90,27 @@ instance thermal drifts.
 \end{figure}
 For horizontal and vertical beam deflection two \gls{aod}s are used. A $1:1$
 telescope comprised of two lenses (Lens \num{2} and Lens \num{3}) is used to
-image the beam on a pair of objectives. The telescope translates a change in
-the incident beam angle to a position offset. The purpose of the first
-objective is to focus the laser on to the atom plane. The components described
-so far are sufficient to offset a high-resolution pertubation laser
-perpendicular to the atomic plane. The purpose of the other components is to
-unfocus the laser back for detection. Consecutively the after being unfocused
-from the second objective, the laser is reflected by Mirror \num{3} and
-Mirror \num{4} to the part intended for detection. Lens \num{4} focuses the
-colliminated laser beam on to the camera \gls{ccd} camera sensor. Cube \num{3}
-forks a portion of the beam away from the \gls{ccd} camera on o Mirror \num{5}
-that guides the beam towards Lens \num{5} in order to focus the beam onto
-Photodiode \num{2}. It is important that the sensor of Photodiode \num{2} is
-positioned on the focal spot of Lens \num{5}, otherwise the laser beam would
-leave the sensor when deflected by the \gls{aod}.
+image the beam on a pair of objectives. The purpose of the first objective is
+to translate a change in the incident angle to a position offset in the atom
+plane. The components described so far are sufficient to offset a
+high-resolution pertubation laser perpendicular to the atomic plane. The
+purpose of the other components is to unfocus the laser back for detection.
+Combining the the focal length of the (second) objective $f_\text{obj}$ with
+the focal length of $f_4$ we achieve a magnification of
+\begin{equation}
+  M
+  =\frac{f_4}{f_\text{obj}}
+  =\frac{\SI{500}{\milli\meter}}{\SI{4.5}{\milli\meter}}
+  \approx 111
+  \label{eq:setup_magnification}.
+\end{equation}
+The so colliminated and magnified laser beam is then imaged onto the \gls{ccd}
+camera sensor. Cube \num{3} forks a portion of the beam away from the
+\gls{ccd} camera on Mirror \num{5} that guides the beam towards Lens
+\num{5} in order to focus the beam onto Photodiode \num{2}. It is important
+that the sensor of Photodiode \num{2} is positioned on the focal spot of
+Lens \num{5}, otherwise the laser beam would leave the sensor when deflected
+by the \gls{aod}.
 
 \section{Electronics}
 
@@ -111,13 +118,13 @@ Beforehand we described the optical setups used. Now we want to emphasize
 on the electronics and how they are integrated into the optical setup.
 
 In \Cref{fig:setup_elop_aom} the electronic setup of the \gls{aom} control
-loop are presented. The \gls{dds} signal source outputs a \SI{80}{\mega\hertz}
+loop is presented. The \gls{dds} signal source outputs a \SI{80}{\mega\hertz}
 \gls{rf} signal which is amplified and then supplied to the \gls{aom} for
-intensity modulation. Photodiode \num{1} measures the modulated laser
-intensity and is connected to a \gls{pid}. The \gls{pid} outputs a signal
-proportional to the deviation of the measured intensity from the configured
-intensity which is provided to the amplitude modulation input of the power
-amplifier.
+intensity modulation, see \Cref{fig:setup_power_reduction}. Photodiode \num{1}
+measures the modulated laser intensity and is connected to a \gls{pid}. The
+\gls{pid} outputs a signal proportional to the deviation of the measured
+intensity from the configured intensity which is provided to the amplitude
+modulation input of the power amplifier.
 \begin{figure}[htbp]
   \centering
   \begin{subfigure}[b]{0.4\textwidth}
@@ -151,16 +158,16 @@ We require the signal source to generate a sinusoidal \gls{rf} signal
 \end{equation}
 where $0\leq A\leq1$ denotes the amplitude and $f$ the frequency. For the
 \gls{aom} setup in \Cref{fig:setup_elop_aom} it is sufficient to configure
-a constant amplitude $A=1$ and frequency $f=\SI{80}{\mega\hertz}$. For the
-\gls{aod} control, however, our requirements are lifted. Ideally we would
-like to program a time-dependent amplitude $A(t)$ and frequency $f(t)$,
-supplementary to the support of an external trigger signal in order to
-syncronize multiple signal sources. For our setup we chose to use \gls{dds}
-as signal sources as they provide high frequency resolution, a wide range of
-modulation options and are cheap compared to signal generators. In
-\cref{ch:digital_signal_synthesis} we will give a more detailed view of the
-characteristics and limitations of the \gls{ad9910}, the \gls{dds} \gls{ic}
-we use as signal source.
+a constant frequency $f=\SI{80}{\mega\hertz}$ and amplitude $A=1$, which is
+further varied by the feedback loop. For the \gls{aod} control, however,
+our requirements are beyond a constant signal. Ideally we would like to
+program a time-dependent amplitude $A(t)$ and frequency $f(t)$, supplementary
+to the support of an external trigger signal in order to syncronize multiple
+signal sources. For our setup we chose to use \gls{dds} as signal sources as
+they provide high frequency resolution, a wide range of modulation options and
+are cheap compared to signal generators. In \cref{ch:digital_signal_synthesis}
+we will give a more detailed view of the characteristics and limitations of
+the \gls{ad9910}, the \gls{dds} \gls{ic} we use as signal source.
 
 \subsection{Power amplifier}
 
@@ -168,7 +175,7 @@ We use three signal amplifiers with respective input from the signal sources
 to have an output power of about $P=\SI{2}{\watt}$ required by the \gls{aod}s
 and the \gls{aom} for maximum diffraction efficiency. The used amplifiers
 offer a second input for external amplitude modulation. In case of the
-\gls{aom} we connect thisinput to the output of the feedback loop.
+\gls{aom} we connect this input to the output of the feedback loop.
 
 \subsection{PID controller}
 
@@ -197,8 +204,8 @@ variable of the \gls{pid} can be expressed through
   K_d \dv{t}{e(t)}
   \label{eq:setup_pid},
 \end{equation}
-where $K_p,K_i,K_d$ denote the coefficients for respective terms. The ideal
-values for the coefficients have to be found by loop tunning for each
+where $K_p,K_i,K_d$ denote the coefficients of the respective terms. The ideal
+values for the coefficients have to be found by loop tuning for each
 application. Every term contributing to \cref{eq:setup_pid} can be thought
 of to account for a different time scale of the process: the proportional term
 considers the momentary error, the differential predicts trends and the
@@ -219,7 +226,7 @@ layout and source code can be found in the \Cref{app:electronics:trigger_hub}.
 In the last section of this chapter we will see that the diffraction
 efficiency of the \gls{aod}s is not constant and requires readjustment by
 amplitude modulation of the \gls{rf} signal supplied to the \gls{aod}s. We
-consider this readjustment step a calibration process. The efficienct
+consider this readjustment step as a calibration process. The efficienct
 implementation of such a calibration process requires an orchestrated
 interplay of different electronic devices which we will discuss now.
 \begin{figure}[htb]
