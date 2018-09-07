@@ -18,14 +18,20 @@ direct digital synthesizers.
 We will give a brief theoretical introduction into the main concepts, i.e.\
 the interaction of neutral atoms with optical potentials as well as the
 general operation of direct digital synthesizer and acousto-optic deflectors.
-In the second part we will characterize the radio frequency signal propagation from
-the synthesizer to the acousto-optic deflector plus the deflection efficiency
-of the acousto-optic deflectors.
+From the physics we can derive the requirements imposed on the technical
+implementation of the \gls{rf} signal source and the deflection.
 
-We will find that though this approach proves to be feasible in general,
-the practical application demands stringent requirements on the electronic
-signal source not met by the direct digital synthesizers. The encountered
-challenges and conclusions drawn, however, are of considerable importance
-for a foreseen design of an apparatus to create dynamically-controllable local
-optical potentials.
+We will find that even though the platform of digital signal synthesis
+generally suites our application in terms of modulation capabilities and
+resolution, the particular implementation of the \gls{ad9910} demonstrates
+several shortcomings.
+
+In the second part we characterize the deflection efficiency of the
+acousto-optic deflectors. Towards the end we try to minimize the variance of
+the deflection efficiency by performing a random search on the amplitude
+segments of the \gls{rf} signal. It turns out that the deflection efficiency
+is a highly non-linear function of the applied \gls{rf} power and frequency.
+Furthermore minimization of the deflection efficiency variances proves to be
+very unstable. Though we can largely preclude electronic defects to be the
+source of this behaviour, further investigation is required.
 \end{abstract}

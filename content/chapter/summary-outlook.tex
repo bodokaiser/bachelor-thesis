@@ -1,7 +1,7 @@
 \chapter{Summary and outlook}
 
 We began this thesis with an introduction to the field of ultracold atoms
-in optical lattice and motivated the need for local time-averaged optical
+in optical lattices and motivated the need for local time-averaged optical
 potentials as an alternative to harmonic traps, as well as a pathway for new
 potential dynamics. From there we dove into the physics of atoms in optical
 lattices, in order to obtain an understanding of the requirements placed on
@@ -21,24 +21,24 @@ used \gls{ad9910} \gls{dds}. However, we also found that our \gls{ad9910}
 implementation shows a signal delay when receiving an external trigger of up
 to \SI{40}{\micro\second} which is a deal breaker as we need to operate on
 time scales below \SI{10}{\micro\second}. Furthermore the frequency resolution
-of the digital ramp is too low to create spatially homogenous potentials in
-the atom plane. Howsoever we need to recognize that the \gls{ad9910} is sold
-as a general purpose \gls{dds}. It is likely that there are other \gls{dds}
-that suit our demands better or that one can create an own \gls{dds} design
-using \gls{fpga}.
+of the digital ramp may be too low to create spatially continous potentials
+(depending on the lattice parameters) in the atom plane. Howsoever we need to
+recognize that the \gls{ad9910} is sold as a general purpose \gls{dds}. It is
+likely that there are other \gls{dds} that suit our demands better or that one
+can create an own \gls{dds} design using \gls{fpga}.
 
-In the second part of our work we investigated in the characteristics of our
-\gls{2d} \gls{aod}. We found that the \gls{aod}s exhibit non-linear response
+In the second part of our work we investigated the characteristics of our
+\gls{2d} \gls{aod}. We found that the \gls{aod}s exhibit a non-linear response
 to the relative amplitude and frequency of the applied \gls{rf} signal. It
-remains open if its just the \gls{aod} to blame for or if there are electronic
-effects we did not unvealed. Evidence that points into the direction that
+remains open if it is the \gls{aod} to blame for or if there are electronic
+effects we did not unveal. Evidence that points into the direction that
 there may be electronic defects contributing to the non-linear characteristic
 of the \gls{aod} where found in \Cref{subsec:different_signal_source} where
 we used a signal generator to perform a frequency sweep and found differences
 in the diffraction efficiency spectrum. We would like to check if these
-observed difference are due to different current characteristics. So far we
+observed differences are due to different current characteristics. So far we
 only measured the voltage amplitude of the amplified \gls{dds} where we did
-not observe significant frequency dependency.
+not observe a significant frequency dependency.
 
 We would also like to dig deeper into the theory of acousto-optics to check
 if there are any reports of the observed characteristics and if there are
@@ -50,13 +50,13 @@ instability we observed in the attempt to minimize the variance of the
 diffraction efficiency. Good literature that should answer these and more
 questions can be found in Ref.~\cite{Goutzoulis1994} and Ref.~\cite{Royer1999}.
 
-In case that the \gls{aod} do show theoretial limitations, or we can exclude
+In case that the \gls{aod}s do show theoretial limitations, or we can exclude
 electronic defects for the observed characteristics and we need to accept
-these characteristics as given, we could also investigate \gls{eod}. \gls{eod}
-utilize the electro-optical effect to deflect a laser beam. Usually electrical
-fields are well understood and controllable, such that these do not fall under
-the same limitations as the \gls{aod}, however \gls{eod} require high voltages
-which may be a problem.
+these characteristics as given, we could also investigate \gls{eod}s.
+\gls{eod}s utilize the electro-optical effect to deflect a laser beam. Usually
+electrical fields are well understood and controllable, such that these do not
+fall under the same limitations as the \gls{aod}s, however \gls{eod}s require
+high voltages which may cause other problems.
 
 Finally there are also interesting industrial applications to consider if the
 outstanding issues can be resolved. For example the field of ophthalmologics
